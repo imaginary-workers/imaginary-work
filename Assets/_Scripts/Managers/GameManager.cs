@@ -50,6 +50,13 @@ namespace Game.Managers
             _health.value = _maxHealth.value;
             SceneManager.LoadScene("Level0");
         }
+
+        public void ToLevelOne()
+        {
+            _health.value = _maxHealth.value;
+            SceneManager.LoadScene("Level1");
+        }
+
         public void ControlsMenu()
         {
             SceneManager.LoadScene("ControlsMenu");

@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Game
 {
-    public class ParciclesController : MonoBehaviour
+    public class ParticlesController : MonoBehaviour
     {
         [SerializeField] ParticleSystem _particle;
         [Range(1, 10)][SerializeField] float _delayOff;
