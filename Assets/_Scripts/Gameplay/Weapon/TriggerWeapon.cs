@@ -8,6 +8,8 @@ namespace Game.Gameplay.Weapon
 {
     public class TriggerWeapon : ShooterWeapon
     {
+        [SerializeField] ParticleSystem _particles;
+
         Action _TriggerAttackAnimation;
         WaitForSeconds _waitAttackRate;
         void Awake()
@@ -77,6 +79,8 @@ namespace Game.Gameplay.Weapon
             bulletObject.GetComponent<Bullet>()?.Shoot(ShootDirection);
             Ammunition--;
             GameManager.instance.UpdateBulletCounter(Ammunition);
+
+            _particles.Play();
         }
 
         void EVENT_PISTOL_SHOOTING()
