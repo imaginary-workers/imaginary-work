@@ -123,7 +123,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _damage: 1
-  _firePoint: {fileID: 0}
+  _firePoint: {fileID: 2924489291095619190}
   _layerMask:
     serializedVersion: 2
     m_Bits: 8
@@ -212,6 +212,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5175299818302098206}
     m_Modifications:
+    - target: {fileID: 4741058671105879683, guid: 7c983c304ab18b94e9b1f1136374d9a9, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 04f028f65587c7645a61bca2aae432c9, type: 2}
     - target: {fileID: 5227242835358535967, guid: 7c983c304ab18b94e9b1f1136374d9a9, type: 3}
       propertyPath: _ignoreY
       value: 0
@@ -269,6 +273,11 @@ PrefabInstance:
 --- !u!4 &6574568628382993031 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7639679911705892337, guid: 7c983c304ab18b94e9b1f1136374d9a9, type: 3}
+  m_PrefabInstance: {fileID: 3546610211560677238}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &2924489291095619190 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1850355707437181184, guid: 7c983c304ab18b94e9b1f1136374d9a9, type: 3}
   m_PrefabInstance: {fileID: 3546610211560677238}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &8769338175141744233 stripped
