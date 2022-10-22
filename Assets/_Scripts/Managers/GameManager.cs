@@ -20,6 +20,7 @@ namespace Game.Managers
         [SerializeField] GameObject _pauseMenu;
         [SerializeField] GameObject _deathMessege;
         [SerializeField] Text _bulletCounterText;
+        [SerializeField] Text _reserveCounterText;
 
         bool _isPaused = false;
         bool _isDeath = false;
@@ -113,6 +114,13 @@ namespace Game.Managers
                 _bulletCounterText.text = "";
             else
                 _bulletCounterText.text = amunicion.ToString();
+        }
+        public void UpdateReserveCounter(int amunicion)
+        {
+            if (amunicion < 0)
+                _reserveCounterText.text = "-";
+            else
+                _reserveCounterText.text = amunicion.ToString();
         }
     }
 }
