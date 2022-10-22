@@ -1547,11 +1547,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68d7d58f4d9cd084da62b27d2486a2e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &1297038794 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2924489291095619190, guid: 1a8d4ce0b8fefce4d9cda66399c7bfd2, type: 3}
-  m_PrefabInstance: {fileID: 2049358785}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1325050551
 GameObject:
   m_ObjectHideFlags: 0
@@ -1907,6 +1902,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5bc2d2ea0d20a6c4f88f7e54f3a4fe86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _targetAlwaysPlayer: 0
   _target: {fileID: 1156049663}
   _speedRotation: 8.38
   _ignoreX: 0
@@ -2759,10 +2755,6 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 4885114125338213701, guid: 1a8d4ce0b8fefce4d9cda66399c7bfd2, type: 3}
-      propertyPath: _firePoint
-      value: 
-      objectReference: {fileID: 1297038794}
     - target: {fileID: 5184913850856923581, guid: 1a8d4ce0b8fefce4d9cda66399c7bfd2, type: 3}
       propertyPath: _pointRadiusGizmos
       value: 0.27
@@ -2795,10 +2787,6 @@ PrefabInstance:
       propertyPath: _waypoints.Array.data[5]
       value: 
       objectReference: {fileID: 2110512731}
-    - target: {fileID: 5745978130405426769, guid: 1a8d4ce0b8fefce4d9cda66399c7bfd2, type: 3}
-      propertyPath: _visualAngle
-      value: 45
-      objectReference: {fileID: 0}
     - target: {fileID: 8767201343238056812, guid: 1a8d4ce0b8fefce4d9cda66399c7bfd2, type: 3}
       propertyPath: m_RootOrder
       value: 0
