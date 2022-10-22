@@ -11,7 +11,7 @@ namespace Game
 
         public void Sprint(InputAction.CallbackContext context)
         {
-            if(context.performed)
+            if (context.started)
                 _aminator.SetBool("IsSprinting", true);
             else if (context.canceled)
                 _aminator.SetBool("IsSprinting", false);
