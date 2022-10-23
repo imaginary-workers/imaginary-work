@@ -1,3 +1,4 @@
+using Game.Gameplay.Weapon;
 using Game.Managers;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -8,17 +9,38 @@ namespace Game.Player
     {
         [SerializeField] WeaponManager manager;
         [SerializeField] PointerTarget _pointerTarget;
+        [SerializeField] PlayerController _playerController;
+        [SerializeField,Range(0,2)] float _speedWeaponHeavy = 1;
+        private float _speedDefault;
+        private Weapon _currentWeapon;
 
+        private void Awake()
+        {
+            _currentWeapon = manager.CurrentWeapon;
+            _speedDefault = _playerController.Speed;
+        }
         public void Attack(InputAction.CallbackContext context)
         {
-            var currentWeapon = manager.CurrentWeapon;
-            currentWeapon.Target = _pointerTarget.transform.position;
+             _currentWeapon = manager.CurrentWeapon;
+            _currentWeapon.Target = _pointerTarget.transform.position;
             if (context.started)
-                currentWeapon.StartAttack();
+            {
+                if (_currentWeapon.IsHeavy)
+                {
+                    _playerController.Speed = _speedWeaponHeavy;
+                }
+                _currentWeapon.StartAttack();
+            }
             if (context.performed)
-                currentWeapon.PerformedAttack();
+                _currentWeapon.PerformedAttack();
             if (context.canceled)
-                currentWeapon.CancelAttack();
+            {
+                if (_currentWeapon.IsHeavy)
+                {
+                    _playerController.Speed = _speedDefault;
+                }
+            _currentWeapon.CancelAttack();
+            }
         }
 
         public void ReloadWeapon(InputAction.CallbackContext context)
@@ -34,6 +56,10 @@ namespace Game.Player
             => manager.ReloadReserveWeapons();
 
         public void SwitchWeapon(int slot)
-            => manager.SwitchWeapon(slot);
+        {
+            _currentWeapon.CancelAttack();
+            _playerController.Speed = _speedDefault;
+            manager.SwitchWeapon(slot);
+        }
     }
 }

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.54133826, g: 0.6206705, b: 0.7277357, a: 1}
+  m_IndirectSpecularColor: {r: 0.5410525, g: 0.62022966, b: 0.7275671, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1038,7 +1038,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-25058
+  m_Name: pb_Mesh-1508
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1418,6 +1418,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8219668241822508879, guid: 8848ba22db2628d4bb7ef3d0c02bad5c, type: 3}
   m_PrefabInstance: {fileID: 1329252412}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1156049671 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8219668241822508868, guid: 8848ba22db2628d4bb7ef3d0c02bad5c, type: 3}
+  m_PrefabInstance: {fileID: 1329252412}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1156049663}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5369c5c16054ec394506cc2cf9fa05e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1156244067
 GameObject:
   m_ObjectHideFlags: 0
@@ -1714,9 +1725,21 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5510054347609544550, guid: 8848ba22db2628d4bb7ef3d0c02bad5c, type: 3}
+      propertyPath: _isHeavy
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5652454157372921973, guid: 8848ba22db2628d4bb7ef3d0c02bad5c, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8201175159399936447, guid: 8848ba22db2628d4bb7ef3d0c02bad5c, type: 3}
+      propertyPath: looping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8201175159399936447, guid: 8848ba22db2628d4bb7ef3d0c02bad5c, type: 3}
+      propertyPath: lengthInSec
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8219668241822508866, guid: 8848ba22db2628d4bb7ef3d0c02bad5c, type: 3}
       propertyPath: m_ActionEvents.Array.data[14].m_PersistentCalls.m_Calls.Array.data[1].m_Target
@@ -1781,6 +1804,14 @@ PrefabInstance:
     - target: {fileID: 8219668241822508879, guid: 8848ba22db2628d4bb7ef3d0c02bad5c, type: 3}
       propertyPath: m_Name
       value: PlayerDummy
+      objectReference: {fileID: 0}
+    - target: {fileID: 8219668241822508986, guid: 8848ba22db2628d4bb7ef3d0c02bad5c, type: 3}
+      propertyPath: _playerController
+      value: 
+      objectReference: {fileID: 1156049671}
+    - target: {fileID: 8219668241822508986, guid: 8848ba22db2628d4bb7ef3d0c02bad5c, type: 3}
+      propertyPath: _speedWeaponHeavy
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8848ba22db2628d4bb7ef3d0c02bad5c, type: 3}
@@ -1980,7 +2011,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-25070
+  m_Name: pb_Mesh-1520
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -2393,7 +2424,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-25046
+  m_Name: pb_Mesh-1496
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
