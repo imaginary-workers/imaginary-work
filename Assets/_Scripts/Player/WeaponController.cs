@@ -9,7 +9,7 @@ namespace Game.Player
         [SerializeField] WeaponManager manager;
         [SerializeField] PointerTarget _pointerTarget;
 
-        public void Attack(InputAction.CallbackContext context)
+        public void AttackInput(InputAction.CallbackContext context)
         {
             var currentWeapon = manager.CurrentWeapon;
             currentWeapon.Target = _pointerTarget.transform.position;
@@ -21,7 +21,7 @@ namespace Game.Player
                 currentWeapon.CancelAttack();
         }
 
-        public void ReloadWeapon(InputAction.CallbackContext context)
+        public void ReloadWeaponInput(InputAction.CallbackContext context)
         {
             if (!context.performed) return;
 
