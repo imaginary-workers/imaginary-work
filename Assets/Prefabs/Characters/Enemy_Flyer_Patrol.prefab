@@ -123,7 +123,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _damage: 1
-  _firePoint: {fileID: 0}
+  _firePoint: {fileID: 6417747301928851611}
   _layerMask:
     serializedVersion: 2
     m_Bits: 8
@@ -143,7 +143,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _attack: {fileID: 4885114125338213701}
   _patrolBehaviour: {fileID: 5184913850856923581}
-  _lookAtTarget: {fileID: 8769338175141744233}
+  _lookAtTarget: {fileID: 1156364844720418282}
   _move: {fileID: 763075930358308920}
   _visualField: {fileID: 5745978130405426769}
   _maxDistance: 10
@@ -212,9 +212,13 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5175299818302098206}
     m_Modifications:
+    - target: {fileID: 4741058671105879683, guid: 7c983c304ab18b94e9b1f1136374d9a9, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 04f028f65587c7645a61bca2aae432c9, type: 2}
     - target: {fileID: 5227242835358535967, guid: 7c983c304ab18b94e9b1f1136374d9a9, type: 3}
       propertyPath: _ignoreY
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7011621709738053451, guid: 7c983c304ab18b94e9b1f1136374d9a9, type: 3}
       propertyPath: m_Name
@@ -271,9 +275,9 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7639679911705892337, guid: 7c983c304ab18b94e9b1f1136374d9a9, type: 3}
   m_PrefabInstance: {fileID: 3546610211560677238}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &8769338175141744233 stripped
+--- !u!114 &1156364844720418282 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5227242835358535967, guid: 7c983c304ab18b94e9b1f1136374d9a9, type: 3}
+  m_CorrespondingSourceObject: {fileID: 2392586235686662812, guid: 7c983c304ab18b94e9b1f1136374d9a9, type: 3}
   m_PrefabInstance: {fileID: 3546610211560677238}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
@@ -282,3 +286,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5bc2d2ea0d20a6c4f88f7e54f3a4fe86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &6417747301928851611 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7505385226993403885, guid: 7c983c304ab18b94e9b1f1136374d9a9, type: 3}
+  m_PrefabInstance: {fileID: 3546610211560677238}
+  m_PrefabAsset: {fileID: 0}
