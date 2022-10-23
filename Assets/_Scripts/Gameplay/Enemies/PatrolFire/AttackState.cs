@@ -7,7 +7,7 @@ namespace Game.Gameplay.Enemies.PatrolFire
         MonoBehaviour _attackBehaviour;
         VisualField _visualField;
         PatrolFireStateController _controller;
-        Move _move;
+        MoveComponent _moveComponent;
         ActionRepeater _shooterRepeater;
         LookAtTarget _lookAtTarget;
         ThrowBullet _throwBullet;
@@ -17,7 +17,7 @@ namespace Game.Gameplay.Enemies.PatrolFire
             _controller = controller;
             _attackBehaviour = controller.AttackBehaviour;
             _visualField = controller.VisualField;
-            _move = controller.Move;
+            _moveComponent = controller.MoveComponent;
             _shooterRepeater = controller.ShooterRepeater;
             _lookAtTarget = controller.LookAtTarget;
             _throwBullet = controller.ThrowBullet;
@@ -25,7 +25,7 @@ namespace Game.Gameplay.Enemies.PatrolFire
 
         public override void Enter()
         {
-            _move.Velocity = Vector3.zero;
+            _moveComponent.Velocity = Vector3.zero;
             _attackBehaviour.enabled = true;
             _lookAtTarget.enabled = true;
             _shooterRepeater.enabled = true;

@@ -6,8 +6,8 @@ namespace Game.Player
 {
     public class PlayerController : MonoBehaviour
     {
-        [SerializeField] Move _move;
-        [SerializeField] Jump _jump;
+        [SerializeField] MoveComponent moveComponent;
+        [SerializeField] JumpComponent jumpComponent;
         [SerializeField, Range(0,10)] float _speed = 8f;
         [SerializeField] PlayerInput _playerInput;
         [SerializeField] WeaponController _weaponController;
@@ -23,7 +23,7 @@ namespace Game.Player
 
         void Update()
         {
-            _move.Velocity = (_moveVelocityInput.x * transform.right + transform.forward * _moveVelocityInput.y).normalized * _speed;
+            moveComponent.Velocity = (_moveVelocityInput.x * transform.right + transform.forward * _moveVelocityInput.y).normalized * _speed;
         }
 
         #endregion
@@ -43,7 +43,7 @@ namespace Game.Player
         {
             if (context.performed)
             {
-                _jump.JumpAction();
+                jumpComponent.JumpAction();
             }
         }
 

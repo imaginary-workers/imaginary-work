@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Game.Gameplay
 {
-    public class Move : MonoBehaviour
+    public class MoveComponent : MonoBehaviour
     {
         [SerializeField] Rigidbody _rigidbody;
         [Space]

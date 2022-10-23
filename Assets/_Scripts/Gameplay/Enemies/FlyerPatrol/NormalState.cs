@@ -10,16 +10,16 @@ namespace Game.Gameplay.Enemies.FlyerPatrol
         PatrolBehaviour _patrolBehaviour;
         GameObject _target;
         Vector3 _velocityCheckpoint = Vector3.zero;
-        Move _move;
+        MoveComponent _moveComponent;
         float _maxDistance = 20;
         LookAtTarget _lookAtTarget;
 
-        public NormalState(FlyerPatrolStateController stateController, PatrolBehaviour patrolBehaviour, GameObject target, Move move, float maxDistance, LookAtTarget lookAtTarget)
+        public NormalState(FlyerPatrolStateController stateController, PatrolBehaviour patrolBehaviour, GameObject target, MoveComponent moveComponent, float maxDistance, LookAtTarget lookAtTarget)
         {
             _stateController = stateController;
             _patrolBehaviour = patrolBehaviour;
             _target = target;
-            _move = move;
+            _moveComponent = moveComponent;
             _maxDistance = maxDistance;
             _lookAtTarget = lookAtTarget;
         }
@@ -29,7 +29,7 @@ namespace Game.Gameplay.Enemies.FlyerPatrol
             _patrolBehaviour.enabled = true;
             if (_velocityCheckpoint != Vector3.zero)
             {
-                _move.Velocity = _velocityCheckpoint;
+                _moveComponent.Velocity = _velocityCheckpoint;
             }
         }
         public override void Update()
@@ -42,7 +42,7 @@ namespace Game.Gameplay.Enemies.FlyerPatrol
         public override void Exit()
         {
             _patrolBehaviour.enabled = false;
-            _velocityCheckpoint = _move.Velocity;
+            _velocityCheckpoint = _moveComponent.Velocity;
         }     
         void ChangeToAttack()
         {

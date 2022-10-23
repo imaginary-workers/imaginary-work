@@ -11,7 +11,7 @@ namespace Game.Gameplay.Enemies.FollowMelee
         [SerializeField, Range(.1f, 3f)] float _rangeOfVisionY = 1;
         [SerializeField] FollowPlayer _followPlayer;
         [SerializeField] MeleeAttack _meleeAttack;
-        [SerializeField] Move _move;
+        [SerializeField] MoveComponent moveComponent;
         [SerializeField] LookAtTarget _lookAtTarget;
         [SerializeField, Range(0f, 5f)] float _moveSpeed = 5f;
         [SerializeField] EventAnimation _eventAnimation;
@@ -32,7 +32,7 @@ namespace Game.Gameplay.Enemies.FollowMelee
         public int RangeFollow => _rangeFollow;
         public LookAtTarget LookAtTarget => _lookAtTarget;
         public PlayerController Player => _player;
-        public Move Move => _move;
+        public MoveComponent MoveComponent => moveComponent;
         public float RangeMelee => _rangeMelee;
         public float RangeOfVisionY => _rangeOfVisionY;
         public bool IsAttacking
@@ -83,7 +83,7 @@ namespace Game.Gameplay.Enemies.FollowMelee
             {
                 _lookAtTarget.enabled = false;
                 _followPlayer.enabled = false;
-                _move.Velocity = Vector3.zero;
+                moveComponent.Velocity = Vector3.zero;
             }
 
 

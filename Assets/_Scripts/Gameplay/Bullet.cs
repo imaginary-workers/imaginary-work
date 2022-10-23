@@ -5,19 +5,19 @@ namespace Game.Gameplay
 {
     public class Bullet : MonoBehaviour
     {
-        [SerializeField] Move _move;
+        [SerializeField] MoveComponent moveComponent;
         [SerializeField] float _speed = 2;
         [SerializeField, Range(0f, 10f)] float _timeToDisable = 3f;
         [SerializeField] TrailRenderer _trail;
 
         void OnEnable()
-            => _move.enabled = false;
+            => moveComponent.enabled = false;
 
         public void Shoot(Vector3 direction)
         {
             transform.forward = direction;
-            _move.enabled = true;
-            _move.Velocity = direction * _speed;
+            moveComponent.enabled = true;
+            moveComponent.Velocity = direction * _speed;
             SetTrail(true);
             StartCoroutine(CO_Disable());
         }

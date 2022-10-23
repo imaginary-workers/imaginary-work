@@ -6,7 +6,7 @@ namespace Game.Gameplay.Enemies
 {
     public class PatrolBehaviour : MonoBehaviour
     {
-        [SerializeField] Move _move;
+        [SerializeField] MoveComponent moveComponent;
         [SerializeField, Range(.1f, 5f)] float _speed = 2f;
         [SerializeField] float _waitBetweenPointInSeconds = 1f;
         [SerializeField] float _waitOnEnable = 2.5f;
@@ -56,7 +56,7 @@ namespace Game.Gameplay.Enemies
             var targetLookAt = new Vector3(targetPosition.x, transform.position.y, targetPosition.z);
             transform.LookAt(targetLookAt);
             var transformPosition = new Vector3(transform.position.x, 0, transform.position.z);
-            _move.Velocity = (targetPosition - transformPosition).normalized * _speed;
+            moveComponent.Velocity = (targetPosition - transformPosition).normalized * _speed;
             if (Vector3.Distance(transformPosition, targetPosition) <= _minimumDistanceNearPoint)
             {
                 if (_cycle)
@@ -81,7 +81,7 @@ namespace Game.Gameplay.Enemies
         IEnumerator CO_StartWaiting(WaitForSeconds waitForSeconds)
         {
             _isWaiting = true;
-            _move.Velocity = Vector3.zero;
+            moveComponent.Velocity = Vector3.zero;
             yield return waitForSeconds;
             _isWaiting = false;
         }

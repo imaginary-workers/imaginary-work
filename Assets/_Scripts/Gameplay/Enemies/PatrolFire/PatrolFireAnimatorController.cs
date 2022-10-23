@@ -4,7 +4,7 @@ namespace Game.Gameplay.Enemies.PatrolFire
 {
     public class PatrolFireAnimatorController : MonoBehaviour
     {
-        [SerializeField] Move _move;
+        [SerializeField] MoveComponent moveComponent;
         [SerializeField] Animator _animator;
         [SerializeField] EnemyDamageable _enemyDamagable;
 
@@ -15,7 +15,7 @@ namespace Game.Gameplay.Enemies.PatrolFire
 
         void LateUpdate()
         {
-            _animator.SetFloat("Speed", _move.Velocity.magnitude);
+            _animator.SetFloat("Speed", moveComponent.Velocity.magnitude);
         }
 
         public void ShootAnimation()

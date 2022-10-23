@@ -9,7 +9,7 @@ namespace Game.Gameplay.Enemies.PatrolFire
         [SerializeField] MonoBehaviour _normalBehaviour;
         [SerializeField] VisualField _visualField;
         [SerializeField] MonoBehaviour _attackBehaviour;  
-        [SerializeField] Move _move;
+        [SerializeField] MoveComponent moveComponent;
         [SerializeField] ActionRepeater _shooterRepeater;
         [SerializeField] LookAtTarget _lookAtTarget;
         [SerializeField] ThrowBullet _throwBullet;
@@ -51,7 +51,7 @@ namespace Game.Gameplay.Enemies.PatrolFire
             {
                 _lookAtTarget.enabled = false;
                 
-                _move.Velocity = Vector3.zero;
+                moveComponent.Velocity = Vector3.zero;
             }
 
         }
@@ -68,7 +68,7 @@ namespace Game.Gameplay.Enemies.PatrolFire
         public MonoBehaviour NormalBehaviour => _normalBehaviour;
         public VisualField VisualField => _visualField;
         public MonoBehaviour AttackBehaviour => _attackBehaviour;
-        public Move Move => _move;
+        public MoveComponent MoveComponent => moveComponent;
         public ActionRepeater ShooterRepeater => _shooterRepeater;
         public LookAtTarget LookAtTarget => _lookAtTarget;
         public ThrowBullet ThrowBullet => _throwBullet;

@@ -11,7 +11,7 @@ namespace Game.Gameplay.Enemies.FlyerPatrol
         [SerializeField] RaycastAttack _attack;
         [SerializeField] PatrolBehaviour _patrolBehaviour;
         [SerializeField] LookAtTarget _lookAtTarget;
-        [SerializeField] Move _move;
+        [SerializeField] MoveComponent moveComponent;
         [SerializeField] VisualField _visualField;
         [Tooltip("Max distance from player to change between States")]
         [SerializeField] float _maxDistance;
@@ -21,8 +21,8 @@ namespace Game.Gameplay.Enemies.FlyerPatrol
             _target = FindPlayer();
             _lookAtTarget.Target = _target;
             _visualField.Target = _target;
-            _normalState = new NormalState(this, _patrolBehaviour, _target, _move, _maxDistance, _lookAtTarget);
-            _attackState = new AttackState(this, _lookAtTarget, _attack,_move, _target, _maxDistance);
+            _normalState = new NormalState(this, _patrolBehaviour, _target, moveComponent, _maxDistance, _lookAtTarget);
+            _attackState = new AttackState(this, _lookAtTarget, _attack,moveComponent, _target, _maxDistance);
             _normalState.NextState = _attackState;
             _attackState.NextState = _normalState;
             _attack.enabled = _lookAtTarget.enabled = false;
