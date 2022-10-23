@@ -8,41 +8,29 @@ namespace Game.Player
     {
         [SerializeField] Move _move;
         [SerializeField] Jump _jump;
-        [SerializeField, Range(0,10)] private float _speed = 2;
+        [SerializeField, Range(0,10)] float _speed = 2;
         [SerializeField] PlayerInput _playerInput;
         [SerializeField] WeaponController _weaponController;
-        [SerializeField] float _topClamp = 90.0f;
-        [SerializeField] float _bottomClamp = -90.0f;
-        [SerializeField] Camera _camera;
-        [SerializeField] float _rotationSpeed = 1.0f;
-        [SerializeField] bool _invertedYAxis = false;
-        [SerializeField] bool _invertedXAxis = false;
-        float _targetPitch;
-        float _rotationVelocity;
-        private Vector2 _lookInput;
-        private Vector2 _moveVelocityInput;
-        private PlayerAnimationManager _playerAnimationManager;
-        const float _threshold = 0.01f;
+        Vector2 _moveVelocityInput;
+        PlayerAnimationManager _playerAnimationManager;
 
-        bool IsCurrentDeviceMouse
+        public bool IsCurrentDeviceMouse
             => _playerInput.currentControlScheme == "KeyboardMouse";
 
-        void Start()
-        {
-            Cursor.lockState = CursorLockMode.Locked;
-        }
+        public Vector2 LookInputDirection { get; private set; }
+
+        #region unitymethods
 
         void Update()
         {
             _move.Velocity = (_moveVelocityInput.x * transform.right + transform.forward * _moveVelocityInput.y).normalized * _speed;
         }
 
-        void LateUpdate()
-        {
-            UpdateCameraLook();
-        }
+        #endregion
 
-        public void Move(InputAction.CallbackContext context)
+        #region inputmethods
+
+        public void MoveInput(InputAction.CallbackContext context)
         {
             _moveVelocityInput = context.ReadValue<Vector2>();
             if (context.canceled)
@@ -51,7 +39,7 @@ namespace Game.Player
             }
         }
 
-       public void Jump(InputAction.CallbackContext context)
+        public void JumpInput(InputAction.CallbackContext context)
         {
             if (context.performed)
             {
@@ -59,26 +47,11 @@ namespace Game.Player
             }
         }
 
-       public void Look(InputAction.CallbackContext context)
-       {
-           _lookInput = context.ReadValue<Vector2>();
-       }
+        public void LookInput(InputAction.CallbackContext context)
+        {
+            LookInputDirection = context.ReadValue<Vector2>();
+        }
 
-       public void Reload(InputAction.CallbackContext context)
-       {
-           
-       }
-
-       void UpdateCameraLook()
-       {
-           if (_lookInput.sqrMagnitude < _threshold) return;
-
-           float deltaTimeMultiplier = IsCurrentDeviceMouse ? 1.0f : Time.deltaTime;
-           _targetPitch += _lookInput.y * _rotationSpeed * deltaTimeMultiplier * (_invertedYAxis ? 1 : -1);
-           _rotationVelocity = _lookInput.x * _rotationSpeed * deltaTimeMultiplier * (_invertedXAxis ? -1 : 1);
-           _targetPitch = Utils.ClampAngle(_targetPitch, _bottomClamp, _topClamp);
-           _camera.transform.localRotation = Quaternion.Euler(_targetPitch, 0.0f, 0.0f);
-           transform.Rotate(Vector3.up * _rotationVelocity);
-       }
+        #endregion
     }
 }

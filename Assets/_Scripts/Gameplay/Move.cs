@@ -6,21 +6,17 @@ namespace Game.Gameplay
     {
         [SerializeField] Rigidbody _rigidbody;
         [Space]
-        [Tooltip("Si ignora el eje del Velocity, tomara el eje del rigidbody")]
-        [SerializeField] bool _ignoreX = false;
-        [SerializeField] bool _ignoreY = false;
-        [SerializeField] bool _ignoreZ = false;
+        [SerializeField] bool _ignoreGravity = false;
+
+        public Vector3 Velocity { get; set; } = Vector3.zero;
 
         void FixedUpdate()
         {
             _rigidbody.velocity = new Vector3(
-                _ignoreX? _rigidbody.velocity.x : Velocity.x,
-                _ignoreY? _rigidbody.velocity.y : Velocity.y,
-                _ignoreZ? _rigidbody.velocity.z : Velocity.z
+                Velocity.x,
+                _ignoreGravity? Velocity.y : _rigidbody.velocity.y,
+                Velocity.z
                 );
         }
-        
-        [field: SerializeField]
-        public Vector3 Velocity { get; set; } = Vector3.zero;
     }
 }

@@ -39,7 +39,7 @@ namespace Game.Gameplay.Weapon
 
         public override void SubscribeToAnimationEvents(PlayerAnimationManager animationManager)
         {
-            animationManager.ADD_ANI_EVENT("pistol_shooting_event", EVENT_PISTOL_SHOOTING);
+            animationManager.AddAnimationEvent("pistol_shooting_event", EVENT_PISTOL_SHOOTING);
             _TriggerAttackAnimation = animationManager.AttackShooter;
         }
 
