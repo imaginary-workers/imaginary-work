@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1425224902}
   - component: {fileID: 1425224901}
   - component: {fileID: 1425224900}
+  - component: {fileID: 8080075533452562802}
   m_Layer: 0
   m_Name: MainCamera
   m_TagString: Untagged
@@ -84,6 +85,25 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1425224898}
   m_Enabled: 1
+--- !u!114 &8080075533452562802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1425224898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78ddc8c1a83e40c287fe0f5bedb4fc58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _camera: {fileID: 1425224901}
+  _playerController: {fileID: 8219668241822508868}
+  _topClamp: 90
+  _bottomClamp: -90
+  _rotationSpeed: 20
+  _invertedYAxis: 0
+  _invertedXAxis: 0
 --- !u!1 &940501456197976227
 GameObject:
   m_ObjectHideFlags: 0
@@ -444,12 +464,6 @@ MonoBehaviour:
   _speed: 8
   _playerInput: {fileID: 8219668241822508866}
   _weaponController: {fileID: 8219668241822508986}
-  _topClamp: 90
-  _bottomClamp: -90
-  _camera: {fileID: 1425224901}
-  _rotationSpeed: 20
-  _invertedYAxis: 0
-  _invertedXAxis: 0
 --- !u!114 &8219668241822508867
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -463,10 +477,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rigidbody: {fileID: 8219668241822508870}
-  _ignoreX: 0
-  _ignoreY: 1
-  _ignoreZ: 0
-  <Velocity>k__BackingField: {x: 0, y: 0, z: 0}
+  _ignoreGravity: 0
 --- !u!114 &8219668241822508866
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -496,7 +507,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 8219668241822508868}
         m_TargetAssemblyTypeName: Game.Player.PlayerController, Assembly-CSharp
-        m_MethodName: Move
+        m_MethodName: MoveInput
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -512,7 +523,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 8219668241822508868}
         m_TargetAssemblyTypeName: Game.Player.PlayerController, Assembly-CSharp
-        m_MethodName: Look
+        m_MethodName: LookInput
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -544,7 +555,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 8219668241822508868}
         m_TargetAssemblyTypeName: Game.Player.PlayerController, Assembly-CSharp
-        m_MethodName: Jump
+        m_MethodName: JumpInput
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -712,6 +723,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: a8160e77-a967-4884-adf8-b4b858588aac
     m_ActionName: Player/PauseMenu[/Keyboard/escape]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: Game.SprintTest, Assembly-CSharp
+        m_MethodName: Sprint
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 2e9213aa-c246-4c5d-8ed8-cd11fb4eea80
+    m_ActionName: Player/Sprint[/Keyboard/shift]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player

@@ -11,7 +11,7 @@ namespace Game.Gameplay
         [SerializeField] PlayerController _playerController;
         [SerializeField] float _topClamp = 90.0f;
         [SerializeField] float _bottomClamp = -90.0f;
-        [SerializeField] float _rotationSpeed = 1.0f;
+        [SerializeField] float _rotationSpeed = 20f;
         [SerializeField] bool _invertedYAxis = false;
         [SerializeField] bool _invertedXAxis = false;
         float _targetPitch;

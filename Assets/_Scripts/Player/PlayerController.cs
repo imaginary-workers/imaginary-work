@@ -8,7 +8,7 @@ namespace Game.Player
     {
         [SerializeField] Move _move;
         [SerializeField] Jump _jump;
-        [SerializeField, Range(0,10)] float _speed = 2;
+        [SerializeField, Range(0,10)] float _speed = 8f;
         [SerializeField] PlayerInput _playerInput;
         [SerializeField] WeaponController _weaponController;
         Vector2 _moveVelocityInput;
