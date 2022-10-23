@@ -19,6 +19,7 @@ namespace Game.Managers
         [Header("HUD Objets")]
         [SerializeField] GameObject _pauseMenu;
         [SerializeField] GameObject _deathMessege;
+        [SerializeField] GameObject _pointer;
         [SerializeField] Text _bulletCounterText;
         [SerializeField] Text _reserveCounterText;
 
@@ -43,6 +44,7 @@ namespace Game.Managers
             _isDeath = true; 
             Cursor.lockState = CursorLockMode.None;
             _deathMessege.SetActive(true);
+            _pointer.SetActive(false);
             Time.timeScale = 0;
         }
 
@@ -85,6 +87,7 @@ namespace Game.Managers
         {
             _isPaused = true;
             _pauseMenu.SetActive(true);
+            _pointer.SetActive(false);
             Cursor.lockState = CursorLockMode.None;
             Time.timeScale = 0;
         }
@@ -93,6 +96,7 @@ namespace Game.Managers
         {
             _isPaused = false;
             _pauseMenu.SetActive(false);
+            _pointer.SetActive(true);
             Cursor.lockState = CursorLockMode.Locked;
             Time.timeScale = 1;
         }
