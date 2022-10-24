@@ -1,3 +1,4 @@
+using Game.Player;
 using System;
 using UnityEngine;
 
@@ -24,6 +25,7 @@ namespace Game.Gameplay
                 _extraTime += 1 * Time.deltaTime;
             }
         }
+        public bool IsOnTheFloor { get { return _onTheFloor; } }
         public void JumpAction()
         {
             if (_alreadyJump) return;
@@ -40,7 +42,7 @@ namespace Game.Gameplay
                 if (!_onTheFloor)
                 {
                     _alreadyJump = false;
-                    _extraTime = 0;
+                    _extraTime = 0; 
                 }
                 _onTheFloor = true;
             }
