@@ -12,13 +12,13 @@ namespace Game.Gameplay.Enemies.PatrolFire
         LookAtTarget _lookAtTarget;
         EnemyShooter _enemyShooter;
         EnemyDamageable _damageable;
-        PatrolFireAnimatorController _animatorController;
+        AnimatorController _animatorController;
         SpawnDrops _spawn;
         GameObject _gameObject;
         float _secondsToDestroy;
         PatrolFireStateController _stateController;
 
-        public DeadState(PatrolFireStateController stateController, PatrolFireAnimatorController animatorController, float secondToDestroy)
+        public DeadState(PatrolFireStateController stateController, AnimatorController animatorController, float secondToDestroy)
         {
             _animatorController = animatorController;
             _secondsToDestroy = 5f;

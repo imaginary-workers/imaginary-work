@@ -5,17 +5,16 @@ namespace Game.Gameplay
 {
     public class Bullet : MonoBehaviour
     {
-        [SerializeField] float _speed = 2;
+        [SerializeField] float _speed = 20;
         [SerializeField, Range(0f, 10f)] float _timeToDisable = 3f;
         [SerializeField] TrailRenderer _trail;
-        float _currentSpeed = 0;
         float _currentSeconds = 0;
         bool _isMoving = false;
+        Vector3 _direction;
 
         public void Shoot(Vector3 direction)
         {
-            transform.forward = direction;
-            _currentSpeed = _speed;
+            _direction = direction;
             _isMoving = true;
         }
 
@@ -25,8 +24,7 @@ namespace Game.Gameplay
 
             if (_currentSeconds >= _timeToDisable)
             {
-                SetTrail(false);
-                gameObject.SetActive(false);
+                DesactiveBullet();
             }
             else
             {
@@ -35,17 +33,17 @@ namespace Game.Gameplay
             }
         }
 
-        void OnDisable()
+        void DesactiveBullet()
         {
-            float _currentSpeed = 0;
-            float _currentSeconds = 0;
-            SetTrail(false);
             _isMoving = false;
+            _currentSeconds = 0;
+            SetTrail(false);
+            gameObject.SetActive(false);
         }
 
         void Move()
         {
-            transform.position += transform.forward * _speed * Time.deltaTime;
+            transform.position += _direction * _speed * Time.deltaTime;
         }
 
         void SetTrail(bool enable)

@@ -11,11 +11,10 @@ namespace Game.Gameplay.Enemies.PatrolFire
         [SerializeField] VisualField _visualField;
         [SerializeField] MonoBehaviour _attackBehaviour;  
         [SerializeField] MoveComponent _moveComponent;
-        [SerializeField] ActionRepeater _shooterRepeater;
         [SerializeField] LookAtTarget _lookAtTarget;
-        [SerializeField] EnemyShooter enemyShooter;
+        [SerializeField] EnemyBurstShooter _enemyShooter;
         [SerializeField] EnemyDamageable _damageable;
-        [SerializeField] PatrolFireAnimatorController _animatorController;
+        [SerializeField] AnimatorController _animatorController;
 
         NormalState _normal;
         AttackState _attack;
@@ -27,10 +26,10 @@ namespace Game.Gameplay.Enemies.PatrolFire
         void Awake()
         {
             _player = FindObjectOfType<PlayerController>()?.gameObject;
-            enemyShooter.Target = _lookAtTarget.Target = _visualField.Target = _player;
+            _enemyShooter.Target = _lookAtTarget.Target = _visualField.Target = _player;
             DesactiveBehaviours();
             _normal = new NormalState(this, _normalBehaviour, _visualField);
-            _attack = new AttackState(this, _visualField, _moveComponent, _lookAtTarget, _animatorController);
+            _attack = new AttackState(this, _visualField, _moveComponent, _lookAtTarget, _animatorController, _enemyShooter);
             _dead = new DeadState(this, _animatorController, 5);
             _currentState = _normal;
         }
@@ -77,9 +76,8 @@ namespace Game.Gameplay.Enemies.PatrolFire
             _visualField.enabled = true;
             _normalBehaviour.enabled = false;
             _attackBehaviour.enabled = false;
-            _shooterRepeater.enabled = false;
             _lookAtTarget.enabled = false;
-            enemyShooter.enabled = false;
+            _enemyShooter.enabled = false;
         }
 
         public void DestroyGameObject()

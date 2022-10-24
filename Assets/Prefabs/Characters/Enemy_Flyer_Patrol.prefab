@@ -51,14 +51,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1800234ef324a54ba092ae22c5c8a94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _move: {fileID: 763075930358308920}
+  moveComponent: {fileID: 763075930358308920}
   _speed: 2
   _waitBetweenPointInSeconds: 1
   _waitOnEnable: 2.5
-  _waypoints: []
+  _waypoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   _minimumDistanceNearPoint: 1
   _cycle: 0
-  _pointRadiusGizmos: 2
+  _pointRadiusGizmos: 0.27
   _sphereColor: {r: 1, g: 0, b: 0, a: 1}
   _lineColor: {r: 0, g: 1, b: 0, a: 1}
 --- !u!114 &763075930358308920
@@ -74,10 +80,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rigidbody: {fileID: 7608482221649557534}
-  _ignoreX: 0
-  _ignoreY: 0
-  _ignoreZ: 0
-  <Velocity>k__BackingField: {x: 0, y: 0, z: 0}
+  _ignoreGravity: 0
 --- !u!54 &7608482221649557534
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -144,7 +147,7 @@ MonoBehaviour:
   _attack: {fileID: 4885114125338213701}
   _patrolBehaviour: {fileID: 5184913850856923581}
   _lookAtTarget: {fileID: 1156364844720418282}
-  _move: {fileID: 763075930358308920}
+  moveComponent: {fileID: 0}
   _visualField: {fileID: 5745978130405426769}
   _maxDistance: 10
 --- !u!114 &5854232405504092712
@@ -160,7 +163,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemyLife: 2
-  _secondsToDestroy: 1
 --- !u!65 &4223900162893284443
 BoxCollider:
   m_ObjectHideFlags: 0

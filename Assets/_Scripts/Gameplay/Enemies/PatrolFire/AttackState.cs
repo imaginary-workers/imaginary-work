@@ -9,14 +9,16 @@ namespace Game.Gameplay.Enemies.PatrolFire
         MoveComponent _moveComponent;
         ActionRepeater _shooterRepeater;
         LookAtTarget _lookAtTarget;
-        PatrolFireAnimatorController _animatorController;
+        AnimatorController _animatorController;
+        EnemyBurstShooter _enemyShooter;
 
         public AttackState(
             PatrolFireStateController controller,
             VisualField visualField,
             MoveComponent moveComponent,
             LookAtTarget lookAtTarget,
-            PatrolFireAnimatorController animatorController
+            AnimatorController animatorController,
+            EnemyBurstShooter enemyShooter
             )
         {
             _controller = controller;
@@ -24,6 +26,9 @@ namespace Game.Gameplay.Enemies.PatrolFire
             _moveComponent = moveComponent;
             _lookAtTarget = lookAtTarget;
             _animatorController = animatorController;
+            _enemyShooter = enemyShooter;
+            animatorController.AddAnimationEvent("START_SHOOTING", _enemyShooter.StartBurstShooting);
+            animatorController.AddAnimationEvent("STOP_SHOOTING", _enemyShooter.StopBurstShooting);
         }
 
         public override void Enter()
@@ -31,6 +36,7 @@ namespace Game.Gameplay.Enemies.PatrolFire
             _moveComponent.Velocity = Vector3.zero;
             _lookAtTarget.enabled = true;
             _animatorController.StartAttack();
+            _enemyShooter.enabled = true;
         }
         
         public override void Update()
@@ -43,6 +49,7 @@ namespace Game.Gameplay.Enemies.PatrolFire
         {
             _animatorController.StopAttack();
             _lookAtTarget.enabled = false;
+            _enemyShooter.enabled = false;
         }
     }
 }

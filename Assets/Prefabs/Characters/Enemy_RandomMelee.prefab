@@ -59,7 +59,7 @@ MonoBehaviour:
   _rangeOfVisionY: 1
   _followPlayer: {fileID: 6779529177335636181}
   _meleeAttack: {fileID: 8415224544075344654}
-  _move: {fileID: 2227387254386213678}
+  moveComponent: {fileID: 0}
   _lookAtTarget: {fileID: 8054064421387174308}
   _moveSpeed: 3
   _eventAnimation: {fileID: 6568752979330764490}
@@ -94,7 +94,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _animator: {fileID: 3117244702086275719}
   _enemyDamagable: {fileID: 8846074023536706980}
-  _move: {fileID: 2227387254386213678}
+  moveComponent: {fileID: 2227387254386213678}
 --- !u!114 &2227387254386213678
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -108,10 +108,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rigidbody: {fileID: 8901121125137834358}
-  _ignoreX: 0
-  _ignoreY: 1
-  _ignoreZ: 0
-  <Velocity>k__BackingField: {x: 0, y: 0, z: 0}
+  _ignoreGravity: 0
 --- !u!114 &6394532928326410465
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -129,7 +126,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  _move: {fileID: 2227387254386213678}
+  moveComponent: {fileID: 2227387254386213678}
   _speed: 4.5
   _distance: 1
 --- !u!114 &6779529177335636181
@@ -145,7 +142,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 4.5
-  _move: {fileID: 2227387254386213678}
+  moveComponent: {fileID: 0}
   _closeRange: 2
   _rangeOfVisionY: 1
 --- !u!114 &8054064421387174308
@@ -207,7 +204,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _drop1: {fileID: 3247428901600231908, guid: 8f8834a19a7529948bd46c775dcc0296, type: 3}
   _drop2: {fileID: 8026061991337280964, guid: cf8bc611d69f2974ca930ab0af4672c2, type: 3}
-  _lifeEnemy: {fileID: 8846074023536706980}
   _chancePercentage: 0.505
 --- !u!114 &8846074023536706980
 MonoBehaviour:
@@ -222,7 +218,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemyLife: 4
-  _secondsToDestroy: 4
 --- !u!1 &3410269104207759678
 GameObject:
   m_ObjectHideFlags: 0
