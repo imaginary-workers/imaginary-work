@@ -50,7 +50,7 @@ namespace Game.Player
 
         public void Move(InputAction.CallbackContext context)
         {
-            if(_jump.IsOnTheFloor)
+            //if(_jump.IsOnTheFloor)
                 _moveVelocityInput = context.ReadValue<Vector2>();
             if (context.canceled)
             {
