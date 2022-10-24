@@ -15,6 +15,7 @@ namespace Game.Gameplay.Enemies.PatrolFire
         [SerializeField] EnemyBurstShooter _enemyShooter;
         [SerializeField] EnemyDamageable _damageable;
         [SerializeField] AnimatorController _animatorController;
+        [SerializeField] SpawnDrops _spawner;
 
         NormalState _normal;
         AttackState _attack;
@@ -30,7 +31,7 @@ namespace Game.Gameplay.Enemies.PatrolFire
             DesactiveBehaviours();
             _normal = new NormalState(this, _normalBehaviour, _visualField);
             _attack = new AttackState(this, _visualField, _moveComponent, _lookAtTarget, _animatorController, _enemyShooter);
-            _dead = new DeadState(this, _animatorController, 5);
+            _dead = new DeadState(this, _animatorController, 5, _moveComponent, _spawner);
             _currentState = _normal;
         }
         
@@ -42,16 +43,7 @@ namespace Game.Gameplay.Enemies.PatrolFire
 
         void Update()
         {
-            if (_damageable.Life > 0)
-            {
-                _currentState.Update();
-            }
-            else
-            {
-                _lookAtTarget.enabled = false;
-                
-                _moveComponent.Velocity = Vector3.zero;
-            }
+            _currentState.Update();
         }
 
         public void ChangeState(State nextState)

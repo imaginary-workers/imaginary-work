@@ -35,7 +35,7 @@ namespace Game.Gameplay.Enemies.FlyerPatrol
         {
             if (Vector3.Distance(_target.transform.position, _stateController.transform.position) > _maxDistance)
             {
-                ChangeToNormal();
+                _stateController.ChangeState(_stateController.NormalState);
             }
         }
         public override void Exit()
@@ -43,14 +43,5 @@ namespace Game.Gameplay.Enemies.FlyerPatrol
             _attack.enabled = false;
             _lookAtTarget.enabled = false;
         }
-             
-        void ChangeToNormal()
-        {
-            _stateController.ChangeState(NextState);
-        }
-        void StopMove()
-        {
-            _moveComponent.Velocity = Vector3.zero;
-        }    
     }
 }

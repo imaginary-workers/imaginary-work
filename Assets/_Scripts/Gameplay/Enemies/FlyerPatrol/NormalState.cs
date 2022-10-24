@@ -36,17 +36,13 @@ namespace Game.Gameplay.Enemies.FlyerPatrol
         {
             if (Vector3.Distance(_target.transform.position, _stateController.transform.position) <= _maxDistance)
             {
-                ChangeToAttack();
+                _stateController.ChangeState(_stateController.AttackState);
             }
         }
         public override void Exit()
         {
             _patrolBehaviour.enabled = false;
             _velocityCheckpoint = _moveComponent.Velocity;
-        }     
-        void ChangeToAttack()
-        {
-            _stateController.ChangeState(NextState);
-        }      
+        }
     }
 }

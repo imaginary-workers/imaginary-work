@@ -16,8 +16,8 @@ namespace Game.Gameplay
         public void ShootBullet()
         {
             var pooledObject = _bulletPooler.GetPooledObject();
-            pooledObject.SetActive(true);
             pooledObject.transform.position = _firePoint.transform.position;
+            pooledObject.SetActive(true);
             var component = pooledObject.GetComponent<Bullet>();
             var transformPosition = _target.transform.position;
             if (_addHighToTarget > 0)

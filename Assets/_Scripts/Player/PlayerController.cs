@@ -6,13 +6,11 @@ namespace Game.Player
 {
     public class PlayerController : MonoBehaviour
     {
-        [SerializeField] MoveComponent moveComponent;
-        [SerializeField] JumpComponent jumpComponent;
+        [SerializeField] MoveComponent _moveComponent;
+        [SerializeField] JumpComponent _jumpComponent;
         [SerializeField, Range(0,10)] float _speed = 8f;
         [SerializeField] PlayerInput _playerInput;
-        [SerializeField] WeaponController _weaponController;
         Vector2 _moveVelocityInput;
-        PlayerAnimationManager _playerAnimationManager;
         float _currentTime = 1;
         float _time;
 
@@ -41,19 +39,19 @@ namespace Game.Player
 
         void Update()
         {
-            if ((_currentTime < 0 || _jump.IsOnTheFloor))
-            {
-                _move.Velocity = (_moveVelocityInput.x * transform.right + transform.forward * _moveVelocityInput.y).normalized * _speed;
-            }
-
-            if (!_jump.IsOnTheFloor)
-            {
-                _currentTime -= Time.deltaTime;
-            }
-            else
-            {
-                _currentTime = _time;
-            }
+            _moveComponent.Velocity = (_moveVelocityInput.x * transform.right + transform.forward * _moveVelocityInput.y).normalized * _speed;
+            // if ((_currentTime < 0 || _jumpComponent.IsOnTheFloor))
+            // {
+            // }
+            //
+            // if (!_jumpComponent.IsOnTheFloor)
+            // {
+            //     _currentTime -= Time.deltaTime;
+            // }
+            // else
+            // {
+            //     _currentTime = _time;
+            // }
         }
 
         #endregion
@@ -73,7 +71,7 @@ namespace Game.Player
         {
             if (context.performed)
             {
-                jumpComponent.JumpAction();
+                _jumpComponent.JumpAction();
             }
         }
 

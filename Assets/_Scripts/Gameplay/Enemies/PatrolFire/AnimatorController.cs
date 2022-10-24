@@ -8,12 +8,7 @@ namespace Game.Gameplay.Enemies.PatrolFire
     {
         [SerializeField] MoveComponent moveComponent;
         [SerializeField] Animator _animator;
-        Dictionary<string, Action> _events;
-
-        void Awake()
-        {
-            _events = new Dictionary<string, Action>();
-        }
+        Dictionary<string, Action> _events = new Dictionary<string, Action>();
 
         void LateUpdate()
         {

@@ -22,7 +22,7 @@ namespace Game.Gameplay
             Cursor.lockState = CursorLockMode.Locked;
         }
 
-        void LateUpdate()
+        void Update()
         {
             UpdateCameraLook();
         }

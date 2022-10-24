@@ -17,14 +17,6 @@ namespace Game.Gameplay
         bool _alreadyJump = false;
         float _extraTime = 0;
 
-        void Update()
-        {
-            OnTheFloor();
-            if (!_onTheFloor && !_alreadyJump)
-            {
-                _extraTime += 1 * Time.deltaTime;
-            }
-        }
         public bool IsOnTheFloor { get { return _onTheFloor; } }
         public void JumpAction()
         {
