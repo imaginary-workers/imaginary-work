@@ -4,31 +4,33 @@ namespace Game.Gameplay.Enemies.PatrolFire
 {
     public class AttackState : State
     {
-        MonoBehaviour _attackBehaviour;
         VisualField _visualField;
         PatrolFireStateController _controller;
         MoveComponent _moveComponent;
         ActionRepeater _shooterRepeater;
         LookAtTarget _lookAtTarget;
-        ThrowBullet _throwBullet;
+        PatrolFireAnimatorController _animatorController;
 
-        public AttackState(PatrolFireStateController controller)
+        public AttackState(
+            PatrolFireStateController controller,
+            VisualField visualField,
+            MoveComponent moveComponent,
+            LookAtTarget lookAtTarget,
+            PatrolFireAnimatorController animatorController
+            )
         {
             _controller = controller;
-            _attackBehaviour = controller.AttackBehaviour;
-            _visualField = controller.VisualField;
-            _moveComponent = controller.MoveComponent;
-            _shooterRepeater = controller.ShooterRepeater;
-            _lookAtTarget = controller.LookAtTarget;
-            _throwBullet = controller.ThrowBullet;
+            _visualField = visualField;
+            _moveComponent = moveComponent;
+            _lookAtTarget = lookAtTarget;
+            _animatorController = animatorController;
         }
 
         public override void Enter()
         {
             _moveComponent.Velocity = Vector3.zero;
-            _attackBehaviour.enabled = true;
             _lookAtTarget.enabled = true;
-            _shooterRepeater.enabled = true;
+            _animatorController.StartAttack();
         }
         
         public override void Update()
@@ -39,8 +41,7 @@ namespace Game.Gameplay.Enemies.PatrolFire
 
         public override void Exit()
         {
-            _attackBehaviour.enabled = false;
-            _shooterRepeater.enabled = false;
+            _animatorController.StopAttack();
             _lookAtTarget.enabled = false;
         }
     }

@@ -1,32 +1,51 @@
-using System.Collections;
+using System;
 using UnityEngine;
 
 namespace Game.Gameplay
 {
     public class Bullet : MonoBehaviour
     {
-        [SerializeField] MoveComponent moveComponent;
         [SerializeField] float _speed = 2;
         [SerializeField, Range(0f, 10f)] float _timeToDisable = 3f;
         [SerializeField] TrailRenderer _trail;
-
-        void OnEnable()
-            => moveComponent.enabled = false;
+        float _currentSpeed = 0;
+        float _currentSeconds = 0;
+        bool _isMoving = false;
 
         public void Shoot(Vector3 direction)
         {
             transform.forward = direction;
-            moveComponent.enabled = true;
-            moveComponent.Velocity = direction * _speed;
-            SetTrail(true);
-            StartCoroutine(CO_Disable());
+            _currentSpeed = _speed;
+            _isMoving = true;
         }
 
-        IEnumerator CO_Disable()
+        void Update()
         {
-            yield return new WaitForSeconds(_timeToDisable);
+            if (!_isMoving) return;
+
+            if (_currentSeconds >= _timeToDisable)
+            {
+                SetTrail(false);
+                gameObject.SetActive(false);
+            }
+            else
+            {
+                Move();
+                _currentSeconds += Time.deltaTime;
+            }
+        }
+
+        void OnDisable()
+        {
+            float _currentSpeed = 0;
+            float _currentSeconds = 0;
             SetTrail(false);
-            gameObject.SetActive(false);
+            _isMoving = false;
+        }
+
+        void Move()
+        {
+            transform.position += transform.forward * _speed * Time.deltaTime;
         }
 
         void SetTrail(bool enable)

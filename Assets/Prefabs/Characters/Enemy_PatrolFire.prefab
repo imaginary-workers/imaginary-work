@@ -87,7 +87,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b7322997020460087ceb47ef875c062, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _move: {fileID: 564365771632663812}
+  moveComponent: {fileID: 0}
   _animator: {fileID: 6083880829189906263}
   _enemyDamagable: {fileID: 2302987543489821036}
 --- !u!136 &8236037511062715165
@@ -133,10 +133,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rigidbody: {fileID: 564365771632663815}
-  _ignoreX: 0
-  _ignoreY: 1
-  _ignoreZ: 0
-  <Velocity>k__BackingField: {x: 0, y: 0, z: 0}
+  _ignoreGravity: 0
 --- !u!114 &564365771632663813
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -165,7 +162,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1800234ef324a54ba092ae22c5c8a94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _move: {fileID: 564365771632663812}
+  moveComponent: {fileID: 0}
   _speed: 2.1
   _waitBetweenPointInSeconds: 1
   _waitOnEnable: 2.5
@@ -173,7 +170,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  _minimumDistanceNearPoint: 1.05
+  _minimumDistanceNearPoint: 0.32
   _cycle: 0
   _pointRadiusGizmos: 0.08
   _sphereColor: {r: 1, g: 0, b: 0, a: 1}
@@ -193,11 +190,12 @@ MonoBehaviour:
   _normalBehaviour: {fileID: 564365771632663803}
   _visualField: {fileID: 564365771632663813}
   _attackBehaviour: {fileID: 564365771632663809}
-  _move: {fileID: 564365771632663812}
+  _moveComponent: {fileID: 0}
   _shooterRepeater: {fileID: 2071058080219038129}
   _lookAtTarget: {fileID: 564365771632663809}
-  _throwBullet: {fileID: 4140093129540077214}
+  enemyShooter: {fileID: 0}
   _damageable: {fileID: 2302987543489821036}
+  _animatorController: {fileID: 0}
 --- !u!114 &564365771632663809
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -210,6 +208,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5bc2d2ea0d20a6c4f88f7e54f3a4fe86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _targetAlwaysPlayer: 0
   _target: {fileID: 0}
   _speedRotation: 10
   _ignoreX: 0
@@ -286,8 +285,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc660ccbbe8a4ad4ea828415e3d77778, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enemyLife: 10
-  _secondsToDestroy: 5
+  _enemyLife: 3
 --- !u!114 &769976857856629510
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -302,7 +300,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _drop1: {fileID: 3247428901600231908, guid: 8f8834a19a7529948bd46c775dcc0296, type: 3}
   _drop2: {fileID: 8026061991337280964, guid: cf8bc611d69f2974ca930ab0af4672c2, type: 3}
-  _lifeEnemy: {fileID: 2302987543489821036}
   _chancePercentage: 0.5
 --- !u!1 &3324573506319657963
 GameObject:

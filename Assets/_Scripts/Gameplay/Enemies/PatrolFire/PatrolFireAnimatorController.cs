@@ -18,8 +18,16 @@ namespace Game.Gameplay.Enemies.PatrolFire
             _animator.SetFloat("Speed", moveComponent.Velocity.magnitude);
         }
 
-        public void ShootAnimation()
-            => _animator.SetTrigger("Attack");
+        public void StartAttack()
+        {
+            _animator.SetBool("Attack", true);
+        }
+
+        public void StopAttack()
+        {
+            _animator.SetBool("Attack", false);
+        }
+
         public void Death()
         {
             _animator.SetTrigger("Death");
