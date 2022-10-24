@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1425224902}
   - component: {fileID: 1425224901}
   - component: {fileID: 1425224900}
+  - component: {fileID: 405842957437798624}
   m_Layer: 0
   m_Name: MainCamera
   m_TagString: Untagged
@@ -84,6 +85,25 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1425224898}
   m_Enabled: 1
+--- !u!114 &405842957437798624
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1425224898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78ddc8c1a83e40c287fe0f5bedb4fc58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _camera: {fileID: 1425224901}
+  _playerController: {fileID: 8219668241822508868}
+  _topClamp: 90
+  _bottomClamp: -90
+  _rotationSpeed: 20
+  _invertedYAxis: 0
+  _invertedXAxis: 0
 --- !u!1 &940501456197976227
 GameObject:
   m_ObjectHideFlags: 0
@@ -439,18 +459,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5369c5c16054ec394506cc2cf9fa05e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _move: {fileID: 8219668241822508867}
-  _jump: {fileID: 5810076752666076082}
+  _moveComponent: {fileID: 8219668241822508867}
+  _jumpComponent: {fileID: 5810076752666076082}
   _speed: 8.3
-  _currentTime: 1
   _playerInput: {fileID: 8219668241822508866}
-  _weaponController: {fileID: 8219668241822508986}
-  _topClamp: 90
-  _bottomClamp: -90
-  _camera: {fileID: 1425224901}
-  _rotationSpeed: 20
-  _invertedYAxis: 0
-  _invertedXAxis: 0
 --- !u!114 &8219668241822508867
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -464,10 +476,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rigidbody: {fileID: 8219668241822508870}
-  _ignoreX: 0
-  _ignoreY: 1
-  _ignoreZ: 0
-  <Velocity>k__BackingField: {x: 0, y: 0, z: 0}
+  _ignoreGravity: 0
 --- !u!114 &8219668241822508866
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -497,7 +506,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 8219668241822508868}
         m_TargetAssemblyTypeName: Game.Player.PlayerController, Assembly-CSharp
-        m_MethodName: Move
+        m_MethodName: MoveInput
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -513,7 +522,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 8219668241822508868}
         m_TargetAssemblyTypeName: Game.Player.PlayerController, Assembly-CSharp
-        m_MethodName: Look
+        m_MethodName: LookInput
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -529,7 +538,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 8219668241822508986}
         m_TargetAssemblyTypeName: Game.Player.WeaponController, Assembly-CSharp
-        m_MethodName: Attack
+        m_MethodName: AttackInput
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -545,7 +554,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 8219668241822508868}
         m_TargetAssemblyTypeName: Game.Player.PlayerController, Assembly-CSharp
-        m_MethodName: Jump
+        m_MethodName: JumpInput
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -685,7 +694,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 8219668241822508986}
         m_TargetAssemblyTypeName: Game.Player.WeaponController, Assembly-CSharp
-        m_MethodName: ReloadWeapon
+        m_MethodName: ReloadWeaponInput
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -799,7 +808,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   _cheeckFloor: {fileID: 4719565878990220562}
-  _floorRadius: 0.09
+  _checkFloorRadius: 0
   _maxExtraTime: 0.5
 --- !u!1 &8219668242174349543
 GameObject:

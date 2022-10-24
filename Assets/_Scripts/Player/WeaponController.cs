@@ -19,7 +19,8 @@ namespace Game.Player
             _currentWeapon = manager.CurrentWeapon;
             _speedDefault = _playerController.Speed;
         }
-        public void Attack(InputAction.CallbackContext context)
+
+        public void AttackInput(InputAction.CallbackContext context)
         {
              _currentWeapon = manager.CurrentWeapon;
             _currentWeapon.Target = _pointerTarget.transform.position;
@@ -43,7 +44,7 @@ namespace Game.Player
             }
         }
 
-        public void ReloadWeapon(InputAction.CallbackContext context)
+        public void ReloadWeaponInput(InputAction.CallbackContext context)
         {
             if (!context.performed) return;
 

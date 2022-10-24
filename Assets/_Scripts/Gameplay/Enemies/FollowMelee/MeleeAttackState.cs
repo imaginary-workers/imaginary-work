@@ -6,19 +6,19 @@ namespace Game.Gameplay.Enemies.FollowMelee
     {
         FollowMeleeStateController _stateController;
         MeleeAttack _meleeAttack;
-        Move _move;
+        MoveComponent _moveComponent;
         LookAtTarget _lookAtTarget;
 
         public MeleeAttackState(FollowMeleeStateController stateController)
         {
             _stateController = stateController;
             _meleeAttack = stateController.MeleeAttack;
-            _move = stateController.Move;
+            _moveComponent = stateController.MoveComponent;
             _lookAtTarget = stateController.LookAtTarget;
         }
         public override void Enter()
         {
-            _move.Velocity = Vector3.zero;
+            _moveComponent.Velocity = Vector3.zero;
             _meleeAttack.enabled = true;
             _lookAtTarget.enabled = true;
             _meleeAttack.Attack();

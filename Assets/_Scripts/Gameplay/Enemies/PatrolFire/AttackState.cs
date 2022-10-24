@@ -4,31 +4,39 @@ namespace Game.Gameplay.Enemies.PatrolFire
 {
     public class AttackState : State
     {
-        MonoBehaviour _attackBehaviour;
         VisualField _visualField;
         PatrolFireStateController _controller;
-        Move _move;
+        MoveComponent _moveComponent;
         ActionRepeater _shooterRepeater;
         LookAtTarget _lookAtTarget;
-        ThrowBullet _throwBullet;
+        AnimatorController _animatorController;
+        EnemyBurstShooter _enemyShooter;
 
-        public AttackState(PatrolFireStateController controller)
+        public AttackState(
+            PatrolFireStateController controller,
+            VisualField visualField,
+            MoveComponent moveComponent,
+            LookAtTarget lookAtTarget,
+            AnimatorController animatorController,
+            EnemyBurstShooter enemyShooter
+            )
         {
             _controller = controller;
-            _attackBehaviour = controller.AttackBehaviour;
-            _visualField = controller.VisualField;
-            _move = controller.Move;
-            _shooterRepeater = controller.ShooterRepeater;
-            _lookAtTarget = controller.LookAtTarget;
-            _throwBullet = controller.ThrowBullet;
+            _visualField = visualField;
+            _moveComponent = moveComponent;
+            _lookAtTarget = lookAtTarget;
+            _animatorController = animatorController;
+            _enemyShooter = enemyShooter;
+            animatorController.AddAnimationEvent("START_SHOOTING", _enemyShooter.StartBurstShooting);
+            animatorController.AddAnimationEvent("STOP_SHOOTING", _enemyShooter.StopBurstShooting);
         }
 
         public override void Enter()
         {
-            _move.Velocity = Vector3.zero;
-            _attackBehaviour.enabled = true;
+            _moveComponent.Velocity = Vector3.zero;
             _lookAtTarget.enabled = true;
-            _shooterRepeater.enabled = true;
+            _animatorController.StartAttack();
+            _enemyShooter.enabled = true;
         }
         
         public override void Update()
@@ -39,9 +47,9 @@ namespace Game.Gameplay.Enemies.PatrolFire
 
         public override void Exit()
         {
-            _attackBehaviour.enabled = false;
-            _shooterRepeater.enabled = false;
+            _animatorController.StopAttack();
             _lookAtTarget.enabled = false;
+            _enemyShooter.enabled = false;
         }
     }
 }

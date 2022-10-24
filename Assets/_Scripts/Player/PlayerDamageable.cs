@@ -9,7 +9,7 @@ namespace Game.Player
     public class PlayerDamageable : MonoBehaviour, IDamageable
     {
         [SerializeField] IntSO _playerLive;
-        public Action<int> OnTakeDamage;
+        public event Action<int> OnTakeDamage;
 
         public void TakeTamage(int damage)
         {

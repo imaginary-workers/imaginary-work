@@ -7,7 +7,7 @@ namespace Game.Gameplay.Enemies.FollowMelee
     {
         [SerializeField] Animator _animator;
         [SerializeField] EnemyDamageable _enemyDamagable;
-        [SerializeField] Move _move;
+        [SerializeField] MoveComponent moveComponent;
 
         void Awake()
         {
@@ -15,7 +15,7 @@ namespace Game.Gameplay.Enemies.FollowMelee
         }
         void Update()
         {
-            _animator.SetFloat("Speed", _move.Velocity.magnitude);
+            _animator.SetFloat("Speed", moveComponent.Velocity.magnitude);
         }
         public void Attack()
         {

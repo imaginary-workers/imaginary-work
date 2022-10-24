@@ -6,7 +6,7 @@ namespace Game.Gameplay.Enemies
     public class RandomPatrol : MonoBehaviour
     {
         [SerializeField] List<Transform> positions;
-        [SerializeField] Move _move;
+        [SerializeField] MoveComponent moveComponent;
         [SerializeField, Range(0, 5)] float _speed = 3;
         [SerializeField] float _distance = 1;
         int _indexRandom = 0;
@@ -18,11 +18,11 @@ namespace Game.Gameplay.Enemies
             var targetDirection = target - transform.position;
             if (Vector3.Distance(transform.position, positions[_indexRandom].position) >= _distance)
             {
-                _move.Velocity = targetDirection.normalized * _speed;
+                moveComponent.Velocity = targetDirection.normalized * _speed;
             }
             else
             {
-                _move.Velocity = Vector3.zero;
+                moveComponent.Velocity = Vector3.zero;
 
 
 

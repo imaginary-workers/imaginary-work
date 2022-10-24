@@ -5,30 +5,30 @@ namespace Game.Gameplay.Enemies.PatrolFire
     public class NormalState : State
     {
         VisualField _visualField;
-        MonoBehaviour _normalBehaviour;
-        PatrolFireStateController _controller;
+        PatrolBehaviour _patrolBehaviour;
+        PatrolFireStateController _stateMachine;
 
-        public NormalState(PatrolFireStateController controller)
+        public NormalState(PatrolFireStateController stateMachine, PatrolBehaviour patrolBehaviour, VisualField visualField)
         {
-            _normalBehaviour = controller.NormalBehaviour;
-            _visualField = controller.VisualField;
-            _controller = controller;
+            _patrolBehaviour = patrolBehaviour;
+            _visualField = visualField;
+            _stateMachine = stateMachine;
         }
 
         public override void Enter()
         {
-            _normalBehaviour.enabled = true;
+            _patrolBehaviour.enabled = true;
         }
 
         public override void Update()
         {
             if (_visualField.IsTargetInView)
-                _controller.ChangeState(_controller.Attack);
+                _stateMachine.ChangeState(_stateMachine.Attack);
         }
 
         public override void Exit()
         {
-            _normalBehaviour.enabled = false;
+            _patrolBehaviour.enabled = false;
         }
     }
 }
