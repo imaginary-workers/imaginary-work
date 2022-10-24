@@ -8,9 +8,11 @@ namespace Game.Gameplay.Weapon
         [SerializeField] GameObject _particle;
         bool _isShooting = false;
         float _time;
+        [SerializeField] bool _isHeavy;
         
         void Awake()
         {
+            IsHeavy = _isHeavy;
             _time = attackRateInSeconds;
             Ammunition = _weaponData.MaxAmunicion;
             _particle.SetActive(false);
