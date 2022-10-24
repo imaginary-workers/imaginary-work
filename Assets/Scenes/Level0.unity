@@ -1733,6 +1733,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5810076752666076082, guid: 8848ba22db2628d4bb7ef3d0c02bad5c, type: 3}
+      propertyPath: _floorRadius
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 8201175159399936447, guid: 8848ba22db2628d4bb7ef3d0c02bad5c, type: 3}
       propertyPath: looping
       value: 1
@@ -1757,6 +1761,18 @@ PrefabInstance:
       propertyPath: m_ActionEvents.Array.data[18].m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1211708232}
+    - target: {fileID: 8219668241822508868, guid: 8848ba22db2628d4bb7ef3d0c02bad5c, type: 3}
+      propertyPath: _currentTime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8219668241822508870, guid: 8848ba22db2628d4bb7ef3d0c02bad5c, type: 3}
+      propertyPath: m_Mass
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8219668241822508870, guid: 8848ba22db2628d4bb7ef3d0c02bad5c, type: 3}
+      propertyPath: m_UseGravity
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8219668241822508871, guid: 8848ba22db2628d4bb7ef3d0c02bad5c, type: 3}
       propertyPath: m_RootOrder
       value: 3

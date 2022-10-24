@@ -9,6 +9,7 @@ namespace Game.Player
         [SerializeField] Move _move;
         [SerializeField] Jump _jump;
         [SerializeField, Range(0, 10)] float _speed = 8;
+        [SerializeField, Range(0, 5)] float _currentTime = 1;
         [SerializeField] PlayerInput _playerInput;
         [SerializeField] WeaponController _weaponController;
         [SerializeField] float _topClamp = 90.0f;
@@ -19,6 +20,7 @@ namespace Game.Player
         [SerializeField] bool _invertedXAxis = false;
         float _targetPitch;
         float _rotationVelocity;
+        float _time;
         private Vector2 _lookInput;
         private Vector2 _moveVelocityInput;
         private PlayerAnimationManager _playerAnimationManager;
@@ -29,10 +31,13 @@ namespace Game.Player
             get { return _speed; }
             set { _speed = value; }
         }
-        
+
         bool IsCurrentDeviceMouse
             => _playerInput.currentControlScheme == "KeyboardMouse";
-
+        private void Awake()
+        {
+            _time = _currentTime;
+        }
         void Start()
         {
             Cursor.lockState = CursorLockMode.Locked;
@@ -40,7 +45,19 @@ namespace Game.Player
 
         void Update()
         {
-            _move.Velocity = (_moveVelocityInput.x * transform.right + transform.forward * _moveVelocityInput.y).normalized * _speed;
+            if ((_currentTime < 0 || _jump.IsOnTheFloor))
+            {
+                _move.Velocity = (_moveVelocityInput.x * transform.right + transform.forward * _moveVelocityInput.y).normalized * _speed;
+            }
+
+            if (!_jump.IsOnTheFloor)
+            {
+                _currentTime -= Time.deltaTime;
+            }
+            else if (_jump.IsOnTheFloor)
+            {
+                _currentTime = _time;
+            }
         }
 
         void LateUpdate()
@@ -50,8 +67,7 @@ namespace Game.Player
 
         public void Move(InputAction.CallbackContext context)
         {
-            //if(_jump.IsOnTheFloor)
-                _moveVelocityInput = context.ReadValue<Vector2>();
+            _moveVelocityInput = context.ReadValue<Vector2>();
             if (context.canceled)
             {
                 _moveVelocityInput = Vector2.zero;
@@ -63,7 +79,7 @@ namespace Game.Player
             if (context.performed)
             {
                 _jump.JumpAction();
-            }            
+            }
         }
 
         public void Look(InputAction.CallbackContext context)
