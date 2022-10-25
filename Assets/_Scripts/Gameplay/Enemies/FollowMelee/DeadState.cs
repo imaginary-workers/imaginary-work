@@ -19,5 +19,27 @@ namespace Game.Gameplay.Enemies.FollowMelee
             _secondsToDestroy = secondToDestroy;
             _stateController = stateController;
         }
+        public override void Enter()
+        {
+            _moveComponent.Velocity = Vector3.zero;
+            _animatorController.Death();
+        }
+        public override void Update()
+        {
+            if (_currentSecond < _secondsToDestroy)
+            {
+                _currentSecond += Time.deltaTime;
+            }
+            else
+            {
+                Exit();
+            }
+        }
+
+        public override void Exit()
+        {
+            _spawn.Drop();
+            _stateController.DestroyGameObject();
+        }
     }
 }
