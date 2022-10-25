@@ -15,6 +15,7 @@ namespace Game.Gameplay.Weapon
             IsHeavy = _isHeavy;
             _time = attackRateInSeconds;
             Ammunition = _weaponData.MaxAmunicion;
+            ReserveAmmunition = _weaponData.MaxReserveAmunicion;
             _particle.SetActive(false);
         }
 
@@ -54,32 +55,8 @@ namespace Game.Gameplay.Weapon
             _particle.SetActive(false);
             _isShooting = false;
         }
-
-        public override bool ReloadAmmunition()
-        {
-            if (ReserveAmmunition <= 0) return false;
-            if (ReserveAmmunition >= _weaponData.MaxAmunicion)
-            {
-                Ammunition = _weaponData.MaxAmunicion;
-                ReserveAmmunition -= _weaponData.MaxAmunicion;
-            }
-            else
-            {
-                Ammunition = ReserveAmmunition;
-                ReserveAmmunition = 0;
-            }
-
-            return true;
-        }
-        
-        public override bool ReloadReserveAmmunition()
-        {
-            if (ReserveAmmunition >= _weaponData.MaxReserveAmunicion) return false;
-
-            ReserveAmmunition = _weaponData.MaxReserveAmunicion;
-
-            return true;
-        }
+               
+  
 
         #endregion
         protected override void Shoot()

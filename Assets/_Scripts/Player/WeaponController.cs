@@ -10,7 +10,7 @@ namespace Game.Player
         [SerializeField] WeaponManager manager;
         [SerializeField] PointerTarget _pointerTarget;
         [SerializeField] PlayerController _playerController;
-        [SerializeField,Range(0,2)] float _speedWeaponHeavy = 1;
+        [SerializeField, Range(0, 2)] float _speedWeaponHeavy = 1;
         private float _speedDefault;
         private Weapon _currentWeapon;
 
@@ -22,7 +22,7 @@ namespace Game.Player
 
         public void AttackInput(InputAction.CallbackContext context)
         {
-             _currentWeapon = manager.CurrentWeapon;
+            _currentWeapon = manager.CurrentWeapon;
             _currentWeapon.Target = _pointerTarget.transform.position;
             if (context.started)
             {
@@ -40,7 +40,7 @@ namespace Game.Player
                 {
                     _playerController.Speed = _speedDefault;
                 }
-            _currentWeapon.CancelAttack();
+                _currentWeapon.CancelAttack();
             }
         }
 
@@ -51,16 +51,31 @@ namespace Game.Player
             var weapon = manager.CurrentWeapon;
             weapon.ReloadAmmunition();
             GameManager.instance.UpdateBulletCounter(weapon.Ammunition);
+            UpdateUI();
         }
 
-        public bool ReloadReserveWeapons()        
-            => manager.ReloadReserveWeapons();       
+        public bool ReloadReserveWeapons()
+        {
+            bool reserve = manager.ReloadReserveWeapons();
+            if (reserve)
+            {
+                UpdateUI();
+            }
+            return reserve;
+
+        }
 
         public void SwitchWeapon(int slot)
         {
             _currentWeapon.CancelAttack();
             _playerController.Speed = _speedDefault;
             manager.SwitchWeapon(slot);
+            UpdateUI();
+        }
+        private void UpdateUI()
+        {
+            var weapon = manager.CurrentWeapon;
+            GameManager.instance.UpdateReserveCounter(weapon.ReserveAmmunition);
         }
     }
 }
