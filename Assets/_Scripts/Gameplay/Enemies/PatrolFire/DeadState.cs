@@ -13,7 +13,7 @@ namespace Game.Gameplay.Enemies.PatrolFire
         public DeadState(PatrolFireStateController stateController, AnimatorController animatorController, float secondToDestroy, MoveComponent moveComponent, SpawnDrops spawner)
         {
             _animatorController = animatorController;
-            _secondsToDestroy = 5f;
+            _secondsToDestroy = secondToDestroy;
             _stateController = stateController;
             _moveComponent = moveComponent;
             _spawn = spawner;

@@ -40,7 +40,7 @@ namespace Game.Gameplay.Enemies.PatrolFire
             _currentState.Enter();
             _damageable.OnDeath += () => ChangeState(_dead);
         }
-
+            
         void Update()
         {
             _currentState.Update();
