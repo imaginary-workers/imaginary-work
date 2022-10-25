@@ -8,7 +8,7 @@ namespace Game.Player
     {
         [SerializeField] MoveComponent _moveComponent;
         [SerializeField] JumpComponent _jumpComponent;
-        [SerializeField, Range(0,10)] float _speed = 8f;
+        [SerializeField, Range(0, 10)] float _speed = 8f;
         [SerializeField] PlayerInput _playerInput;
         Vector2 _moveVelocityInput;
         float _currentTime = 1;
@@ -39,19 +39,19 @@ namespace Game.Player
 
         void Update()
         {
-            _moveComponent.Velocity = (_moveVelocityInput.x * transform.right + transform.forward * _moveVelocityInput.y).normalized * _speed;
-            // if ((_currentTime < 0 || _jumpComponent.IsOnTheFloor))
-            // {
-            // }
-            //
-            // if (!_jumpComponent.IsOnTheFloor)
-            // {
-            //     _currentTime -= Time.deltaTime;
-            // }
-            // else
-            // {
-            //     _currentTime = _time;
-            // }
+                _moveComponent.Velocity = (_moveVelocityInput.x * transform.right + transform.forward * _moveVelocityInput.y).normalized * _speed;
+            /*if ((_currentTime < 0 || _jumpComponent.IsOnTheFloor))
+            {
+            }
+
+            if (!_jumpComponent.IsOnTheFloor)
+            {
+                _currentTime -= Time.deltaTime;
+            }
+            else
+            {
+                _currentTime = _time;
+            }*/
         }
 
         #endregion
