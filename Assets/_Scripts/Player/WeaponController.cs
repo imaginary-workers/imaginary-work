@@ -53,8 +53,8 @@ namespace Game.Player
             GameManager.instance.UpdateBulletCounter(weapon.Ammunition);
         }
 
-        public bool ReloadReserveWeapons()
-            => manager.ReloadReserveWeapons();
+        public bool ReloadReserveWeapons()        
+            => manager.ReloadReserveWeapons();       
 
         public void SwitchWeapon(int slot)
         {
