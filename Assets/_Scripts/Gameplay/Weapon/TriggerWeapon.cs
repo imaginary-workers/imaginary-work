@@ -43,31 +43,6 @@ namespace Game.Gameplay.Weapon
             _TriggerAttackAnimation = animationManager.AttackShooter;
         }
 
-        public override bool ReloadAmmunition()
-        {
-            if (ReserveAmmunition <= 0) return false;
-            if (ReserveAmmunition >= _weaponData.MaxAmunicion)
-            {
-                Ammunition = _weaponData.MaxAmunicion;
-                ReserveAmmunition -= _weaponData.MaxAmunicion;
-            }
-            else
-            {
-                Ammunition = ReserveAmmunition;
-                ReserveAmmunition = 0;
-            }
-
-            return true;
-        }
-
-        public override bool ReloadReserveAmmunition()
-        {
-            if (ReserveAmmunition >= _weaponData.MaxReserveAmunicion) return false;
-
-            ReserveAmmunition = _weaponData.MaxReserveAmunicion;
-
-            return true;
-        }
 
         #endregion
 
