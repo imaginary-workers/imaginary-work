@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.5410525, g: 0.62022966, b: 0.7275671, a: 1}
+  m_IndirectSpecularColor: {r: 0.54126525, g: 0.6203427, b: 0.7275055, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -663,6 +663,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1135022473, guid: de9188e459a77494f8c234f0945e6e1a, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 659087895786560924, guid: de9188e459a77494f8c234f0945e6e1a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -670,6 +674,10 @@ PrefabInstance:
     - target: {fileID: 659087895786560924, guid: de9188e459a77494f8c234f0945e6e1a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: RestartLevel
+      objectReference: {fileID: 0}
+    - target: {fileID: 1394531161654708775, guid: de9188e459a77494f8c234f0945e6e1a, type: 3}
+      propertyPath: m_Text
+      value: '-'
       objectReference: {fileID: 0}
     - target: {fileID: 1731742835623578442, guid: de9188e459a77494f8c234f0945e6e1a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -775,6 +783,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 2644555778772327442, guid: de9188e459a77494f8c234f0945e6e1a, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2932651962906303939, guid: de9188e459a77494f8c234f0945e6e1a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -798,6 +810,10 @@ PrefabInstance:
     - target: {fileID: 5103676080342528752, guid: de9188e459a77494f8c234f0945e6e1a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: BackToMainMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 5680003000946831435, guid: de9188e459a77494f8c234f0945e6e1a, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8099864276728719454, guid: de9188e459a77494f8c234f0945e6e1a, type: 3}
       propertyPath: m_IsActive
@@ -1388,6 +1404,10 @@ PrefabInstance:
     - target: {fileID: 564365771632663814, guid: ecefa05400de86347a2e72c1a0974cbf, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 769976857856629510, guid: ecefa05400de86347a2e72c1a0974cbf, type: 3}
+      propertyPath: _chancePercentage
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 2071058080219038129, guid: ecefa05400de86347a2e72c1a0974cbf, type: 3}
       propertyPath: _waitForShootInSeconds
@@ -2991,6 +3011,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8156174783109850436, guid: ed0abdafae29e7e4fba6fd12549677a6, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8156174783294118934, guid: ed0abdafae29e7e4fba6fd12549677a6, type: 3}
       propertyPath: _player
       value: 
@@ -3015,6 +3039,10 @@ PrefabInstance:
       propertyPath: _reserveCounterText
       value: 
       objectReference: {fileID: 701766278}
+    - target: {fileID: 8156174783294118937, guid: ed0abdafae29e7e4fba6fd12549677a6, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8156174785048938696, guid: ed0abdafae29e7e4fba6fd12549677a6, type: 3}
       propertyPath: m_RootOrder
       value: 0

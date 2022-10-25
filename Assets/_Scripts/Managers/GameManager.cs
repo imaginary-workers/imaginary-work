@@ -121,6 +121,7 @@ namespace Game.Managers
         }
         public void UpdateReserveCounter(int amunicion)
         {
+            Debug.Log(amunicion);
             if (amunicion < 0)
                 _reserveCounterText.text = "-";
             else
