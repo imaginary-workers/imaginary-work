@@ -1,4 +1,7 @@
-﻿using Game.Player;
+﻿using System;
+using Game.Config;
+using Game.Player;
+using Game.SO;
 using UnityEngine;
 
 namespace Game.Gameplay
@@ -9,13 +12,16 @@ namespace Game.Gameplay
 
         [SerializeField] Camera _camera;
         [SerializeField] PlayerController _playerController;
-        [SerializeField] float _topClamp = 90.0f;
-        [SerializeField] float _bottomClamp = -90.0f;
-        [SerializeField] float _rotationSpeed = 20f;
-        [SerializeField] bool _invertedYAxis = false;
-        [SerializeField] bool _invertedXAxis = false;
+        [SerializeField] GameplaySettingsSO _gameplaySettingsSo;
+        PlayerConfig _config;
         float _targetPitch;
         float _rotationVelocity;
+
+        private void Awake()
+        {
+            UpdateConfig();
+            _gameplaySettingsSo.OnChange += UpdateConfig;
+        }
 
         void Start()
         {
@@ -27,6 +33,11 @@ namespace Game.Gameplay
             UpdateCameraLook();
         }
 
+        private void OnDestroy()
+        {
+            _gameplaySettingsSo.OnChange -= UpdateConfig;
+        }
+
         void UpdateCameraLook()
         {
             var lookInput = _playerController.LookInputDirection;
@@ -34,11 +45,16 @@ namespace Game.Gameplay
 
             var isCurrentDeviceMouse = _playerController.IsCurrentDeviceMouse;
             float deltaTimeMultiplier = isCurrentDeviceMouse ? 1.0f : Time.deltaTime;
-            _targetPitch += lookInput.y * _rotationSpeed * deltaTimeMultiplier * (_invertedYAxis ? 1 : -1);
-            _rotationVelocity = lookInput.x * _rotationSpeed * deltaTimeMultiplier * (_invertedXAxis ? -1 : 1);
-            _targetPitch = Utils.ClampAngle(_targetPitch, _bottomClamp, _topClamp);
+            _targetPitch += lookInput.y * _config.rotationSpeed * deltaTimeMultiplier * (_config.invertedYAxis ? 1 : -1);
+            _rotationVelocity = lookInput.x * _config.rotationSpeed * deltaTimeMultiplier * (_config.invertedXAxis ? -1 : 1);
+            _targetPitch = Utils.ClampAngle(_targetPitch, _config.bottomClamp, _config.topClamp);
             _camera.transform.localRotation = Quaternion.Euler(_targetPitch, 0.0f, 0.0f);
             _playerController.transform.Rotate(Vector3.up * _rotationVelocity);
+        }
+
+        void UpdateConfig()
+        {
+            _config = _gameplaySettingsSo.PlayerConfig;
         }
         
     }
