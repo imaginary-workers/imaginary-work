@@ -36,5 +36,15 @@ namespace Game.Player
         {
             _myAni.SetTrigger("PistolTrigger");
         }
+
+        public void StartSprint()
+        {
+            _myAni.SetBool("IsSprinting", true);
+        }
+
+        public void StopSprint()
+        {
+            _myAni.SetBool("IsSprinting", false);
+        }
     }
 }
