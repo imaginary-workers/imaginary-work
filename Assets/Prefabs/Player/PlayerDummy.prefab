@@ -461,8 +461,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _moveComponent: {fileID: 8219668241822508867}
   _jumpComponent: {fileID: 5810076752666076082}
-  _speed: 8.3
+  _normalSpeed: 8
+  _sprintSpeed: 12
   _playerInput: {fileID: 8219668241822508866}
+  _animator: {fileID: 1160910595356904043}
 --- !u!114 &8219668241822508867
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -723,7 +725,19 @@ MonoBehaviour:
     m_ActionId: a8160e77-a967-4884-adf8-b4b858588aac
     m_ActionName: Player/PauseMenu[/Keyboard/escape]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8219668241822508868}
+        m_TargetAssemblyTypeName: Game.Player.PlayerController, Assembly-CSharp
+        m_MethodName: SprintInput
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 2e9213aa-c246-4c5d-8ed8-cd11fb4eea80
     m_ActionName: Player/Sprint[/Keyboard/shift]
   m_NeverAutoSwitchControlSchemes: 0

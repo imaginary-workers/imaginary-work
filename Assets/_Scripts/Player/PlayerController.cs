@@ -8,12 +8,15 @@ namespace Game.Player
     {
         [SerializeField] MoveComponent _moveComponent;
         [SerializeField] JumpComponent _jumpComponent;
-        [SerializeField, Range(0, 10)] float _speed = 8f;
+        [SerializeField, Range(0, 10)] float _normalSpeed = 8f;
+        [SerializeField, Range(0, 20)] float _sprintSpeed = 12f;
         [SerializeField] PlayerInput _playerInput;
+        [SerializeField] PlayerAnimationManager _animator;
         Vector2 _moveVelocityInput;
         float _currentTime = 1;
         float _time;
-
+        float _currentSpeed;
+        
         public bool IsCurrentDeviceMouse
             => _playerInput.currentControlScheme == "KeyboardMouse";
 
@@ -21,8 +24,8 @@ namespace Game.Player
 
         public float Speed
         {
-            get => _speed;
-            set => _speed = value;
+            get => _currentSpeed;
+            set => _currentSpeed = value;
         }
 
         #region unitymethods
@@ -30,6 +33,7 @@ namespace Game.Player
         void Awake()
         {
             _time = _currentTime;
+            _currentSpeed = _normalSpeed;
         }
 
         void Start()
@@ -39,7 +43,7 @@ namespace Game.Player
 
         void Update()
         {
-                _moveComponent.Velocity = (_moveVelocityInput.x * transform.right + transform.forward * _moveVelocityInput.y).normalized * _speed;
+                _moveComponent.Velocity = (_moveVelocityInput.x * transform.right + transform.forward * _moveVelocityInput.y).normalized * _currentSpeed;
             /*if ((_currentTime < 0 || _jumpComponent.IsOnTheFloor))
             {
             }
@@ -78,6 +82,20 @@ namespace Game.Player
         public void LookInput(InputAction.CallbackContext context)
         {
             LookInputDirection = context.ReadValue<Vector2>();
+        }
+
+        public void SprintInput(InputAction.CallbackContext context)
+        {
+            if (context.started)
+            {
+                _currentSpeed = _sprintSpeed;
+                _animator.StartSprint();
+            }
+            else if (context.canceled)
+            {
+                _currentSpeed = _normalSpeed;
+                _animator.StopSprint();
+            }
         }
 
         #endregion
