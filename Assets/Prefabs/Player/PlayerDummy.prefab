@@ -461,7 +461,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _moveComponent: {fileID: 8219668241822508867}
   _jumpComponent: {fileID: 5810076752666076082}
-  _speed: 8.3
+  _speed: 8
   _playerInput: {fileID: 8219668241822508866}
 --- !u!114 &8219668241822508867
 MonoBehaviour:
@@ -759,7 +759,7 @@ MonoBehaviour:
   manager: {fileID: 8219668241822508985}
   _pointerTarget: {fileID: 4311879229263859165}
   _playerController: {fileID: 8219668241822508868}
-  _speedWeaponHeavy: 1
+  _speedWeaponHeavy: 2
 --- !u!114 &8219668241822508985
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -808,7 +808,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   _cheeckFloor: {fileID: 4719565878990220562}
-  _checkFloorRadius: 0
+  _checkFloorRadius: 0.106
   _maxExtraTime: 0.5
 --- !u!1 &8219668242174349543
 GameObject:
