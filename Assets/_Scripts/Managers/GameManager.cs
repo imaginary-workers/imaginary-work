@@ -1,8 +1,10 @@
+using Game.Config;
 using Game.Gameplay.Weapon;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Game.SO;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 namespace Game.Managers
@@ -22,7 +24,13 @@ namespace Game.Managers
         [SerializeField] GameObject _pointer;
         [SerializeField] Text _bulletCounterText;
         [SerializeField] Text _reserveCounterText;
+        [SerializeField] Toggle _invertedXToggle;
+        [SerializeField] Toggle _invertedYToggle;
+        [SerializeField] Slider _speedRotatioSlider;
 
+        [Header("Settings")]
+        [SerializeField] GameplaySettingsSO _gameplaySettings;
+        PlayerConfig _newConfig = null;
         bool _isPaused = false;
         bool _isDeath = false;
 
@@ -30,8 +38,7 @@ namespace Game.Managers
         {
             instance = this;
 
-            if(_pauseMenu != null)
-                _pauseMenu.SetActive(false);
+            PauseMenuSetup();
 
             if (_deathMessege != null)
                 _deathMessege.SetActive(false);
@@ -94,12 +101,14 @@ namespace Game.Managers
 
         public void Resume()
         {
+            UpdateConfig();
             _isPaused = false;
             _pauseMenu.SetActive(false);
             _pointer.SetActive(true);
             Cursor.lockState = CursorLockMode.Locked;
             Time.timeScale = 1;
         }
+
         public void RestartLevel()
         {
             Time.timeScale = 1;
@@ -121,11 +130,52 @@ namespace Game.Managers
         }
         public void UpdateReserveCounter(int amunicion)
         {
-            Debug.Log(amunicion);
             if (amunicion < 0)
                 _reserveCounterText.text = "-";
             else
                 _reserveCounterText.text = amunicion.ToString();
+        }
+
+        public void SetInvertedYAxis(bool to)
+        {
+            GetNewConfig().invertedYAxis = to;
+        }
+        
+        public void SetInvertedXAxis(bool to)
+        {
+            GetNewConfig().invertedXAxis = to;
+        }
+
+        public void ChangedRotationSpeedValue()
+        {
+            GetNewConfig().rotationSpeed = _speedRotatioSlider.value;
+        }
+
+        void PauseMenuSetup()
+        {
+            if (_pauseMenu == null) return;
+            
+            var config = _gameplaySettings.PlayerConfig;
+            _invertedXToggle.isOn = config.invertedXAxis;
+            _invertedYToggle.isOn = config.invertedYAxis;
+            _speedRotatioSlider.value = config.rotationSpeed;
+            _pauseMenu.SetActive(false);
+        }
+
+        PlayerConfig GetNewConfig()
+        {
+            if (_newConfig == null)
+                _newConfig = _gameplaySettings.PlayerConfig;
+
+            return _newConfig;
+        }
+
+        void UpdateConfig()
+        {
+            if (_newConfig == null) return;
+            
+            _gameplaySettings.ChangePlayerConfig(_newConfig);
+            _newConfig = null;
         }
     }
 }

@@ -99,11 +99,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _camera: {fileID: 1425224901}
   _playerController: {fileID: 8219668241822508868}
-  _topClamp: 90
-  _bottomClamp: -90
-  _rotationSpeed: 20
-  _invertedYAxis: 0
-  _invertedXAxis: 0
+  _gameplaySettingsSo: {fileID: 11400000, guid: ad91dff427b50604e96c166048168afa, type: 2}
 --- !u!1 &940501456197976227
 GameObject:
   m_ObjectHideFlags: 0
@@ -465,6 +461,7 @@ MonoBehaviour:
   _sprintSpeed: 12
   _playerInput: {fileID: 8219668241822508866}
   _animator: {fileID: 1160910595356904043}
+  _weaponController: {fileID: 8219668241822508986}
 --- !u!114 &8219668241822508867
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -822,7 +819,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   _cheeckFloor: {fileID: 4719565878990220562}
-  _checkFloorRadius: 0
+  _checkFloorRadius: 0.12
   _maxExtraTime: 0.5
 --- !u!1 &8219668242174349543
 GameObject:
