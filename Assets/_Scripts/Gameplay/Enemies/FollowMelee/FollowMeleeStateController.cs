@@ -46,7 +46,7 @@ namespace Game.Gameplay.Enemies.FollowMelee
             private set { _isAttacking = value; }
         }
 
-        void Awake()
+        protected override void OnAwakeEnemy()
         {
             _player = FindObjectOfType<PlayerController>();
             _lookAtTarget.Target = _player.gameObject;
@@ -55,7 +55,6 @@ namespace Game.Gameplay.Enemies.FollowMelee
             _followPlayer.RangeOfVisionY = _rangeOfVisionY;
             _randomPatrolState = new RandomPatrolState(this, _randomPatrol);
             _followState = new FollowState(this);
-            AddEnemy();
             _meleeState = new MeleeAttackState(this);
             _randomPatrol.enabled = false;
             _followPlayer.enabled = false;
@@ -86,7 +85,6 @@ namespace Game.Gameplay.Enemies.FollowMelee
         }
         public void DestroyGameObject()
         {
-            RemoveEnemy();
             Destroy(gameObject);
         }
         public void SwitchState(State state)

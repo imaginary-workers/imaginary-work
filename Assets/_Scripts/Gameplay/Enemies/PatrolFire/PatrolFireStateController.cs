@@ -23,7 +23,7 @@ namespace Game.Gameplay.Enemies.PatrolFire
         State _lastState;
         GameObject _player;
 
-        void Awake()
+        protected override void OnAwakeEnemy()
         {
             _player = FindObjectOfType<PlayerController>()?.gameObject;
             _enemyShooter.Target = _lookAtTarget.Target = _visualField.Target = _player;
@@ -32,7 +32,6 @@ namespace Game.Gameplay.Enemies.PatrolFire
             _attack = new AttackState(this, _visualField, _moveComponent, _lookAtTarget, _animatorController, _enemyShooter);
             _dead = new DeadState(this, _animatorController, 5, _moveComponent, _spawner);
             _currentState = _normal;
-            AddEnemy();
         }
         
         void Start()
@@ -73,7 +72,6 @@ namespace Game.Gameplay.Enemies.PatrolFire
         }
         public void DestroyGameObject()
         {
-            RemoveEnemy();
             Destroy(gameObject);
         }
 

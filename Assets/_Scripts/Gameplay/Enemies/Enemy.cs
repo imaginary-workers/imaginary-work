@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace Game.Gameplay.Enemies
@@ -6,16 +7,16 @@ namespace Game.Gameplay.Enemies
     {
         public static int countEnemy = 0;
 
-     
-        public static void AddEnemy()
+        void Awake()
         {
-            countEnemy++;
-            Debug.Log("se agrego un enemigo" + countEnemy);
+            Enemy.countEnemy++;
+            OnAwakeEnemy();
         }
-        public static void RemoveEnemy()
+
+        protected abstract void OnAwakeEnemy(); 
+        void OnDestroy()
         {
-            Debug.Log("se resto un enemigo" + countEnemy);
-            countEnemy--;
+            Enemy.countEnemy--;
         }
        
     }
