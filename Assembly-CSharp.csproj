@@ -61,6 +61,7 @@
      <Compile Include="Assets\_Scripts\Gameplay\BreakPlatformBrain.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\EnemyBurstShooter.cs" />
      <Compile Include="Assets\_Scripts\Player\WeaponInventory.cs" />
+     <Compile Include="Assets\_Scripts\SO\GameplaySettingsSO.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Enemies\MeleeAttack.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\JumpComponent.cs" />
      <Compile Include="Assets\_Scripts\UI\InventoryUIController.cs" />
@@ -98,6 +99,7 @@
      <Compile Include="Assets\_Scripts\Gameplay\Enemies\FlyerPatrol\FlyerPatrolStateController.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\EnemyShooter.cs" />
      <Compile Include="Assets\_Scripts\SO\IntSO.cs" />
+     <Compile Include="Assets\_Scripts\Config\PlayerConfig.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Enemies\PatrolFire\PatrolFireStateController.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\VisualField.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Enemies\FollowMelee\MetalEnemyAnimatorController.cs" />
@@ -118,8 +120,6 @@
      <Compile Include="Assets\_Scripts\Gameplay\Enemies\FollowMelee\FollowState.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\CameraFollowTarget.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Enemies\PatrolFire\AttackState.cs" />
-     <Compile Include="Assets\_Scripts\SO\GameplaySettingsSO.cs" />
-     <Compile Include="Assets\_Scripts\Config\PlayerConfig.cs" />
  <Reference Include="UnityEngine">
  <HintPath>C:/Program Files/Unity/Hub/Editor/2020.3.25f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
  </Reference>
