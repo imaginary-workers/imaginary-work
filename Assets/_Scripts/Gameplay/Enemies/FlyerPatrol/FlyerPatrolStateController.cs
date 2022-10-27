@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Game.Gameplay.Enemies.FlyerPatrol
 {
-    public class FlyerPatrolStateController : MonoBehaviour
+    public class FlyerPatrolStateController : Enemy
     {
         State _currentState;
         NormalState _normalState;
@@ -20,7 +20,7 @@ namespace Game.Gameplay.Enemies.FlyerPatrol
         [SerializeField] GameObject _particle;
         [SerializeField] EnemyDamageable _damageable;
 
-        void Awake()
+        protected override void OnAwakeEnemy()
         {
             _target = FindPlayer();
             _lookAtTarget.Target = _target;
