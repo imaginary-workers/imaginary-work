@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Game.Gameplay.Enemies.PatrolFire
 {
-    public class PatrolFireStateController : MonoBehaviour
+    public class PatrolFireStateController : Enemy
     {
         [SerializeField] PatrolBehaviour _normalBehaviour;
         [SerializeField] VisualField _visualField;
@@ -16,7 +16,6 @@ namespace Game.Gameplay.Enemies.PatrolFire
         [SerializeField] EnemyDamageable _damageable;
         [SerializeField] AnimatorController _animatorController;
         [SerializeField] SpawnDrops _spawner;
-        EnemyCount _enemyCount;
         NormalState _normal;
         AttackState _attack;
         DeadState _dead;
@@ -30,10 +29,10 @@ namespace Game.Gameplay.Enemies.PatrolFire
             _enemyShooter.Target = _lookAtTarget.Target = _visualField.Target = _player;
             DesactiveBehaviours();
             _normal = new NormalState(this, _normalBehaviour, _visualField);
-            _enemyCount.AddEnemy();
             _attack = new AttackState(this, _visualField, _moveComponent, _lookAtTarget, _animatorController, _enemyShooter);
             _dead = new DeadState(this, _animatorController, 5, _moveComponent, _spawner);
             _currentState = _normal;
+            AddEnemy();
         }
         
         void Start()
@@ -72,10 +71,9 @@ namespace Game.Gameplay.Enemies.PatrolFire
             _lookAtTarget.enabled = false;
             _enemyShooter.enabled = false;
         }
-
         public void DestroyGameObject()
         {
-            _enemyCount.RemoveEnemy();
+            RemoveEnemy();
             Destroy(gameObject);
         }
 

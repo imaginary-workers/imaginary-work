@@ -5,7 +5,7 @@ using static UnityEditorInternal.VersionControl.ListControl;
 
 namespace Game.Gameplay.Enemies.FollowMelee
 {
-    public class FollowMeleeStateController : MonoBehaviour
+    public class FollowMeleeStateController : Enemy
     {
         [SerializeField] RandomPatrol _randomPatrol;
         [SerializeField, Range(0, 15)] int _rangeFollow = 15;
@@ -21,7 +21,6 @@ namespace Game.Gameplay.Enemies.FollowMelee
         [SerializeField] SpawnDrops _spawn;
         [SerializeField] MetalEnemyAnimatorController _aniController;
         State _currentState;
-        EnemyCount _enemyCount;
         DeadState _deadState;
         PlayerController _player;
         RandomPatrolState _randomPatrolState;
@@ -55,8 +54,8 @@ namespace Game.Gameplay.Enemies.FollowMelee
             _randomPatrol.Speed = _followPlayer.Speed = _moveSpeed;
             _followPlayer.RangeOfVisionY = _rangeOfVisionY;
             _randomPatrolState = new RandomPatrolState(this, _randomPatrol);
-            _enemyCount.AddEnemy();
             _followState = new FollowState(this);
+            AddEnemy();
             _meleeState = new MeleeAttackState(this);
             _randomPatrol.enabled = false;
             _followPlayer.enabled = false;
@@ -87,7 +86,7 @@ namespace Game.Gameplay.Enemies.FollowMelee
         }
         public void DestroyGameObject()
         {
-            _enemyCount.RemoveEnemy();
+            RemoveEnemy();
             Destroy(gameObject);
         }
         public void SwitchState(State state)
