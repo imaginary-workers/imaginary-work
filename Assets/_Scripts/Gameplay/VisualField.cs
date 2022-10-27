@@ -12,7 +12,7 @@ namespace Game.Gameplay
         [SerializeField] float _visualAngle = 45f;
         [SerializeField] float _visualDistance = 10f;
         [SerializeField, Range(.1f, 30f)] float _rangeOfVisionY = 1.5f;
-        [SerializeField] LayerMask _visualLayers;
+        [SerializeField] LayerMask _obstacleLayer;
         bool _isTargetInView = false;
         Ray _ray;
         RaycastHit _hitInfo;
@@ -51,10 +51,12 @@ namespace Game.Gameplay
                 return false;
             var target = _target.transform.position;
             var myPosition = transform.position;
+            
+            if (Physics.Raycast(myPosition, (target - myPosition).normalized, _visualDistance, _obstacleLayer))
+            {
+                return false;
+            }
 
-            _ray = new Ray(myPosition, target - myPosition);
-            Physics.Raycast(_ray, out _hitInfo, _visualDistance, _visualLayers);
-            Debug.Log(_hitInfo);
             if (_hitInfo.collider.gameObject != _target)
             {
                 return false;
