@@ -5,7 +5,7 @@ using static UnityEditorInternal.VersionControl.ListControl;
 
 namespace Game.Gameplay.Enemies.FollowMelee
 {
-    public class FollowMeleeStateController : MonoBehaviour
+    public class FollowMeleeStateController : Enemy
     {
         [SerializeField] RandomPatrol _randomPatrol;
         [SerializeField, Range(0, 15)] int _rangeFollow = 15;
@@ -21,7 +21,6 @@ namespace Game.Gameplay.Enemies.FollowMelee
         [SerializeField] SpawnDrops _spawn;
         [SerializeField] MetalEnemyAnimatorController _aniController;
         State _currentState;
-        State _lastState;
         DeadState _deadState;
         PlayerController _player;
         RandomPatrolState _randomPatrolState;
@@ -47,7 +46,7 @@ namespace Game.Gameplay.Enemies.FollowMelee
             private set { _isAttacking = value; }
         }
 
-        void Awake()
+        protected override void OnAwakeEnemy()
         {
             _player = FindObjectOfType<PlayerController>();
             _lookAtTarget.Target = _player.gameObject;
