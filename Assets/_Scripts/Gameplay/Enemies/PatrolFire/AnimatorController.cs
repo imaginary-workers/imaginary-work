@@ -8,7 +8,18 @@ namespace Game.Gameplay.Enemies.PatrolFire
     {
         [SerializeField] MoveComponent moveComponent;
         [SerializeField] Animator _animator;
+        [SerializeField] EnemyDamageable _damageable;
         Dictionary<string, Action> _events = new Dictionary<string, Action>();
+
+        void OnEnable()
+        {
+            _damageable.OnTakeDamage += OnTakeDamageHandler;
+        }
+
+        void OnDisable()
+        {
+            _damageable.OnTakeDamage -= damage => TakeDamageFeedback();
+        }
 
         void LateUpdate()
         {
@@ -44,6 +55,21 @@ namespace Game.Gameplay.Enemies.PatrolFire
         public void Death()
         {
             _animator.SetTrigger("Death");
+        }
+
+        public void TakeDamageFeedback()
+        {
+            
+        }
+        
+        public void TakeStrongDamageFeedback()
+        {
+            
+        }
+
+        void OnTakeDamageHandler(int damage)
+        {
+            TakeDamageFeedback();
         }
     }
 }
