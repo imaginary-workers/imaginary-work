@@ -11,7 +11,7 @@ namespace Game.Player
         [SerializeField] IntSO _playerLive;
         public event Action<int> OnTakeDamage;
 
-        public void TakeTamage(int damage)
+        public void TakeTamage(int damage, ElementSO element)
         {
             _playerLive.value -= damage;
             OnTakeDamage?.Invoke(damage);

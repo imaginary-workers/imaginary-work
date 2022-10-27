@@ -132,6 +132,7 @@ MonoBehaviour:
     m_Bits: 8
   _rateInSeconds: 0.2
   _maxDistance: 5
+  _attackElement: {fileID: 0}
 --- !u!114 &7120076050924849061
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -164,7 +165,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc660ccbbe8a4ad4ea828415e3d77778, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enemyLife: 2
+  _life: 10
+  _weakness: {fileID: 11400000, guid: acc81f72dbdb81b40b95f8578c3fba01, type: 2}
 --- !u!65 &4223900162893284443
 BoxCollider:
   m_ObjectHideFlags: 0

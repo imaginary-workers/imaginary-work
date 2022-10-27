@@ -1,4 +1,5 @@
-﻿using UnityEditor;
+﻿using System;
+using UnityEditor;
 using UnityEngine;
 
 namespace Game.Gameplay.Enemies.FollowMelee
@@ -8,11 +9,18 @@ namespace Game.Gameplay.Enemies.FollowMelee
         [SerializeField] Animator _animator;
         [SerializeField] EnemyDamageable _enemyDamagable;
         [SerializeField] MoveComponent moveComponent;
+        [SerializeField] EnemyDamageable _damageable;
 
         void Awake()
         {
             _enemyDamagable.OnDeath += Death;
         }
+
+        void OnEnable()
+        {
+            _damageable.OnTakeDamage += OnTakeDamageHandler;
+        }
+
         void Update()
         {
             _animator.SetFloat("Speed", moveComponent.Velocity.magnitude);
@@ -24,6 +32,16 @@ namespace Game.Gameplay.Enemies.FollowMelee
         public void Death()
         {
             _animator.SetTrigger("Death");
+        }
+
+        void TakeDamageFeedback()
+        {
+            
+        }
+
+        void OnTakeDamageHandler(int damage)
+        {
+            TakeDamageFeedback();
         }
     }
 }
