@@ -21,7 +21,7 @@ namespace Game.Gameplay.Enemies.FollowMelee
         [SerializeField] SpawnDrops _spawn;
         [SerializeField] MetalEnemyAnimatorController _aniController;
         State _currentState;
-        State _lastState;
+        EnemyCount _enemyCount;
         DeadState _deadState;
         PlayerController _player;
         RandomPatrolState _randomPatrolState;
@@ -55,6 +55,7 @@ namespace Game.Gameplay.Enemies.FollowMelee
             _randomPatrol.Speed = _followPlayer.Speed = _moveSpeed;
             _followPlayer.RangeOfVisionY = _rangeOfVisionY;
             _randomPatrolState = new RandomPatrolState(this, _randomPatrol);
+            _enemyCount.AddEnemy();
             _followState = new FollowState(this);
             _meleeState = new MeleeAttackState(this);
             _randomPatrol.enabled = false;
@@ -86,6 +87,7 @@ namespace Game.Gameplay.Enemies.FollowMelee
         }
         public void DestroyGameObject()
         {
+            _enemyCount.RemoveEnemy();
             Destroy(gameObject);
         }
         public void SwitchState(State state)
