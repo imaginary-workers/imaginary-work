@@ -110,14 +110,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _target: {fileID: 0}
-  _visualAngle: 45
+  _visualAngle: 80
   _visualDistance: 10
   _rangeOfVisionY: 1.5
-  _rangeOfVisionYUp: 1.5
-  _rangeOfVisionYDown: -1.5
+  _rangeOfVisionYUp: 0
+  _rangeOfVisionYDown: -4
+  _maxTime: 0.2
   _obstacleLayer:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 72
   _targetLayer:
     serializedVersion: 2
     m_Bits: 8
@@ -161,6 +162,10 @@ MonoBehaviour:
   _maxDistance: 10
   _particle: {fileID: 3752655323884331237, guid: 06badebed72890a448035c9454bd234b, type: 3}
   _damageable: {fileID: 5854232405504092712}
+  _light: {fileID: 2567770015003555644}
+  _lightFocus: {fileID: 465989763577330155}
+  _attackColor: {r: 1, g: 0, b: 0, a: 1}
+  _normalColor: {r: 0.003921569, g: 0.7294118, b: 1, a: 1}
 --- !u!114 &5854232405504092712
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -303,5 +308,15 @@ MonoBehaviour:
 --- !u!4 &6417747301928851611 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7505385226993403885, guid: 7c983c304ab18b94e9b1f1136374d9a9, type: 3}
+  m_PrefabInstance: {fileID: 3546610211560677238}
+  m_PrefabAsset: {fileID: 0}
+--- !u!108 &2567770015003555644 stripped
+Light:
+  m_CorrespondingSourceObject: {fileID: 1340553211164452938, guid: 7c983c304ab18b94e9b1f1136374d9a9, type: 3}
+  m_PrefabInstance: {fileID: 3546610211560677238}
+  m_PrefabAsset: {fileID: 0}
+--- !u!108 &465989763577330155 stripped
+Light:
+  m_CorrespondingSourceObject: {fileID: 3985562571328874141, guid: 7c983c304ab18b94e9b1f1136374d9a9, type: 3}
   m_PrefabInstance: {fileID: 3546610211560677238}
   m_PrefabAsset: {fileID: 0}

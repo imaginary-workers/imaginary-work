@@ -14,8 +14,22 @@ namespace Game.Gameplay.Enemies.FlyerPatrol
         float _maxDistance = 20;
         LookAtTarget _lookAtTarget;
         VisualField _visualField;
+        Light _light;
+        Color _color;
+        Light _lightFocus;
 
-        public NormalState(FlyerPatrolStateController stateController, PatrolBehaviour patrolBehaviour, GameObject target, MoveComponent moveComponent, float maxDistance, LookAtTarget lookAtTarget, VisualField visualField)
+        public NormalState(
+            FlyerPatrolStateController stateController,
+            PatrolBehaviour patrolBehaviour,
+            GameObject target,
+            MoveComponent moveComponent,
+            float maxDistance,
+            LookAtTarget lookAtTarget,
+            VisualField visualField,
+            Light light,
+            Light lightFocus,
+            Color color
+            )
         {
             _stateController = stateController;
             _patrolBehaviour = patrolBehaviour;
@@ -24,6 +38,9 @@ namespace Game.Gameplay.Enemies.FlyerPatrol
             _maxDistance = maxDistance;
             _lookAtTarget = lookAtTarget;
             _visualField = visualField;
+            _light = light;
+            _color = color;
+            _lightFocus = lightFocus;
         }
         public override void Enter()
         {
@@ -34,6 +51,8 @@ namespace Game.Gameplay.Enemies.FlyerPatrol
                 _moveComponent.Velocity = _velocityCheckpoint;
             }
 
+            _light.color = _color;
+            _lightFocus.color = _color;
             _visualField.OnEnterViewTarget += ChangeToAttack;
         }
         public override void Update()
