@@ -13,8 +13,23 @@ namespace Game.Gameplay.Enemies.FlyerPatrol
         MoveComponent _moveComponent;
         float _maxDistance = 20;
         LookAtTarget _lookAtTarget;
+        VisualField _visualField;
+        Light _light;
+        Color _color;
+        Light _lightFocus;
 
-        public NormalState(FlyerPatrolStateController stateController, PatrolBehaviour patrolBehaviour, GameObject target, MoveComponent moveComponent, float maxDistance, LookAtTarget lookAtTarget)
+        public NormalState(
+            FlyerPatrolStateController stateController,
+            PatrolBehaviour patrolBehaviour,
+            GameObject target,
+            MoveComponent moveComponent,
+            float maxDistance,
+            LookAtTarget lookAtTarget,
+            VisualField visualField,
+            Light light,
+            Light lightFocus,
+            Color color
+            )
         {
             _stateController = stateController;
             _patrolBehaviour = patrolBehaviour;
@@ -22,6 +37,10 @@ namespace Game.Gameplay.Enemies.FlyerPatrol
             _moveComponent = moveComponent;
             _maxDistance = maxDistance;
             _lookAtTarget = lookAtTarget;
+            _visualField = visualField;
+            _light = light;
+            _color = color;
+            _lightFocus = lightFocus;
         }
         public override void Enter()
         {
@@ -31,18 +50,25 @@ namespace Game.Gameplay.Enemies.FlyerPatrol
             {
                 _moveComponent.Velocity = _velocityCheckpoint;
             }
+
+            _light.color = _color;
+            _lightFocus.color = _color;
+            _visualField.OnEnterViewTarget += ChangeToAttack;
         }
         public override void Update()
         {
-            if (Vector3.Distance(_target.transform.position, _stateController.transform.position) <= _maxDistance)
-            {
-                _stateController.ChangeState(_stateController.AttackState);
-            }
         }
+
+        void ChangeToAttack(GameObject target)
+        {
+            _stateController.ChangeState(_stateController.AttackState);
+        }
+
         public override void Exit()
         {
             _patrolBehaviour.enabled = false;
             _velocityCheckpoint = _moveComponent.Velocity;
+            _visualField.OnEnterViewTarget -= ChangeToAttack;
         }
     }
 }
