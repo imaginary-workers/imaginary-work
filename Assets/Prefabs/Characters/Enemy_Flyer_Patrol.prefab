@@ -113,9 +113,14 @@ MonoBehaviour:
   _visualAngle: 45
   _visualDistance: 10
   _rangeOfVisionY: 1.5
+  _rangeOfVisionYUp: 1.5
+  _rangeOfVisionYDown: -1.5
   _obstacleLayer:
     serializedVersion: 2
     m_Bits: 64
+  _targetLayer:
+    serializedVersion: 2
+    m_Bits: 8
 --- !u!114 &4885114125338213701
 MonoBehaviour:
   m_ObjectHideFlags: 0

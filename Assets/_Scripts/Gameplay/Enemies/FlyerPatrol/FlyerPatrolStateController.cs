@@ -25,7 +25,7 @@ namespace Game.Gameplay.Enemies.FlyerPatrol
             _target = FindPlayer();
             _lookAtTarget.Target = _target;
             _visualField.Target = _target;
-            _normalState = new NormalState(this, _patrolBehaviour, _target, _moveComponent, _maxDistance, _lookAtTarget);
+            _normalState = new NormalState(this, _patrolBehaviour, _target, _moveComponent, _maxDistance, _lookAtTarget, _visualField);
             _attackState = new AttackState(this, _lookAtTarget, _attack,_moveComponent, _target, _maxDistance);
             _deadState = new DeadState(_moveComponent, this);
             _attack.enabled = _lookAtTarget.enabled = false;

@@ -13,8 +13,9 @@ namespace Game.Gameplay.Enemies.FlyerPatrol
         MoveComponent _moveComponent;
         float _maxDistance = 20;
         LookAtTarget _lookAtTarget;
+        VisualField _visualField;
 
-        public NormalState(FlyerPatrolStateController stateController, PatrolBehaviour patrolBehaviour, GameObject target, MoveComponent moveComponent, float maxDistance, LookAtTarget lookAtTarget)
+        public NormalState(FlyerPatrolStateController stateController, PatrolBehaviour patrolBehaviour, GameObject target, MoveComponent moveComponent, float maxDistance, LookAtTarget lookAtTarget, VisualField visualField)
         {
             _stateController = stateController;
             _patrolBehaviour = patrolBehaviour;
@@ -22,6 +23,7 @@ namespace Game.Gameplay.Enemies.FlyerPatrol
             _moveComponent = moveComponent;
             _maxDistance = maxDistance;
             _lookAtTarget = lookAtTarget;
+            _visualField = visualField;
         }
         public override void Enter()
         {
@@ -31,18 +33,23 @@ namespace Game.Gameplay.Enemies.FlyerPatrol
             {
                 _moveComponent.Velocity = _velocityCheckpoint;
             }
+
+            _visualField.OnEnterViewTarget += ChangeToAttack;
         }
         public override void Update()
         {
-            if (Vector3.Distance(_target.transform.position, _stateController.transform.position) <= _maxDistance)
-            {
-                _stateController.ChangeState(_stateController.AttackState);
-            }
         }
+
+        void ChangeToAttack(GameObject target)
+        {
+            _stateController.ChangeState(_stateController.AttackState);
+        }
+
         public override void Exit()
         {
             _patrolBehaviour.enabled = false;
             _velocityCheckpoint = _moveComponent.Velocity;
+            _visualField.OnEnterViewTarget -= ChangeToAttack;
         }
     }
 }
