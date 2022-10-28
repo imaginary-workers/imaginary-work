@@ -1,6 +1,8 @@
 using UnityEngine;
 using UnityEngine.UI;
 using Game.SO;
+using Game.Managers;
+using Game.Player;
 
 namespace Game.UI
 {
@@ -9,6 +11,7 @@ namespace Game.UI
         [SerializeField] Slider _slider;
         [SerializeField] Image _sliderFillImage;
         [SerializeField] Gradient _colorVariention;
+        [SerializeField] Animator _effectAnimator;
 
         [Header("Player's Life")]
         [SerializeField] IntSO _maxPlayerLife;
@@ -17,6 +20,8 @@ namespace Game.UI
         void Start()
         {
             SetSliderValue();
+
+            GameManager.Player.GetComponent<PlayerDamageable>().OnTakeDamage += PlayDamageEffect;
         }
 
         void Update()
@@ -32,6 +37,11 @@ namespace Game.UI
             float value = actualValue / maxValue;
             _slider.value = value;
             _sliderFillImage.color = _colorVariention.Evaluate(value);
+        }
+
+        public void PlayDamageEffect(int x)
+        {
+            _effectAnimator.SetTrigger("Play");
         }
     }
 }
