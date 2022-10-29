@@ -10,6 +10,7 @@ namespace Game.Gameplay.Enemies.FollowMelee
         [SerializeField] EnemyDamageable _enemyDamagable;
         [SerializeField] MoveComponent moveComponent;
         [SerializeField] EnemyDamageable _damageable;
+        [SerializeField] ParticleSystem _damageParticle;
 
         void Awake()
         {
@@ -35,7 +36,7 @@ namespace Game.Gameplay.Enemies.FollowMelee
         }      
         void TakeDamageFeedback()
         {
-            _animator.SetBool("Hit", true);           
+            _damageParticle.Play();
         }
 
         void OnTakeDamageHandler(int damage)

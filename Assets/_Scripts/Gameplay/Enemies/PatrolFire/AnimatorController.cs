@@ -9,6 +9,7 @@ namespace Game.Gameplay.Enemies.PatrolFire
         [SerializeField] MoveComponent moveComponent;
         [SerializeField] Animator _animator;
         [SerializeField] EnemyDamageable _damageable;
+        [SerializeField] ParticleSystem _damageParticle;
         Dictionary<string, Action> _events = new Dictionary<string, Action>();
 
         void OnEnable()
@@ -59,7 +60,7 @@ namespace Game.Gameplay.Enemies.PatrolFire
 
         public void TakeDamageFeedback()
         {
-            _animator.SetBool("Hit", true);
+          _damageParticle.Play();
         }
         
         public void TakeStrongDamageFeedback()
