@@ -32,16 +32,15 @@ namespace Game.Gameplay.Enemies.FollowMelee
         public void Death()
         {
             _animator.SetTrigger("Death");
-        }
-
+        }      
         void TakeDamageFeedback()
         {
-            
+            _animator.SetBool("Hit", true);           
         }
 
         void OnTakeDamageHandler(int damage)
         {
             TakeDamageFeedback();
-        }
+        }    
     }
 }
