@@ -42,7 +42,7 @@ namespace Game.Gameplay.Enemies.PatrolFire
         public override void Update()
         {
             if (!_visualField.IsTargetInView)
-                _controller.ChangeState(_controller.Normal);
+                _controller.ChangeState(_controller.NormalState);
         }
 
         public override void Exit()

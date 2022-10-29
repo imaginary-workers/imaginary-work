@@ -68,7 +68,7 @@ namespace Game.Gameplay.Enemies.PatrolFire
         
         public void TakeStrongDamageFeedback()
         {
-            
+            _animator.SetTrigger("Hit");
         }
 
         void OnTakeDamageHandler(int damage)
