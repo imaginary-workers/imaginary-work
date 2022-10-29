@@ -48,6 +48,7 @@ namespace Game.Managers
         PlayerConfig _newConfig = null;
         bool _isPaused = false;
         bool _isDeath = false;
+        bool _isChangingScene = false;
 
         void Awake()
         {
@@ -215,15 +216,19 @@ namespace Game.Managers
 
         IEnumerator CO_NextScene(string sceneName)
         {
-            _blackScreenAnimator?.SetTrigger("Play");
+            if (!_isChangingScene)
+            {
+                _isChangingScene = true;
+                _blackScreenAnimator?.SetTrigger("Play");
 
-            yield return new WaitForSecondsRealtime(1f);
+                yield return new WaitForSecondsRealtime(1f);
 
-            _health.value = _maxHealth.value;
-            Cursor.lockState = CursorLockMode.None;
-            Time.timeScale = 1;
+                _health.value = _maxHealth.value;
+                Cursor.lockState = CursorLockMode.None;
+                Time.timeScale = 1;
 
-            SceneManager.LoadScene(sceneName);
+                SceneManager.LoadScene(sceneName);
+            }
         }
     }
 }
