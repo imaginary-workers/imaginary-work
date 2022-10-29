@@ -1,4 +1,5 @@
 ﻿using Game.Gameplay;
+using Game.Gameplay.Enemies;
 using Game.Gameplay.Enemies.FlyerPatrol;
 using UnityEngine;
 

@@ -17,7 +17,7 @@ namespace Game.Player
             OnTakeDamage?.Invoke(damage);
 
             if (_playerLive.value <= 0)
-                GameManager.instance.DeathScreen();
+                GameManager.Instance.DeathScreen();
         }
     }
 }

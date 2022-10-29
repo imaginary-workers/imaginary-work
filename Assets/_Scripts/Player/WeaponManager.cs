@@ -24,7 +24,7 @@ namespace Game.Player
 
         void Start()
         {
-            GameManager.instance.UpdateBulletCounter(CurrentWeapon.Ammunition);
+            GameManager.Instance.UpdateBulletCounter(CurrentWeapon.Ammunition);
         }
 
         public void SwitchWeapon(int slot)
@@ -35,7 +35,7 @@ namespace Game.Player
             CurrentWeapon.gameObject.SetActive(false);
             CurrentWeapon = weapon;
             CurrentWeapon.gameObject.SetActive(true);
-            GameManager.instance.UpdateBulletCounter(CurrentWeapon.Ammunition);
+            GameManager.Instance.UpdateBulletCounter(CurrentWeapon.Ammunition);
         }
 
         public bool ReloadReserveWeapons()
