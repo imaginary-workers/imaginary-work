@@ -1,3 +1,5 @@
+using System;
+using System.Collections;
 using Game.Managers;
 using UnityEngine;
 
@@ -13,21 +15,35 @@ namespace Game.Gameplay.Enemies.FollowMelee
         [SerializeField] MoveComponent _moveComponent;
         [SerializeField] LookAtTarget _lookAtTarget;
         [SerializeField, Range(0f, 5f)] float _moveSpeed = 5f;
-        [SerializeField] EventAnimation _eventAnimation;
+        [SerializeField] AnimationEvent _animationEvent;
         [SerializeField] float _secondToDestroy = 4;
         [SerializeField] SpawnDrops _spawn;
-        [SerializeField] MetalEnemyAnimatorController _aniController;
+        [SerializeField] AnimatorController _aniController;
         GameObject _player;
         RandomPatrolState _randomPatrolState;
         FollowState _followState;
         MeleeAttackState _meleeState;
+        TakeStrongDamageState _takeStrongDamageState;
         float _rangeMelee = 0.5f;
         bool _isAttacking;
+        float _takeStrongDamageRecoverTime = 3f;
+        bool _canDoStrongDamageFeedback = true;
 
         public RandomPatrolState RandomPatrolState => _randomPatrolState;
         public FollowState FollowState => _followState;
         public MeleeAttackState MeleeState => _meleeState;
+        public TakeStrongDamageState TakeStrongDamageState => _takeStrongDamageState;
         public int RangeFollow => _rangeFollow;
+
+        void OnEnable()
+        {
+            Damageable.OnTakeStrongDamage += OnTakeStrongDamageHandler;
+        }
+
+        void OnDisable()
+        {
+            Damageable.OnTakeStrongDamage -= OnTakeStrongDamageHandler;
+        }
 
         protected override void OnAwakeEnemy()
         {
@@ -38,12 +54,34 @@ namespace Game.Gameplay.Enemies.FollowMelee
             _followPlayer.RangeOfVisionY = _rangeOfVisionY;
             _randomPatrolState = new RandomPatrolState(this, _randomPatrol, _player, _rangeOfVisionY);
             _followState = new FollowState(this, _followPlayer, _lookAtTarget, _player, _rangeMelee, _rangeOfVisionY);
-            _meleeState = new MeleeAttackState(this, _meleeAttack, _moveComponent, _lookAtTarget, _eventAnimation, _player, _rangeMelee, _rangeOfVisionY);
+            _meleeState = new MeleeAttackState(this, _meleeAttack, _moveComponent, _lookAtTarget, _animationEvent, _player, _rangeMelee, _rangeOfVisionY);
             _randomPatrol.enabled = false;
             _followPlayer.enabled = false;
             _meleeAttack.enabled = false;
             deadState = new DeadState(_moveComponent, _aniController, _spawn, this, _secondToDestroy);
+            _takeStrongDamageState = new TakeStrongDamageState(this, _moveComponent, _animationEvent, _aniController);
             ChangeState(_randomPatrolState);
+        }
+        
+        void ChangeToTakeStrongDamageState()
+        {
+            if (_takeStrongDamageState == null) return;
+            
+            ChangeState(_takeStrongDamageState);
+        }
+
+        void OnTakeStrongDamageHandler(int damage)
+        {
+            if (!_canDoStrongDamageFeedback) return;
+            StartCoroutine(CO_TakeStrongDamageRecoverTime());
+            ChangeToTakeStrongDamageState();
+        }
+
+        IEnumerator CO_TakeStrongDamageRecoverTime()
+        {
+            _canDoStrongDamageFeedback = false;
+            yield return new WaitForSeconds(_takeStrongDamageRecoverTime);
+            _canDoStrongDamageFeedback = true;
         }
     }
 

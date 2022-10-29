@@ -3,10 +3,10 @@ using UnityEngine;
 
 namespace Game.Gameplay.Enemies.FollowMelee
 {
-    public class EventAnimation : MonoBehaviour
+    public class AnimationEvent : MonoBehaviour
     {
         [SerializeField] GameObject _damage;
-        public event Action OnAttackStarts, OnAttackEnds;
+        public event Action OnAttackStarts, OnAttackEnds, OnTakeStrongDamageStarts, OnTakeStrongDamageEnds;
 
         void Awake()
         {
@@ -29,6 +29,16 @@ namespace Game.Gameplay.Enemies.FollowMelee
         public void Event_EndHitbox()
         {
             _damage.SetActive(false);
+        }
+
+        public void Event_TakeStrongDamageStarts()
+        {
+            OnTakeStrongDamageStarts?.Invoke();
+        }
+
+        public void Event_TakeStrongDamageEnds()
+        {
+            OnTakeStrongDamageEnds?.Invoke();
         }
     }
 }

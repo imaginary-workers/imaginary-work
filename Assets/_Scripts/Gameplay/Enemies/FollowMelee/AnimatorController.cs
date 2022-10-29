@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Game.Gameplay.Enemies.FollowMelee
 {
-    public class MetalEnemyAnimatorController : MonoBehaviour
+    public class AnimatorController : MonoBehaviour
     {
         [SerializeField] Animator _animator;
         [SerializeField] EnemyDamageable _enemyDamagable;
@@ -35,9 +35,14 @@ namespace Game.Gameplay.Enemies.FollowMelee
         {
             _animator.SetTrigger("Death");
         }      
-        void TakeDamageFeedback()
+        public void TakeDamageFeedback()
         {
             _damageParticle.Play();
+        }
+
+        public void TakeStrongDamageFeedback()
+        {
+            _animator.SetTrigger("Hit");
         }
 
         void OnTakeDamageHandler(int damage)

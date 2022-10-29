@@ -8,19 +8,19 @@ namespace Game.Gameplay.Enemies.FollowMelee
         MeleeAttack _meleeAttack;
         MoveComponent _moveComponent;
         LookAtTarget _lookAtTarget;
-        EventAnimation _eventAnimation;
+        AnimationEvent _animationEvent;
         bool _isAttacking = false;
         GameObject _player;
         float _rangeMelee;
         float _rangeOfVisionY;
 
-        public MeleeAttackState(FollowMeleeStateController stateController, MeleeAttack meleeAttack, MoveComponent moveComponent, LookAtTarget lookAtTarget, EventAnimation eventAnimation, GameObject player, float rangeMelee, float rangeOfVisionY)
+        public MeleeAttackState(FollowMeleeStateController stateController, MeleeAttack meleeAttack, MoveComponent moveComponent, LookAtTarget lookAtTarget, AnimationEvent animationEvent, GameObject player, float rangeMelee, float rangeOfVisionY)
         {
             _stateController = stateController;
             _meleeAttack = meleeAttack;
             _moveComponent = moveComponent;
             _lookAtTarget = lookAtTarget;
-            _eventAnimation = eventAnimation;
+            _animationEvent = animationEvent;
             _player = player;
             _rangeMelee = rangeMelee;
             _rangeOfVisionY = rangeOfVisionY;
@@ -31,10 +31,11 @@ namespace Game.Gameplay.Enemies.FollowMelee
             _moveComponent.Velocity = Vector3.zero;
             _meleeAttack.enabled = true;
             _lookAtTarget.enabled = true;
-            _eventAnimation.OnAttackStarts += () => _isAttacking = true;
-            _eventAnimation.OnAttackEnds += () => _isAttacking = false;
+            _animationEvent.OnAttackStarts += OnOnAttackStartsHandler;
+            _animationEvent.OnAttackEnds += OnOnAttackEndsHandler;
             _meleeAttack.Attack();
         }
+
         public override void Update()
         {
             if (_isAttacking) return;
@@ -53,8 +54,18 @@ namespace Game.Gameplay.Enemies.FollowMelee
         {
             _meleeAttack.enabled = false;
             _lookAtTarget.enabled = false;
-            _eventAnimation.OnAttackStarts += () => _isAttacking = true;
-            _eventAnimation.OnAttackEnds += () => _isAttacking = false;
+            _animationEvent.OnAttackStarts -= OnOnAttackStartsHandler;
+            _animationEvent.OnAttackEnds -= OnOnAttackEndsHandler;
+        }
+
+        void OnOnAttackEndsHandler()
+        {
+            _isAttacking = false;
+        }
+
+        void OnOnAttackStartsHandler()
+        {
+            _isAttacking = true;
         }
     }
 }

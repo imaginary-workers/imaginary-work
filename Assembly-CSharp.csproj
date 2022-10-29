@@ -53,7 +53,6 @@
   </PropertyGroup>
   <ItemGroup>
      <Compile Include="Assets\_Scripts\Utils.cs" />
-     <Compile Include="Assets\_Scripts\Gameplay\Enemies\PatrolFire\State.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Enemies\FlyerPatrol\NormalState.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Enemies\Enemy.cs" />
      <Compile Include="Assets\_Scripts\Player\PlayerController.cs" />
@@ -75,7 +74,7 @@
      <Compile Include="Assets\_Scripts\Gameplay\Enemies\PatrolFire\NormalState.cs" />
      <Compile Include="Assets\_Scripts\Player\PlayerAnimationManager.cs" />
      <Compile Include="Assets\_Scripts\SO\WeaponSO.cs" />
-     <Compile Include="Assets\_Scripts\Gameplay\Enemies\FollowMelee\EventAnimation.cs" />
+     <Compile Include="Assets\_Scripts\Gameplay\Enemies\FollowMelee\AnimationEvent.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\ObjectPooler.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Platforms\TiltablePlatform.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Enemies\FollowMelee\RandomPatrolState.cs" />
@@ -86,11 +85,11 @@
      <Compile Include="Assets\_Scripts\Gameplay\Weapon\TriggerWeapon.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\MoveComponent.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\FPSCamera.cs" />
+     <Compile Include="Assets\_Scripts\Gameplay\Enemies\FlyerPatrol\AnimatorController.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Enemies\FlyerPatrol\DeadState.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Enemies\FollowMelee\DeadState.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Enemies\FlyerPatrol\AttackState.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Enemies\RandomPatrol.cs" />
-     <Compile Include="Assets\_Scripts\Gameplay\Enemies\FollowMelee\State.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Platforms\PlatformMovable.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Enemies\PatrolFire\DeadState.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Bullet.cs" />
@@ -98,18 +97,18 @@
      <Compile Include="Assets\_Scripts\Gameplay\Weapon\MeleeWeapon.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\PowerUps\PlayerHealerPowerUp.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Enemies\FlyerPatrol\FlyerPatrolStateController.cs" />
+     <Compile Include="Assets\_Scripts\Gameplay\Enemies\EnemyStateController.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\EnemyShooter.cs" />
      <Compile Include="Assets\_Scripts\SO\IntSO.cs" />
      <Compile Include="Assets\_Scripts\Config\PlayerConfig.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Enemies\PatrolFire\PatrolFireStateController.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\VisualField.cs" />
-     <Compile Include="Assets\_Scripts\Gameplay\Enemies\FollowMelee\MetalEnemyAnimatorController.cs" />
+     <Compile Include="Assets\_Scripts\Gameplay\Enemies\FollowMelee\AnimatorController.cs" />
      <Compile Include="Assets\_Scripts\UI\HealthUIController.cs" />
      <Compile Include="Assets\_Scripts\ToLevelOne.cs" />
      <Compile Include="Assets\_Scripts\Player\WeaponManager.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Enemies\EnemyDamageable.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Weapon\ParticleWeapon.cs" />
-     <Compile Include="Assets\_Scripts\Gameplay\Enemies\FlyerPatrol\State.cs" />
      <Compile Include="Assets\_Scripts\Player\PlayerDamageable.cs" />
      <Compile Include="Assets\_Scripts\ParticlesController.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Platforms\BreakPlatformAC.cs" />
@@ -120,8 +119,11 @@
      <Compile Include="Assets\_Scripts\Gameplay\Damaging.cs" />
      <Compile Include="Assets\_Scripts\ActionRepeater.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Enemies\FollowMelee\FollowState.cs" />
+     <Compile Include="Assets\_Scripts\Gameplay\Enemies\State.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\CameraFollowTarget.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Enemies\PatrolFire\AttackState.cs" />
+     <Compile Include="Assets\_Scripts\Gameplay\Enemies\FollowMelee\TakeStrongDamageState.cs" />
+     <Compile Include="Assets\_Scripts\Gameplay\Enemies\PatrolFire\TakeStrongDamageState.cs" />
  <Reference Include="UnityEngine">
  <HintPath>C:/Program Files/Unity/Hub/Editor/2020.3.25f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
  </Reference>

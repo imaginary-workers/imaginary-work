@@ -6,12 +6,12 @@ namespace Game.Gameplay.Enemies
     {
         State _currentState;
         State _lastState;
-        [SerializeField] EnemyDamageable _damageable;
+        EnemyDamageable _damageable;
         protected State deadState;
 
         void Start()
         {
-            _damageable.OnDeath += ChangeToDeathState;
+            Damageable.OnDeath += ChangeToDeathState;
         }
         void Update()
         {
@@ -40,14 +40,24 @@ namespace Game.Gameplay.Enemies
 
         public virtual void DestroyGameObject()
         {
+            Damageable.OnDeath -= ChangeToDeathState;
             Destroy(gameObject);
-            _damageable.OnDeath -= ChangeToDeathState;
         }
 
         void ChangeToDeathState()
         {
             if (deadState == null) return;
             ChangeState(deadState);
+        }
+
+        protected EnemyDamageable Damageable
+        {
+            get
+            {
+                if (_damageable == null)
+                    _damageable = GetComponent<EnemyDamageable>();
+                return _damageable;
+            }
         }
     }
 }
