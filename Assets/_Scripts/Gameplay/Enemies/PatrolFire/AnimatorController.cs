@@ -11,7 +11,10 @@ namespace Game.Gameplay.Enemies.PatrolFire
         [SerializeField] EnemyDamageable _damageable;
         [SerializeField] ParticleSystem _damageParticle;
         Dictionary<string, Action> _events = new Dictionary<string, Action>();
-
+        private void Awake()
+        {
+            _damageParticle.Stop();
+        }
         void OnEnable()
         {
             _damageable.OnTakeDamage += OnTakeDamageHandler;

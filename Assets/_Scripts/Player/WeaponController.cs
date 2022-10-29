@@ -11,7 +11,8 @@ namespace Game.Player
         [SerializeField] PointerTarget _pointerTarget;
         [SerializeField] PlayerController _playerController;
         [SerializeField, Range(0, 2)] float _speedWeaponHeavy = 1;
-        private Weapon _currentWeapon;
+        Weapon _currentWeapon;
+        public bool _active = true;
         public bool CanAttack { get; set; } = true;
 
         private void Awake()
@@ -21,6 +22,7 @@ namespace Game.Player
 
         public void AttackInput(InputAction.CallbackContext context)
         {
+            if (!_active) return;
             if (!CanAttack) return;
             _currentWeapon = manager.CurrentWeapon;
             _currentWeapon.Target = _pointerTarget.transform.position;
@@ -49,6 +51,7 @@ namespace Game.Player
 
         public void ReloadWeaponInput(InputAction.CallbackContext context)
         {
+            if (!_active) return;
             if (!context.performed) return;
 
             var weapon = manager.CurrentWeapon;
@@ -59,6 +62,7 @@ namespace Game.Player
 
         public bool ReloadReserveWeapons()
         {
+            if (!_active) return false;
             bool reserve = manager.ReloadReserveWeapons();
             if (reserve)
             {
@@ -70,6 +74,7 @@ namespace Game.Player
 
         public void SwitchWeapon(int slot)
         {
+            if (!_active) return;
             _currentWeapon.CancelAttack();
             if (_currentWeapon.IsHeavy)
                 PlayerBackToDefault();
