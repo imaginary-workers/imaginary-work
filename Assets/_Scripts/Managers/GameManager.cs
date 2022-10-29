@@ -5,11 +5,13 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using Game.SO;
 using UnityEngine.UI;
+using Game.Gameplay.Enemies;
 
 namespace Game.Managers
 {
     public class GameManager : MonoBehaviour
     {
+        public enum State { Menu, Gameplay }
         static GameManager _instance;
         public static GameManager Instance
         {
@@ -40,6 +42,7 @@ namespace Game.Managers
 
         [Header("Settings")]
         [SerializeField] GameplaySettingsSO _gameplaySettings;
+        [SerializeField] State _state;
         PlayerConfig _newConfig = null;
         bool _isPaused = false;
         bool _isDeath = false;
@@ -53,7 +56,13 @@ namespace Game.Managers
             if (_deathMessege != null)
                 _deathMessege.SetActive(false);
         }
-
+        private void Update()
+        {
+            if (_state == State.Gameplay)
+            {
+                CondicionWin();
+            }
+        }
         public static GameObject Player
         {
             get
@@ -68,7 +77,7 @@ namespace Game.Managers
 
         public void DeathScreen()
         {
-            _isDeath = true; 
+            _isDeath = true;
             Cursor.lockState = CursorLockMode.None;
             _deathMessege.SetActive(true);
             _pointer.SetActive(false);
@@ -117,6 +126,9 @@ namespace Game.Managers
             _pointer.SetActive(false);
             Cursor.lockState = CursorLockMode.None;
             Time.timeScale = 0;
+            _player.GetComponent<PlayerController>().enabled = false;
+            _player.GetComponent<WeaponController>()._active = false;
+            
         }
 
         public void Resume()
@@ -127,6 +139,8 @@ namespace Game.Managers
             _pointer.SetActive(true);
             Cursor.lockState = CursorLockMode.Locked;
             Time.timeScale = 1;
+            _player.GetComponent<PlayerController>().enabled = true;
+            _player.GetComponent<WeaponController>()._active = true;
         }
 
         public void RestartLevel()
@@ -160,7 +174,7 @@ namespace Game.Managers
         {
             GetNewConfig().invertedYAxis = to;
         }
-        
+
         public void SetInvertedXAxis(bool to)
         {
             GetNewConfig().invertedXAxis = to;
@@ -174,7 +188,7 @@ namespace Game.Managers
         void PauseMenuSetup()
         {
             if (_pauseMenu == null) return;
-            
+
             var config = _gameplaySettings.PlayerConfig;
             _invertedXToggle.isOn = config.invertedXAxis;
             _invertedYToggle.isOn = config.invertedYAxis;
@@ -193,9 +207,22 @@ namespace Game.Managers
         void UpdateConfig()
         {
             if (_newConfig == null) return;
-            
+
             _gameplaySettings.ChangePlayerConfig(_newConfig);
             _newConfig = null;
+        }
+        void CondicionWin()
+        {
+            if (Enemy.countEnemy <= 0)
+            {
+                if (SceneManager.GetActiveScene().name == "Level0")
+                {
+                    ToLevelOne();
+                }
+                else
+                    SceneManager.LoadScene("MainMenu");
+            }
+
         }
     }
 }

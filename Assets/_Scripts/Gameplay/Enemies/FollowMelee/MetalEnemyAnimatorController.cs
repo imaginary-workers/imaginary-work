@@ -14,6 +14,7 @@ namespace Game.Gameplay.Enemies.FollowMelee
 
         void Awake()
         {
+            _damageParticle.Stop();
             _enemyDamagable.OnDeath += Death;
         }
 
