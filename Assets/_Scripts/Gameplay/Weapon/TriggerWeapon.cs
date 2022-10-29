@@ -54,7 +54,7 @@ namespace Game.Gameplay.Weapon
             bulletObject.transform.forward = _firePoint.forward;
             bulletObject.GetComponent<Bullet>()?.Shoot(ShootDirection);
             Ammunition--;
-            GameManager.instance.UpdateBulletCounter(Ammunition);
+            GameManager.Instance.UpdateBulletCounter(Ammunition);
 
             _particles.Play();
         }

@@ -28,7 +28,7 @@ namespace Game.Gameplay.Weapon
                     Shoot();
                     _time = attackRateInSeconds;
                     Ammunition--;
-                    GameManager.instance.UpdateBulletCounter(Ammunition);
+                    GameManager.Instance.UpdateBulletCounter(Ammunition);
                     if(Ammunition <= 0)
                     {
                         CancelAttack();

@@ -112,7 +112,6 @@ MonoBehaviour:
   _target: {fileID: 0}
   _visualAngle: 80
   _visualDistance: 10
-  _rangeOfVisionY: 1.5
   _rangeOfVisionYUp: 0
   _rangeOfVisionYDown: -4
   _maxTime: 0.2
@@ -154,6 +153,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48f29a70731e7174482548298252b2ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _damageable: {fileID: 5854232405504092712}
   _attack: {fileID: 4885114125338213701}
   _patrolBehaviour: {fileID: 5184913850856923581}
   _lookAtTarget: {fileID: 1156364844720418282}
@@ -231,6 +231,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5175299818302098206}
     m_Modifications:
+    - target: {fileID: 2392586235686662812, guid: 7c983c304ab18b94e9b1f1136374d9a9, type: 3}
+      propertyPath: _targetAlwaysPlayer
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4741058671105879683, guid: 7c983c304ab18b94e9b1f1136374d9a9, type: 3}
       propertyPath: m_Controller
       value: 

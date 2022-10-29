@@ -53,7 +53,7 @@ namespace Game.Player
 
             var weapon = manager.CurrentWeapon;
             weapon.ReloadAmmunition();
-            GameManager.instance.UpdateBulletCounter(weapon.Ammunition);
+            GameManager.Instance.UpdateBulletCounter(weapon.Ammunition);
             UpdateUI();
         }
 
@@ -91,7 +91,7 @@ namespace Game.Player
         void UpdateUI()
         {
             var weapon = manager.CurrentWeapon;
-            GameManager.instance.UpdateReserveCounter(weapon.ReserveAmmunition);
+            GameManager.Instance.UpdateReserveCounter(weapon.ReserveAmmunition);
         }
     }
 }

@@ -9,7 +9,7 @@ namespace Game.Gameplay
     {
         public event Action<GameObject> OnEnterViewTarget, OnExitViewTarget, OnStayViewTarget;
 
-        [SerializeField] GameObject _target;
+        [SerializeField] GameObject _target = null;
         [SerializeField] float _visualAngle = 45f;
         [SerializeField] float _visualDistance = 10f;
         [SerializeField, Range(0f, 30f)] float _rangeOfVisionYUp = 1.5f;

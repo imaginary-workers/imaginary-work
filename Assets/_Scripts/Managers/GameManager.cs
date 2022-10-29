@@ -1,17 +1,27 @@
 using Game.Config;
-using Game.Gameplay.Weapon;
+using Game.Player;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Game.SO;
-using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 namespace Game.Managers
 {
     public class GameManager : MonoBehaviour
     {
-        public static GameManager instance;
+        static GameManager _instance;
+        public static GameManager Instance
+        {
+            get
+            {
+                if (_instance == null)
+                {
+                    _instance = GameObject.FindObjectOfType<GameManager>();
+                }
+                return _instance;
+            }
+        }
 
         [Header("Player Info")]
         [SerializeField] GameObject _player;
@@ -36,7 +46,7 @@ namespace Game.Managers
 
         void Awake()
         {
-            instance = this;
+            _instance = this;
 
             PauseMenuSetup();
 
@@ -44,7 +54,17 @@ namespace Game.Managers
                 _deathMessege.SetActive(false);
         }
 
-        public static GameObject Player => instance._player;
+        public static GameObject Player
+        {
+            get
+            {
+                if (Instance._player == null)
+                {
+                    Instance._player = FindObjectOfType<PlayerController>()?.gameObject;
+                }
+                return Instance._player;
+            }
+        }
 
         public void DeathScreen()
         {
