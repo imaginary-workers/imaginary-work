@@ -724,6 +724,66 @@ PrefabInstance:
       propertyPath: m_Name
       value: woodBreakParticle
       objectReference: {fileID: 0}
+    - target: {fileID: 5824207716733614626, guid: 31ed0e03d2761d14e8a83d1aac8a9180, type: 3}
+      propertyPath: ColorModule.enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5824207716733614626, guid: 31ed0e03d2761d14e8a83d1aac8a9180, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.atime0
+      value: 30840
+      objectReference: {fileID: 0}
+    - target: {fileID: 5824207716733614626, guid: 31ed0e03d2761d14e8a83d1aac8a9180, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.atime1
+      value: 65535
+      objectReference: {fileID: 0}
+    - target: {fileID: 5824207716733614626, guid: 31ed0e03d2761d14e8a83d1aac8a9180, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.atime2
+      value: 65150
+      objectReference: {fileID: 0}
+    - target: {fileID: 5824207716733614626, guid: 31ed0e03d2761d14e8a83d1aac8a9180, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.ctime1
+      value: 64957
+      objectReference: {fileID: 0}
+    - target: {fileID: 5824207716733614626, guid: 31ed0e03d2761d14e8a83d1aac8a9180, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key0.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5824207716733614626, guid: 31ed0e03d2761d14e8a83d1aac8a9180, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key0.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5824207716733614626, guid: 31ed0e03d2761d14e8a83d1aac8a9180, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key0.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5824207716733614626, guid: 31ed0e03d2761d14e8a83d1aac8a9180, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key0.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5824207716733614626, guid: 31ed0e03d2761d14e8a83d1aac8a9180, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key1.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5824207716733614626, guid: 31ed0e03d2761d14e8a83d1aac8a9180, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key1.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5824207716733614626, guid: 31ed0e03d2761d14e8a83d1aac8a9180, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key1.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5824207716733614626, guid: 31ed0e03d2761d14e8a83d1aac8a9180, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key1.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5824207716733614626, guid: 31ed0e03d2761d14e8a83d1aac8a9180, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key2.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5824207716733614626, guid: 31ed0e03d2761d14e8a83d1aac8a9180, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.m_NumAlphaKeys
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5824207716733614637, guid: 31ed0e03d2761d14e8a83d1aac8a9180, type: 3}
       propertyPath: m_RootOrder
       value: 13
@@ -734,7 +794,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5824207716733614637, guid: 31ed0e03d2761d14e8a83d1aac8a9180, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.18
+      value: -2.22
       objectReference: {fileID: 0}
     - target: {fileID: 5824207716733614637, guid: 31ed0e03d2761d14e8a83d1aac8a9180, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1168,7 +1228,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-2926
+  m_Name: pb_Mesh-4512
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -2172,7 +2232,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-2938
+  m_Name: pb_Mesh-4524
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -2585,7 +2645,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-2914
+  m_Name: pb_Mesh-4500
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
