@@ -1,3 +1,4 @@
+using System;
 using Game.Config;
 using Game.Player;
 using UnityEditor;
@@ -41,6 +42,7 @@ namespace Game.Managers
         [SerializeField] Toggle _invertedYToggle;
         [SerializeField] Slider _speedRotatioSlider;
         [SerializeField] Animator _blackScreenAnimator;
+        [SerializeField] Text _countEnemyText;
 
         [Header("Settings")]
         [SerializeField] GameplaySettingsSO _gameplaySettings;
@@ -58,6 +60,10 @@ namespace Game.Managers
 
             if (_deathMessege != null)
                 _deathMessege.SetActive(false);
+            if (_state == State.Gameplay)
+            {
+                Enemy.UpdateEnemyCount += UpdateEnemyCount;
+            }
         }
         private void Update()
         {
@@ -66,6 +72,15 @@ namespace Game.Managers
                 ConditionWin();
             }
         }
+
+        private void OnDestroy()
+        {
+            if (_state == State.Gameplay)
+            {
+                Enemy.UpdateEnemyCount -= UpdateEnemyCount;
+            }
+        }
+
         public static GameObject Player
         {
             get
@@ -212,6 +227,11 @@ namespace Game.Managers
             else
                 StartCoroutine(CO_NextScene("VictoryScreen"));
 
+        }
+
+        public void UpdateEnemyCount()
+        {
+            _countEnemyText.text = Enemy.countEnemy.ToString();
         }
 
         IEnumerator CO_NextScene(string sceneName)
