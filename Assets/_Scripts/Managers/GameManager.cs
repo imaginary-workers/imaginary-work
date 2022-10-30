@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 using Game.SO;
 using UnityEngine.UI;
 using Game.Gameplay.Enemies;
+using System.Collections;
 
 namespace Game.Managers
 {
@@ -39,6 +40,7 @@ namespace Game.Managers
         [SerializeField] Toggle _invertedXToggle;
         [SerializeField] Toggle _invertedYToggle;
         [SerializeField] Slider _speedRotatioSlider;
+        [SerializeField] Animator _blackScreenAnimator;
 
         [Header("Settings")]
         [SerializeField] GameplaySettingsSO _gameplaySettings;
@@ -46,6 +48,7 @@ namespace Game.Managers
         PlayerConfig _newConfig = null;
         bool _isPaused = false;
         bool _isDeath = false;
+        bool _isChangingScene = false;
 
         void Awake()
         {
@@ -58,9 +61,9 @@ namespace Game.Managers
         }
         private void Update()
         {
-            if (_state == State.Gameplay)
+            if (Enemy.countEnemy <= 0 && _state == State.Gameplay)
             {
-                CondicionWin();
+                ConditionWin();
             }
         }
         public static GameObject Player
@@ -86,19 +89,12 @@ namespace Game.Managers
 
         public void NewGame()
         {
-            _health.value = _maxHealth.value;
-            SceneManager.LoadScene("Level0");
-        }
-
-        public void ToLevelOne()
-        {
-            _health.value = _maxHealth.value;
-            SceneManager.LoadScene("Level1");
+            StartCoroutine(CO_NextScene("Level0"));
         }
 
         public void ControlsMenu()
         {
-            SceneManager.LoadScene("ControlsMenu");
+            StartCoroutine(CO_NextScene("ControlsMenu"));
         }
         public void Quit()
         {
@@ -145,14 +141,11 @@ namespace Game.Managers
 
         public void RestartLevel()
         {
-            Time.timeScale = 1;
-            _health.value = _maxHealth.value;
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            StartCoroutine(CO_NextScene(SceneManager.GetActiveScene().name));
         }
         public void BackToMainMenu()
         {
-            Time.timeScale = 1;
-            SceneManager.LoadScene("MainMenu");
+            StartCoroutine(CO_NextScene("MainMenu"));
         }
 
         public void UpdateBulletCounter(int amunicion)
@@ -211,18 +204,31 @@ namespace Game.Managers
             _gameplaySettings.ChangePlayerConfig(_newConfig);
             _newConfig = null;
         }
-        void CondicionWin()
-        {
-            if (Enemy.countEnemy <= 0)
-            {
-                if (SceneManager.GetActiveScene().name == "Level0")
-                {
-                    ToLevelOne();
-                }
-                else
-                    SceneManager.LoadScene("MainMenu");
-            }
 
+        public void ConditionWin()
+        {
+            if (SceneManager.GetActiveScene().name == "Level0")
+                StartCoroutine(CO_NextScene("Level1"));
+            else
+                StartCoroutine(CO_NextScene("VictoryScreen"));
+
+        }
+
+        IEnumerator CO_NextScene(string sceneName)
+        {
+            if (!_isChangingScene)
+            {
+                _isChangingScene = true;
+                _blackScreenAnimator?.SetTrigger("Play");
+
+                yield return new WaitForSecondsRealtime(1f);
+
+                _health.value = _maxHealth.value;
+                Cursor.lockState = CursorLockMode.None;
+                Time.timeScale = 1;
+
+                SceneManager.LoadScene(sceneName);
+            }
         }
     }
 }

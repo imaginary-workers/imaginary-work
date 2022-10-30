@@ -523,6 +523,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8099864276728719454, guid: de9188e459a77494f8c234f0945e6e1a, type: 3}
   m_PrefabInstance: {fileID: 554763953082672255}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &107750697119576302 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 489806387366581393, guid: de9188e459a77494f8c234f0945e6e1a, type: 3}
+  m_PrefabInstance: {fileID: 554763953082672255}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8539501233411232165
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -530,6 +535,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 421004626822643739}
     m_Modifications:
+    - target: {fileID: 8156174783294118934, guid: ed0abdafae29e7e4fba6fd12549677a6, type: 3}
+      propertyPath: _state
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8156174783294118934, guid: ed0abdafae29e7e4fba6fd12549677a6, type: 3}
       propertyPath: _player
       value: 
@@ -566,6 +575,10 @@ PrefabInstance:
       propertyPath: _speedRotatioSlider
       value: 
       objectReference: {fileID: 554763953360879524}
+    - target: {fileID: 8156174783294118934, guid: ed0abdafae29e7e4fba6fd12549677a6, type: 3}
+      propertyPath: _blackScreenAnimator
+      value: 
+      objectReference: {fileID: 107750697119576302}
     - target: {fileID: 8156174785048938696, guid: ed0abdafae29e7e4fba6fd12549677a6, type: 3}
       propertyPath: m_RootOrder
       value: 1
