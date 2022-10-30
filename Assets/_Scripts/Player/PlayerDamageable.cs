@@ -3,6 +3,7 @@ using Game.Gameplay;
 using Game.SO;
 using Game.Managers;
 using UnityEngine;
+using EZCameraShake;
 
 namespace Game.Player
 {
@@ -13,6 +14,7 @@ namespace Game.Player
 
         public void TakeTamage(int damage, ElementSO element)
         {
+
             _playerLive.value -= damage;
             OnTakeDamage?.Invoke(damage);
 
