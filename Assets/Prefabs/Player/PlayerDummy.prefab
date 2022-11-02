@@ -771,6 +771,7 @@ MonoBehaviour:
   _pointerTarget: {fileID: 4311879229263859165}
   _playerController: {fileID: 8219668241822508868}
   _speedWeaponHeavy: 1
+  _active: 1
 --- !u!114 &8219668241822508985
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -925,41 +926,13 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3374871210961474756}
     m_Modifications:
-    - target: {fileID: 173985709, guid: 93342a27f451b744eb05c5ce576f0bad, type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 173985711, guid: 93342a27f451b744eb05c5ce576f0bad, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5695359141768821030, guid: 93342a27f451b744eb05c5ce576f0bad, type: 3}
       propertyPath: m_Name
       value: Melee
       objectReference: {fileID: 0}
-    - target: {fileID: 5695359141768821030, guid: 93342a27f451b744eb05c5ce576f0bad, type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5695359141768821030, guid: 93342a27f451b744eb05c5ce576f0bad, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5695359141768821031, guid: 93342a27f451b744eb05c5ce576f0bad, type: 3}
       propertyPath: m_RootOrder
       value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5695359141768821031, guid: 93342a27f451b744eb05c5ce576f0bad, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1.1764699
-      objectReference: {fileID: 0}
-    - target: {fileID: 5695359141768821031, guid: 93342a27f451b744eb05c5ce576f0bad, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1.17647
-      objectReference: {fileID: 0}
-    - target: {fileID: 5695359141768821031, guid: 93342a27f451b744eb05c5ce576f0bad, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1.17647
       objectReference: {fileID: 0}
     - target: {fileID: 5695359141768821031, guid: 93342a27f451b744eb05c5ce576f0bad, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1001,10 +974,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 14.649994
       objectReference: {fileID: 0}
-    - target: {fileID: 5820671418773862536, guid: 93342a27f451b744eb05c5ce576f0bad, type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 93342a27f451b744eb05c5ce576f0bad, type: 3}
 --- !u!4 &5652454157372921972 stripped
@@ -1030,25 +999,9 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3374871210961474756}
     m_Modifications:
-    - target: {fileID: 665859741496001971, guid: 7cd12200bd3156040955aebf80ad1489, type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1533937069260811553, guid: 7cd12200bd3156040955aebf80ad1489, type: 3}
       propertyPath: m_RootOrder
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1533937069260811553, guid: 7cd12200bd3156040955aebf80ad1489, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1.1764699
-      objectReference: {fileID: 0}
-    - target: {fileID: 1533937069260811553, guid: 7cd12200bd3156040955aebf80ad1489, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1.17647
-      objectReference: {fileID: 0}
-    - target: {fileID: 1533937069260811553, guid: 7cd12200bd3156040955aebf80ad1489, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1.17647
       objectReference: {fileID: 0}
     - target: {fileID: 1533937069260811553, guid: 7cd12200bd3156040955aebf80ad1489, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1095,31 +1048,7 @@ PrefabInstance:
       value: Flamethrower_Weapon
       objectReference: {fileID: 0}
     - target: {fileID: 1934071586597183794, guid: 7cd12200bd3156040955aebf80ad1489, type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1934071586597183794, guid: 7cd12200bd3156040955aebf80ad1489, type: 3}
       propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3781322346412742812, guid: 7cd12200bd3156040955aebf80ad1489, type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4735661994421724971, guid: 7cd12200bd3156040955aebf80ad1489, type: 3}
-      propertyPath: _isHeavy
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5403482131402740995, guid: 7cd12200bd3156040955aebf80ad1489, type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8326991955145189343, guid: 7cd12200bd3156040955aebf80ad1489, type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8944073101285802484, guid: 7cd12200bd3156040955aebf80ad1489, type: 3}
-      propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
