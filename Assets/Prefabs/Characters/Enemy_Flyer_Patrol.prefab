@@ -153,7 +153,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48f29a70731e7174482548298252b2ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damageable: {fileID: 5854232405504092712}
   _attack: {fileID: 4885114125338213701}
   _patrolBehaviour: {fileID: 5184913850856923581}
   _lookAtTarget: {fileID: 1156364844720418282}
@@ -161,7 +160,6 @@ MonoBehaviour:
   _visualField: {fileID: 5745978130405426769}
   _maxDistance: 10
   _particle: {fileID: 3752655323884331237, guid: 06badebed72890a448035c9454bd234b, type: 3}
-  _damageable: {fileID: 5854232405504092712}
   _light: {fileID: 2567770015003555644}
   _lightFocus: {fileID: 465989763577330155}
   _attackColor: {r: 1, g: 0, b: 0, a: 1}
@@ -178,7 +176,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc660ccbbe8a4ad4ea828415e3d77778, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _life: 10
+  _life: 4
   _weakness: {fileID: 11400000, guid: acc81f72dbdb81b40b95f8578c3fba01, type: 2}
 --- !u!65 &4223900162893284443
 BoxCollider:
