@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 7120076050924849061}
   - component: {fileID: 5854232405504092712}
   - component: {fileID: 4223900162893284443}
+  - component: {fileID: 5912675402029469630}
   m_Layer: 0
   m_Name: Enemy_Flyer_Patrol
   m_TagString: Untagged
@@ -55,6 +56,7 @@ MonoBehaviour:
   _speed: 2
   _waitBetweenPointInSeconds: 1
   _waitOnEnable: 2.5
+  _agent: {fileID: 5912675402029469630}
   _waypoints:
   - {fileID: 0}
   - {fileID: 0}
@@ -153,7 +155,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48f29a70731e7174482548298252b2ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damageable: {fileID: 5854232405504092712}
   _attack: {fileID: 4885114125338213701}
   _patrolBehaviour: {fileID: 5184913850856923581}
   _lookAtTarget: {fileID: 1156364844720418282}
@@ -161,7 +162,6 @@ MonoBehaviour:
   _visualField: {fileID: 5745978130405426769}
   _maxDistance: 10
   _particle: {fileID: 3752655323884331237, guid: 06badebed72890a448035c9454bd234b, type: 3}
-  _damageable: {fileID: 5854232405504092712}
   _light: {fileID: 2567770015003555644}
   _lightFocus: {fileID: 465989763577330155}
   _attackColor: {r: 1, g: 0, b: 0, a: 1}
@@ -193,6 +193,28 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 0.65, z: 1}
   m_Center: {x: 0, y: 0.15, z: 0}
+--- !u!195 &5912675402029469630
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1212517995951844142}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1 &5116940947703408251
 GameObject:
   m_ObjectHideFlags: 0
