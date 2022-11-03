@@ -14,7 +14,6 @@ namespace Game.Gameplay.Enemies
 
         [Tooltip("The order of the points will be the order in which it is patrolled. ('Has to bi bigger than one')")]
         [SerializeField] private List<GameObject> _waypoints;
-        [SerializeField, Range(0f, 5f)] float _minimumDistanceNearPoint;
         [Tooltip("If is active, it will go through the points in cycles. If is NOT, it will go back and forth.")]
         [SerializeField] bool _cycle = false;
 
@@ -47,28 +46,26 @@ namespace Game.Gameplay.Enemies
         void OnEnable()
         {
             _agent.speed = _speed;
-            StartCoroutine(CO_StartWaiting(_waitForSecondsOnEnable));
+            StartCoroutine(CO_StartWaitingAndUpdateDestination(_waitForSecondsOnEnable));
         }
 
         void Update()
         {
             if (_isWaiting) return;
 
-            /*var targetPosition = _patrol[_target];
-            var targetLookAt = new Vector3(targetPosition.x, transform.position.y, targetPosition.z);
-            transform.LookAt(targetLookAt);
-            var transformPosition = new Vector3(transform.position.x, 0, transform.position.z);
-            moveComponent.Velocity = (targetPosition - transformPosition).normalized * _speed;*/
-
             if (_agent.remainingDistance <= 0)
             {
-                NextTarget();
-                _agent.SetDestination(_patrol[_target]);
-                StartCoroutine(CO_StartWaiting(_waitForSeconds));
+                StartCoroutine(CO_StartWaitingAndUpdateDestination(_waitForSeconds));
             }
         }
 
-        private void NextTarget()
+        void NextDestination()
+        {
+            NextTarget();
+            _agent.SetDestination(_patrol[_target]);
+        }
+
+        void NextTarget()
         {
             if (_cycle)
             {
@@ -85,16 +82,14 @@ namespace Game.Gameplay.Enemies
             _target += _direction;
         }
 
-        IEnumerator CO_StartWaiting(WaitForSeconds waitForSeconds)
+        IEnumerator CO_StartWaitingAndUpdateDestination(WaitForSeconds waitForSeconds)
         {
             var speed = _agent.speed;
             _isWaiting = true;
-            // _agent.Stop();
             _agent.speed = 0;
-            //moveComponent.Velocity = Vector3.zero;
+            NextDestination();
             yield return waitForSeconds;
             _agent.speed = speed;
-            //  _agent.isStopped = false;
             _isWaiting = false;
         }
 
