@@ -1,3 +1,4 @@
+using Game.SO;
 using UnityEngine;
 
 namespace Game.Gameplay.Enemies
@@ -9,6 +10,8 @@ namespace Game.Gameplay.Enemies
         [SerializeField] LayerMask _layerMask;
         [SerializeField, Range(0f, 5f)] float _rateInSeconds = 0;
         [SerializeField] float _maxDistance = 5f;
+        [Header("Opcional")]
+        [SerializeField] ElementSO _attackElement = null;
         float _time;
 
         public float MaxDistance
@@ -35,7 +38,7 @@ namespace Game.Gameplay.Enemies
             RaycastHit hit;
             if (Physics.Raycast(_firePoint.transform.position, _firePoint.transform.forward, out hit, _maxDistance, _layerMask))
             {
-                hit.collider.GetComponent<IDamageable>()?.TakeTamage(_damage);
+                hit.collider.GetComponent<IDamageable>()?.TakeTamage(_damage, _attackElement);
             }
         }
     }

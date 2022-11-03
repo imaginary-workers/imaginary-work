@@ -1,12 +1,22 @@
+using Game.Managers;
 using UnityEngine;
 
 namespace Game.Gameplay.Enemies
 {
     public class LookAtTarget : MonoBehaviour
     {
+        [SerializeField] bool _targetAlwaysPlayer = false;
+
         [SerializeField] GameObject _target;
         [SerializeField, Range(0f, 10f)] float _speedRotation = 10f;
         [SerializeField] bool _ignoreX, _ignoreY, _ignoreZ = false;
+
+        private void Start()
+        {
+            if (_targetAlwaysPlayer)
+                _target = GameManager.Player;
+        }
+
         void Update()
         {
             var targetDirection = _target.transform.position - transform.position;

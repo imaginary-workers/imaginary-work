@@ -39,35 +39,10 @@ namespace Game.Gameplay.Weapon
 
         public override void SubscribeToAnimationEvents(PlayerAnimationManager animationManager)
         {
-            animationManager.ADD_ANI_EVENT("pistol_shooting_event", EVENT_PISTOL_SHOOTING);
+            animationManager.AddAnimationEvent("pistol_shooting_event", EVENT_PISTOL_SHOOTING);
             _TriggerAttackAnimation = animationManager.AttackShooter;
         }
 
-        public override bool ReloadAmmunition()
-        {
-            if (ReserveAmmunition <= 0) return false;
-            if (ReserveAmmunition >= _weaponData.MaxAmunicion)
-            {
-                Ammunition = _weaponData.MaxAmunicion;
-                ReserveAmmunition -= _weaponData.MaxAmunicion;
-            }
-            else
-            {
-                Ammunition = ReserveAmmunition;
-                ReserveAmmunition = 0;
-            }
-
-            return true;
-        }
-
-        public override bool ReloadReserveAmmunition()
-        {
-            if (ReserveAmmunition >= _weaponData.MaxReserveAmunicion) return false;
-
-            ReserveAmmunition = _weaponData.MaxReserveAmunicion;
-
-            return true;
-        }
 
         #endregion
 
@@ -76,9 +51,10 @@ namespace Game.Gameplay.Weapon
             var bulletObject = _bulletPooler.GetPooledObject();
             bulletObject.transform.position = _firePoint.position;
             bulletObject.SetActive(true);
+            bulletObject.transform.forward = _firePoint.forward;
             bulletObject.GetComponent<Bullet>()?.Shoot(ShootDirection);
             Ammunition--;
-            GameManager.instance.UpdateBulletCounter(Ammunition);
+            GameManager.Instance.UpdateBulletCounter(Ammunition);
 
             _particles.Play();
         }

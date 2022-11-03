@@ -7,14 +7,20 @@ namespace Game.Gameplay.Enemies.FollowMelee
         FollowMeleeStateController _stateController;
         FollowPlayer _followPlayer;
         LookAtTarget _lookAtTarget;
+        GameObject _player;
+        float _rangeMelee;
+        float _rangeOfVisionY;
 
-        public FollowState(FollowMeleeStateController stateController)
+        public FollowState(FollowMeleeStateController stateController, FollowPlayer followPlayer, LookAtTarget lookAtTarget, GameObject player, float rangeMelee, float rangeOfVisionY)
         {
             _stateController = stateController;
-            _followPlayer = stateController.FollowPlayer;
-            _lookAtTarget = stateController.LookAtTarget;
-            
+            _followPlayer = followPlayer;
+            _lookAtTarget = lookAtTarget;
+            _player = player;
+            _rangeMelee = rangeMelee;
+            _rangeOfVisionY = rangeOfVisionY;
         }
+
         public override void Enter()
         {
             _followPlayer.enabled = true;
@@ -24,14 +30,14 @@ namespace Game.Gameplay.Enemies.FollowMelee
         public override void Update()
         {
             Vector3 position = _stateController.transform.position;
-            Vector3 playerPosition = _stateController.Player.transform.position;
-            if (!Utils.IsInRangeOfVision(position, playerPosition, _stateController.RangeFollow, _stateController.RangeOfVisionY))
+            Vector3 playerPosition = _player.transform.position;
+            if (!Utils.IsInRangeOfVision(position, playerPosition, _stateController.RangeFollow, _rangeOfVisionY))
             {
-                _stateController.SwitchState(_stateController.RandomPatrolState);
+                _stateController.ChangeState(_stateController.RandomPatrolState);
             }
-            else if(Utils.IsInRangeOfVision(position, playerPosition, _stateController.RangeMelee, _stateController.RangeOfVisionY))
+            else if(Utils.IsInRangeOfVision(position, playerPosition, _rangeMelee, _rangeOfVisionY))
             {
-                _stateController.SwitchState(_stateController.MeleeState);
+                _stateController.ChangeState(_stateController.MeleeState);
             }
         }
         public override void Exit()

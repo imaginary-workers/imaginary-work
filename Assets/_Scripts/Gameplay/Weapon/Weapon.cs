@@ -8,8 +8,8 @@ namespace Game.Gameplay.Weapon
         [SerializeField] 
         protected float attackRateInSeconds = 0f;
         protected bool canAttack = true;
-
         public int Ammunition { get; protected set; } = -1;
+        public bool IsHeavy { get; protected set; } = false;
         public int ReserveAmmunition { get; protected set; } = -1;
         public Vector3 Target { set; protected get; } = Vector3.zero;
         public virtual bool ReloadAmmunition() => false;

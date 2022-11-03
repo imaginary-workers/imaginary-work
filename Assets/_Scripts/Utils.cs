@@ -29,5 +29,10 @@ namespace Game
             if (lfAngle > 360f) lfAngle -= 360f;
             return Mathf.Clamp(lfAngle, lfMin, lfMax);
         }
+
+        public static float pythagoreanTheorem(float a, float b)
+        {
+            return Mathf.Sqrt(a * a + b * b);
+        }
     }
 }

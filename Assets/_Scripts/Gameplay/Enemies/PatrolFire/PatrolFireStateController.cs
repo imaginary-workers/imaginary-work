@@ -1,77 +1,80 @@
+using System.Collections;
+using System.Collections.Generic;
 using Game.Gameplay.Enemies.FollowMelee;
+using Game.Managers;
 using Game.Player;
 using UnityEngine;
 
 namespace Game.Gameplay.Enemies.PatrolFire
 {
-    public class PatrolFireStateController : MonoBehaviour
+    public class PatrolFireStateController : EnemyStateController
     {
-        [SerializeField] MonoBehaviour _normalBehaviour;
+        [SerializeField] PatrolBehaviour _normalBehaviour;
         [SerializeField] VisualField _visualField;
         [SerializeField] MonoBehaviour _attackBehaviour;  
-        [SerializeField] Move _move;
-        [SerializeField] ActionRepeater _shooterRepeater;
+        [SerializeField] MoveComponent _moveComponent;
         [SerializeField] LookAtTarget _lookAtTarget;
-        [SerializeField] ThrowBullet _throwBullet;
-        [SerializeField] EnemyDamageable _damageable;
-
-        NormalState _normal;
-        AttackState _attack;
-        State _currentState;
+        [SerializeField] EnemyBurstShooter _enemyShooter;
+        [SerializeField] AnimatorController _animatorController;
+        [SerializeField] SpawnDrops _spawner;
+        NormalState _normalState;
+        AttackState _attackState;
         GameObject _player;
+        bool _canDoStrongDamageFeedback = true;
+        float _takeStrongDamageRecoverTime = 3f;
+        TakeStrongDamageState _takeStrongDamageState;
 
-        void Awake()
+        public AttackState AttackState => _attackState;
+        public NormalState NormalState => _normalState;
+        public TakeStrongDamageState TakeStrongDamageState => _takeStrongDamageState;
+
+        protected override void OnAwakeEnemy()
         {
-            _player = FindObjectOfType<PlayerController>()?.gameObject;
-            _throwBullet.Target = _lookAtTarget.Target = _visualField.Target = _player;
+            _player = GameManager.Player;
+            _enemyShooter.Target = _lookAtTarget.Target = _visualField.Target = _player;
+            DesactiveBehaviours();
+            _normalState = new NormalState(this, _normalBehaviour, _visualField);
+            _attackState = new AttackState(this, _visualField, _moveComponent, _lookAtTarget, _animatorController, _enemyShooter);
+            deadState = new DeadState(this, _animatorController, 5, _moveComponent, _spawner);
+            _takeStrongDamageState = new TakeStrongDamageState(this, _moveComponent, _animatorController);
+            ChangeState(_normalState);
+            Damageable.OnTakeStrongDamage += OnTakeStrongDamageHandler;
+        }
+
+        public void DesactiveBehaviours()
+        {
             _visualField.enabled = true;
             _normalBehaviour.enabled = false;
             _attackBehaviour.enabled = false;
-            _shooterRepeater.enabled = false;
             _lookAtTarget.enabled = false;
-            _throwBullet.enabled = false;
-            _normal = new NormalState(this);
-            _attack = new AttackState(this);
-            _currentState = _normal;
-        }
-        
-        void Start()
-        {
-            _currentState.Enter();
+            _enemyShooter.enabled = false;
         }
 
-        void Update()
+        void ChangeToTakeStrongDamageState()
         {
+            if (_takeStrongDamageState == null) return;
             
-            if (_damageable.Life > 0)
-            {
-                _currentState.Update();
-            }
-            else
-            {
-                _lookAtTarget.enabled = false;
-                
-                _move.Velocity = Vector3.zero;
-            }
-
+            ChangeState(_takeStrongDamageState);
         }
 
-        public void ChangeState(State nextState)
+        void OnTakeStrongDamageHandler(int damage)
         {
-            _currentState.Exit();
-            _currentState = nextState;
-            _currentState.Enter();
+            if (!_canDoStrongDamageFeedback) return;
+            StartCoroutine(CO_TakeStrongDamageRecoverTime());
+            ChangeToTakeStrongDamageState();
         }
 
-        public AttackState Attack => _attack;
-        public NormalState Normal => _normal;
-        public MonoBehaviour NormalBehaviour => _normalBehaviour;
-        public VisualField VisualField => _visualField;
-        public MonoBehaviour AttackBehaviour => _attackBehaviour;
-        public Move Move => _move;
-        public ActionRepeater ShooterRepeater => _shooterRepeater;
-        public LookAtTarget LookAtTarget => _lookAtTarget;
-        public ThrowBullet ThrowBullet => _throwBullet;
-        public GameObject Target => _player;
+        IEnumerator CO_TakeStrongDamageRecoverTime()
+        {
+            _canDoStrongDamageFeedback = false;
+            yield return new WaitForSeconds(_takeStrongDamageRecoverTime);
+            _canDoStrongDamageFeedback = true;
+        }
+
+        public override void DestroyGameObject()
+        {
+            Damageable.OnTakeStrongDamage -= OnTakeStrongDamageHandler;
+            base.DestroyGameObject();
+        }
     }
 }

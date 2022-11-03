@@ -8,11 +8,14 @@ namespace Game.Gameplay.Weapon
         [SerializeField] GameObject _particle;
         bool _isShooting = false;
         float _time;
+        [SerializeField] bool _isHeavy;
         
         void Awake()
         {
+            IsHeavy = _isHeavy;
             _time = attackRateInSeconds;
             Ammunition = _weaponData.MaxAmunicion;
+            ReserveAmmunition = _weaponData.MaxReserveAmunicion;
             _particle.SetActive(false);
         }
 
@@ -25,7 +28,7 @@ namespace Game.Gameplay.Weapon
                     Shoot();
                     _time = attackRateInSeconds;
                     Ammunition--;
-                    GameManager.instance.UpdateBulletCounter(Ammunition);
+                    GameManager.Instance.UpdateBulletCounter(Ammunition);
                     if(Ammunition <= 0)
                     {
                         CancelAttack();
@@ -52,32 +55,8 @@ namespace Game.Gameplay.Weapon
             _particle.SetActive(false);
             _isShooting = false;
         }
-
-        public override bool ReloadAmmunition()
-        {
-            if (ReserveAmmunition <= 0) return false;
-            if (ReserveAmmunition >= _weaponData.MaxAmunicion)
-            {
-                Ammunition = _weaponData.MaxAmunicion;
-                ReserveAmmunition -= _weaponData.MaxAmunicion;
-            }
-            else
-            {
-                Ammunition = ReserveAmmunition;
-                ReserveAmmunition = 0;
-            }
-
-            return true;
-        }
-        
-        public override bool ReloadReserveAmmunition()
-        {
-            if (ReserveAmmunition >= _weaponData.MaxReserveAmunicion) return false;
-
-            ReserveAmmunition = _weaponData.MaxReserveAmunicion;
-
-            return true;
-        }
+               
+  
 
         #endregion
         protected override void Shoot()

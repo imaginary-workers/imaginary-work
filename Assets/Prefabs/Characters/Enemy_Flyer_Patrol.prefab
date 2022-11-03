@@ -51,14 +51,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1800234ef324a54ba092ae22c5c8a94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _move: {fileID: 763075930358308920}
+  moveComponent: {fileID: 763075930358308920}
   _speed: 2
   _waitBetweenPointInSeconds: 1
   _waitOnEnable: 2.5
-  _waypoints: []
+  _waypoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   _minimumDistanceNearPoint: 1
   _cycle: 0
-  _pointRadiusGizmos: 2
+  _pointRadiusGizmos: 0.27
   _sphereColor: {r: 1, g: 0, b: 0, a: 1}
   _lineColor: {r: 0, g: 1, b: 0, a: 1}
 --- !u!114 &763075930358308920
@@ -74,10 +80,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rigidbody: {fileID: 7608482221649557534}
-  _ignoreX: 0
-  _ignoreY: 0
-  _ignoreZ: 0
-  <Velocity>k__BackingField: {x: 0, y: 0, z: 0}
+  _ignoreGravity: 0
 --- !u!54 &7608482221649557534
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -107,9 +110,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _target: {fileID: 0}
-  _visualAngle: 45
+  _visualAngle: 80
   _visualDistance: 10
-  _rangeOfVisionY: 1.5
+  _rangeOfVisionYUp: 0
+  _rangeOfVisionYDown: -4
+  _maxTime: 0.2
+  _obstacleLayer:
+    serializedVersion: 2
+    m_Bits: 72
+  _targetLayer:
+    serializedVersion: 2
+    m_Bits: 8
 --- !u!114 &4885114125338213701
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -123,12 +134,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _damage: 1
-  _firePoint: {fileID: 0}
+  _firePoint: {fileID: 6417747301928851611}
   _layerMask:
     serializedVersion: 2
     m_Bits: 8
   _rateInSeconds: 0.2
   _maxDistance: 5
+  _attackElement: {fileID: 0}
 --- !u!114 &7120076050924849061
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -143,10 +155,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _attack: {fileID: 4885114125338213701}
   _patrolBehaviour: {fileID: 5184913850856923581}
-  _lookAtTarget: {fileID: 8769338175141744233}
-  _move: {fileID: 763075930358308920}
+  _lookAtTarget: {fileID: 1156364844720418282}
+  _moveComponent: {fileID: 763075930358308920}
   _visualField: {fileID: 5745978130405426769}
   _maxDistance: 10
+  _particle: {fileID: 3752655323884331237, guid: 06badebed72890a448035c9454bd234b, type: 3}
+  _light: {fileID: 2567770015003555644}
+  _lightFocus: {fileID: 465989763577330155}
+  _attackColor: {r: 1, g: 0, b: 0, a: 1}
+  _normalColor: {r: 0.003921569, g: 0.7294118, b: 1, a: 1}
 --- !u!114 &5854232405504092712
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -159,8 +176,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc660ccbbe8a4ad4ea828415e3d77778, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enemyLife: 2
-  _secondsToDestroy: 1
+  _life: 4
+  _weakness: {fileID: 11400000, guid: acc81f72dbdb81b40b95f8578c3fba01, type: 2}
 --- !u!65 &4223900162893284443
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -172,8 +189,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.776368, z: 1}
-  m_Center: {x: 0, y: 0.28350753, z: 0}
+  m_Size: {x: 1, y: 0.65, z: 1}
+  m_Center: {x: 0, y: 0.15, z: 0}
 --- !u!1 &5116940947703408251
 GameObject:
   m_ObjectHideFlags: 0
@@ -212,9 +229,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5175299818302098206}
     m_Modifications:
+    - target: {fileID: 2392586235686662812, guid: 7c983c304ab18b94e9b1f1136374d9a9, type: 3}
+      propertyPath: _targetAlwaysPlayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4741058671105879683, guid: 7c983c304ab18b94e9b1f1136374d9a9, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 04f028f65587c7645a61bca2aae432c9, type: 2}
     - target: {fileID: 5227242835358535967, guid: 7c983c304ab18b94e9b1f1136374d9a9, type: 3}
       propertyPath: _ignoreY
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7011621709738053451, guid: 7c983c304ab18b94e9b1f1136374d9a9, type: 3}
       propertyPath: m_Name
@@ -271,9 +296,9 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7639679911705892337, guid: 7c983c304ab18b94e9b1f1136374d9a9, type: 3}
   m_PrefabInstance: {fileID: 3546610211560677238}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &8769338175141744233 stripped
+--- !u!114 &1156364844720418282 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5227242835358535967, guid: 7c983c304ab18b94e9b1f1136374d9a9, type: 3}
+  m_CorrespondingSourceObject: {fileID: 2392586235686662812, guid: 7c983c304ab18b94e9b1f1136374d9a9, type: 3}
   m_PrefabInstance: {fileID: 3546610211560677238}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
@@ -282,3 +307,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5bc2d2ea0d20a6c4f88f7e54f3a4fe86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &6417747301928851611 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7505385226993403885, guid: 7c983c304ab18b94e9b1f1136374d9a9, type: 3}
+  m_PrefabInstance: {fileID: 3546610211560677238}
+  m_PrefabAsset: {fileID: 0}
+--- !u!108 &2567770015003555644 stripped
+Light:
+  m_CorrespondingSourceObject: {fileID: 1340553211164452938, guid: 7c983c304ab18b94e9b1f1136374d9a9, type: 3}
+  m_PrefabInstance: {fileID: 3546610211560677238}
+  m_PrefabAsset: {fileID: 0}
+--- !u!108 &465989763577330155 stripped
+Light:
+  m_CorrespondingSourceObject: {fileID: 3985562571328874141, guid: 7c983c304ab18b94e9b1f1136374d9a9, type: 3}
+  m_PrefabInstance: {fileID: 3546610211560677238}
+  m_PrefabAsset: {fileID: 0}

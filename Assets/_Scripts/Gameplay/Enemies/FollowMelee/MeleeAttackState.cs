@@ -6,31 +6,44 @@ namespace Game.Gameplay.Enemies.FollowMelee
     {
         FollowMeleeStateController _stateController;
         MeleeAttack _meleeAttack;
-        Move _move;
+        MoveComponent _moveComponent;
         LookAtTarget _lookAtTarget;
+        AnimationEvent _animationEvent;
+        bool _isAttacking = false;
+        GameObject _player;
+        float _rangeMelee;
+        float _rangeOfVisionY;
 
-        public MeleeAttackState(FollowMeleeStateController stateController)
+        public MeleeAttackState(FollowMeleeStateController stateController, MeleeAttack meleeAttack, MoveComponent moveComponent, LookAtTarget lookAtTarget, AnimationEvent animationEvent, GameObject player, float rangeMelee, float rangeOfVisionY)
         {
             _stateController = stateController;
-            _meleeAttack = stateController.MeleeAttack;
-            _move = stateController.Move;
-            _lookAtTarget = stateController.LookAtTarget;
+            _meleeAttack = meleeAttack;
+            _moveComponent = moveComponent;
+            _lookAtTarget = lookAtTarget;
+            _animationEvent = animationEvent;
+            _player = player;
+            _rangeMelee = rangeMelee;
+            _rangeOfVisionY = rangeOfVisionY;
         }
+
         public override void Enter()
         {
-            _move.Velocity = Vector3.zero;
+            _moveComponent.Velocity = Vector3.zero;
             _meleeAttack.enabled = true;
             _lookAtTarget.enabled = true;
+            _animationEvent.OnAttackStarts += OnOnAttackStartsHandler;
+            _animationEvent.OnAttackEnds += OnOnAttackEndsHandler;
             _meleeAttack.Attack();
         }
+
         public override void Update()
         {
-            if (_stateController.IsAttacking) return;
+            if (_isAttacking) return;
             Vector3 position = _stateController.transform.position;
-            Vector3 playerPosition = _stateController.Player.transform.position;
-            if (!Utils.IsInRangeOfVision(position, playerPosition, _stateController.RangeMelee, _stateController.RangeOfVisionY))
+            Vector3 playerPosition = _player.transform.position;
+            if (!Utils.IsInRangeOfVision(position, playerPosition, _rangeMelee, _rangeOfVisionY))
             {
-                _stateController.SwitchState(_stateController.FollowState);
+                _stateController.ChangeState(_stateController.FollowState);
             }
             else
             {
@@ -41,6 +54,18 @@ namespace Game.Gameplay.Enemies.FollowMelee
         {
             _meleeAttack.enabled = false;
             _lookAtTarget.enabled = false;
+            _animationEvent.OnAttackStarts -= OnOnAttackStartsHandler;
+            _animationEvent.OnAttackEnds -= OnOnAttackEndsHandler;
+        }
+
+        void OnOnAttackEndsHandler()
+        {
+            _isAttacking = false;
+        }
+
+        void OnOnAttackStartsHandler()
+        {
+            _isAttacking = true;
         }
     }
 }

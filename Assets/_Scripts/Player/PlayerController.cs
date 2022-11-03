@@ -6,26 +6,48 @@ namespace Game.Player
 {
     public class PlayerController : MonoBehaviour
     {
-        [SerializeField] Move _move;
-        [SerializeField] Jump _jump;
-        [SerializeField, Range(0,10)] private float _speed = 2;
+        [SerializeField] MoveComponent _moveComponent;
+        [SerializeField] JumpComponent _jumpComponent;
+        [SerializeField, Range(0, 10)] float _normalSpeed = 8f;
+        [SerializeField, Range(0, 20)] float _sprintSpeed = 12f;
         [SerializeField] PlayerInput _playerInput;
+        [SerializeField] PlayerAnimationManager _animator;
         [SerializeField] WeaponController _weaponController;
-        [SerializeField] float _topClamp = 90.0f;
-        [SerializeField] float _bottomClamp = -90.0f;
-        [SerializeField] Camera _camera;
-        [SerializeField] float _rotationSpeed = 1.0f;
-        [SerializeField] bool _invertedYAxis = false;
-        [SerializeField] bool _invertedXAxis = false;
-        float _targetPitch;
-        float _rotationVelocity;
-        private Vector2 _lookInput;
-        private Vector2 _moveVelocityInput;
-        private PlayerAnimationManager _playerAnimationManager;
-        const float _threshold = 0.01f;
-
-        bool IsCurrentDeviceMouse
+        Vector2 _moveVelocityInput;
+        float _currentTime = 1;
+        float _time;
+        float _currentSpeed;
+        
+        public bool IsCurrentDeviceMouse
             => _playerInput.currentControlScheme == "KeyboardMouse";
+
+        public Vector2 LookInputDirection { get; private set; }
+
+        public float Speed
+        {
+            get => _currentSpeed;
+            set => _currentSpeed = value;
+        }
+
+        public float NormalSpeed
+        {
+            get => _normalSpeed;
+        }
+        
+        public float SprintSpeed
+        {
+            get => _sprintSpeed;
+        }
+
+        public bool CanSprint { get; set; } = true;
+
+        #region unitymethods
+
+        void Awake()
+        {
+            _time = _currentTime;
+            _currentSpeed = _normalSpeed;
+        }
 
         void Start()
         {
@@ -34,15 +56,35 @@ namespace Game.Player
 
         void Update()
         {
-            _move.Velocity = (_moveVelocityInput.x * transform.right + transform.forward * _moveVelocityInput.y).normalized * _speed;
+            if (!_jumpComponent.IsOnTheFloor)
+            {
+                SprintActive(false);
+                CanSprint = false;
+            }
+            else
+            {
+                CanSprint = true;
+            }
+            _moveComponent.Velocity = (_moveVelocityInput.x * transform.right + transform.forward * _moveVelocityInput.y).normalized * _currentSpeed;
+            /*if ((_currentTime < 0 || _jumpComponent.IsOnTheFloor))
+            {
+            }
+
+            if (!_jumpComponent.IsOnTheFloor)
+            {
+                _currentTime -= Time.deltaTime;
+            }
+            else
+            {
+                _currentTime = _time;
+            }*/
         }
 
-        void LateUpdate()
-        {
-            UpdateCameraLook();
-        }
+        #endregion
 
-        public void Move(InputAction.CallbackContext context)
+        #region inputmethods
+
+        public void MoveInput(InputAction.CallbackContext context)
         {
             _moveVelocityInput = context.ReadValue<Vector2>();
             if (context.canceled)
@@ -51,34 +93,48 @@ namespace Game.Player
             }
         }
 
-       public void Jump(InputAction.CallbackContext context)
+        public void JumpInput(InputAction.CallbackContext context)
         {
             if (context.performed)
             {
-                _jump.JumpAction();
+                _jumpComponent.JumpAction();
             }
         }
 
-       public void Look(InputAction.CallbackContext context)
-       {
-           _lookInput = context.ReadValue<Vector2>();
-       }
+        public void LookInput(InputAction.CallbackContext context)
+        {
+            LookInputDirection = context.ReadValue<Vector2>();
+        }
 
-       public void Reload(InputAction.CallbackContext context)
-       {
-           
-       }
+        public void SprintInput(InputAction.CallbackContext context)
+        {
+            if (!CanSprint) return;
+            if (context.started)
+            {
+                SprintActive(true);
+            }
+            else if (context.canceled)
+            {
+                SprintActive(false);
+                
+            }
+        }
 
-       void UpdateCameraLook()
-       {
-           if (_lookInput.sqrMagnitude < _threshold) return;
+        void SprintActive(bool active)
+        {
+            _weaponController.CanAttack = !active;
+            if (active)
+            {
+                _currentSpeed = _sprintSpeed;
+                _animator.StartSprint();
+            }
+            else
+            {
+                _currentSpeed = _normalSpeed;
+                _animator.StopSprint();
+            }
+        }
 
-           float deltaTimeMultiplier = IsCurrentDeviceMouse ? 1.0f : Time.deltaTime;
-           _targetPitch += _lookInput.y * _rotationSpeed * deltaTimeMultiplier * (_invertedYAxis ? 1 : -1);
-           _rotationVelocity = _lookInput.x * _rotationSpeed * deltaTimeMultiplier * (_invertedXAxis ? -1 : 1);
-           _targetPitch = Utils.ClampAngle(_targetPitch, _bottomClamp, _topClamp);
-           _camera.transform.localRotation = Quaternion.Euler(_targetPitch, 0.0f, 0.0f);
-           transform.Rotate(Vector3.up * _rotationVelocity);
-       }
+        #endregion
     }
 }

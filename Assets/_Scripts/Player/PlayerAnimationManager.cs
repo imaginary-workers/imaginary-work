@@ -9,16 +9,19 @@ namespace Game.Player
         [SerializeField] Animator _myAni;
         Dictionary<string, Action> _events = new Dictionary<string, Action>();
 
-        public void ADD_ANI_EVENT(string eventName, Action callback)
+        public void AddAnimationEvent(string eventName, Action callback)
         {
             if (_events.ContainsKey(eventName)) return;
             _events.Add(eventName, callback);
         }
 
-        public void REMOVE_ANI_EVENT(string eventName)
+        public void RemoveAnimationEvent(string eventName)
         {
             _events.Remove(eventName);
         }
+        /**
+         *  It get call from the animation events
+         */
         public void PLAYER_EVENT(string eventName)
         {
             _events[eventName]?.Invoke();
@@ -32,6 +35,16 @@ namespace Game.Player
         public void AttackShooter()
         {
             _myAni.SetTrigger("PistolTrigger");
+        }
+
+        public void StartSprint()
+        {
+            _myAni.SetBool("IsSprinting", true);
+        }
+
+        public void StopSprint()
+        {
+            _myAni.SetBool("IsSprinting", false);
         }
     }
 }

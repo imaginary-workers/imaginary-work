@@ -8,7 +8,7 @@ namespace Game
         private void OnTriggerEnter(Collider other)
         {
             if (other.tag == "Player")
-                GameManager.instance.ToLevelOne();
+                GameManager.Instance.ConditionWin();
         }
     }
 }

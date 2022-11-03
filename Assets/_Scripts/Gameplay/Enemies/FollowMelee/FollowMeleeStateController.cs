@@ -1,98 +1,87 @@
 using System;
-using Game.Player;
+using System.Collections;
+using Game.Managers;
 using UnityEngine;
 
 namespace Game.Gameplay.Enemies.FollowMelee
 {
-    public class FollowMeleeStateController : MonoBehaviour
+    public class FollowMeleeStateController : EnemyStateController
     {
         [SerializeField] RandomPatrol _randomPatrol;
         [SerializeField, Range(0, 15)] int _rangeFollow = 15;
         [SerializeField, Range(.1f, 3f)] float _rangeOfVisionY = 1;
         [SerializeField] FollowPlayer _followPlayer;
         [SerializeField] MeleeAttack _meleeAttack;
-        [SerializeField] Move _move;
+        [SerializeField] MoveComponent _moveComponent;
         [SerializeField] LookAtTarget _lookAtTarget;
         [SerializeField, Range(0f, 5f)] float _moveSpeed = 5f;
-        [SerializeField] EventAnimation _eventAnimation;
-        [SerializeField] EnemyDamageable _enemyDamagable;
-        State _currentState;
-        PlayerController _player;
+        [SerializeField] AnimationEvent _animationEvent;
+        [SerializeField] float _secondToDestroy = 4;
+        [SerializeField] SpawnDrops _spawn;
+        [SerializeField] AnimatorController _aniController;
+        GameObject _player;
         RandomPatrolState _randomPatrolState;
         FollowState _followState;
         MeleeAttackState _meleeState;
+        TakeStrongDamageState _takeStrongDamageState;
         float _rangeMelee = 0.5f;
         bool _isAttacking;
+        float _takeStrongDamageRecoverTime = 3f;
+        bool _canDoStrongDamageFeedback = true;
 
         public RandomPatrolState RandomPatrolState => _randomPatrolState;
         public FollowState FollowState => _followState;
         public MeleeAttackState MeleeState => _meleeState;
-        public FollowPlayer FollowPlayer => _followPlayer;
-        public MeleeAttack MeleeAttack => _meleeAttack;
+        public TakeStrongDamageState TakeStrongDamageState => _takeStrongDamageState;
         public int RangeFollow => _rangeFollow;
-        public LookAtTarget LookAtTarget => _lookAtTarget;
-        public PlayerController Player => _player;
-        public Move Move => _move;
-        public float RangeMelee => _rangeMelee;
-        public float RangeOfVisionY => _rangeOfVisionY;
-        public bool IsAttacking
-        {
-            get => _isAttacking;
-            private set { _isAttacking = value; }
-        }
-
-        void Awake()
-        {
-            _player = FindObjectOfType<PlayerController>();
-            _lookAtTarget.Target = _player.gameObject;
-            _rangeMelee = _followPlayer.CloseRange;
-            _randomPatrol.Speed = _followPlayer.Speed = _moveSpeed;
-            _followPlayer.RangeOfVisionY = _rangeOfVisionY;
-            _randomPatrolState = new RandomPatrolState(this, _randomPatrol);
-            _followState = new FollowState(this);
-            _meleeState = new MeleeAttackState(this);
-            _randomPatrol.enabled = false;
-            _followPlayer.enabled = false;
-            _meleeAttack.enabled = false;
-            _currentState = _randomPatrolState;
-        }
 
         void OnEnable()
         {
-            _eventAnimation.OnAttackStarts += () => IsAttacking = true;
-            _eventAnimation.OnAttackEnds += () => IsAttacking = false;
+            Damageable.OnTakeStrongDamage += OnTakeStrongDamageHandler;
         }
 
         void OnDisable()
         {
-            _eventAnimation.OnAttackStarts -= () => IsAttacking = true;
-            _eventAnimation.OnAttackEnds -= () => IsAttacking = false;
+            Damageable.OnTakeStrongDamage -= OnTakeStrongDamageHandler;
         }
 
-        void Start()
+        protected override void OnAwakeEnemy()
         {
-            _currentState.Enter();
+            _player = GameManager.Player;
+            _lookAtTarget.Target = _player.gameObject;
+            _rangeMelee = _followPlayer.CloseRange;
+            _randomPatrol.Speed = _followPlayer.Speed = _moveSpeed;
+            _followPlayer.RangeOfVisionY = _rangeOfVisionY;
+            _randomPatrolState = new RandomPatrolState(this, _randomPatrol, _player, _rangeOfVisionY);
+            _followState = new FollowState(this, _followPlayer, _lookAtTarget, _player, _rangeMelee, _rangeOfVisionY);
+            _meleeState = new MeleeAttackState(this, _meleeAttack, _moveComponent, _lookAtTarget, _animationEvent, _player, _rangeMelee, _rangeOfVisionY);
+            _randomPatrol.enabled = false;
+            _followPlayer.enabled = false;
+            _meleeAttack.enabled = false;
+            deadState = new DeadState(_moveComponent, _aniController, _spawn, this, _secondToDestroy);
+            _takeStrongDamageState = new TakeStrongDamageState(this, _moveComponent, _animationEvent, _aniController);
+            ChangeState(_randomPatrolState);
         }
-        void Update()
+        
+        void ChangeToTakeStrongDamageState()
         {
-            if (_enemyDamagable.Life > 0)
-            {
-                _currentState.Update();
-            }
-            else
-            {
-                _lookAtTarget.enabled = false;
-                _followPlayer.enabled = false;
-                _move.Velocity = Vector3.zero;
-            }
-
-
+            if (_takeStrongDamageState == null) return;
+            
+            ChangeState(_takeStrongDamageState);
         }
-        public void SwitchState(State state)
+
+        void OnTakeStrongDamageHandler(int damage)
         {
-            _currentState.Exit();
-            _currentState = state;
-            _currentState.Enter();
+            if (!_canDoStrongDamageFeedback) return;
+            StartCoroutine(CO_TakeStrongDamageRecoverTime());
+            ChangeToTakeStrongDamageState();
+        }
+
+        IEnumerator CO_TakeStrongDamageRecoverTime()
+        {
+            _canDoStrongDamageFeedback = false;
+            yield return new WaitForSeconds(_takeStrongDamageRecoverTime);
+            _canDoStrongDamageFeedback = true;
         }
     }
 

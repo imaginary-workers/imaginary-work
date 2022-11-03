@@ -4,13 +4,17 @@ namespace Game.Gameplay.Enemies.FollowMelee
 {
     public class RandomPatrolState : State
     {
-        RandomPatrol _randomPatrol;   
         FollowMeleeStateController _stateController;
+        RandomPatrol _randomPatrol;   
+        GameObject _player;
+        float _rangeOfVisionY;
 
-        public RandomPatrolState(FollowMeleeStateController followMeleeStateController, RandomPatrol randomPatrol)
+        public RandomPatrolState(FollowMeleeStateController stateController, RandomPatrol randomPatrol, GameObject player, float rangeOfVisionY)
         {
-            _stateController = followMeleeStateController;
+            _stateController = stateController;
             _randomPatrol = randomPatrol;
+            _player = player;
+            _rangeOfVisionY = rangeOfVisionY;
         }
 
         public override void Enter()
@@ -20,10 +24,10 @@ namespace Game.Gameplay.Enemies.FollowMelee
         public override void Update()
         {
             Vector3 position = _stateController.transform.position;
-            Vector3 playerPosition = _stateController.Player.transform.position;
-            if (Utils.IsInRangeOfVision(position, playerPosition, _stateController.RangeFollow, _stateController.RangeOfVisionY))
+            Vector3 playerPosition = _player.transform.position;
+            if (Utils.IsInRangeOfVision(position, playerPosition, _stateController.RangeFollow, _rangeOfVisionY))
             {
-                _stateController.SwitchState(_stateController.FollowState);
+                _stateController.ChangeState(_stateController.FollowState);
             }
         }
         public override void Exit()

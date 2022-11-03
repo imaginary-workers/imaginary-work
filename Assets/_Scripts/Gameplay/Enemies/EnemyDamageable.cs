@@ -1,26 +1,35 @@
 using System;
+using Game.SO;
 using UnityEngine;
 
 namespace Game.Gameplay.Enemies
 {
     public class EnemyDamageable : MonoBehaviour, IDamageable
     {
-        [SerializeField] int _enemyLife = 10;
-        [SerializeField] int _secondsToDestroy = 3;
-        public event Action<int> OnTakeDamage;
+        [SerializeField] int _life = 10;
+        [SerializeField] private ElementSO _weakness;
+        public event Action<int> OnTakeDamage, OnTakeStrongDamage;
         public event Action OnDeath;
-        public int Life => _enemyLife;
+        public int Life => _life;
 
-        public void TakeTamage(int damage)
+        public void TakeTamage(int damage, ElementSO element)
         {                      
             if (Life <= 0) return;
 
-            _enemyLife -= damage;
-            OnTakeDamage?.Invoke(damage);
+            if (_weakness == element)
+            {
+                _life -= (damage * 2);
+                OnTakeStrongDamage?.Invoke(damage);
+            }
+            else
+            {
+                _life -= damage;
+                OnTakeDamage?.Invoke(damage);
+            }
             if (Life <= 0)
-            {               
+            {
+                _life = 0;
                 OnDeath?.Invoke();
-                Destroy(gameObject, _secondsToDestroy);
             }
         }
     }
