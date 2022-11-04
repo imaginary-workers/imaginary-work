@@ -1,72 +1,91 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.AI;
 
 namespace Game.Gameplay.Enemies.FlyerPatrol
 {
     public class AttackState : State
     {
-
         FlyerPatrolStateController _stateController;
-        LookAtTarget _lookAtTarget;
-        RaycastAttack _attack;
-        MoveComponent _moveComponent;
         GameObject _target;
-        float _maxDistance = 20;
+        GameObject _cameraObject;
+        GameObject _baseCameraObject;
+        RaycastAttack _attack;
+        NavMeshAgent _agent;
         VisualField _visualField;
-        Light _light;
-        Color _color;
-        Light _lightFocus;
+        Light _ledLight;
+        Light _focusLight;
+        Color _attackColor;
 
         public AttackState(
             FlyerPatrolStateController stateController,
-            LookAtTarget lookAtTarget,
-            RaycastAttack attack,
-            MoveComponent moveComponent,
             GameObject target,
+            GameObject cameraObject,
+            GameObject baseCameraObject,
+            RaycastAttack attack,
+            NavMeshAgent agent,
             VisualField visualField,
-            float maxDistance,
-            Light light,
-            Light lightFocus,
-            Color color
+            Light ledLight,
+            Light focusLight,
+            Color attackColor
             )
         {
             _stateController = stateController;
-            _lookAtTarget = lookAtTarget;
-            _attack = attack;
-            _moveComponent = moveComponent;
             _target = target;
+            _cameraObject = cameraObject;
+            _baseCameraObject = baseCameraObject;
+            _attack = attack;
+            _agent = agent;
             _visualField = visualField;
-            _maxDistance = maxDistance;
-            _attack.MaxDistance = _maxDistance;
-            _light = light;
-            _lightFocus = lightFocus;
-            _color = color;
+            _ledLight = ledLight;
+            _focusLight = focusLight;
+            _attackColor = attackColor;
         }
 
         public override void Enter()
         {
             _attack.enabled = true;
-            _lookAtTarget.enabled = true;
-            _moveComponent.Velocity = Vector3.zero;
-            _light.color = _color;
-            _lightFocus.color = _color;
+            _agent.speed = 0;
+            _ledLight.color = _attackColor;
+            _focusLight.color = _attackColor;
             _visualField.OnExitViewTarget += ChangeToNormal;
         }
 
         public override void Update()
         {
+            BaseLookTargetXZ();
+            CameraLookTargetZY();
         }
         public override void Exit()
         {
             _attack.enabled = false;
-            _lookAtTarget.enabled = false;
             _visualField.OnExitViewTarget -= ChangeToNormal;
         }
 
         void ChangeToNormal(GameObject obj)
         {
             _stateController.ChangeState(_stateController.NormalState);
+        }
+
+        void CameraLookTargetZY()
+        {
+            var transform = _cameraObject.transform;
+            var direction = (_target.transform.position - transform.position).normalized;
+            _cameraObject.transform.forward = Vector3.Slerp(transform.forward,
+                direction, Time.deltaTime * 3.5f);
+        }
+
+        void BaseLookTargetXZ()
+        {
+            var transform = _baseCameraObject.transform;
+            var targetPosition = _target.transform.position;
+            var position = transform.position;
+            targetPosition.y = position.y;
+            var direction = (targetPosition - position).normalized;
+            _baseCameraObject.transform.forward = Vector3.Slerp(transform.forward,
+                direction, Time.deltaTime * 3.5f);
         }
     }
 }

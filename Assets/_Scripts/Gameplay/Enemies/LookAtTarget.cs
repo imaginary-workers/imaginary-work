@@ -33,5 +33,10 @@ namespace Game.Gameplay.Enemies
             get => _target;
             set => _target = value;
         }
+
+        public float SpeedRotation
+        {
+            set => _speedRotation = value;
+        }
     }
 }

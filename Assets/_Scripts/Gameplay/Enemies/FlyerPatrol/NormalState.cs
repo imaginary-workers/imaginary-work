@@ -1,74 +1,81 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 namespace Game.Gameplay.Enemies.FlyerPatrol
 {
     public class NormalState : State
     {        
         FlyerPatrolStateController _stateController;
+        NavMeshAgent _agent;
         PatrolBehaviour _patrolBehaviour;
-        GameObject _target;
-        Vector3 _velocityCheckpoint = Vector3.zero;
-        MoveComponent _moveComponent;
-        float _maxDistance = 20;
-        LookAtTarget _lookAtTarget;
+        GameObject _cameraObject;
+        GameObject _baseCameraObject;
         VisualField _visualField;
-        Light _light;
+        Light _ledLight;
+        Light _focusLight;
         Color _color;
-        Light _lightFocus;
 
         public NormalState(
             FlyerPatrolStateController stateController,
+            NavMeshAgent agent,
             PatrolBehaviour patrolBehaviour,
-            GameObject target,
-            MoveComponent moveComponent,
-            float maxDistance,
-            LookAtTarget lookAtTarget,
+            GameObject cameraObject,
+            GameObject baseCameraObject,
             VisualField visualField,
-            Light light,
-            Light lightFocus,
+            Light ledLight,
+            Light focusLight,
             Color color
             )
         {
             _stateController = stateController;
+            _agent = agent;
             _patrolBehaviour = patrolBehaviour;
-            _target = target;
-            _moveComponent = moveComponent;
-            _maxDistance = maxDistance;
-            _lookAtTarget = lookAtTarget;
+            _cameraObject = cameraObject;
+            _baseCameraObject = baseCameraObject;
             _visualField = visualField;
-            _light = light;
+            _ledLight = ledLight;
+            _focusLight = focusLight;
             _color = color;
-            _lightFocus = lightFocus;
         }
+
         public override void Enter()
         {
-            _lookAtTarget.transform.forward = Vector3.down;
             _patrolBehaviour.enabled = true;
-            if (_velocityCheckpoint != Vector3.zero)
-            {
-                _moveComponent.Velocity = _velocityCheckpoint;
-            }
-
-            _light.color = _color;
-            _lightFocus.color = _color;
+            _ledLight.color = _color;
+            _focusLight.color = _color;
+            _agent.isStopped = false;
             _visualField.OnEnterViewTarget += ChangeToAttack;
         }
         public override void Update()
         {
-        }
-
-        void ChangeToAttack(GameObject target)
-        {
-            _stateController.ChangeState(_stateController.AttackState);
+            BaseLookForward();
+            CameraLookForwardDown();
         }
 
         public override void Exit()
         {
             _patrolBehaviour.enabled = false;
-            _velocityCheckpoint = _moveComponent.Velocity;
+            _agent.isStopped = true;
             _visualField.OnEnterViewTarget -= ChangeToAttack;
+        }
+
+        void CameraLookForwardDown()
+        {
+            _cameraObject.transform.forward = Vector3.Slerp(_cameraObject.transform.forward,
+                (_stateController.transform.forward + Vector3.down).normalized, Time.deltaTime * 3.5f);
+        }
+
+        void BaseLookForward()
+        {
+            _baseCameraObject.transform.forward = Vector3.Slerp(_baseCameraObject.transform.forward,
+                (_stateController.transform.forward).normalized, Time.deltaTime * 3.5f);
+        }
+
+        void ChangeToAttack(GameObject target)
+        {
+            _stateController.ChangeState(_stateController.AttackState);
         }
     }
 }
