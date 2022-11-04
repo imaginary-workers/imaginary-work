@@ -5,9 +5,9 @@ namespace Game.Gameplay.PowerUps
 {
     public class ReserveWeaponTrigger : MonoBehaviour
     {
-        void OnTriggerEnter(Collider other)
+        void OnCollisionEnter(Collision other)
         {
-            var weaponController = other.GetComponent<WeaponController>();
+            var weaponController = other.gameObject.GetComponent<WeaponController>();
             if (weaponController == null) return;
             if (!weaponController.ReloadReserveWeapons()) return;
 
