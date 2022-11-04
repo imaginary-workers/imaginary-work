@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.54133826, g: 0.6206705, b: 0.7277357, a: 1}
+  m_IndirectSpecularColor: {r: 0.5410525, g: 0.62022966, b: 0.7275671, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -198,6 +198,30 @@ PrefabInstance:
       propertyPath: positions.Array.data[3]
       value: 
       objectReference: {fileID: 56262023}
+    - target: {fileID: 7268778590236066481, guid: badc885cb0ccbd041be83d343ddcfae9, type: 3}
+      propertyPath: _pointRadiusGizmos
+      value: 0.55
+      objectReference: {fileID: 0}
+    - target: {fileID: 7268778590236066481, guid: badc885cb0ccbd041be83d343ddcfae9, type: 3}
+      propertyPath: _waypoints.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7268778590236066481, guid: badc885cb0ccbd041be83d343ddcfae9, type: 3}
+      propertyPath: _waypoints.Array.data[0]
+      value: 
+      objectReference: {fileID: 1184517048}
+    - target: {fileID: 7268778590236066481, guid: badc885cb0ccbd041be83d343ddcfae9, type: 3}
+      propertyPath: _waypoints.Array.data[1]
+      value: 
+      objectReference: {fileID: 525576513}
+    - target: {fileID: 7268778590236066481, guid: badc885cb0ccbd041be83d343ddcfae9, type: 3}
+      propertyPath: _waypoints.Array.data[2]
+      value: 
+      objectReference: {fileID: 123064252}
+    - target: {fileID: 7268778590236066481, guid: badc885cb0ccbd041be83d343ddcfae9, type: 3}
+      propertyPath: _waypoints.Array.data[3]
+      value: 
+      objectReference: {fileID: 56262022}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: badc885cb0ccbd041be83d343ddcfae9, type: 3}
 --- !u!4 &4395219 stripped
@@ -886,7 +910,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-1542
+  m_Name: pb_Mesh-6180
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1183,7 +1207,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-1554
+  m_Name: pb_Mesh-6192
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1974,7 +1998,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-1530
+  m_Name: pb_Mesh-6168
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2

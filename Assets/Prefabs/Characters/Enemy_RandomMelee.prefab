@@ -12,8 +12,6 @@ GameObject:
   - component: {fileID: 249724962160921432}
   - component: {fileID: 8901121125137834358}
   - component: {fileID: 3845487164276731176}
-  - component: {fileID: 2227387254386213678}
-  - component: {fileID: 6394532928326410465}
   - component: {fileID: 6779529177335636181}
   - component: {fileID: 8054064421387174308}
   - component: {fileID: 8415224544075344654}
@@ -21,6 +19,7 @@ GameObject:
   - component: {fileID: 4976006481002420660}
   - component: {fileID: 8846074023536706980}
   - component: {fileID: 1819776211655567606}
+  - component: {fileID: 7268778590236066481}
   m_Layer: 7
   m_Name: Enemy_RandomMelee
   m_TagString: Untagged
@@ -55,12 +54,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9d45de46cd55034f81ce7bb3435f204, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _randomPatrol: {fileID: 6394532928326410465}
+  _patrolBehaviour: {fileID: 7268778590236066481}
   _rangeFollow: 9
   _rangeOfVisionY: 1
   _followPlayer: {fileID: 6779529177335636181}
   _meleeAttack: {fileID: 8415224544075344654}
-  _moveComponent: {fileID: 2227387254386213678}
+  _agent: {fileID: 1819776211655567606}
   _lookAtTarget: {fileID: 8054064421387174308}
   _moveSpeed: 3
   _animationEvent: {fileID: 6568752979330764490}
@@ -97,43 +96,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _animator: {fileID: 3117244702086275719}
   _enemyDamagable: {fileID: 8846074023536706980}
-  moveComponent: {fileID: 2227387254386213678}
+  _agent: {fileID: 1819776211655567606}
   _damageable: {fileID: 8846074023536706980}
   _damageParticle: {fileID: 1511485130406507687}
---- !u!114 &2227387254386213678
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1871783242920672996}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 48fe5a77961d7844ebc1d494eb701aa1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _rigidbody: {fileID: 8901121125137834358}
-  _ignoreGravity: 0
---- !u!114 &6394532928326410465
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1871783242920672996}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa85e07092a78b04e9b075f991f05516, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  positions:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  moveComponent: {fileID: 2227387254386213678}
-  _speed: 4.5
-  _distance: 1
 --- !u!114 &6779529177335636181
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -147,7 +112,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 4.5
-  moveComponent: {fileID: 2227387254386213678}
+  _agent: {fileID: 1819776211655567606}
   _closeRange: 2
   _rangeOfVisionY: 1
 --- !u!114 &8054064421387174308
@@ -246,6 +211,28 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &7268778590236066481
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1871783242920672996}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1800234ef324a54ba092ae22c5c8a94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _speed: 2
+  _waitBetweenPointInSeconds: 1
+  _waitOnEnable: 2.5
+  _agent: {fileID: 1819776211655567606}
+  _waypoints: []
+  _cycle: 0
+  _pointRadiusGizmos: 2
+  _sphereColor: {r: 1, g: 0, b: 0, a: 1}
+  _lineColor: {r: 0, g: 1, b: 0, a: 1}
+  _random: 0
 --- !u!1 &3410269104207759678
 GameObject:
   m_ObjectHideFlags: 0

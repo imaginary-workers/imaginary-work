@@ -8,7 +8,7 @@ namespace Game.Gameplay.Enemies.FollowMelee
 {
     public class FollowMeleeStateController : EnemyStateController
     {
-        [SerializeField] RandomPatrol _randomPatrol;
+        [SerializeField] PatrolBehaviour _patrolBehaviour;
         [SerializeField, Range(0, 15)] int _rangeFollow = 15;
         [SerializeField, Range(.1f, 3f)] float _rangeOfVisionY = 1;
         [SerializeField] FollowPlayer _followPlayer;
@@ -51,13 +51,14 @@ namespace Game.Gameplay.Enemies.FollowMelee
             _player = GameManager.Player;
             _lookAtTarget.Target = _player.gameObject;
             _rangeMelee = _followPlayer.CloseRange;
-            _randomPatrol.Speed = _followPlayer.Speed = _moveSpeed;
+            _patrolBehaviour.Speed = _followPlayer.Speed = _moveSpeed;
             _followPlayer.RangeOfVisionY = _rangeOfVisionY;
-            _randomPatrolState = new RandomPatrolState(this, _randomPatrol, _player, _rangeOfVisionY);
+            _randomPatrolState = new RandomPatrolState(this, _patrolBehaviour, _player, _rangeOfVisionY);
             _followState = new FollowState(this, _followPlayer, _lookAtTarget, _player, _rangeMelee, _rangeOfVisionY);
             _meleeState = new MeleeAttackState(this, _meleeAttack, _agent, _lookAtTarget, _animationEvent, _player, _rangeMelee, _rangeOfVisionY);
-            _randomPatrol.enabled = false;
+            _patrolBehaviour.enabled = false;
             _followPlayer.enabled = false;
+            _lookAtTarget.enabled = false;
             _meleeAttack.enabled = false;
             deadState = new DeadState(_agent, _aniController, _spawn, this, _secondToDestroy);
             _takeStrongDamageState = new TakeStrongDamageState(this, _agent, _animationEvent, _aniController);

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UIElements;
 
 namespace Game.Gameplay.Enemies
 {
@@ -28,7 +29,9 @@ namespace Game.Gameplay.Enemies
         bool _isWaiting = false;
         WaitForSeconds _waitForSeconds;
         WaitForSeconds _waitForSecondsOnEnable;
+        [SerializeField] bool _random;
 
+        public float Speed { set { _speed = value; } } 
         void Awake()
         {
             _patrol = new Vector3[_waypoints.Count];
@@ -67,6 +70,18 @@ namespace Game.Gameplay.Enemies
 
         void NextTarget()
         {
+            if (_random)
+            {
+                var newIndex = 0;
+                do
+                {
+                    newIndex = Random.Range(0, _patrol.Length);
+
+                }
+                while (newIndex == _target);
+                _target = newIndex;
+                return;
+            }            
             if (_cycle)
             {
                 if (_direction > 0 && _target == _patrol.Length - 1)
