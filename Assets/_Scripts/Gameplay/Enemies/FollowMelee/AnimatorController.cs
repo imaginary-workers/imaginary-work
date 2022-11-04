@@ -1,6 +1,7 @@
 ﻿using System;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.AI;
 
 namespace Game.Gameplay.Enemies.FollowMelee
 {
@@ -8,7 +9,7 @@ namespace Game.Gameplay.Enemies.FollowMelee
     {
         [SerializeField] Animator _animator;
         [SerializeField] EnemyDamageable _enemyDamagable;
-        [SerializeField] MoveComponent moveComponent;
+        [SerializeField] NavMeshAgent _agent;
         [SerializeField] EnemyDamageable _damageable;
         [SerializeField] ParticleSystem _damageParticle;
 
@@ -25,7 +26,7 @@ namespace Game.Gameplay.Enemies.FollowMelee
 
         void Update()
         {
-            _animator.SetFloat("Speed", moveComponent.Velocity.magnitude);
+            _animator.SetFloat("Speed", _agent.speed);
         }
         public void Attack()
         {

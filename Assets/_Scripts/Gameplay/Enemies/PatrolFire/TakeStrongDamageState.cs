@@ -1,28 +1,29 @@
 ﻿using UnityEngine;
+using UnityEngine.AI;
 
 namespace Game.Gameplay.Enemies.PatrolFire
 {
     public class TakeStrongDamageState : State
     {
         EnemyStateController _stateController;
-        MoveComponent _moveComponent;
+        NavMeshAgent _agent;
         AnimatorController _animatorController;
 
         public TakeStrongDamageState(
             EnemyStateController stateController,
-            MoveComponent moveComponent,
+            NavMeshAgent agent,
             AnimatorController animatorController
             )
         {
             _stateController = stateController;
-            _moveComponent = moveComponent;
+            _agent = agent;
             _animatorController = animatorController;
         }
 
         public override void Enter()
         {
             // _animationEvent.OnTakeStrongDamageEnds += OnTakeStrongDamageEndsHandler;  
-            _moveComponent.Velocity = Vector3.zero;
+            _agent.speed = 0;
             _animatorController.AddAnimationEvent("TakeStrongDamageEnds", OnTakeStrongDamageEndsHandler);
             _animatorController.TakeStrongDamageFeedback();
         }

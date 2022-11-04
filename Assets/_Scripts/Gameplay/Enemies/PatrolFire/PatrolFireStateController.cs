@@ -4,6 +4,7 @@ using Game.Gameplay.Enemies.FollowMelee;
 using Game.Managers;
 using Game.Player;
 using UnityEngine;
+using UnityEngine.AI;
 
 namespace Game.Gameplay.Enemies.PatrolFire
 {
@@ -12,7 +13,7 @@ namespace Game.Gameplay.Enemies.PatrolFire
         [SerializeField] PatrolBehaviour _normalBehaviour;
         [SerializeField] VisualField _visualField;
         [SerializeField] MonoBehaviour _attackBehaviour;  
-        [SerializeField] MoveComponent _moveComponent;
+        [SerializeField] NavMeshAgent _agent;
         [SerializeField] LookAtTarget _lookAtTarget;
         [SerializeField] EnemyBurstShooter _enemyShooter;
         [SerializeField] AnimatorController _animatorController;
@@ -34,9 +35,9 @@ namespace Game.Gameplay.Enemies.PatrolFire
             _enemyShooter.Target = _lookAtTarget.Target = _visualField.Target = _player;
             DesactiveBehaviours();
             _normalState = new NormalState(this, _normalBehaviour, _visualField);
-            _attackState = new AttackState(this, _visualField, _moveComponent, _lookAtTarget, _animatorController, _enemyShooter);
-            deadState = new DeadState(this, _animatorController, 5, _moveComponent, _spawner);
-            _takeStrongDamageState = new TakeStrongDamageState(this, _moveComponent, _animatorController);
+            _attackState = new AttackState(this, _visualField, _agent, _lookAtTarget, _animatorController, _enemyShooter);
+            deadState = new DeadState(this, _animatorController, 5, _agent, _spawner);
+            _takeStrongDamageState = new TakeStrongDamageState(this, _agent, _animatorController);
             ChangeState(_normalState);
             Damageable.OnTakeStrongDamage += OnTakeStrongDamageHandler;
         }

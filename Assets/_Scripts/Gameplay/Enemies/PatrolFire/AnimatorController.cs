@@ -1,12 +1,13 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 namespace Game.Gameplay.Enemies.PatrolFire
 {
     public class AnimatorController : MonoBehaviour
     {
-        [SerializeField] MoveComponent moveComponent;
+        [SerializeField] NavMeshAgent _agent;
         [SerializeField] Animator _animator;
         [SerializeField] EnemyDamageable _damageable;
         [SerializeField] ParticleSystem _damageParticle;
@@ -27,7 +28,7 @@ namespace Game.Gameplay.Enemies.PatrolFire
 
         void LateUpdate()
         {
-            _animator.SetFloat("Speed", moveComponent.Velocity.magnitude);
+            _animator.SetFloat("Speed", _agent.speed);
         }
 
         public void StartAttack()

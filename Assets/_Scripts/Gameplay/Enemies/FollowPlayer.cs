@@ -1,12 +1,13 @@
 using Game.Player;
 using UnityEngine;
+using UnityEngine.AI;
 
 namespace Game.Gameplay.Enemies
 {
     public class FollowPlayer : MonoBehaviour
     {          
-        [SerializeField, Range(0f,5f)]  float _speed = 5f;        
-        [SerializeField] MoveComponent moveComponent;
+        [SerializeField, Range(0f,5f)]  float _speed = 5f;
+        [SerializeField] NavMeshAgent _agent;
         [SerializeField, Range(0f, 5f)] float _closeRange = 2f;
         [SerializeField, Range(.1f, 3f)] float _rangeOfVisionY = 1;
         PlayerController _player;
@@ -31,11 +32,11 @@ namespace Game.Gameplay.Enemies
             var currentPosition = transform.position;
             if (Utils.IsInRangeOfVision(currentPosition, playerPosition, _closeRange, _rangeOfVisionY))
             {
-                moveComponent.Velocity = Vector3.zero;
+                _agent.speed = 0;
             }
             else
             {
-                moveComponent.Velocity = (playerPosition - currentPosition).normalized * _speed;
+                _agent.SetDestination(playerPosition);
             }
         }
     }

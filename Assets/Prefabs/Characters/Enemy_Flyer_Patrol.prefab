@@ -10,13 +10,13 @@ GameObject:
   m_Component:
   - component: {fileID: 8767201343238056812}
   - component: {fileID: 5184913850856923581}
-  - component: {fileID: 763075930358308920}
   - component: {fileID: 7608482221649557534}
   - component: {fileID: 5745978130405426769}
   - component: {fileID: 4885114125338213701}
   - component: {fileID: 7120076050924849061}
   - component: {fileID: 5854232405504092712}
   - component: {fileID: 4223900162893284443}
+  - component: {fileID: 5912675402029469630}
   m_Layer: 0
   m_Name: Enemy_Flyer_Patrol
   m_TagString: Untagged
@@ -51,10 +51,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1800234ef324a54ba092ae22c5c8a94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveComponent: {fileID: 763075930358308920}
   _speed: 2
   _waitBetweenPointInSeconds: 1
   _waitOnEnable: 2.5
+  _agent: {fileID: 5912675402029469630}
   _waypoints:
   - {fileID: 0}
   - {fileID: 0}
@@ -62,25 +62,10 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  _minimumDistanceNearPoint: 1
   _cycle: 0
   _pointRadiusGizmos: 0.27
   _sphereColor: {r: 1, g: 0, b: 0, a: 1}
   _lineColor: {r: 0, g: 1, b: 0, a: 1}
---- !u!114 &763075930358308920
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1212517995951844142}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 48fe5a77961d7844ebc1d494eb701aa1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _rigidbody: {fileID: 7608482221649557534}
-  _ignoreGravity: 0
 --- !u!54 &7608482221649557534
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -93,9 +78,9 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 0
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!114 &5745978130405426769
 MonoBehaviour:
@@ -139,7 +124,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   _rateInSeconds: 0.2
-  _maxDistance: 5
+  _maxDistance: 100
   _attackElement: {fileID: 0}
 --- !u!114 &7120076050924849061
 MonoBehaviour:
@@ -155,10 +140,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _attack: {fileID: 4885114125338213701}
   _patrolBehaviour: {fileID: 5184913850856923581}
-  _lookAtTarget: {fileID: 1156364844720418282}
-  _moveComponent: {fileID: 763075930358308920}
+  _cameraMesh: {fileID: 295738748310489686}
+  _cameraBaseMesh: {fileID: 2287966097617324722}
+  _agent: {fileID: 5912675402029469630}
   _visualField: {fileID: 5745978130405426769}
-  _maxDistance: 10
   _particle: {fileID: 3752655323884331237, guid: 06badebed72890a448035c9454bd234b, type: 3}
   _light: {fileID: 2567770015003555644}
   _lightFocus: {fileID: 465989763577330155}
@@ -191,6 +176,28 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 0.65, z: 1}
   m_Center: {x: 0, y: 0.15, z: 0}
+--- !u!195 &5912675402029469630
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1212517995951844142}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 4
+  m_BaseOffset: 3.2
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1 &5116940947703408251
 GameObject:
   m_ObjectHideFlags: 0
@@ -229,18 +236,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5175299818302098206}
     m_Modifications:
-    - target: {fileID: 2392586235686662812, guid: 7c983c304ab18b94e9b1f1136374d9a9, type: 3}
-      propertyPath: _targetAlwaysPlayer
-      value: 1
+    - target: {fileID: 3985562571328874141, guid: 7c983c304ab18b94e9b1f1136374d9a9, type: 3}
+      propertyPath: m_Intensity
+      value: 92.74
+      objectReference: {fileID: 0}
+    - target: {fileID: 3985562571328874141, guid: 7c983c304ab18b94e9b1f1136374d9a9, type: 3}
+      propertyPath: m_SpotAngle
+      value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 3985562571328874141, guid: 7c983c304ab18b94e9b1f1136374d9a9, type: 3}
+      propertyPath: m_Lightmapping
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4741058671105879683, guid: 7c983c304ab18b94e9b1f1136374d9a9, type: 3}
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 04f028f65587c7645a61bca2aae432c9, type: 2}
-    - target: {fileID: 5227242835358535967, guid: 7c983c304ab18b94e9b1f1136374d9a9, type: 3}
-      propertyPath: _ignoreY
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7011621709738053451, guid: 7c983c304ab18b94e9b1f1136374d9a9, type: 3}
       propertyPath: m_Name
       value: Dron_ParaUnity
@@ -296,17 +307,16 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7639679911705892337, guid: 7c983c304ab18b94e9b1f1136374d9a9, type: 3}
   m_PrefabInstance: {fileID: 3546610211560677238}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1156364844720418282 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2392586235686662812, guid: 7c983c304ab18b94e9b1f1136374d9a9, type: 3}
+--- !u!1 &2287966097617324722 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3384571914931852740, guid: 7c983c304ab18b94e9b1f1136374d9a9, type: 3}
   m_PrefabInstance: {fileID: 3546610211560677238}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5bc2d2ea0d20a6c4f88f7e54f3a4fe86, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+--- !u!1 &295738748310489686 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3828829209460299040, guid: 7c983c304ab18b94e9b1f1136374d9a9, type: 3}
+  m_PrefabInstance: {fileID: 3546610211560677238}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6417747301928851611 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7505385226993403885, guid: 7c983c304ab18b94e9b1f1136374d9a9, type: 3}
