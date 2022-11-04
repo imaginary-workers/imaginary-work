@@ -1,19 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
+using UnityEngine.UIElements;
 
 namespace Game.Gameplay.Enemies
 {
     public class PatrolBehaviour : MonoBehaviour
     {
-        [SerializeField] MoveComponent moveComponent;
         [SerializeField, Range(.1f, 5f)] float _speed = 2f;
         [SerializeField] float _waitBetweenPointInSeconds = 1f;
         [SerializeField] float _waitOnEnable = 2.5f;
+        [SerializeField] NavMeshAgent _agent;
 
         [Tooltip("The order of the points will be the order in which it is patrolled. ('Has to bi bigger than one')")]
         [SerializeField] private List<GameObject> _waypoints;
-        [SerializeField, Range(0f, 5f)] float _minimumDistanceNearPoint;
         [Tooltip("If is active, it will go through the points in cycles. If is NOT, it will go back and forth.")]
         [SerializeField] bool _cycle = false;
 
@@ -28,7 +29,9 @@ namespace Game.Gameplay.Enemies
         bool _isWaiting = false;
         WaitForSeconds _waitForSeconds;
         WaitForSeconds _waitForSecondsOnEnable;
+        [SerializeField] bool _random;
 
+        public float Speed { set { _speed = value; } } 
         void Awake()
         {
             _patrol = new Vector3[_waypoints.Count];
@@ -45,44 +48,63 @@ namespace Game.Gameplay.Enemies
 
         void OnEnable()
         {
-            StartCoroutine(CO_StartWaiting(_waitForSecondsOnEnable));
+            _agent.speed = _speed;
+            StartCoroutine(CO_StartWaitingAndUpdateDestination(_waitForSecondsOnEnable));
         }
 
         void Update()
         {
             if (_isWaiting) return;
 
-            var targetPosition = _patrol[_target];
-            var targetLookAt = new Vector3(targetPosition.x, transform.position.y, targetPosition.z);
-            transform.LookAt(targetLookAt);
-            var transformPosition = new Vector3(transform.position.x, 0, transform.position.z);
-            moveComponent.Velocity = (targetPosition - transformPosition).normalized * _speed;
-            if (Vector3.Distance(transformPosition, targetPosition) <= _minimumDistanceNearPoint)
+            if (_agent.remainingDistance <= 0)
             {
-                if (_cycle)
-                {
-                    if (_direction > 0 && _target == _patrol.Length - 1)
-                        _target = -1;
-                    else if (_direction < 0 && _target == 0)
-                        _target = _patrol.Length;
-                }
-                else
-                {
-                    if (_target == _patrol.Length - 1 || _target == 0)
-                        ChangeDirection();
-                }
-                _target += _direction;
-                StartCoroutine(CO_StartWaiting(_waitForSeconds));
+                StartCoroutine(CO_StartWaitingAndUpdateDestination(_waitForSeconds));
             }
-           
-
         }
 
-        IEnumerator CO_StartWaiting(WaitForSeconds waitForSeconds)
+        void NextDestination()
         {
+            NextTarget();
+            _agent.SetDestination(_patrol[_target]);
+        }
+
+        void NextTarget()
+        {
+            if (_random)
+            {
+                var newIndex = 0;
+                do
+                {
+                    newIndex = Random.Range(0, _patrol.Length);
+
+                }
+                while (newIndex == _target);
+                _target = newIndex;
+                return;
+            }            
+            if (_cycle)
+            {
+                if (_direction > 0 && _target == _patrol.Length - 1)
+                    _target = -1;
+                else if (_direction < 0 && _target == 0)
+                    _target = _patrol.Length;
+            }
+            else
+            {
+                if (_target == _patrol.Length - 1 || _target == 0)
+                    ChangeDirection();
+            }
+            _target += _direction;
+        }
+
+        IEnumerator CO_StartWaitingAndUpdateDestination(WaitForSeconds waitForSeconds)
+        {
+            var speed = _agent.speed;
             _isWaiting = true;
-            moveComponent.Velocity = Vector3.zero;
+            _agent.speed = 0;
+            NextDestination();
             yield return waitForSeconds;
+            _agent.speed = speed;
             _isWaiting = false;
         }
 
@@ -98,10 +120,10 @@ namespace Game.Gameplay.Enemies
                 var currentPosition = _waypoints[i].transform.position;
                 Gizmos.color = _sphereColor;
                 Gizmos.DrawSphere(currentPosition, _pointRadiusGizmos);
-                var nextIdex = i == _waypoints.Count - 1? 0 : i + 1;
-                
+                var nextIdex = i == _waypoints.Count - 1 ? 0 : i + 1;
+
                 if (nextIdex == 0 && !_cycle) return;
-                
+
                 var nextPosition = _waypoints[nextIdex].transform.position;
                 Gizmos.color = _lineColor;
                 Gizmos.DrawLine(currentPosition, nextPosition);

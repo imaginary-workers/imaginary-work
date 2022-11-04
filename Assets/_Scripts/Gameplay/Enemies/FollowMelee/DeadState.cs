@@ -1,19 +1,20 @@
 using UnityEngine;
+using UnityEngine.AI;
 
 namespace Game.Gameplay.Enemies.FollowMelee
 {
     public class DeadState : State
     {
-        MoveComponent _moveComponent;
+        [SerializeField] NavMeshAgent _agent;
         AnimatorController _animatorController;
         SpawnDrops _spawn;
         float _secondsToDestroy;
         FollowMeleeStateController _stateController;
         float _currentSecond = 0f;
 
-        public DeadState(MoveComponent moveComponent, AnimatorController animatorController, SpawnDrops spawn, FollowMeleeStateController stateController, float secondToDestroy)
+        public DeadState(NavMeshAgent agent, AnimatorController animatorController, SpawnDrops spawn, FollowMeleeStateController stateController, float secondToDestroy)
         {
-            _moveComponent = moveComponent;
+            _agent = agent;
             _animatorController = animatorController;
             _spawn = spawn;
             _secondsToDestroy = secondToDestroy;
@@ -21,7 +22,7 @@ namespace Game.Gameplay.Enemies.FollowMelee
         }
         public override void Enter()
         {
-            _moveComponent.Velocity = Vector3.zero;
+            _agent.speed = 0;
             _animatorController.Death();
         }
         public override void Update()

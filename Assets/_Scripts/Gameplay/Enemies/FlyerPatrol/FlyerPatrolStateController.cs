@@ -1,6 +1,7 @@
 using Game._Scripts.Gameplay.Enemies.FlyerPatrol;
 using Game.Managers;
 using UnityEngine;
+using UnityEngine.AI;
 
 namespace Game.Gameplay.Enemies.FlyerPatrol
 {
@@ -8,11 +9,10 @@ namespace Game.Gameplay.Enemies.FlyerPatrol
     {
         [SerializeField] RaycastAttack _attack;
         [SerializeField] PatrolBehaviour _patrolBehaviour;
-        [SerializeField] LookAtTarget _lookAtTarget;
-        [SerializeField] MoveComponent _moveComponent;
+        [SerializeField] GameObject _cameraMesh;
+        [SerializeField] GameObject _cameraBaseMesh;
+        [SerializeField] NavMeshAgent _agent;
         [SerializeField] VisualField _visualField;
-        [Tooltip("Max distance from player to change between States")]
-        [SerializeField] float _maxDistance;
         [SerializeField] GameObject _particle;
         [SerializeField] Light _light;
         [SerializeField] Light _lightFocus;
@@ -25,12 +25,11 @@ namespace Game.Gameplay.Enemies.FlyerPatrol
         protected override void OnAwakeEnemy()
         {
             _target = GameManager.Player;
-            _lookAtTarget.Target = _target;
             _visualField.Target = _target;
-            _normalState = new NormalState(this, _patrolBehaviour, _target, _moveComponent, _maxDistance, _lookAtTarget, _visualField, _light, _lightFocus, _normalColor);
-            _attackState = new AttackState(this, _lookAtTarget, _attack,_moveComponent, _target, _visualField, _maxDistance, _light, _lightFocus, _attackColor);
-            deadState = new DeadState(_moveComponent, this);
-            _attack.enabled = _lookAtTarget.enabled = false;
+            _normalState = new NormalState(this, _agent, _patrolBehaviour, _cameraMesh, _cameraBaseMesh, _visualField, _light, _lightFocus, _normalColor);
+            _attackState = new AttackState(this, _target, _cameraMesh, _cameraBaseMesh, _attack,_agent, _visualField, _light, _lightFocus, _attackColor);
+            deadState = new DeadState(_agent, this);
+            _attack.enabled = false;
             ChangeState(_normalState);
         }
 

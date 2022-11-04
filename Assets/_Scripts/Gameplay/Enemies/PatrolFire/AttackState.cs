@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.AI;
 
 namespace Game.Gameplay.Enemies.PatrolFire
 {
@@ -6,7 +7,7 @@ namespace Game.Gameplay.Enemies.PatrolFire
     {
         VisualField _visualField;
         PatrolFireStateController _controller;
-        MoveComponent _moveComponent;
+        NavMeshAgent _agent;
         ActionRepeater _shooterRepeater;
         LookAtTarget _lookAtTarget;
         AnimatorController _animatorController;
@@ -15,15 +16,15 @@ namespace Game.Gameplay.Enemies.PatrolFire
         public AttackState(
             PatrolFireStateController controller,
             VisualField visualField,
-            MoveComponent moveComponent,
-            LookAtTarget lookAtTarget,
+            NavMeshAgent agent,
+        LookAtTarget lookAtTarget,
             AnimatorController animatorController,
             EnemyBurstShooter enemyShooter
             )
         {
             _controller = controller;
             _visualField = visualField;
-            _moveComponent = moveComponent;
+            _agent = agent;
             _lookAtTarget = lookAtTarget;
             _animatorController = animatorController;
             _enemyShooter = enemyShooter;
@@ -33,7 +34,6 @@ namespace Game.Gameplay.Enemies.PatrolFire
 
         public override void Enter()
         {
-            _moveComponent.Velocity = Vector3.zero;
             _lookAtTarget.enabled = true;
             _animatorController.StartAttack();
             _enemyShooter.enabled = true;
