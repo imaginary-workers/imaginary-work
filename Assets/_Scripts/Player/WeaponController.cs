@@ -10,42 +10,43 @@ namespace Game.Player
         [SerializeField] WeaponManager manager;
         [SerializeField] PointerTarget _pointerTarget;
         [SerializeField] PlayerController _playerController;
-        [SerializeField, Range(0, 2)] float _speedWeaponHeavy = 1;
-        Weapon _currentWeapon;
+        [SerializeField, Range(0, 2)] float _speedWeaponHeavy = 1;       
         public bool _active = true;
         public bool CanAttack { get; set; } = true;
 
-        private void Awake()
+        Weapon CurrentWeapon
         {
-            _currentWeapon = manager.CurrentWeapon;
+            get
+            {           
+                return manager.CurrentWeapon;
+            }
         }
 
         public void AttackInput(InputAction.CallbackContext context)
         {
             if (!_active) return;
             if (!CanAttack) return;
-            _currentWeapon = manager.CurrentWeapon;
-            _currentWeapon.Target = _pointerTarget.transform.position;
+            CurrentWeapon.Target = _pointerTarget.transform.position;
             if (context.started)
             {
-                if (_currentWeapon.IsHeavy)
+                if (CurrentWeapon.IsHeavy)
                 {
                     PlayerHeavy();
                 }
 
                 _playerController.CanSprint = false;
-                _currentWeapon.StartAttack();
+                CurrentWeapon.StartAttack();
             }
             if (context.performed)
-                _currentWeapon.PerformedAttack();
+                CurrentWeapon.PerformedAttack();
             if (context.canceled)
             {
-                if (_currentWeapon.IsHeavy)
+                if (CurrentWeapon.IsHeavy)
                 {
                     PlayerBackToDefault();
                 }
                 _playerController.CanSprint = true;
-                _currentWeapon.CancelAttack();
+                CurrentWeapon.CancelAttack();
             }
         }
 
@@ -54,9 +55,9 @@ namespace Game.Player
             if (!_active) return;
             if (!context.performed) return;
 
-            var weapon = manager.CurrentWeapon;
-            weapon.ReloadAmmunition();
-            GameManager.Instance.UpdateBulletCounter(weapon.Ammunition);
+            
+            CurrentWeapon.ReloadAmmunition();
+            GameManager.Instance.UpdateBulletCounter(CurrentWeapon.Ammunition);
             UpdateUI();
         }
 
@@ -75,8 +76,8 @@ namespace Game.Player
         public void SwitchWeapon(int slot)
         {
             if (!_active) return;
-            _currentWeapon.CancelAttack();
-            if (_currentWeapon.IsHeavy)
+            CurrentWeapon.CancelAttack();
+            if (CurrentWeapon.IsHeavy)
                 PlayerBackToDefault();
             _playerController.CanSprint = true;
             manager.SwitchWeapon(slot);
@@ -95,8 +96,7 @@ namespace Game.Player
         }
         void UpdateUI()
         {
-            var weapon = manager.CurrentWeapon;
-            GameManager.Instance.UpdateReserveCounter(weapon.ReserveAmmunition);
+            GameManager.Instance.UpdateReserveCounter(CurrentWeapon.ReserveAmmunition);
         }
     }
 }
