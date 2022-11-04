@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.AI;
 
 namespace Game.Gameplay.Enemies.FollowMelee
 {
@@ -6,7 +7,7 @@ namespace Game.Gameplay.Enemies.FollowMelee
     {
         FollowMeleeStateController _stateController;
         MeleeAttack _meleeAttack;
-        MoveComponent _moveComponent;
+        [SerializeField] NavMeshAgent _agent;
         LookAtTarget _lookAtTarget;
         AnimationEvent _animationEvent;
         bool _isAttacking = false;
@@ -14,11 +15,11 @@ namespace Game.Gameplay.Enemies.FollowMelee
         float _rangeMelee;
         float _rangeOfVisionY;
 
-        public MeleeAttackState(FollowMeleeStateController stateController, MeleeAttack meleeAttack, MoveComponent moveComponent, LookAtTarget lookAtTarget, AnimationEvent animationEvent, GameObject player, float rangeMelee, float rangeOfVisionY)
+        public MeleeAttackState(FollowMeleeStateController stateController, MeleeAttack meleeAttack, NavMeshAgent agent, LookAtTarget lookAtTarget, AnimationEvent animationEvent, GameObject player, float rangeMelee, float rangeOfVisionY)
         {
             _stateController = stateController;
             _meleeAttack = meleeAttack;
-            _moveComponent = moveComponent;
+            _agent = agent;
             _lookAtTarget = lookAtTarget;
             _animationEvent = animationEvent;
             _player = player;
@@ -28,7 +29,7 @@ namespace Game.Gameplay.Enemies.FollowMelee
 
         public override void Enter()
         {
-            _moveComponent.Velocity = Vector3.zero;
+            _agent.speed = 0;
             _meleeAttack.enabled = true;
             _lookAtTarget.enabled = true;
             _animationEvent.OnAttackStarts += OnOnAttackStartsHandler;
