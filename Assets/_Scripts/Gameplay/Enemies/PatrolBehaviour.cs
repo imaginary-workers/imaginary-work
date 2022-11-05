@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.UIElements;
 
 namespace Game.Gameplay.Enemies
 {
@@ -41,7 +40,6 @@ namespace Game.Gameplay.Enemies
                 _patrol[i] = new Vector3(transformPosition.x, 0, transformPosition.z);
             }
             transform.position = _waypoints[0].transform.position;
-            _target = 1;
             _waitForSeconds = new WaitForSeconds(_waitBetweenPointInSeconds);
             _waitForSecondsOnEnable = new WaitForSeconds(_waitOnEnable);
         }
@@ -91,7 +89,7 @@ namespace Game.Gameplay.Enemies
             }
             else
             {
-                if (_target == _patrol.Length - 1 || _target == 0)
+                if ((_target == _patrol.Length - 1 && _direction == 1) || (_target == 0 && _direction == -1))
                     ChangeDirection();
             }
             _target += _direction;
@@ -112,7 +110,7 @@ namespace Game.Gameplay.Enemies
         {
             _direction *= -1;
         }
-
+#if UNITY_EDITOR
         void OnDrawGizmos()
         {
             for (int i = 0; i < _waypoints.Count; i++)
@@ -129,5 +127,6 @@ namespace Game.Gameplay.Enemies
                 Gizmos.DrawLine(currentPosition, nextPosition);
             }
         }
+#endif
     }
 }
