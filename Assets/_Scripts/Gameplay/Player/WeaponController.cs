@@ -1,9 +1,9 @@
-using Game.Gameplay.Weapon;
+using Game.Gameplay.Weapons;
 using Game.Managers;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace Game.Player
+namespace Game.Gameplay.Player
 {
     public class WeaponController : MonoBehaviour
     {

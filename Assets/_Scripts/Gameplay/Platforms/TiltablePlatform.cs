@@ -4,7 +4,7 @@ namespace Game
 {
     public class TiltablePlatform : MonoBehaviour
     {     
-        private void FixedUpdate()
+        void FixedUpdate()
         {           
             transform.Rotate(new Vector3(0, 60f, 0) * Time.deltaTime);
         }

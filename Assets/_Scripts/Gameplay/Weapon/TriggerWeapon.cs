@@ -1,10 +1,10 @@
 using System;
 using System.Collections;
-using Game.Player;
+using Game.Gameplay.Player;
 using Game.Managers;
 using UnityEngine;
 
-namespace Game.Gameplay.Weapon
+namespace Game.Gameplay.Weapons
 {
     public class TriggerWeapon : ShooterWeapon
     {

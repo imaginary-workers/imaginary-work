@@ -1,6 +1,4 @@
-﻿using UnityEngine;
-
-namespace Game.Gameplay.Enemies
+﻿namespace Game.Gameplay.Enemies
 {
     public abstract class EnemyStateController: Enemy
     {

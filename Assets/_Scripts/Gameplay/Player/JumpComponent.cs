@@ -1,8 +1,6 @@
-using Game.Player;
-using System;
 using UnityEngine;
 
-namespace Game.Gameplay
+namespace Game.Gameplay.Player
 {
     public class JumpComponent : MonoBehaviour
     {

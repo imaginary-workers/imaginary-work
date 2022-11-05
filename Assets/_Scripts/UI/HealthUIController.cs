@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Game.SO;
 using Game.Managers;
-using Game.Player;
+using Game.Gameplay.Player;
 
 namespace Game.UI
 {

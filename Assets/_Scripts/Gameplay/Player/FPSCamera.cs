@@ -1,11 +1,9 @@
-﻿using System;
-using EZCameraShake;
+﻿using EZCameraShake;
 using Game.Config;
-using Game.Player;
 using Game.SO;
 using UnityEngine;
 
-namespace Game.Gameplay
+namespace Game.Gameplay.Player
 {
     public class FPSCamera : MonoBehaviour
     {
@@ -22,14 +20,14 @@ namespace Game.Gameplay
         float _targetPitch;
         float _rotationVelocity;
 
-        private void Awake()
+        void Awake()
         {
             UpdateConfig();
             _gameplaySettingsSo.OnChange += UpdateConfig;
             _pjDamageable.OnTakeDamage += ShackeCamera;
         }
 
-        private void ShackeCamera(int obj)
+        void ShackeCamera(int obj)
         {
             CameraShaker.Instance.ShakeOnce(_magnitud, _roughness, 0, _fadeOutTime);
         }
@@ -44,7 +42,7 @@ namespace Game.Gameplay
             UpdateCameraLook();
         }
 
-        private void OnDestroy()
+        void OnDestroy()
         {
             _gameplaySettingsSo.OnChange -= UpdateConfig;
         }
