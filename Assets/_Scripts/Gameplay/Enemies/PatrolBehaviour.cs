@@ -26,9 +26,9 @@ namespace Game.Gameplay.Enemies
         int _target = 0;
         int _direction = 1;
         bool _isWaiting = false;
-        WaitForSeconds _waitForSeconds;
-        WaitForSeconds _waitForSecondsOnEnable;
         [SerializeField] bool _random;
+        float _waitCurrentSeconds = 0;
+        float _currentWaitMax;
 
         public float Speed { set { _speed = value; } } 
         void Awake()
@@ -40,27 +40,51 @@ namespace Game.Gameplay.Enemies
                 _patrol[i] = new Vector3(transformPosition.x, 0, transformPosition.z);
             }
             transform.position = _waypoints[0].transform.position;
-            _waitForSeconds = new WaitForSeconds(_waitBetweenPointInSeconds);
-            _waitForSecondsOnEnable = new WaitForSeconds(_waitOnEnable);
         }
 
         void OnEnable()
         {
             _agent.speed = _speed;
-            StartCoroutine(CO_StartWaitingAndUpdateDestination(_waitForSecondsOnEnable));
+            StartWaiting(_waitOnEnable);
+            UpdateNextDestination();
         }
 
         void Update()
         {
-            if (_isWaiting) return;
+            if (_isWaiting)
+            {
+                if (_waitCurrentSeconds < _currentWaitMax)
+                {
+                    _waitCurrentSeconds += Time.deltaTime;
+                    return;
+                }
+                ResumePatrolling();
+            }
 
             if (_agent.remainingDistance <= 0)
             {
-                StartCoroutine(CO_StartWaitingAndUpdateDestination(_waitForSeconds));
+                StartWaiting(_waitBetweenPointInSeconds);
+                UpdateNextDestination();
             }
         }
 
-        void NextDestination()
+        void ResumePatrolling()
+        {
+            _agent.speed = _speed;
+            _agent.isStopped = false;
+            _isWaiting = false;
+        }
+
+        void StartWaiting(float seconds)
+        {
+            _waitCurrentSeconds = 0;
+            _currentWaitMax = seconds;
+            _isWaiting = true;
+            _agent.isStopped = true;
+            _agent.speed = 0;
+        }
+
+        void UpdateNextDestination()
         {
             NextTarget();
             _agent.SetDestination(_patrol[_target]);
@@ -93,17 +117,6 @@ namespace Game.Gameplay.Enemies
                     ChangeDirection();
             }
             _target += _direction;
-        }
-
-        IEnumerator CO_StartWaitingAndUpdateDestination(WaitForSeconds waitForSeconds)
-        {
-            var speed = _agent.speed;
-            _isWaiting = true;
-            _agent.speed = 0;
-            NextDestination();
-            yield return waitForSeconds;
-            _agent.speed = speed;
-            _isWaiting = false;
         }
 
         void ChangeDirection()
