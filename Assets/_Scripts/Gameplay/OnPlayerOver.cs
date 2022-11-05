@@ -7,6 +7,7 @@ namespace Game.Gameplay
     {
         public event Action<GameObject> OnPlayerOverEnter, OnPlayerOverExit;  
         [SerializeField] string _playerTag = "";
+        [SerializeField] BoxCollider _collider;
         [Tooltip("it calculate base on the scale and position. If it grows or move set it to false")]
         [SerializeField] bool _isStaticObject = true;
         float _localScaleX, _localScaleZ, _borderX1, _borderX2, _borderZ1, _borderZ2;
@@ -53,10 +54,10 @@ namespace Game.Gameplay
 
         void SetBorders()
         {
-            var transformLocalScale = transform.localScale;
             var transformPosition = transform.position;
-            _localScaleX = transformLocalScale.x;
-            _localScaleZ = transformLocalScale.z;
+            var size = _collider.size;
+            _localScaleX = size.x;
+            _localScaleZ = size.z;
             _borderX1 = transformPosition.x - _localScaleX / 2;
             _borderX2 = transformPosition.x + _localScaleX / 2;
             _borderZ1 = transformPosition.z - _localScaleZ / 2;
