@@ -11,7 +11,14 @@ namespace Game.Gameplay.Enemies.FollowMelee
         float _rangeMelee;
         float _rangeOfVisionY;
 
-        public FollowState(FollowMeleeStateController stateController, FollowPlayer followPlayer, LookAtTarget lookAtTarget, GameObject player, float rangeMelee, float rangeOfVisionY)
+        public FollowState(
+            FollowMeleeStateController stateController,
+            FollowPlayer followPlayer,
+            LookAtTarget lookAtTarget,
+            GameObject player,
+            float rangeMelee,
+            float rangeOfVisionY
+            )
         {
             _stateController = stateController;
             _followPlayer = followPlayer;

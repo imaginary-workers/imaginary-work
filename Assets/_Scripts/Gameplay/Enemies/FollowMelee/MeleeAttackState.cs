@@ -7,7 +7,7 @@ namespace Game.Gameplay.Enemies.FollowMelee
     {
         FollowMeleeStateController _stateController;
         MeleeAttack _meleeAttack;
-        [SerializeField] NavMeshAgent _agent;
+        NavMeshAgent _agent;
         LookAtTarget _lookAtTarget;
         AnimationEvent _animationEvent;
         bool _isAttacking = false;
@@ -15,7 +15,16 @@ namespace Game.Gameplay.Enemies.FollowMelee
         float _rangeMelee;
         float _rangeOfVisionY;
 
-        public MeleeAttackState(FollowMeleeStateController stateController, MeleeAttack meleeAttack, NavMeshAgent agent, LookAtTarget lookAtTarget, AnimationEvent animationEvent, GameObject player, float rangeMelee, float rangeOfVisionY)
+        public MeleeAttackState(
+            FollowMeleeStateController stateController,
+            MeleeAttack meleeAttack,
+            NavMeshAgent agent,
+            LookAtTarget lookAtTarget,
+            AnimationEvent animationEvent,
+            GameObject player,
+            float rangeMelee,
+            float rangeOfVisionY
+        )
         {
             _stateController = stateController;
             _meleeAttack = meleeAttack;
