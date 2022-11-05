@@ -22,7 +22,7 @@ namespace Game.Gameplay
         Ray _ray;
         RaycastHit _hitInfo;
 
-        private void Start()
+        void Start()
         {
             if (_target == null)
             {
@@ -116,7 +116,7 @@ namespace Game.Gameplay
         }
 
 
-       #if UNITY_EDITOR
+#if UNITY_EDITOR
        
        void OnDrawGizmos()
         {
@@ -144,6 +144,6 @@ namespace Game.Gameplay
                 Handles.DrawLine(transform.position, _target.transform.position);
             }
         }
-        #endif
+#endif
     }
 }
