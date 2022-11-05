@@ -1,6 +1,5 @@
-using System;
 using Game.Config;
-using Game.Player;
+using Game.Gameplay.Player;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;

@@ -1,11 +1,9 @@
 using System;
-using Game.Gameplay;
 using Game.SO;
 using Game.Managers;
 using UnityEngine;
-using EZCameraShake;
 
-namespace Game.Player
+namespace Game.Gameplay.Player
 {
     public class PlayerDamageable : MonoBehaviour, IDamageable
     {

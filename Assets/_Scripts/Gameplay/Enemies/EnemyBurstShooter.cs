@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Game.Gameplay
+namespace Game.Gameplay.Enemies
 {
     public class EnemyBurstShooter : EnemyShooter
     {

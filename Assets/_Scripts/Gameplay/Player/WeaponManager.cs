@@ -1,9 +1,9 @@
-using System.Collections.Generic;
-using Game.Gameplay.Weapon;
+
+using Game.Gameplay.Weapons;
 using Game.Managers;
 using UnityEngine;
 
-namespace Game.Player
+namespace Game.Gameplay.Player
 {
     public class WeaponManager : MonoBehaviour
     {

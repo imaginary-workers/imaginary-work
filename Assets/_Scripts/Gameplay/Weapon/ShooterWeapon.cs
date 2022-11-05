@@ -1,7 +1,7 @@
 using Game.SO;
 using UnityEngine;
 
-namespace Game.Gameplay.Weapon
+namespace Game.Gameplay.Weapons
 {
     public abstract class ShooterWeapon : Weapon
     {

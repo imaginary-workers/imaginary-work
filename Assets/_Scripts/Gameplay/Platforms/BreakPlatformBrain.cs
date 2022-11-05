@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace Game.Gameplay
+namespace Game.Gameplay.Platforms
 {
     public class BreakPlatformBrain : MonoBehaviour
     {
