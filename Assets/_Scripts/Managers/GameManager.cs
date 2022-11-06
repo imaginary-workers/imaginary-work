@@ -35,6 +35,7 @@ namespace Game.Managers
         [SerializeField] GameObject _pauseMenu;
         [SerializeField] GameObject _deathMessege;
         [SerializeField] GameObject _pointer;
+        [SerializeField] GameObject _optionsMenu;
         [SerializeField] Text _bulletCounterText;
         [SerializeField] Text _reserveCounterText;
         [SerializeField] Toggle _invertedXToggle;
@@ -54,6 +55,7 @@ namespace Game.Managers
         bool _isPaused = false;
         bool _isDeath = false;
         bool _isChangingScene = false;
+        bool _options = false;
 
         void Awake()
         {
@@ -173,7 +175,6 @@ namespace Game.Managers
 
         public void Resume()
         {
-            UpdateConfig();
             _isPaused = false;
             _pauseMenu.SetActive(false);
             _pointer.SetActive(true);
@@ -183,6 +184,29 @@ namespace Game.Managers
             _player.GetComponent<WeaponController>()._active = true;
         }
 
+        public void OpenOptions()
+        {            
+            _options = true;
+            _optionsMenu.SetActive(true);
+
+        }
+        void CloseOptions()
+        {
+            _options = false;
+            _optionsMenu.SetActive(false);
+            _pauseMenu.SetActive(true);
+
+        }
+        public void CancelOptions()
+        {
+            PauseMenuSetup();
+            CloseOptions();
+        }
+        public void ConfirmoOptions()
+        {
+            UpdateConfig();
+            CloseOptions();
+        }
         public void UpdateBulletCounter(int amunicion)
         {
             if (amunicion < 0)
