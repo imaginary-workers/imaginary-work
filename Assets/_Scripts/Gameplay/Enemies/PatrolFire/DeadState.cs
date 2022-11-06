@@ -29,6 +29,7 @@ namespace Game.Gameplay.Enemies.PatrolFire
         public override void Enter()
         {
             _agent.speed = 0;
+            _agent.isStopped = true;
             _animatorController.Death();
         }
 

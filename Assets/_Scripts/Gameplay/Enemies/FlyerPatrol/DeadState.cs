@@ -1,7 +1,5 @@
-﻿using Game.Gameplay;
-using Game.Gameplay.Enemies;
+﻿using Game.Gameplay.Enemies;
 using Game.Gameplay.Enemies.FlyerPatrol;
-using UnityEngine;
 using UnityEngine.AI;
 
 namespace Game._Scripts.Gameplay.Enemies.FlyerPatrol

@@ -1,4 +1,3 @@
-using UnityEngine;
 using UnityEngine.AI;
 
 namespace Game.Gameplay.Enemies.PatrolFire
@@ -34,6 +33,8 @@ namespace Game.Gameplay.Enemies.PatrolFire
 
         public override void Enter()
         {
+            _agent.speed = 0;
+            _agent.isStopped = true;
             _lookAtTarget.enabled = true;
             _animatorController.StartAttack();
             _enemyShooter.enabled = true;

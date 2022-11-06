@@ -19,7 +19,8 @@ namespace Game.Gameplay.Enemies
             if (_weakness == element)
             {
                 _life -= (damage * 2);
-                OnTakeStrongDamage?.Invoke(damage);
+                if (Life > 0)
+                    OnTakeStrongDamage?.Invoke(damage);
             }
             else
             {
