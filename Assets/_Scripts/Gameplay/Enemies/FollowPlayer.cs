@@ -1,4 +1,4 @@
-using Game.Player;
+using Game.Gameplay.Player;
 using UnityEngine;
 using UnityEngine.AI;
 

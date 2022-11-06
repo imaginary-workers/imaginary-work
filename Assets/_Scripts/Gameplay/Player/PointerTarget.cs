@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Game.Player
+namespace Game.Gameplay.Player
 {
     public class PointerTarget : MonoBehaviour
     {

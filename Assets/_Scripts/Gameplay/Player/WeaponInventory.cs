@@ -1,8 +1,8 @@
 using System.Collections.Generic;
-using Game.Gameplay.Weapon;
+using Game.Gameplay.Weapons;
 using UnityEngine;
 
-namespace Game.Player
+namespace Game.Gameplay.Player
 {
     public class WeaponInventory : MonoBehaviour
     {
