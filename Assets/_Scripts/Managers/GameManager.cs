@@ -7,6 +7,7 @@ using Game.SO;
 using UnityEngine.UI;
 using Game.Gameplay.Enemies;
 using System.Collections;
+using UnityEngine.Audio;
 
 namespace Game.Managers
 {
@@ -46,6 +47,9 @@ namespace Game.Managers
         [SerializeField] Slider _soundSlider;
         [SerializeField] Animator _blackScreenAnimator;
         [SerializeField] Text _countEnemyText;
+
+        [Header("Audio")]
+        [SerializeField] AudioMixer _audioMixer;
 
         [Header("Settings")]
         [SerializeField] GameplaySettingsSO _gameplaySettings;
@@ -304,6 +308,7 @@ namespace Game.Managers
             {
                 _gameplaySettings.ChangeAudioConfig(_newAudioConfig);
                 _newAudioConfig = null;
+                UpdateAudioMixer();
             }
         }
 
@@ -325,5 +330,15 @@ namespace Game.Managers
                 SceneManager.LoadScene(sceneName);
             }
         }
+
+#region AUDIO
+        void UpdateAudioMixer()
+        {
+            var audioConfig = _gameplaySettings.AudioConfig;
+            _audioMixer.SetFloat("Master", audioConfig.Master);
+            _audioMixer.SetFloat("Music", audioConfig.Music);
+            _audioMixer.SetFloat("Sound", audioConfig.Sound);
+        }
+#endregion
     }
 }

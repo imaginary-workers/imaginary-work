@@ -469,11 +469,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 18761162494579951, guid: de9188e459a77494f8c234f0945e6e1a, type: 3}
       propertyPath: m_MaxValue
-      value: 20
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 18761162494579951, guid: de9188e459a77494f8c234f0945e6e1a, type: 3}
       propertyPath: m_MinValue
-      value: -79
+      value: -80
       objectReference: {fileID: 0}
     - target: {fileID: 18761164392588710, guid: de9188e459a77494f8c234f0945e6e1a, type: 3}
       propertyPath: m_AnchorMax.x
@@ -505,11 +505,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1124527976995450011, guid: de9188e459a77494f8c234f0945e6e1a, type: 3}
       propertyPath: m_MaxValue
-      value: 20
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1124527976995450011, guid: de9188e459a77494f8c234f0945e6e1a, type: 3}
       propertyPath: m_MinValue
-      value: -79
+      value: -80
       objectReference: {fileID: 0}
     - target: {fileID: 1124527976995450012, guid: de9188e459a77494f8c234f0945e6e1a, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.size
@@ -957,11 +957,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7976459349361877449, guid: de9188e459a77494f8c234f0945e6e1a, type: 3}
       propertyPath: m_MaxValue
-      value: 20
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7976459349361877449, guid: de9188e459a77494f8c234f0945e6e1a, type: 3}
       propertyPath: m_MinValue
-      value: -79
+      value: -80
       objectReference: {fileID: 0}
     - target: {fileID: 7976459349361877451, guid: de9188e459a77494f8c234f0945e6e1a, type: 3}
       propertyPath: m_Name
@@ -1241,6 +1241,10 @@ PrefabInstance:
       propertyPath: _pauseMenu
       value: 
       objectReference: {fileID: 8942375163997756305}
+    - target: {fileID: 8156174783294118934, guid: ed0abdafae29e7e4fba6fd12549677a6, type: 3}
+      propertyPath: _audioMixer
+      value: 
+      objectReference: {fileID: 24100000, guid: 3226694a2863dd0449b248f89975164d, type: 2}
     - target: {fileID: 8156174783294118934, guid: ed0abdafae29e7e4fba6fd12549677a6, type: 3}
       propertyPath: _musicSlider
       value: 

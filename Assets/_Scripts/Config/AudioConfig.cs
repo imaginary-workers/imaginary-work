@@ -6,13 +6,13 @@ namespace Game.Config
     [Serializable]
     public class AudioConfig
     {
-        [SerializeField, Range(-79f, 20f)]
+        [SerializeField, Range(-80f, 20f)]
         float _master = 0f;
 
-        [SerializeField, Range(-79f, 20f)]
+        [SerializeField, Range(-80f, 20f)]
         float _sound = 0f;
 
-        [SerializeField, Range(-79f, 20f)]
+        [SerializeField, Range(-80f, 20f)]
         float _music = 0f;
 
         public AudioConfig(AudioConfig audioConfig)
