@@ -7,6 +7,7 @@ using Game.SO;
 using UnityEngine.UI;
 using Game.Gameplay.Enemies;
 using System.Collections;
+using UnityEngine.Audio;
 
 namespace Game.Managers
 {
@@ -30,6 +31,7 @@ namespace Game.Managers
         [SerializeField] GameObject _player;
         [SerializeField] IntSO _maxHealth;
         [SerializeField] IntSO _health;
+        //[SerializeField] AudioMixer _mixer;
 
         [Header("HUD Objets")]
         [SerializeField] GameObject _pauseMenu;
@@ -40,19 +42,24 @@ namespace Game.Managers
         [SerializeField] Toggle _invertedXToggle;
         [SerializeField] Toggle _invertedYToggle;
         [SerializeField] Slider _speedRotatioSlider;
+        [SerializeField] Slider _masterAudioSlider;
+        [SerializeField] Slider _musicSlider;
+        [SerializeField] Slider _soundSlider;
         [SerializeField] Animator _blackScreenAnimator;
         [SerializeField] Text _countEnemyText;
 
         [Header("Settings")]
         [SerializeField] GameplaySettingsSO _gameplaySettings;
         [SerializeField] State _state;
-        PlayerConfig _newConfig = null;
+        PlayerConfig _newPlayerConfig = null;
+        AudioConfig _newAudioConfig = null;
         bool _isPaused = false;
         bool _isDeath = false;
         bool _isChangingScene = false;
 
         void Awake()
         {
+            
             _instance = this;
 
             PauseMenuSetup();
@@ -138,7 +145,7 @@ namespace Game.Managers
             Time.timeScale = 0;
             _player.GetComponent<PlayerController>().enabled = false;
             _player.GetComponent<WeaponController>()._active = false;
-            
+
         }
 
         public void Resume()
@@ -179,17 +186,32 @@ namespace Game.Managers
 
         public void SetInvertedYAxis(bool to)
         {
-            GetNewConfig().invertedYAxis = to;
+            GetNewPlayerConfig().invertedYAxis = to;
         }
 
         public void SetInvertedXAxis(bool to)
         {
-            GetNewConfig().invertedXAxis = to;
+            GetNewPlayerConfig().invertedXAxis = to;
         }
 
         public void ChangedRotationSpeedValue()
         {
-            GetNewConfig().rotationSpeed = _speedRotatioSlider.value;
+            GetNewPlayerConfig().rotationSpeed = _speedRotatioSlider.value;
+        }
+
+        public void ChangedMasterAudioValue()
+        {
+            GetNewAudioConfig().Master = _masterAudioSlider.value;
+        }
+
+        public void ChangedSoundValue()
+        {
+            GetNewAudioConfig().Sound = _soundSlider.value;
+        }
+
+        public void ChangedMusicValue()
+        {
+            GetNewAudioConfig().Music = _musicSlider.value;
         }
 
         void PauseMenuSetup()
@@ -200,23 +222,41 @@ namespace Game.Managers
             _invertedXToggle.isOn = config.invertedXAxis;
             _invertedYToggle.isOn = config.invertedYAxis;
             _speedRotatioSlider.value = config.rotationSpeed;
+            var audioConfig = _gameplaySettings.AudioConfig;
+            _musicSlider.value = audioConfig.Music;
+            _soundSlider.value = audioConfig.Sound;
+            _masterAudioSlider.value = audioConfig.Master;
             _pauseMenu.SetActive(false);
         }
 
-        PlayerConfig GetNewConfig()
+        PlayerConfig GetNewPlayerConfig()
         {
-            if (_newConfig == null)
-                _newConfig = _gameplaySettings.PlayerConfig;
+            if (_newPlayerConfig == null)
+                _newPlayerConfig = _gameplaySettings.PlayerConfig;
 
-            return _newConfig;
+            return _newPlayerConfig;
+        }
+
+        AudioConfig GetNewAudioConfig()
+        {
+            if (_newAudioConfig == null)
+                _newAudioConfig = _gameplaySettings.AudioConfig;
+
+            return _newAudioConfig;
         }
 
         void UpdateConfig()
         {
-            if (_newConfig == null) return;
-
-            _gameplaySettings.ChangePlayerConfig(_newConfig);
-            _newConfig = null;
+            if (_newPlayerConfig != null)
+            {
+                _gameplaySettings.ChangePlayerConfig(_newPlayerConfig);
+                _newPlayerConfig = null;
+            }
+            if (_newAudioConfig != null)
+            {
+                _gameplaySettings.ChangeAudioConfig(_newAudioConfig);
+                _newAudioConfig = null;
+            }
         }
 
         public void ConditionWin()
