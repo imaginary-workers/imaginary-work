@@ -5,11 +5,16 @@ namespace Game.Gameplay.Enemies.FollowMelee
     public class RandomPatrolState : State
     {
         FollowMeleeStateController _stateController;
-        [SerializeField] PatrolBehaviour _patrolBehaviour;
+        PatrolBehaviour _patrolBehaviour;
         GameObject _player;
         float _rangeOfVisionY;
 
-        public RandomPatrolState(FollowMeleeStateController stateController, PatrolBehaviour patrolBehaviour, GameObject player, float rangeOfVisionY)
+        public RandomPatrolState(
+            FollowMeleeStateController stateController,
+            PatrolBehaviour patrolBehaviour,
+            GameObject player,
+            float rangeOfVisionY
+            )
         {
             _stateController = stateController;
             _patrolBehaviour = patrolBehaviour;

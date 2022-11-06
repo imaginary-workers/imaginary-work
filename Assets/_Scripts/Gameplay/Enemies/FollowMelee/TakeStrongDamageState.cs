@@ -1,16 +1,20 @@
-﻿using UnityEngine;
-using UnityEngine.AI;
+﻿using UnityEngine.AI;
 
 namespace Game.Gameplay.Enemies.FollowMelee
 {
     public class TakeStrongDamageState: State
     {
         EnemyStateController _stateController;
-        [SerializeField] NavMeshAgent _agent;
+        NavMeshAgent _agent;
         AnimationEvent _animationEvent;
         AnimatorController _animatorController;
 
-        public TakeStrongDamageState(EnemyStateController stateController, NavMeshAgent agent, AnimationEvent animationEvent, AnimatorController animatorController)
+        public TakeStrongDamageState(
+            EnemyStateController stateController,
+            NavMeshAgent agent,
+            AnimationEvent animationEvent,
+            AnimatorController animatorController
+        )
         {
             _stateController = stateController;
             _agent = agent;
@@ -27,7 +31,6 @@ namespace Game.Gameplay.Enemies.FollowMelee
 
         public override void Update()
         {
-            
         }
 
         public override void Exit()

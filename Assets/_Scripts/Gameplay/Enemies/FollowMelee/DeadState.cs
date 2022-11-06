@@ -5,14 +5,20 @@ namespace Game.Gameplay.Enemies.FollowMelee
 {
     public class DeadState : State
     {
-        [SerializeField] NavMeshAgent _agent;
+        NavMeshAgent _agent;
         AnimatorController _animatorController;
         SpawnDrops _spawn;
         float _secondsToDestroy;
         FollowMeleeStateController _stateController;
         float _currentSecond = 0f;
 
-        public DeadState(NavMeshAgent agent, AnimatorController animatorController, SpawnDrops spawn, FollowMeleeStateController stateController, float secondToDestroy)
+        public DeadState(
+            NavMeshAgent agent,
+            AnimatorController animatorController,
+            SpawnDrops spawn,
+            FollowMeleeStateController stateController,
+            float secondToDestroy
+        )
         {
             _agent = agent;
             _animatorController = animatorController;

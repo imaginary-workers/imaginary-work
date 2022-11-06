@@ -1,7 +1,7 @@
 using Game.Managers;
 using UnityEngine;
 
-namespace Game.Gameplay.Weapon
+namespace Game.Gameplay.Weapons
 {
     public class ParticleWeapon : ShooterWeapon
     {

@@ -1,7 +1,7 @@
-using Game.Player;
+using Game.Gameplay.Player;
 using UnityEngine;
 
-namespace Game.Gameplay.Weapon
+namespace Game.Gameplay.Weapons
 {
     public abstract class Weapon : MonoBehaviour
     {
