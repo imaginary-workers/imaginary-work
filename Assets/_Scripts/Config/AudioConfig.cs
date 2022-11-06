@@ -1,14 +1,19 @@
 using System;
+using UnityEngine;
 
 namespace Game.Config
 {
     [Serializable]
     public class AudioConfig
     {
+        [SerializeField, Range(-79f, 20f)]
         float _master = 0f;
+
+        [SerializeField, Range(-79f, 20f)]
         float _sound = 0f;
+
+        [SerializeField, Range(-79f, 20f)]
         float _music = 0f;
-    
 
         public AudioConfig(AudioConfig audioConfig)
         {
@@ -21,7 +26,7 @@ namespace Game.Config
         public AudioConfig()
         {
         }
-        
+
         public float Master
         {
             get => _master;
@@ -33,6 +38,7 @@ namespace Game.Config
                 }
             }
         }
+
         public float Sound
         {
             get => _sound;
@@ -44,7 +50,7 @@ namespace Game.Config
                 }
             }
         }
-        
+
         public float Music
         {
             get => _music;
@@ -56,8 +62,5 @@ namespace Game.Config
                 }
             }
         }
-       
-
-     
     }
 }

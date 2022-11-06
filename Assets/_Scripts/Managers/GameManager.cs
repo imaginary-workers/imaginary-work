@@ -7,7 +7,6 @@ using Game.SO;
 using UnityEngine.UI;
 using Game.Gameplay.Enemies;
 using System.Collections;
-using UnityEngine.Audio;
 
 namespace Game.Managers
 {
@@ -31,7 +30,6 @@ namespace Game.Managers
         [SerializeField] GameObject _player;
         [SerializeField] IntSO _maxHealth;
         [SerializeField] IntSO _health;
-        //[SerializeField] AudioMixer _mixer;
 
         [Header("HUD Objets")]
         [SerializeField] GameObject _pauseMenu;
@@ -71,7 +69,7 @@ namespace Game.Managers
                 Enemy.UpdateEnemyCount += UpdateEnemyCount;
             }
         }
-        private void Update()
+        void Update()
         {
             if (Enemy.countEnemy <= 0 && _state == State.Gameplay)
             {
@@ -79,7 +77,7 @@ namespace Game.Managers
             }
         }
 
-        private void OnDestroy()
+        void OnDestroy()
         {
             if (_state == State.Gameplay)
             {
@@ -99,6 +97,8 @@ namespace Game.Managers
             }
         }
 
+#region GO_SCENES
+
         public void DeathScreen()
         {
             _isDeath = true;
@@ -117,6 +117,25 @@ namespace Game.Managers
         {
             StartCoroutine(CO_NextScene("ControlsMenu"));
         }
+
+        public void RestartLevel()
+        {
+            StartCoroutine(CO_NextScene(SceneManager.GetActiveScene().name));
+        }
+
+        public void BackToMainMenu()
+        {
+            StartCoroutine(CO_NextScene("MainMenu"));
+        }
+
+        public void ConditionWin()
+        {
+            if (SceneManager.GetActiveScene().name == "Level0")
+                StartCoroutine(CO_NextScene("Level1"));
+            else
+                StartCoroutine(CO_NextScene("VictoryScreen"));
+        }
+
         public void Quit()
         {
 #if UNITY_EDITOR
@@ -125,6 +144,10 @@ namespace Game.Managers
             Application.Quit();
 #endif
         }
+
+#endregion
+
+#region GAMEPLAY_UI
 
         public void PauseKeybord()
         {
@@ -160,15 +183,6 @@ namespace Game.Managers
             _player.GetComponent<WeaponController>()._active = true;
         }
 
-        public void RestartLevel()
-        {
-            StartCoroutine(CO_NextScene(SceneManager.GetActiveScene().name));
-        }
-        public void BackToMainMenu()
-        {
-            StartCoroutine(CO_NextScene("MainMenu"));
-        }
-
         public void UpdateBulletCounter(int amunicion)
         {
             if (amunicion < 0)
@@ -183,6 +197,31 @@ namespace Game.Managers
             else
                 _reserveCounterText.text = amunicion.ToString();
         }
+
+        public void UpdateEnemyCount()
+        {
+            _countEnemyText.text = Enemy.countEnemy.ToString();
+        }
+
+        void PauseMenuSetup()
+        {
+            if (_pauseMenu == null) return;
+
+            var config = _gameplaySettings.PlayerConfig;
+            _invertedXToggle.isOn = config.invertedXAxis;
+            _invertedYToggle.isOn = config.invertedYAxis;
+            _speedRotatioSlider.value = config.rotationSpeed;
+            var audioConfig = _gameplaySettings.AudioConfig;
+            _musicSlider.value = audioConfig.Music;
+            _soundSlider.value = audioConfig.Sound;
+            _masterAudioSlider.value = audioConfig.Master;
+            _pauseMenu.SetActive(false);
+        }
+
+#endregion
+
+#region Config
+
 
         public void SetInvertedYAxis(bool to)
         {
@@ -212,21 +251,6 @@ namespace Game.Managers
         public void ChangedMusicValue()
         {
             GetNewAudioConfig().Music = _musicSlider.value;
-        }
-
-        void PauseMenuSetup()
-        {
-            if (_pauseMenu == null) return;
-
-            var config = _gameplaySettings.PlayerConfig;
-            _invertedXToggle.isOn = config.invertedXAxis;
-            _invertedYToggle.isOn = config.invertedYAxis;
-            _speedRotatioSlider.value = config.rotationSpeed;
-            var audioConfig = _gameplaySettings.AudioConfig;
-            _musicSlider.value = audioConfig.Music;
-            _soundSlider.value = audioConfig.Sound;
-            _masterAudioSlider.value = audioConfig.Master;
-            _pauseMenu.SetActive(false);
         }
 
         PlayerConfig GetNewPlayerConfig()
@@ -259,19 +283,7 @@ namespace Game.Managers
             }
         }
 
-        public void ConditionWin()
-        {
-            if (SceneManager.GetActiveScene().name == "Level0")
-                StartCoroutine(CO_NextScene("Level1"));
-            else
-                StartCoroutine(CO_NextScene("VictoryScreen"));
-
-        }
-
-        public void UpdateEnemyCount()
-        {
-            _countEnemyText.text = Enemy.countEnemy.ToString();
-        }
+#endregion
 
         IEnumerator CO_NextScene(string sceneName)
         {
