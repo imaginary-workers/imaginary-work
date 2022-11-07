@@ -9,6 +9,7 @@ using Game.Gameplay.Enemies;
 using System.Collections;
 using UnityEngine.Audio;
 using Game.Audio;
+using Game.Decorator;
 
 namespace Game.Managers
 {
@@ -257,9 +258,13 @@ namespace Game.Managers
             _invertedYToggle.isOn = config.invertedYAxis;
             _speedRotatioSlider.value = config.rotationSpeed;
             var audioConfig = _gameplaySettings.AudioConfig;
-            _musicSlider.value = audioConfig.Music;
-            _soundSlider.value = audioConfig.Sound;
-            _masterAudioSlider.value = audioConfig.Master;
+            UpdateAudioMixer(audioConfig);
+            var audioUiDecorator = new AudioConfig01Decorator(audioConfig);
+            _musicSlider.value = audioUiDecorator.Music;
+            _soundSlider.value = audioUiDecorator.Sound;
+            _masterAudioSlider.value = audioUiDecorator.Master;
+            _newAudioConfig = null;
+            _newPlayerConfig = null;
             _pauseMenu.SetActive(false);
         }
 
@@ -270,48 +275,61 @@ namespace Game.Managers
 
         public void SetInvertedYAxis(bool to)
         {
-            GetNewPlayerConfig().invertedYAxis = to;
+            NewPlayerConfig.invertedYAxis = to;
         }
 
         public void SetInvertedXAxis(bool to)
         {
-            GetNewPlayerConfig().invertedXAxis = to;
+            NewPlayerConfig.invertedXAxis = to;
         }
 
         public void ChangedRotationSpeedValue()
         {
-            GetNewPlayerConfig().rotationSpeed = _speedRotatioSlider.value;
+            NewPlayerConfig.rotationSpeed = _speedRotatioSlider.value;
         }
 
-        public void ChangedMasterAudioValue()
+        public void ChangedMasterAudioValue(float value)
         {
-            GetNewAudioConfig().Master = _masterAudioSlider.value;
+            var uiAudioDecorator = new AudioConfig01Decorator(NewAudioConfig);
+            uiAudioDecorator.Master = value;
+            UpdateAudioMixer(NewAudioConfig);
         }
 
-        public void ChangedSoundValue()
+        public void ChangedSoundValue(float value)
         {
-            GetNewAudioConfig().Sound = _soundSlider.value;
+            var uiAudioDecorator = new AudioConfig01Decorator(NewAudioConfig);
+            uiAudioDecorator.Sound = value;
+            NewAudioConfig.Sound01 = value;
+            UpdateAudioMixer(NewAudioConfig);
         }
 
-        public void ChangedMusicValue()
+        public void ChangedMusicValue(float value)
         {
-            GetNewAudioConfig().Music = _musicSlider.value;
+            var uiAudioDecorator = new AudioConfig01Decorator(NewAudioConfig);
+            uiAudioDecorator.Music = value;
+            UpdateAudioMixer(NewAudioConfig);
         }
 
-        PlayerConfig GetNewPlayerConfig()
+        PlayerConfig NewPlayerConfig
         {
-            if (_newPlayerConfig == null)
-                _newPlayerConfig = _gameplaySettings.PlayerConfig;
+            get
+            {
+                if (_newPlayerConfig == null)
+                    _newPlayerConfig = _gameplaySettings.PlayerConfig;
 
-            return _newPlayerConfig;
+                return _newPlayerConfig;
+            }
         }
 
-        AudioConfig GetNewAudioConfig()
+        AudioConfig NewAudioConfig
         {
-            if (_newAudioConfig == null)
-                _newAudioConfig = _gameplaySettings.AudioConfig;
+            get
+            {
+                if (_newAudioConfig == null)
+                    _newAudioConfig = _gameplaySettings.AudioConfig;
 
-            return _newAudioConfig;
+                return _newAudioConfig;
+            }
         }
 
         void UpdateConfig()
@@ -325,7 +343,6 @@ namespace Game.Managers
             {
                 _gameplaySettings.ChangeAudioConfig(_newAudioConfig);
                 _newAudioConfig = null;
-                UpdateAudioMixer();
             }
         }
 
@@ -347,13 +364,12 @@ namespace Game.Managers
                 SceneManager.LoadScene(scene.SceneName);
             }
         }
-        #region AUDIO
-        void UpdateAudioMixer()
+#region AUDIO
+        void UpdateAudioMixer(AudioConfig config)
         {
-            var audioConfig = _gameplaySettings.AudioConfig;
-            _audioMixer.SetFloat("Master", audioConfig.Master);
-            _audioMixer.SetFloat("Music", audioConfig.Music);
-            _audioMixer.SetFloat("Sound", audioConfig.Sound);
+            _audioMixer.SetFloat("Master", config.Master);
+            _audioMixer.SetFloat("Music", config.Music);
+            _audioMixer.SetFloat("Sound", config.Sound);
         }
 #endregion
     }
