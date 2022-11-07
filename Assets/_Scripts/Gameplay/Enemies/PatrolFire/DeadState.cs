@@ -1,27 +1,35 @@
 ﻿using UnityEngine;
+using UnityEngine.AI;
 
 namespace Game.Gameplay.Enemies.PatrolFire
 {
     public class DeadState : State
     {
-        MoveComponent _moveComponent;
+        NavMeshAgent _agent;
         AnimatorController _animatorController;
         SpawnDrops _spawn;
         float _secondsToDestroy;
         PatrolFireStateController _stateController;
         float _currentSecond = 0f;
-        public DeadState(PatrolFireStateController stateController, AnimatorController animatorController, float secondToDestroy, MoveComponent moveComponent, SpawnDrops spawner)
+        public DeadState(
+            PatrolFireStateController stateController,
+            AnimatorController animatorController,
+            float secondToDestroy,
+            NavMeshAgent agent,
+            SpawnDrops spawner
+            )
         {
             _animatorController = animatorController;
             _secondsToDestroy = secondToDestroy;
             _stateController = stateController;
-            _moveComponent = moveComponent;
+            _agent = agent;
             _spawn = spawner;
         }
 
         public override void Enter()
         {
-            _moveComponent.Velocity = Vector3.zero;
+            _agent.speed = 0;
+            _agent.isStopped = true;
             _animatorController.Death();
         }
 

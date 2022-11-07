@@ -1,24 +1,24 @@
-﻿using Game.Gameplay;
-using Game.Gameplay.Enemies;
+﻿using Game.Gameplay.Enemies;
 using Game.Gameplay.Enemies.FlyerPatrol;
-using UnityEngine;
+using UnityEngine.AI;
 
 namespace Game._Scripts.Gameplay.Enemies.FlyerPatrol
 {
     public class DeadState : State
     {
-        MoveComponent _moveComponent;
+        NavMeshAgent _agent;
         FlyerPatrolStateController _stateController;
 
-        public DeadState(MoveComponent moveComponent, FlyerPatrolStateController stateController)
+        public DeadState(NavMeshAgent agent, FlyerPatrolStateController stateController)
         {
-            _moveComponent = moveComponent;
+            _agent = agent;
             _stateController = stateController;
         }
 
         public override void Enter()
         {
-            _moveComponent.Velocity = Vector3.zero;
+            _agent.speed = 0;
+            _agent.isStopped = true;
         }
 
         public override void Update()

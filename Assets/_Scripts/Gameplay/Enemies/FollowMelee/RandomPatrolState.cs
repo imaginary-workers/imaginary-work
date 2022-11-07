@@ -5,21 +5,26 @@ namespace Game.Gameplay.Enemies.FollowMelee
     public class RandomPatrolState : State
     {
         FollowMeleeStateController _stateController;
-        RandomPatrol _randomPatrol;   
+        PatrolBehaviour _patrolBehaviour;
         GameObject _player;
         float _rangeOfVisionY;
 
-        public RandomPatrolState(FollowMeleeStateController stateController, RandomPatrol randomPatrol, GameObject player, float rangeOfVisionY)
+        public RandomPatrolState(
+            FollowMeleeStateController stateController,
+            PatrolBehaviour patrolBehaviour,
+            GameObject player,
+            float rangeOfVisionY
+            )
         {
             _stateController = stateController;
-            _randomPatrol = randomPatrol;
+            _patrolBehaviour = patrolBehaviour;
             _player = player;
             _rangeOfVisionY = rangeOfVisionY;
         }
 
         public override void Enter()
         {
-            _randomPatrol.enabled = true;
+            _patrolBehaviour.enabled = true;
         }
         public override void Update()
         {
@@ -32,7 +37,7 @@ namespace Game.Gameplay.Enemies.FollowMelee
         }
         public override void Exit()
         {
-            _randomPatrol.enabled = false;
+            _patrolBehaviour.enabled = false;
         }
     }
 }

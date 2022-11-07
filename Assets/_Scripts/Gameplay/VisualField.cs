@@ -22,8 +22,12 @@ namespace Game.Gameplay
         Ray _ray;
         RaycastHit _hitInfo;
 
-        private void Start()
+        void Start()
         {
+            if (_target == null)
+            {
+                Debug.LogError("VisualField must have a target");
+            }
             _ray = new Ray();
             _hitInfo = new RaycastHit();
             _waitForSeconds = new WaitForSeconds(_maxTime);
@@ -112,14 +116,14 @@ namespace Game.Gameplay
         }
 
 
-       #if UNITY_EDITOR
-
+#if UNITY_EDITOR
+       
        void OnDrawGizmos()
         {
             var transformPosition = transform.position;
             var viewAngleLeft = Utils.DirectionFromAngle(transform.eulerAngles.y, -_visualAngle / 2);
             var viewAngleRight = Utils.DirectionFromAngle(transform.eulerAngles.y, _visualAngle / 2);
-
+       
             transformPosition.y += _rangeOfVisionYDown;
             Handles.color = Color.white;
             Handles.DrawWireArc(transformPosition, Vector3.up, Vector3.forward, 360, _visualDistance);
@@ -132,13 +136,14 @@ namespace Game.Gameplay
             Handles.color = Color.yellow;
             Handles.DrawLine(transformPosition, transformPosition + viewAngleLeft * _visualDistance);
             Handles.DrawLine(transformPosition, transformPosition + viewAngleRight * _visualDistance);
-
+       
+            if (_target == null) return;
             if (CanSeeTarget())
             {
                 Handles.color = Color.red;
                 Handles.DrawLine(transform.position, _target.transform.position);
             }
         }
-        #endif
+#endif
     }
 }

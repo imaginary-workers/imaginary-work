@@ -9,9 +9,9 @@ namespace Game.Gameplay.PowerUps
         [SerializeField] IntSO _playerMaxHealth;
         int _healingPower = 15;
 
-        void OnTriggerEnter(Collider other)
+        void OnCollisionEnter(Collision other)
         {
-            if (!other.CompareTag("Player")) return;
+            if (!other.collider.CompareTag("Player")) return;
             if (_playerHealth.value >= _playerMaxHealth.value) return;
 
             _playerHealth.value += _healingPower;

@@ -1,8 +1,10 @@
 using System;
 using UnityEngine;
+using UnityEngine.AI;
 
 namespace Game.Gameplay.Enemies
 {
+    [RequireComponent(typeof(NavMeshAgent))]
     public abstract class  Enemy : MonoBehaviour
     {
         public static int countEnemy = 0;

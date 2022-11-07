@@ -11,7 +11,7 @@ namespace Game.Gameplay.Enemies
         [SerializeField, Range(0f, 10f)] float _speedRotation = 10f;
         [SerializeField] bool _ignoreX, _ignoreY, _ignoreZ = false;
 
-        private void Start()
+        void Start()
         {
             if (_targetAlwaysPlayer)
                 _target = GameManager.Player;
@@ -32,6 +32,11 @@ namespace Game.Gameplay.Enemies
         {
             get => _target;
             set => _target = value;
+        }
+
+        public float SpeedRotation
+        {
+            set => _speedRotation = value;
         }
     }
 }
