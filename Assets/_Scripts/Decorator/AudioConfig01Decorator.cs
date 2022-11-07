@@ -53,21 +53,14 @@ namespace Game.Decorator
 
         float FromDbTo01(float db)
         {
-            float newValue;
-            if (db < minRange)
-            {
-                newValue = minRange;
-            }
-            else if (db > maxRange)
-            {
-                newValue = maxRange;
-            }
-            else
-            {
-                newValue = db;
-            }
+            float newValue = Mathf.Pow(10, db /20);
 
-            return Mathf.Pow(10, newValue / 20);
+            if (newValue < minRange)
+                newValue = minRange;
+            else if (newValue > maxRange)
+                newValue = maxRange;
+
+            return newValue;
         }
     }
 }
