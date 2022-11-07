@@ -34,20 +34,24 @@ namespace Game.Managers
         [SerializeField] IntSO _health;
 
         [Header("HUD Objets")]
+        [Header("Menus")]
         [SerializeField] GameObject _pauseMenu;
         [SerializeField] GameObject _deathMessege;
+        [Header("GameCanvas")]
         [SerializeField] GameObject _pointer;
-        [SerializeField] GameObject _optionsMenu;
         [SerializeField] Text _bulletCounterText;
         [SerializeField] Text _reserveCounterText;
+        [SerializeField] Text _countEnemyText;
+        [Header("OptionMenu")]
+        [SerializeField] GameObject _optionsMenu;
         [SerializeField] Toggle _invertedXToggle;
         [SerializeField] Toggle _invertedYToggle;
         [SerializeField] Slider _speedRotatioSlider;
         [SerializeField] Slider _masterAudioSlider;
         [SerializeField] Slider _musicSlider;
         [SerializeField] Slider _soundSlider;
+        [Header("BlackScreen Transcition")]
         [SerializeField] Animator _blackScreenAnimator;
-        [SerializeField] Text _countEnemyText;
 
         [Header("Audio")]
         [SerializeField] AudioMixer _audioMixer;
@@ -78,9 +82,14 @@ namespace Game.Managers
             {
                 Enemy.UpdateEnemyCount += UpdateEnemyCount;
             }
-
-            MusicManager.singleton.UpdateMusic(_sceneStorage.FindSceneByName(SceneManager.GetActiveScene().name));
         }
+
+        private void Start()
+        {
+            MusicManager.singleton.UpdateMusic(_sceneStorage.FindSceneByName(SceneManager.GetActiveScene().name));
+            UpdateAudioMixer();
+        }
+
         void Update()
         {
             if (Enemy.countEnemy <= 0 && _state == State.Gameplay)
@@ -209,14 +218,13 @@ namespace Game.Managers
         {            
             _options = true;
             _optionsMenu.SetActive(true);
-
+            PauseMenuSetup();
         }
         void CloseOptions()
         {
             _options = false;
             _optionsMenu.SetActive(false);
-            _pauseMenu.SetActive(true);
-
+            //_pauseMenu.SetActive(true);
         }
         public void CancelOptions()
         {
@@ -227,6 +235,7 @@ namespace Game.Managers
         {
             UpdateConfig();
             CloseOptions();
+            Debug.Log("ConfirmoOptions");
         }
         public void UpdateBulletCounter(int amunicion)
         {
@@ -250,7 +259,7 @@ namespace Game.Managers
 
         void PauseMenuSetup()
         {
-            if (_pauseMenu == null) return;
+            //if (_pauseMenu == null) return;
 
             var config = _gameplaySettings.PlayerConfig;
             _invertedXToggle.isOn = config.invertedXAxis; 
@@ -260,7 +269,7 @@ namespace Game.Managers
             _musicSlider.value = audioConfig.Music;
             _soundSlider.value = audioConfig.Sound;
             _masterAudioSlider.value = audioConfig.Master;
-            _pauseMenu.SetActive(false);
+            //_pauseMenu.SetActive(false);
         }
 
 #endregion
@@ -320,12 +329,14 @@ namespace Game.Managers
             {
                 _gameplaySettings.ChangePlayerConfig(_newPlayerConfig);
                 _newPlayerConfig = null;
+                Debug.Log("Confirmo Mouse");
             }
             if (_newAudioConfig != null)
             {
                 _gameplaySettings.ChangeAudioConfig(_newAudioConfig);
                 _newAudioConfig = null;
                 UpdateAudioMixer();
+                Debug.Log("Confirmo Audio");
             }
         }
 
