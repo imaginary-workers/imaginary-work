@@ -8,6 +8,7 @@ namespace Game.SO
     public class GameplaySettingsSO : ScriptableObject
     {
         [SerializeField] PlayerConfig _playerConfig;
+        [SerializeField] AudioConfig _audioConfig;
 
         public event Action OnChange;
 
@@ -20,6 +21,17 @@ namespace Game.SO
         public void ChangePlayerConfig(PlayerConfig playerConfig)
         {
             PlayerConfig = playerConfig;
+            OnChange?.Invoke();
+        }
+        public AudioConfig AudioConfig
+        {
+            get => new AudioConfig(_audioConfig);
+            private set { _audioConfig = new AudioConfig(value); }
+        }
+
+        public void ChangeAudioConfig(AudioConfig audioConfig)
+        {
+            AudioConfig = audioConfig;
             OnChange?.Invoke();
         }
     }

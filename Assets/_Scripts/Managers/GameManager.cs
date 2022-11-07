@@ -7,6 +7,8 @@ using Game.SO;
 using UnityEngine.UI;
 using Game.Gameplay.Enemies;
 using System.Collections;
+using UnityEngine.Audio;
+using Game.Audio;
 
 namespace Game.Managers
 {
@@ -35,21 +37,34 @@ namespace Game.Managers
         [SerializeField] GameObject _pauseMenu;
         [SerializeField] GameObject _deathMessege;
         [SerializeField] GameObject _pointer;
+        [SerializeField] GameObject _optionsMenu;
         [SerializeField] Text _bulletCounterText;
         [SerializeField] Text _reserveCounterText;
         [SerializeField] Toggle _invertedXToggle;
         [SerializeField] Toggle _invertedYToggle;
         [SerializeField] Slider _speedRotatioSlider;
+        [SerializeField] Slider _masterAudioSlider;
+        [SerializeField] Slider _musicSlider;
+        [SerializeField] Slider _soundSlider;
         [SerializeField] Animator _blackScreenAnimator;
         [SerializeField] Text _countEnemyText;
+
+        [Header("Audio")]
+        [SerializeField] AudioMixer _audioMixer;
+
+
+        [Header("Scenes")]
+        [SerializeField] SceneStorageSO _sceneStorage;
 
         [Header("Settings")]
         [SerializeField] GameplaySettingsSO _gameplaySettings;
         [SerializeField] State _state;
-        PlayerConfig _newConfig = null;
+        PlayerConfig _newPlayerConfig = null;
+        AudioConfig _newAudioConfig = null;
         bool _isPaused = false;
         bool _isDeath = false;
         bool _isChangingScene = false;
+        bool _options = false;
 
         void Awake()
         {
@@ -63,8 +78,10 @@ namespace Game.Managers
             {
                 Enemy.UpdateEnemyCount += UpdateEnemyCount;
             }
+
+            MusicManager.singleton.UpdateMusic(_sceneStorage.FindSceneByName(SceneManager.GetActiveScene().name));
         }
-        private void Update()
+        void Update()
         {
             if (Enemy.countEnemy <= 0 && _state == State.Gameplay)
             {
@@ -72,7 +89,7 @@ namespace Game.Managers
             }
         }
 
-        private void OnDestroy()
+        void OnDestroy()
         {
             if (_state == State.Gameplay)
             {
@@ -92,6 +109,8 @@ namespace Game.Managers
             }
         }
 
+#region Game_FLOW
+
         public void DeathScreen()
         {
             _isDeath = true;
@@ -103,13 +122,43 @@ namespace Game.Managers
 
         public void NewGame()
         {
-            StartCoroutine(CO_NextScene("Level0"));
+            var sceneSO = _sceneStorage.FindSceneByName("Level0");
+            StartCoroutine(CO_NextScene(sceneSO));
         }
 
         public void ControlsMenu()
         {
-            StartCoroutine(CO_NextScene("ControlsMenu"));
+            var sceneSO = _sceneStorage.FindSceneByName("ControlsMenu");
+            StartCoroutine(CO_NextScene(sceneSO));
         }
+
+        public void RestartLevel()
+        {
+            var sceneSO = _sceneStorage.FindSceneByName(SceneManager.GetActiveScene().name);
+            StartCoroutine(CO_NextScene(sceneSO));
+        }
+
+        public void BackToMainMenu()
+        {
+            var sceneSO = _sceneStorage.FindSceneByName("MainMenu");
+            StartCoroutine(CO_NextScene(sceneSO));
+        }
+
+        public void ConditionWin()
+        {
+            SceneSO sceneSO;
+            if (SceneManager.GetActiveScene().name == "Level0")
+            {
+                sceneSO = _sceneStorage.FindSceneByName("Level1");
+                StartCoroutine(CO_NextScene(sceneSO));
+            }
+            else
+            {
+                sceneSO = _sceneStorage.FindSceneByName("VictoryScreen");
+                StartCoroutine(CO_NextScene(sceneSO));
+            }
+        }
+
         public void Quit()
         {
 #if UNITY_EDITOR
@@ -118,6 +167,10 @@ namespace Game.Managers
             Application.Quit();
 #endif
         }
+
+#endregion
+
+#region GAMEPLAY_UI
 
         public void PauseKeybord()
         {
@@ -138,12 +191,11 @@ namespace Game.Managers
             Time.timeScale = 0;
             _player.GetComponent<PlayerController>().enabled = false;
             _player.GetComponent<WeaponController>()._active = false;
-            
+
         }
 
         public void Resume()
         {
-            UpdateConfig();
             _isPaused = false;
             _pauseMenu.SetActive(false);
             _pointer.SetActive(true);
@@ -153,15 +205,29 @@ namespace Game.Managers
             _player.GetComponent<WeaponController>()._active = true;
         }
 
-        public void RestartLevel()
-        {
-            StartCoroutine(CO_NextScene(SceneManager.GetActiveScene().name));
-        }
-        public void BackToMainMenu()
-        {
-            StartCoroutine(CO_NextScene("MainMenu"));
-        }
+        public void OpenOptions()
+        {            
+            _options = true;
+            _optionsMenu.SetActive(true);
 
+        }
+        void CloseOptions()
+        {
+            _options = false;
+            _optionsMenu.SetActive(false);
+            _pauseMenu.SetActive(true);
+
+        }
+        public void CancelOptions()
+        {
+            PauseMenuSetup();
+            CloseOptions();
+        }
+        public void ConfirmoOptions()
+        {
+            UpdateConfig();
+            CloseOptions();
+        }
         public void UpdateBulletCounter(int amunicion)
         {
             if (amunicion < 0)
@@ -177,19 +243,9 @@ namespace Game.Managers
                 _reserveCounterText.text = amunicion.ToString();
         }
 
-        public void SetInvertedYAxis(bool to)
+        public void UpdateEnemyCount()
         {
-            GetNewConfig().invertedYAxis = to;
-        }
-
-        public void SetInvertedXAxis(bool to)
-        {
-            GetNewConfig().invertedXAxis = to;
-        }
-
-        public void ChangedRotationSpeedValue()
-        {
-            GetNewConfig().rotationSpeed = _speedRotatioSlider.value;
+            _countEnemyText.text = Enemy.countEnemy.ToString();
         }
 
         void PauseMenuSetup()
@@ -197,43 +253,85 @@ namespace Game.Managers
             if (_pauseMenu == null) return;
 
             var config = _gameplaySettings.PlayerConfig;
-            _invertedXToggle.isOn = config.invertedXAxis;
+            _invertedXToggle.isOn = config.invertedXAxis; 
             _invertedYToggle.isOn = config.invertedYAxis;
             _speedRotatioSlider.value = config.rotationSpeed;
+            var audioConfig = _gameplaySettings.AudioConfig;
+            _musicSlider.value = audioConfig.Music;
+            _soundSlider.value = audioConfig.Sound;
+            _masterAudioSlider.value = audioConfig.Master;
             _pauseMenu.SetActive(false);
         }
 
-        PlayerConfig GetNewConfig()
-        {
-            if (_newConfig == null)
-                _newConfig = _gameplaySettings.PlayerConfig;
+#endregion
 
-            return _newConfig;
+#region Config
+
+
+        public void SetInvertedYAxis(bool to)
+        {
+            GetNewPlayerConfig().invertedYAxis = to;
+        }
+
+        public void SetInvertedXAxis(bool to)
+        {
+            GetNewPlayerConfig().invertedXAxis = to;
+        }
+
+        public void ChangedRotationSpeedValue()
+        {
+            GetNewPlayerConfig().rotationSpeed = _speedRotatioSlider.value;
+        }
+
+        public void ChangedMasterAudioValue()
+        {
+            GetNewAudioConfig().Master = _masterAudioSlider.value;
+        }
+
+        public void ChangedSoundValue()
+        {
+            GetNewAudioConfig().Sound = _soundSlider.value;
+        }
+
+        public void ChangedMusicValue()
+        {
+            GetNewAudioConfig().Music = _musicSlider.value;
+        }
+
+        PlayerConfig GetNewPlayerConfig()
+        {
+            if (_newPlayerConfig == null)
+                _newPlayerConfig = _gameplaySettings.PlayerConfig;
+
+            return _newPlayerConfig;
+        }
+
+        AudioConfig GetNewAudioConfig()
+        {
+            if (_newAudioConfig == null)
+                _newAudioConfig = _gameplaySettings.AudioConfig;
+
+            return _newAudioConfig;
         }
 
         void UpdateConfig()
         {
-            if (_newConfig == null) return;
-
-            _gameplaySettings.ChangePlayerConfig(_newConfig);
-            _newConfig = null;
+            if (_newPlayerConfig != null)
+            {
+                _gameplaySettings.ChangePlayerConfig(_newPlayerConfig);
+                _newPlayerConfig = null;
+            }
+            if (_newAudioConfig != null)
+            {
+                _gameplaySettings.ChangeAudioConfig(_newAudioConfig);
+                _newAudioConfig = null;
+                UpdateAudioMixer();
+            }
         }
 
-        public void ConditionWin()
-        {
-            if (SceneManager.GetActiveScene().name == "Level0")
-                StartCoroutine(CO_NextScene("Level1"));
-            else
-                StartCoroutine(CO_NextScene("VictoryScreen"));
+#endregion
 
-        }
-
-        public void UpdateEnemyCount()
-        {
-            _countEnemyText.text = Enemy.countEnemy.ToString();
-        }
-
-        IEnumerator CO_NextScene(string sceneName)
+        IEnumerator CO_NextScene(SceneSO scene)
         {
             if (!_isChangingScene)
             {
@@ -245,9 +343,18 @@ namespace Game.Managers
                 _health.value = _maxHealth.value;
                 Cursor.lockState = CursorLockMode.None;
                 Time.timeScale = 1;
-
-                SceneManager.LoadScene(sceneName);
+                MusicManager.singleton.UpdateMusic(scene);
+                SceneManager.LoadScene(scene.SceneName);
             }
         }
+        #region AUDIO
+        void UpdateAudioMixer()
+        {
+            var audioConfig = _gameplaySettings.AudioConfig;
+            _audioMixer.SetFloat("Master", audioConfig.Master);
+            _audioMixer.SetFloat("Music", audioConfig.Music);
+            _audioMixer.SetFloat("Sound", audioConfig.Sound);
+        }
+#endregion
     }
 }

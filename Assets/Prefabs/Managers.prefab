@@ -124,12 +124,21 @@ MonoBehaviour:
   _pauseMenu: {fileID: 0}
   _deathMessege: {fileID: 0}
   _pointer: {fileID: 0}
+  _optionsMenu: {fileID: 0}
   _bulletCounterText: {fileID: 0}
   _reserveCounterText: {fileID: 0}
   _invertedXToggle: {fileID: 0}
   _invertedYToggle: {fileID: 0}
   _speedRotatioSlider: {fileID: 0}
+  _masterAudioSlider: {fileID: 0}
+  _musicSlider: {fileID: 0}
+  _soundSlider: {fileID: 0}
+  _blackScreenAnimator: {fileID: 0}
+  _countEnemyText: {fileID: 0}
+  _audioMixer: {fileID: 0}
+  _sceneStorage: {fileID: 11400000, guid: b011bacbe9f5c4241abc20885df274b3, type: 2}
   _gameplaySettings: {fileID: 11400000, guid: ad91dff427b50604e96c166048168afa, type: 2}
+  _state: 0
 --- !u!1 &8156174785048938699
 GameObject:
   m_ObjectHideFlags: 0
