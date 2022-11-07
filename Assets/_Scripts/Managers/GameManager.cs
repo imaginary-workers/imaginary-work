@@ -8,6 +8,8 @@ using UnityEngine.UI;
 using Game.Gameplay.Enemies;
 using System.Collections;
 using UnityEngine.Audio;
+using Game.Audio;
+using UnityEditor.SearchService;
 
 namespace Game.Managers
 {
@@ -67,7 +69,6 @@ namespace Game.Managers
 
         void Awake()
         {
-            
             _instance = this;
 
             PauseMenuSetup();
@@ -78,6 +79,8 @@ namespace Game.Managers
             {
                 Enemy.UpdateEnemyCount += UpdateEnemyCount;
             }
+
+            MusicManager.singleton.UpdateMusic(_sceneStorage.FindSceneByName(SceneManager.GetActiveScene().name));
         }
         void Update()
         {
@@ -341,12 +344,11 @@ namespace Game.Managers
                 _health.value = _maxHealth.value;
                 Cursor.lockState = CursorLockMode.None;
                 Time.timeScale = 1;
-                if(scene.PlayOnAwake)
+                MusicManager.singleton.UpdateMusic(scene);
                 SceneManager.LoadScene(scene.SceneName);
             }
         }
-
-#region AUDIO
+        #region AUDIO
         void UpdateAudioMixer()
         {
             var audioConfig = _gameplaySettings.AudioConfig;
