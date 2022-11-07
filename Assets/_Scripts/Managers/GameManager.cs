@@ -8,6 +8,8 @@ using UnityEngine.UI;
 using Game.Gameplay.Enemies;
 using System.Collections;
 using UnityEngine.Audio;
+using Game.Audio;
+using UnityEditor.SearchService;
 
 namespace Game.Managers
 {
@@ -51,6 +53,10 @@ namespace Game.Managers
         [Header("Audio")]
         [SerializeField] AudioMixer _audioMixer;
 
+
+        [Header("Scenes")]
+        [SerializeField] SceneStorageSO _sceneStorage;
+
         [Header("Settings")]
         [SerializeField] GameplaySettingsSO _gameplaySettings;
         [SerializeField] State _state;
@@ -63,7 +69,6 @@ namespace Game.Managers
 
         void Awake()
         {
-            
             _instance = this;
 
             PauseMenuSetup();
@@ -74,6 +79,8 @@ namespace Game.Managers
             {
                 Enemy.UpdateEnemyCount += UpdateEnemyCount;
             }
+
+            MusicManager.singleton.UpdateMusic(_sceneStorage.FindSceneByName(SceneManager.GetActiveScene().name));
         }
         void Update()
         {
@@ -116,30 +123,41 @@ namespace Game.Managers
 
         public void NewGame()
         {
-            StartCoroutine(CO_NextScene("Level0"));
+            var sceneSO = _sceneStorage.FindSceneByName("Level0");
+            StartCoroutine(CO_NextScene(sceneSO));
         }
 
         public void ControlsMenu()
         {
-            StartCoroutine(CO_NextScene("ControlsMenu"));
+            var sceneSO = _sceneStorage.FindSceneByName("ControlsMenu");
+            StartCoroutine(CO_NextScene(sceneSO));
         }
 
         public void RestartLevel()
         {
-            StartCoroutine(CO_NextScene(SceneManager.GetActiveScene().name));
+            var sceneSO = _sceneStorage.FindSceneByName(SceneManager.GetActiveScene().name);
+            StartCoroutine(CO_NextScene(sceneSO));
         }
 
         public void BackToMainMenu()
         {
-            StartCoroutine(CO_NextScene("MainMenu"));
+            var sceneSO = _sceneStorage.FindSceneByName("MainMenu");
+            StartCoroutine(CO_NextScene(sceneSO));
         }
 
         public void ConditionWin()
         {
+            SceneSO sceneSO;
             if (SceneManager.GetActiveScene().name == "Level0")
-                StartCoroutine(CO_NextScene("Level1"));
+            {
+                sceneSO = _sceneStorage.FindSceneByName("Level1");
+                StartCoroutine(CO_NextScene(sceneSO));
+            }
             else
-                StartCoroutine(CO_NextScene("VictoryScreen"));
+            {
+                sceneSO = _sceneStorage.FindSceneByName("VictoryScreen");
+                StartCoroutine(CO_NextScene(sceneSO));
+            }
         }
 
         public void Quit()
@@ -314,7 +332,7 @@ namespace Game.Managers
 
 #endregion
 
-        IEnumerator CO_NextScene(string sceneName)
+        IEnumerator CO_NextScene(SceneSO scene)
         {
             if (!_isChangingScene)
             {
@@ -326,12 +344,11 @@ namespace Game.Managers
                 _health.value = _maxHealth.value;
                 Cursor.lockState = CursorLockMode.None;
                 Time.timeScale = 1;
-
-                SceneManager.LoadScene(sceneName);
+                MusicManager.singleton.UpdateMusic(scene);
+                SceneManager.LoadScene(scene.SceneName);
             }
         }
-
-#region AUDIO
+        #region AUDIO
         void UpdateAudioMixer()
         {
             var audioConfig = _gameplaySettings.AudioConfig;
