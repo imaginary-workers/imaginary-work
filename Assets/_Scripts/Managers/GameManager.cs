@@ -222,7 +222,6 @@ namespace Game.Managers
         {
             _options = false;
             _optionsMenu.SetActive(false);
-            //_pauseMenu.SetActive(true);
         }
         public void CancelOptions()
         {
@@ -231,7 +230,6 @@ namespace Game.Managers
         }
         public void ConfirmoOptions()
         {
-            Debug.Log("Confirmar");
             UpdateConfig();
             CloseOptions();
         }
@@ -257,7 +255,6 @@ namespace Game.Managers
 
         void PauseMenuSetup()
         {
-            //if (_pauseMenu == null) return;
             if (_optionsMenu == null) return;
 
             var config = _gameplaySettings.PlayerConfig;
@@ -274,7 +271,6 @@ namespace Game.Managers
 
             _newAudioConfig = null;
             _newPlayerConfig = null;
-            //_pauseMenu.SetActive(false);
         }
 
 #endregion
@@ -308,7 +304,6 @@ namespace Game.Managers
         {
             var uiAudioDecorator = new AudioConfig01Decorator(NewAudioConfig);
             uiAudioDecorator.Sound = value;
-            NewAudioConfig.Sound01 = value;
             UpdateAudioMixer(NewAudioConfig);
         }
 

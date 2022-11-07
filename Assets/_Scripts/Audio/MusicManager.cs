@@ -1,3 +1,4 @@
+using Game.SO;
 using UnityEngine;
 
 namespace Game.Audio

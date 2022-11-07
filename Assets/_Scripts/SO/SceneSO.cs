@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-namespace Game
+namespace Game.SO
 {
 
     [CreateAssetMenu(fileName = "Some_Scene", menuName = "Scriptable Object/config/scene", order = 0)]
