@@ -8,9 +8,9 @@ namespace Game
     public class SceneStorageSO : ScriptableObject
     {
         [SerializeField]List<SceneSO> _scenes;
-        public SceneSO FindScene(string Scene)
-        { 
-
+        public SceneSO FindSceneByName(string name)
+        {
+           return _scenes.Find((scene) => scene.SceneName == name);               
         }
 
     }
