@@ -236,7 +236,7 @@ namespace Game.Managers
             if (_pauseMenu == null) return;
 
             var config = _gameplaySettings.PlayerConfig;
-            _invertedXToggle.isOn = config.invertedXAxis;
+            _invertedXToggle.isOn = config.invertedXAxis; 
             _invertedYToggle.isOn = config.invertedYAxis;
             _speedRotatioSlider.value = config.rotationSpeed;
             var audioConfig = _gameplaySettings.AudioConfig;
