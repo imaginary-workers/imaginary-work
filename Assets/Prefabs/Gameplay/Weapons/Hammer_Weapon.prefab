@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 173985711}
   - component: {fileID: 173985710}
   - component: {fileID: 2030808747070254073}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Damaging
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -49,7 +49,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 173985709}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -120,13 +120,13 @@ GameObject:
   m_Component:
   - component: {fileID: 5695359141768821031}
   - component: {fileID: 987217466520868523}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Hammer_Weapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5695359141768821031
 Transform:
   m_ObjectHideFlags: 0
@@ -136,7 +136,7 @@ Transform:
   m_GameObject: {fileID: 5695359141768821030}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.1764699, y: 1.17647, z: 1.17647}
   m_Children:
   - {fileID: 1692576695390886194}
   - {fileID: 173985713}
@@ -167,6 +167,10 @@ PrefabInstance:
     - target: {fileID: 2292005820252736010, guid: d3f513a54ccc35f4a86b2a6be542838b, type: 3}
       propertyPath: m_Name
       value: Hammer
+      objectReference: {fileID: 0}
+    - target: {fileID: 2292005820252736010, guid: d3f513a54ccc35f4a86b2a6be542838b, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 6373938724784499632, guid: d3f513a54ccc35f4a86b2a6be542838b, type: 3}
       propertyPath: m_RootOrder
