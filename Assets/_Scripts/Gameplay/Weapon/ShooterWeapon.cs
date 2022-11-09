@@ -18,9 +18,17 @@ namespace Game.Gameplay.Weapons
             => (Target - _firePoint.transform.position).normalized;
         protected abstract void Shoot();
 
-        public override bool ReloadAmmunition()
+        public override bool CanReloadAmmunition()
         {
-            if (ReserveAmmunition <= 0 || Ammunition == _weaponData.MaxAmunicion) return false;
+            if (ReserveAmmunition <= 0 || Ammunition == _weaponData.MaxAmunicion)
+                return false;
+            return true;
+        }
+
+        public override void ReloadAmmunition()
+        {
+            if (!CanReloadAmmunition()) return;
+
             var ReserveDif = _weaponData.MaxAmunicion - Ammunition;
             if (ReserveAmmunition >= ReserveDif)
             {
@@ -32,8 +40,6 @@ namespace Game.Gameplay.Weapons
                 Ammunition = ReserveAmmunition;
                 ReserveAmmunition = 0;
             }
-
-            return true;
         }
         public override bool ReloadReserveAmmunition()
         {
