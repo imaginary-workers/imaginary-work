@@ -10,10 +10,11 @@ namespace Game.Gameplay.Player
         [SerializeField] WeaponInventory _inventory;
         [SerializeField] PlayerAnimationManager _animationManager;
 
+        public int CurrentSlot { get; private set; } = 0;
         public Weapon CurrentWeapon { get; private set; }
         void Awake()
         {
-            var weapon = _inventory.GetWeapon(0);
+            var weapon = _inventory.GetWeapon(CurrentSlot);
             if (weapon != null)
             {
                 CurrentWeapon = weapon;
@@ -29,7 +30,10 @@ namespace Game.Gameplay.Player
 
         public void SwitchWeapon(int slot)
         {
+            if (slot == CurrentSlot) return;
+
             var weapon = _inventory.GetWeapon(slot);
+            CurrentSlot = slot;
             if (weapon == null) return;
 
             CurrentWeapon.gameObject.SetActive(false);

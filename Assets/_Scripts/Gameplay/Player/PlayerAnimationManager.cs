@@ -8,6 +8,7 @@ namespace Game.Gameplay.Player
     {
         [SerializeField] Animator _myAni;
         Dictionary<string, Action> _events = new Dictionary<string, Action>();
+        public bool IsReloading { get; private set; } = false;
 
         public void AddAnimationEvent(string eventName, Action callback)
         {
@@ -24,6 +25,7 @@ namespace Game.Gameplay.Player
          */
         public void PLAYER_EVENT(string eventName)
         {
+            if (!_events.ContainsKey(eventName)) return;
             _events[eventName]?.Invoke();
         }
         
@@ -45,6 +47,15 @@ namespace Game.Gameplay.Player
         public void StopSprint()
         {
             _myAni.SetBool("IsSprinting", false);
+        }
+        public void StartReloading()
+        {
+            _myAni.SetTrigger("ReloadTrigger");
+        }
+
+        public void BackToIdle()
+        {
+            _myAni.Play("idle");
         }
     }
 }
