@@ -59,6 +59,7 @@
      <Compile Include="Assets\_Scripts\Gameplay\Player\PlayerController.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Enemies\PatrolFire\AnimatorController.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\PowerUps\ReserveWeaponTrigger.cs" />
+     <Compile Include="Assets\_Scripts\SwayBehaviour.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Platforms\BreakPlatformBrain.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Enemies\EnemyBurstShooter.cs" />
      <Compile Include="Assets\_Scripts\SO\SceneSO.cs" />
@@ -137,8 +138,6 @@
      <Compile Include="Assets\_Scripts\Gameplay\Enemies\State.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\CameraFollowTarget.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Enemies\PatrolFire\AttackState.cs" />
-     <Compile Include="Assets\_Scripts\SwayBehaviour.cs" />
-     <Compile Include="Assets\_Scripts\Gameplay\Weapon\WeaponGrabable.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
