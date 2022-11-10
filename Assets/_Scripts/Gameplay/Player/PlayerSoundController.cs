@@ -10,6 +10,8 @@ namespace Game.Gameplay.Player
         [SerializeField] AudioSource _audioSource;
         [SerializeField] AudioClip _Hurt;
         [SerializeField] PlayerDamageable _playerdamageable;
+        [SerializeField] PlayerController _playerController;
+        [SerializeField] AudioClip _Walking;
 
         private void Awake()
         {
@@ -22,9 +24,12 @@ namespace Game.Gameplay.Player
         }
 
         public void Damage(int damage)
-        {
-           
+        {         
             _audioSource.PlayOneShot(_Hurt);
         }        
+        public void Walking()
+        {
+            _audioSource.PlayOneShot(_Walking);
+        }
     }
 }

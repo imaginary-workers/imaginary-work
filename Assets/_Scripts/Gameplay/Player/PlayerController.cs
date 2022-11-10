@@ -11,8 +11,10 @@ namespace Game.Gameplay.Player
         [SerializeField, Range(0, 20)] float _sprintSpeed = 12f;
         [SerializeField] PlayerInput _playerInput;
         [SerializeField] PlayerAnimationManager _animator;
+        [SerializeField] PlayerSoundController _pjSoundController;
         [SerializeField] WeaponController _weaponController;
         Vector2 _moveVelocityInput;
+        bool _Walk = true;
         float _currentTime = 1;
         float _time;
         float _currentSpeed;
@@ -36,7 +38,7 @@ namespace Game.Gameplay.Player
         public float SprintSpeed
         {
             get => _sprintSpeed;
-        }
+        }   
 
         public bool CanSprint { get; set; } = true;
 
@@ -55,6 +57,8 @@ namespace Game.Gameplay.Player
 
         void Update()
         {
+            CallSoundWalk();
+
             if (!_jumpComponent.IsOnTheFloor)
             {
                 SprintActive(false);
@@ -68,7 +72,7 @@ namespace Game.Gameplay.Player
             /*if ((_currentTime < 0 || _jumpComponent.IsOnTheFloor))
             {
             }
-
+            //NO BORRAR ES LA INMOBILIDAD EN EL SALTO, HAY QUE ARREGLAR UN BUG PARA HABILITARLA
             if (!_jumpComponent.IsOnTheFloor)
             {
                 _currentTime -= Time.deltaTime;
@@ -79,16 +83,26 @@ namespace Game.Gameplay.Player
             }*/
         }
 
+
         #endregion
+        void CallSoundWalk()
+        {
+            if (_Walk)
+            {
+                _pjSoundController.Walking();
+            }
+        }
 
         #region inputmethods
 
         public void MoveInput(InputAction.CallbackContext context)
         {
             _moveVelocityInput = context.ReadValue<Vector2>();
+            _Walk = true;
             if (context.canceled)
             {
                 _moveVelocityInput = Vector2.zero;
+                _Walk = false;
             }
         }
 

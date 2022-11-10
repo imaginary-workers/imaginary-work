@@ -640,6 +640,7 @@ MonoBehaviour:
   _sprintSpeed: 12
   _playerInput: {fileID: 8219668241822508866}
   _animator: {fileID: 1160910595356904043}
+  _pjSoundController: {fileID: 4280496099988934263}
   _weaponController: {fileID: 8219668241822508986}
 --- !u!114 &4280496099988934263
 MonoBehaviour:
@@ -655,6 +656,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _audioSource: {fileID: 4337559757738897688}
   _Hurt: {fileID: 8300000, guid: c612d463040046147877387d320c5178, type: 3}
+  _playerdamageable: {fileID: 8219668241822508865}
+  _playerController: {fileID: 8219668241822508868}
+  _Walking: {fileID: 8300000, guid: 604fa420f7bc20f45b249402f5e46add, type: 3}
 --- !u!114 &8219668241822508867
 MonoBehaviour:
   m_ObjectHideFlags: 0
