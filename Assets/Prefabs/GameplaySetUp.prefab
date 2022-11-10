@@ -385,6 +385,22 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: RestartLevel
       objectReference: {fileID: 0}
+    - target: {fileID: 1078430350813784755, guid: de9188e459a77494f8c234f0945e6e1a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 554763952521874867}
+    - target: {fileID: 1078430350813784755, guid: de9188e459a77494f8c234f0945e6e1a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: RestartLevel
+      objectReference: {fileID: 0}
+    - target: {fileID: 1078430350813784755, guid: de9188e459a77494f8c234f0945e6e1a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Game.Managers.GameManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1078430350813784755, guid: de9188e459a77494f8c234f0945e6e1a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 1124527976995450009, guid: de9188e459a77494f8c234f0945e6e1a, type: 3}
       propertyPath: m_Name
       value: Slider_Sound
@@ -602,6 +618,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 554763952521874867}
     - target: {fileID: 5103676080342528752, guid: de9188e459a77494f8c234f0945e6e1a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: BackToMainMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 5595387080541294074, guid: de9188e459a77494f8c234f0945e6e1a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 554763952521874867}
+    - target: {fileID: 5595387080541294074, guid: de9188e459a77494f8c234f0945e6e1a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: BackToMainMenu
       objectReference: {fileID: 0}

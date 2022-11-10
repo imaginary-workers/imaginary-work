@@ -114,14 +114,8 @@ namespace Game.Managers
             _isDeath = true;
             Cursor.lockState = CursorLockMode.None;
             _pointer.SetActive(false);
-            Time.timeScale = 0;
-            StartCoroutine(CO_ActiveDeathScreen());
-        }
-
-        IEnumerator CO_ActiveDeathScreen()
-        {
-            yield return new WaitForSeconds(_secondsToDisplayDeathScreenInSeconds);
             _deathMessege.SetActive(true);
+            Time.timeScale = 0;
         }
 
         public void NewGame()
