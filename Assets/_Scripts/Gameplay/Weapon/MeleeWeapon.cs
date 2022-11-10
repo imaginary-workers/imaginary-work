@@ -6,13 +6,17 @@ namespace Game.Gameplay.Weapons
 {
     public class MeleeWeapon : Weapon
     {
-        [SerializeField] GameObject _damaging;
+        [SerializeField] Damaging _damaging;
         Action _TriggerAttackAnimation;
+        PlayerAnimationManager _animationManager;
 
         void Awake()
         {
-            _damaging.SetActive(false);
+            _damaging.gameObject.SetActive(false);
+            _damaging.OnHit += TriggerOnHitFeedback;
+            _damaging.OnStrongHit += TriggerOnStrongHitFeedback;
         }
+
         public override void StartAttack(){ }
         public override void PerformedAttack()
         {
@@ -24,10 +28,10 @@ namespace Game.Gameplay.Weapons
 
         public override void SubscribeToAnimationEvents(PlayerAnimationManager animationManager)
         {
+            _animationManager = animationManager;
             animationManager.AddAnimationEvent("start_melee_heatbox", EVENT_START_HITBOX);
             animationManager.AddAnimationEvent("end_melee_heatbox", EVENT_END_HITBOX);
             animationManager.AddAnimationEvent("end_melee_ani", EVENT_FINISH_ANI);
-            _TriggerAttackAnimation = animationManager.AttackMelee;
         }
 
         #region Anim Callbacks
@@ -39,18 +43,28 @@ namespace Game.Gameplay.Weapons
     
         void EVENT_END_HITBOX()
         {
-            _damaging.SetActive(false);
+            _damaging.gameObject.SetActive(false);
         }
     
         void EVENT_START_HITBOX()
         {
-            _damaging.SetActive(true);
+            _damaging.gameObject.SetActive(true);
         }
         
         void StartMeleeAnimation()
         {
-            _TriggerAttackAnimation.Invoke();
+            _animationManager.AttackMelee();
         }
         #endregion
+
+        void TriggerOnStrongHitFeedback()
+        {
+            _animationManager.StrongHitAnimation();
+        }
+
+        void TriggerOnHitFeedback()
+        {
+            _animationManager.HitAnimation();
+        }
     }   
 }
