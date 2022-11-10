@@ -7,9 +7,7 @@ using Game.SO;
 using UnityEngine.UI;
 using Game.Gameplay.Enemies;
 using System.Collections;
-using UnityEngine.Audio;
 using Game.Audio;
-using Game.Decorator;
 
 namespace Game.Managers
 {
@@ -45,24 +43,14 @@ namespace Game.Managers
         [SerializeField] Text _countEnemyText;
         [Header("Option Menu")]
         [SerializeField] GameObject _optionsMenu;
-        [SerializeField] Toggle _invertedXToggle;
-        [SerializeField] Toggle _invertedYToggle;
-        [SerializeField] Slider _speedRotatioSlider;
-        [SerializeField] Slider _masterAudioSlider;
-        [SerializeField] Slider _musicSlider;
-        [SerializeField] Slider _soundSlider;
+
         [Header("BlackScreen Transition")]
         [SerializeField] Animator _blackScreenAnimator;
-
-        [Header("Audio")]
-        [SerializeField] AudioMixer _audioMixer;
-
 
         [Header("Scenes")]
         [SerializeField] SceneStorageSO _sceneStorage;
 
         [Header("Settings")]
-        [SerializeField] GameplaySettingsSO _gameplaySettings;
         [SerializeField] State _state;
         PlayerConfig _newPlayerConfig = null;
         AudioConfig _newAudioConfig = null;
@@ -70,6 +58,7 @@ namespace Game.Managers
         bool _isDeath = false;
         bool _isChangingScene = false;
         bool _options = false;
+        float _secondsToDisplayDeathScreenInSeconds = 1f;
 
         void Awake()
         {
@@ -80,12 +69,12 @@ namespace Game.Managers
             if (_state == State.Gameplay)
             {
                 Enemy.UpdateEnemyCount += UpdateEnemyCount;
+                Player.GetComponent<PlayerDamageable>().OnDeath += DeathScreen;
             }
         }
 
-        private void Start()
+        void Start()
         {
-            PauseMenuSetup();
             MusicManager.singleton.UpdateMusic(_sceneStorage.FindSceneByName(SceneManager.GetActiveScene().name));
         }
 
@@ -102,6 +91,7 @@ namespace Game.Managers
             if (_state == State.Gameplay)
             {
                 Enemy.UpdateEnemyCount -= UpdateEnemyCount;
+                Player.GetComponent<PlayerDamageable>().OnDeath -= DeathScreen;
             }
         }
 
@@ -123,9 +113,15 @@ namespace Game.Managers
         {
             _isDeath = true;
             Cursor.lockState = CursorLockMode.None;
-            _deathMessege.SetActive(true);
             _pointer.SetActive(false);
             Time.timeScale = 0;
+            StartCoroutine(CO_ActiveDeathScreen());
+        }
+
+        IEnumerator CO_ActiveDeathScreen()
+        {
+            yield return new WaitForSeconds(_secondsToDisplayDeathScreenInSeconds);
+            _deathMessege.SetActive(true);
         }
 
         public void NewGame()
@@ -218,21 +214,6 @@ namespace Game.Managers
             _options = true;
             _optionsMenu.SetActive(true);
         }
-        void CloseOptions()
-        {
-            _options = false;
-            _optionsMenu.SetActive(false);
-        }
-        public void CancelOptions()
-        {
-            PauseMenuSetup();
-            CloseOptions();
-        }
-        public void ConfirmoOptions()
-        {
-            UpdateConfig();
-            CloseOptions();
-        }
         public void UpdateBulletCounter(int amunicion)
         {
             if (amunicion < 0)
@@ -253,105 +234,7 @@ namespace Game.Managers
             _countEnemyText.text = Enemy.countEnemy.ToString();
         }
 
-        void PauseMenuSetup()
-        {
-            if (_optionsMenu == null) return;
-
-            var config = _gameplaySettings.PlayerConfig;
-            _invertedXToggle.isOn = config.invertedXAxis; 
-            _invertedYToggle.isOn = config.invertedYAxis;
-            _speedRotatioSlider.value = config.rotationSpeed;
-
-            var audioConfig = _gameplaySettings.AudioConfig;
-            UpdateAudioMixer(audioConfig);
-            var audioUiDecorator = new AudioConfig01Decorator(audioConfig);
-            _musicSlider.value = audioUiDecorator.Music;
-            _soundSlider.value = audioUiDecorator.Sound;
-            _masterAudioSlider.value = audioUiDecorator.Master;
-
-            _newAudioConfig = null;
-            _newPlayerConfig = null;
-        }
-
 #endregion
-
-#region Config
-
-
-        public void SetInvertedYAxis(bool to)
-        {
-            NewPlayerConfig.invertedYAxis = to;
-        }
-
-        public void SetInvertedXAxis(bool to)
-        {
-            NewPlayerConfig.invertedXAxis = to;
-        }
-
-        public void ChangedRotationSpeedValue()
-        {
-            NewPlayerConfig.rotationSpeed = _speedRotatioSlider.value;
-        }
-
-        public void ChangedMasterAudioValue(float value)
-        {
-            var uiAudioDecorator = new AudioConfig01Decorator(NewAudioConfig);
-            uiAudioDecorator.Master = value;
-            UpdateAudioMixer(NewAudioConfig);
-        }
-
-        public void ChangedSoundValue(float value)
-        {
-            var uiAudioDecorator = new AudioConfig01Decorator(NewAudioConfig);
-            uiAudioDecorator.Sound = value;
-            UpdateAudioMixer(NewAudioConfig);
-        }
-
-        public void ChangedMusicValue(float value)
-        {
-            var uiAudioDecorator = new AudioConfig01Decorator(NewAudioConfig);
-            uiAudioDecorator.Music = value;
-            UpdateAudioMixer(NewAudioConfig);
-        }
-
-        PlayerConfig NewPlayerConfig
-        {
-            get
-            {
-                if (_newPlayerConfig == null)
-                    _newPlayerConfig = _gameplaySettings.PlayerConfig;
-
-                return _newPlayerConfig;
-            }
-        }
-
-        AudioConfig NewAudioConfig
-        {
-            get
-            {
-                if (_newAudioConfig == null)
-                    _newAudioConfig = _gameplaySettings.AudioConfig;
-
-                return _newAudioConfig;
-            }
-        }
-
-        void UpdateConfig()
-        {
-            if (_newPlayerConfig != null)
-            {
-                _gameplaySettings.ChangePlayerConfig(_newPlayerConfig);
-                _newPlayerConfig = null;
-            }
-            if (_newAudioConfig != null)
-            {
-                _gameplaySettings.ChangeAudioConfig(_newAudioConfig);
-                _newAudioConfig = null;
-            }
-        }
-
-#endregion
-
         IEnumerator CO_NextScene(SceneSO scene)
         {
             if (!_isChangingScene)
@@ -368,13 +251,5 @@ namespace Game.Managers
                 SceneManager.LoadScene(scene.SceneName);
             }
         }
-#region AUDIO
-        void UpdateAudioMixer(AudioConfig config)
-        {
-            _audioMixer.SetFloat("Master", config.Master);
-            _audioMixer.SetFloat("Music", config.Music);
-            _audioMixer.SetFloat("Sound", config.Sound);
-        }
-#endregion
     }
 }

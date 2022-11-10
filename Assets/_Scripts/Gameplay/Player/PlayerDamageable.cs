@@ -9,15 +9,20 @@ namespace Game.Gameplay.Player
     {
         [SerializeField] IntSO _playerLive;
         public event Action<int> OnTakeDamage, OnTakeStrongDamage;
+        public event Action OnDeath;
 
         public void TakeTamage(int damage, ElementSO element)
         {
-
-            _playerLive.value -= damage;
-            OnTakeDamage?.Invoke(damage);
-
-            if (_playerLive.value <= 0)
-                GameManager.Instance.DeathScreen();
+            if (_playerLive.value - damage <= 0)
+            {
+                _playerLive.value = 0;
+                OnDeath?.Invoke();
+            }
+            else
+            {
+                _playerLive.value -= damage;
+                OnTakeDamage?.Invoke(damage);
+            }
         }
     }
 }
