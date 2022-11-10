@@ -8,12 +8,17 @@ namespace Game.Gameplay.Player
     {
         [SerializeField] Animator _myAni;
         Dictionary<string, Action> _events = new Dictionary<string, Action>();
-        public bool IsReloading { get; private set; } = false;
 
         public void AddAnimationEvent(string eventName, Action callback)
         {
-            if (_events.ContainsKey(eventName)) return;
-            _events.Add(eventName, callback);
+            if (_events.ContainsKey(eventName))
+            {
+                _events[eventName] += callback;
+            }
+            else
+            {
+                _events.Add(eventName, callback);
+            }
         }
 
         public void RemoveAnimationEvent(string eventName)
@@ -56,6 +61,16 @@ namespace Game.Gameplay.Player
         public void BackToIdle()
         {
             _myAni.Play("idle");
+        }
+
+        public void StrongHitAnimation()
+        {
+            _myAni.Play("meleeStrongHit");
+        }
+
+        public void HitAnimation()
+        {
+            _myAni.Play("meleeWeakHit");
         }
     }
 }
