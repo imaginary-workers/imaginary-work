@@ -545,6 +545,26 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: RestartLevel
       objectReference: {fileID: 0}
+    - target: {fileID: 1078430350813784754, guid: de9188e459a77494f8c234f0945e6e1a, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1078430350813784755, guid: de9188e459a77494f8c234f0945e6e1a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 554763952521874867}
+    - target: {fileID: 1078430350813784755, guid: de9188e459a77494f8c234f0945e6e1a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: RestartLevel
+      objectReference: {fileID: 0}
+    - target: {fileID: 1078430350813784755, guid: de9188e459a77494f8c234f0945e6e1a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Game.Managers.GameManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1078430350813784755, guid: de9188e459a77494f8c234f0945e6e1a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 1124527976995450009, guid: de9188e459a77494f8c234f0945e6e1a, type: 3}
       propertyPath: m_Name
       value: Slider_Sound
@@ -736,6 +756,10 @@ PrefabInstance:
     - target: {fileID: 2644555778297054382, guid: de9188e459a77494f8c234f0945e6e1a, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2644555778772327437, guid: de9188e459a77494f8c234f0945e6e1a, type: 3}
+      propertyPath: m_AdditionalShaderChannelsFlag
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 2644555778772327438, guid: de9188e459a77494f8c234f0945e6e1a, type: 3}
       propertyPath: m_Pivot.x
@@ -945,6 +969,10 @@ PrefabInstance:
       propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.AudioClip, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 4240947565358860230, guid: de9188e459a77494f8c234f0945e6e1a, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4336392266321264703, guid: de9188e459a77494f8c234f0945e6e1a, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 0
@@ -964,6 +992,18 @@ PrefabInstance:
     - target: {fileID: 5103676080342528752, guid: de9188e459a77494f8c234f0945e6e1a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: BackToMainMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 5595387080541294074, guid: de9188e459a77494f8c234f0945e6e1a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 554763952521874867}
+    - target: {fileID: 5595387080541294074, guid: de9188e459a77494f8c234f0945e6e1a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: BackToMainMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 5595387080541294075, guid: de9188e459a77494f8c234f0945e6e1a, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5901534404552409406, guid: de9188e459a77494f8c234f0945e6e1a, type: 3}
       propertyPath: m_Type
@@ -992,6 +1032,10 @@ PrefabInstance:
     - target: {fileID: 6672522364753832040, guid: de9188e459a77494f8c234f0945e6e1a, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -12.76
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009804042045207161, guid: de9188e459a77494f8c234f0945e6e1a, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7056881348785652850, guid: de9188e459a77494f8c234f0945e6e1a, type: 3}
       propertyPath: m_Name
