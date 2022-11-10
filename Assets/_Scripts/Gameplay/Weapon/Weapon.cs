@@ -12,7 +12,8 @@ namespace Game.Gameplay.Weapons
         public bool IsHeavy { get; protected set; } = false;
         public int ReserveAmmunition { get; protected set; } = -1;
         public Vector3 Target { set; protected get; } = Vector3.zero;
-        public virtual bool ReloadAmmunition() => false;
+        public virtual bool CanReloadAmmunition() => false;
+        public virtual void ReloadAmmunition() {}
         public virtual bool ReloadReserveAmmunition() => false;
         public abstract void StartAttack();
         public abstract void PerformedAttack();

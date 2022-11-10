@@ -7,7 +7,7 @@ namespace Game.Gameplay.Enemies
     public class EnemyDamageable : MonoBehaviour, IDamageable
     {
         [SerializeField] int _life = 10;
-        [SerializeField] private ElementSO _weakness;
+        [SerializeField] ElementSO _weakness;
         public event Action<int> OnTakeDamage, OnTakeStrongDamage;
         public event Action OnDeath;
         public int Life => _life;
