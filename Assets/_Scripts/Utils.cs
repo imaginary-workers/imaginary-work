@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 namespace Game
@@ -33,6 +34,13 @@ namespace Game
         public static float pythagoreanTheorem(float a, float b)
         {
             return Mathf.Sqrt(a * a + b * b);
+        }
+
+        public static IEnumerator CO_HitStop(float seconds, float timeScale = 0f)
+        {
+            Time.timeScale = timeScale;
+            yield return new WaitForSecondsRealtime(seconds);
+            Time.timeScale = 1;
         }
     }
 }

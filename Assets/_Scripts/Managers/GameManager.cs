@@ -69,7 +69,7 @@ namespace Game.Managers
             if (_state == State.Gameplay)
             {
                 Enemy.UpdateEnemyCount += UpdateEnemyCount;
-                Player.GetComponent<PlayerDamageable>().OnDeath += DeathScreen;
+                Player.GetComponent<PlayerDamageable>().OnDeath += GameOver;
             }
         }
 
@@ -91,7 +91,7 @@ namespace Game.Managers
             if (_state == State.Gameplay)
             {
                 Enemy.UpdateEnemyCount -= UpdateEnemyCount;
-                Player.GetComponent<PlayerDamageable>().OnDeath -= DeathScreen;
+                Player.GetComponent<PlayerDamageable>().OnDeath -= GameOver;
             }
         }
 
@@ -109,13 +109,20 @@ namespace Game.Managers
 
 #region Game_FLOW
 
-        public void DeathScreen()
+        public void GameOver()
+        {
+            StartCoroutine(CO_GameOver());
+        }
+
+        IEnumerator CO_GameOver()
         {
             _isDeath = true;
             Cursor.lockState = CursorLockMode.None;
             _pointer.SetActive(false);
+            Time.timeScale = 0.5f;
+            yield return new WaitForSecondsRealtime(3f);
             _deathMessege.SetActive(true);
-            Time.timeScale = 0;
+            Time.timeScale = 0f;
         }
 
         public void NewGame()
