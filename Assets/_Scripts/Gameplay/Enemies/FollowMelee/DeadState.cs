@@ -1,9 +1,10 @@
+using System;
 using UnityEngine;
 using UnityEngine.AI;
 
 namespace Game.Gameplay.Enemies.FollowMelee
 {
-    public class DeadState : State
+    public class DeadState : AbstractDeadState
     {
         NavMeshAgent _agent;
         AnimatorController _animatorController;
@@ -17,8 +18,9 @@ namespace Game.Gameplay.Enemies.FollowMelee
             AnimatorController animatorController,
             SpawnDrops spawn,
             FollowMeleeStateController stateController,
-            float secondToDestroy
-        )
+            float secondToDestroy,
+            Action hitStop
+        ): base(hitStop)
         {
             _agent = agent;
             _animatorController = animatorController;
@@ -29,6 +31,8 @@ namespace Game.Gameplay.Enemies.FollowMelee
         public override void Enter()
         {
             _agent.speed = 0;
+            base.Enter();
+            _spawn.Drop();
             _animatorController.Death();
         }
         public override void Update()
@@ -45,7 +49,6 @@ namespace Game.Gameplay.Enemies.FollowMelee
 
         public override void Exit()
         {
-            _spawn.Drop();
             _stateController.DestroyGameObject();
         }
     }

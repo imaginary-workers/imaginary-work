@@ -28,7 +28,7 @@ namespace Game.Gameplay.Enemies.FlyerPatrol
             _visualField.Target = _target;
             _normalState = new NormalState(this, _agent, _patrolBehaviour, _cameraMesh, _cameraBaseMesh, _visualField, _light, _lightFocus, _normalColor);
             _attackState = new AttackState(this, _target, _cameraMesh, _cameraBaseMesh, _attack,_agent, _visualField, _light, _lightFocus, _attackColor);
-            deadState = new DeadState(_agent, this);
+            deadState = new DeadState(_agent, this, HitStopEffect);
             _attack.enabled = false;
             ChangeState(_normalState);
         }

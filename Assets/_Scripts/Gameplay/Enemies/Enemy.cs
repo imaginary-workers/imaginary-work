@@ -23,6 +23,10 @@ namespace Game.Gameplay.Enemies
             Enemy.countEnemy--;
             Enemy.UpdateEnemyCount?.Invoke();
         }
-       
+
+        protected virtual void HitStopEffect()
+        {
+            StartCoroutine(Utils.CO_HitStop(0.3f, 0.001f));
+        }
     }
 }

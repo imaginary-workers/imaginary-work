@@ -57,7 +57,7 @@ namespace Game.Gameplay.Enemies.FollowMelee
             _patrolBehaviour.enabled = false;
             _followPlayer.enabled = false;
             _lookAtTarget.enabled = false;
-            deadState = new DeadState(_agent, _animatorController, _spawn, this, _secondToDestroy);
+            deadState = new DeadState(_agent, _animatorController, _spawn, this, _secondToDestroy, HitStopEffect);
             _takeStrongDamageState = new TakeStrongDamageState(this, _agent, _animationEvent, _animatorController);
             ChangeState(_randomPatrolState);
         }

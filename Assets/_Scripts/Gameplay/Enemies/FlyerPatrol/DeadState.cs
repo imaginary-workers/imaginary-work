@@ -1,15 +1,20 @@
-﻿using Game.Gameplay.Enemies;
+﻿using System;
+using Game.Gameplay.Enemies;
 using Game.Gameplay.Enemies.FlyerPatrol;
 using UnityEngine.AI;
 
 namespace Game._Scripts.Gameplay.Enemies.FlyerPatrol
 {
-    public class DeadState : State
+    public class DeadState : AbstractDeadState
     {
         NavMeshAgent _agent;
         FlyerPatrolStateController _stateController;
 
-        public DeadState(NavMeshAgent agent, FlyerPatrolStateController stateController)
+        public DeadState(
+            NavMeshAgent agent,
+            FlyerPatrolStateController stateController,
+            Action hitStop
+            ) : base(hitStop)
         {
             _agent = agent;
             _stateController = stateController;
@@ -19,6 +24,7 @@ namespace Game._Scripts.Gameplay.Enemies.FlyerPatrol
         {
             _agent.speed = 0;
             _agent.isStopped = true;
+            hitStop();
         }
 
         public override void Update()

@@ -35,7 +35,7 @@ namespace Game.Gameplay.Enemies.PatrolFire
             _enemyShooter.enabled = false;
             _normalState = new NormalState(this, _normalBehaviour, _visualField);
             _attackState = new AttackState(this, _visualField, _agent, _lookAtTarget, _animatorController, _enemyShooter);
-            deadState = new DeadState(this, _animatorController, 5, _agent, _spawner);
+            deadState = new DeadState(this, _animatorController, 5, _agent, _spawner, HitStopEffect);
             _takeStrongDamageState = new TakeStrongDamageState(this, _agent, _animatorController, _visualField);
             ChangeState(_normalState);
             Damageable.OnTakeStrongDamage += OnTakeStrongDamageHandler;
