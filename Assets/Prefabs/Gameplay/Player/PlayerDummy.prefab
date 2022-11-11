@@ -567,6 +567,7 @@ GameObject:
   - component: {fileID: 8219668241822508985}
   - component: {fileID: 7520371172983455578}
   - component: {fileID: 5810076752666076082}
+  - component: {fileID: 2748643659555909998}
   - component: {fileID: 2519684814726871061}
   - component: {fileID: 121611105248956867}
   - component: {fileID: 3854919714608616953}
@@ -974,6 +975,7 @@ MonoBehaviour:
   _speedWeaponHeavy: 1
   _animation: {fileID: 1160910595356904043}
   _active: 1
+  _pjSoundController: {fileID: 0}
 --- !u!114 &8219668241822508985
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1024,6 +1026,20 @@ MonoBehaviour:
   _cheeckFloor: {fileID: 4719565878990220562}
   _checkFloorRadius: 0.09
   _maxExtraTime: 0.5
+--- !u!114 &2748643659555909998
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8219668241822508879}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 366fc7ce103d4d5448af89a64076658b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _audioSource: {fileID: 2519684814726871061}
+  _switch: {fileID: 0}
 --- !u!82 &2519684814726871061
 AudioSource:
   m_ObjectHideFlags: 0

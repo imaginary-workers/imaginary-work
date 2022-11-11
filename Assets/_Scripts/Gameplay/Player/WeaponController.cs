@@ -14,6 +14,10 @@ namespace Game.Gameplay.Player
         [SerializeField, Range(0, 2)] float _speedWeaponHeavy = 1;
         [SerializeField] PlayerAnimationManager _animation;
         public bool _active = true;
+
+        [SerializeField] PlayerSoundController _pjSoundController;
+        private bool _switch;
+
         public bool CanAttack { get; set; } = true;
 
         Weapon CurrentWeapon
@@ -27,6 +31,10 @@ namespace Game.Gameplay.Player
         void Start()
         {
             _animation.AddAnimationEvent("end_reload_weapon", EVENT_END_RELOAD_WEAPON);
+        }
+        void Update()
+        {
+            
         }
 
         public void AttackInput(InputAction.CallbackContext context)

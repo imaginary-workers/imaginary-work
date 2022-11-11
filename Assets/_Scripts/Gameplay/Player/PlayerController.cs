@@ -102,11 +102,9 @@ namespace Game.Gameplay.Player
         {
             if (_jump)
             {
-                _pjSoundController.Jump();
-                _timer = 0;
+                _pjSoundController.Jump();           
             }
         }
-
         #region inputmethods
 
         public void MoveInput(InputAction.CallbackContext context)
