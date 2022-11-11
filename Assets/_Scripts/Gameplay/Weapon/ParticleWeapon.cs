@@ -1,3 +1,4 @@
+using Game.Gameplay.Player;
 using Game.Managers;
 using UnityEngine;
 
@@ -6,6 +7,7 @@ namespace Game.Gameplay.Weapons
     public class ParticleWeapon : ShooterWeapon
     {
         [SerializeField] GameObject _particle;
+        [SerializeField] WeaponsSoundController _weaponSoundController;
         bool _isShooting = false;
         float _time;
         [SerializeField] bool _isHeavy;
@@ -21,6 +23,7 @@ namespace Game.Gameplay.Weapons
 
         void Update()
         {
+            ParticleSound();
             if (_isShooting)
             {
                 if (_time <= 0)
@@ -54,6 +57,7 @@ namespace Game.Gameplay.Weapons
         {
             _particle.SetActive(false);
             _isShooting = false;
+            _weaponSoundController.ShootFireCanceled();
         }
                
   
@@ -61,10 +65,17 @@ namespace Game.Gameplay.Weapons
         #endregion
         protected override void Shoot()
         {
+            
             var bulletObject = _bulletPooler.GetPooledObject();
             bulletObject.SetActive(true);
             bulletObject.transform.position = _firePoint.position;
             bulletObject.GetComponent<Bullet>()?.Shoot(ShootDirection);
+        }
+
+        void ParticleSound()
+        {
+            if(_isShooting)
+            _weaponSoundController.ShootFire();
         }
     }
 }

@@ -9,7 +9,7 @@ namespace Game.Gameplay.Weapons
     public class TriggerWeapon : ShooterWeapon
     {
         [SerializeField] ParticleSystem _particles;
-
+        [SerializeField] WeaponsSoundController _weaponSoundController;
         Action _TriggerAttackAnimation;
         WaitForSeconds _waitAttackRate;
         void Awake()
@@ -57,11 +57,16 @@ namespace Game.Gameplay.Weapons
             GameManager.Instance.UpdateBulletCounter(Ammunition);
 
             _particles.Play();
+            IsShoot();
         }
 
         void EVENT_PISTOL_SHOOTING()
         {
             Shoot();
+        }
+        void IsShoot()
+        {
+            _weaponSoundController.ShootPistol();
         }
     }
 }

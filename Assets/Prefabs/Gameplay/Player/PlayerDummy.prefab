@@ -1044,6 +1044,7 @@ MonoBehaviour:
   _noHit: {fileID: 8300000, guid: 382c2f30329d05d4e9387a5ea3c80307, type: 3}
   _shootPistol: {fileID: 8300000, guid: 4ef4999b671df1b469f6b588092f6b84, type: 3}
   _recoveryPistol: {fileID: 8300000, guid: 42f7847675e72fe4b9dc094200b4ddd2, type: 3}
+  _fireOn: 0
 --- !u!82 &2519684814726871061
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1624,6 +1625,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4735661994421724971, guid: 7cd12200bd3156040955aebf80ad1489, type: 3}
+      propertyPath: _weaponSoundController
+      value: 
+      objectReference: {fileID: 2748643659555909998}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7cd12200bd3156040955aebf80ad1489, type: 3}
 --- !u!4 &1767229513866288492 stripped
@@ -1649,6 +1654,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3374871210961474756}
     m_Modifications:
+    - target: {fileID: 1334125567140118817, guid: 2995e5e25acebc3479602f2226558c20, type: 3}
+      propertyPath: _weaponSoundController
+      value: 
+      objectReference: {fileID: 2748643659555909998}
     - target: {fileID: 6241255965032067169, guid: 2995e5e25acebc3479602f2226558c20, type: 3}
       propertyPath: m_RootOrder
       value: 0

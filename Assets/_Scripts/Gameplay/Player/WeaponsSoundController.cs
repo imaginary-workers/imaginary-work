@@ -12,6 +12,7 @@ namespace Game.Gameplay.Player
         [SerializeField] AudioClip _noHit;
         [SerializeField] AudioClip _shootPistol;
         [SerializeField] AudioClip _recoveryPistol;
+        public bool _fireOn = false;
 
         public void SwitchWeapon()
         {
@@ -20,7 +21,17 @@ namespace Game.Gameplay.Player
 
         public void ShootFire()
         {
-            _audioSource.PlayOneShot(_fire);
+            _fireOn = true;
+            if (_fireOn)
+            {
+                _audioSource.PlayOneShot(_fire);
+                _audioSource.loop = true;
+                
+            }
+        }
+        public void ShootFireCanceled()
+        {
+            _fireOn = false;
         }
 
         public void HitFail()
