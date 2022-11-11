@@ -20,7 +20,6 @@ namespace Game.Gameplay.Player
         float _timer = 0;
         [SerializeField, Range(0, 2)] float _timeStep;
         float _currentSpeed;
-        bool _jump = false;
 
         public bool IsCurrentDeviceMouse
             => _playerInput.currentControlScheme == "KeyboardMouse";
@@ -61,7 +60,6 @@ namespace Game.Gameplay.Player
         void Update()
         {
             CallSoundWalk();
-            CallSoundJump();
 
             _timer += Time.deltaTime;
             if (!_jumpComponent.IsOnTheFloor)
@@ -92,19 +90,13 @@ namespace Game.Gameplay.Player
         #endregion
         void CallSoundWalk()
         {
-            if (_walk && _timer >= _timeStep)
+            if (_walk && _timer >= _timeStep && _jumpComponent.IsOnTheFloor)
             {
                 _pjSoundController.Walking();
                 _timer = 0;
             }
         }
-        void CallSoundJump()
-        {
-            if (_jump)
-            {
-                _pjSoundController.Jump();           
-            }
-        }
+
         #region inputmethods
 
         public void MoveInput(InputAction.CallbackContext context)
@@ -120,12 +112,11 @@ namespace Game.Gameplay.Player
 
         public void JumpInput(InputAction.CallbackContext context)
         {
-            _jump = true;
             if (context.started)
             {
-                _jump = false;
                 _jumpComponent.JumpAction();
             }
+
         }
 
         public void LookInput(InputAction.CallbackContext context)

@@ -21,9 +21,9 @@ namespace Game.Gameplay.Weapons
             _particle.SetActive(false);
         }
 
+
         void Update()
         {
-            ParticleSound();
             if (_isShooting)
             {
                 if (_time <= 0)
@@ -49,6 +49,7 @@ namespace Game.Gameplay.Weapons
             if (Ammunition <= 0) return;
             _particle.SetActive(true);
             _isShooting = true;
+            _weaponSoundController.ShootFire();
         }
 
         public override void PerformedAttack(){ }
@@ -70,12 +71,6 @@ namespace Game.Gameplay.Weapons
             bulletObject.SetActive(true);
             bulletObject.transform.position = _firePoint.position;
             bulletObject.GetComponent<Bullet>()?.Shoot(ShootDirection);
-        }
-
-        void ParticleSound()
-        {
-            if(_isShooting)
-            _weaponSoundController.ShootFire();
         }
     }
 }
