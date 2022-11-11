@@ -66,6 +66,7 @@
      <Compile Include="Assets\_Scripts\Gameplay\Player\WeaponInventory.cs" />
      <Compile Include="Assets\_Scripts\SO\GameplaySettingsSO.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Enemies\MeleeAttack.cs" />
+     <Compile Include="Assets\_Scripts\UI\OptionMenuUI.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Player\JumpComponent.cs" />
      <Compile Include="Assets\_Scripts\UI\InventoryUIController.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Enemies\FollowMelee\TakeStrongDamageState.cs" />
@@ -73,6 +74,7 @@
      <Compile Include="Assets\_Scripts\Gameplay\Enemies\FollowMelee\FollowMeleeStateController.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Enemies\FollowMelee\MeleeAttackState.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Player\WeaponController.cs" />
+     <Compile Include="Assets\_Scripts\Managers\MixerManager.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Enemies\LookAtTarget.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Weapon\ShooterWeapon.cs" />
      <Compile Include="Assets\_Scripts\EZ Camera Shake\Scripts\CameraShaker.cs" />
@@ -95,6 +97,7 @@
      <Compile Include="Assets\_Scripts\Gameplay\Enemies\FlyerPatrol\DeadState.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Enemies\FollowMelee\DeadState.cs" />
      <Compile Include="Assets\_Scripts\Audio\MusicManager.cs" />
+     <Compile Include="Assets\_Scripts\Managers\GameplayConfigManager.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Enemies\FlyerPatrol\AttackState.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Platforms\PlatformMovable.cs" />
      <Compile Include="Assets\_Scripts\EZ Camera Shake\Scripts\CameraShakeInstance.cs" />
@@ -138,6 +141,7 @@
      <Compile Include="Assets\_Scripts\Gameplay\Enemies\State.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\CameraFollowTarget.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Enemies\PatrolFire\AttackState.cs" />
+     <Compile Include="Assets\_Scripts\Gameplay\Enemies\AbstractDeadState.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
