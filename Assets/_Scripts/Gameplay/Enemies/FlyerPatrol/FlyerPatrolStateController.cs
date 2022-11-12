@@ -39,10 +39,15 @@ namespace Game.Gameplay.Enemies.FlyerPatrol
         public AttackState AttackState
             => _attackState;
 
-        public override void DestroyGameObject()
+        protected override void HitStopEffect()
+        {
+            StartCoroutine(Utils.CO_HitStop(0.3f, 0.001f, ActiveDestroyFeedback));
+        }
+
+        void ActiveDestroyFeedback()
         {
             Instantiate(_particle, transform.position, Quaternion.identity);
-            base.DestroyGameObject();
+            DestroyGameObject();
         }
     }
 }

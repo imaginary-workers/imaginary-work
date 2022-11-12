@@ -16,7 +16,7 @@ namespace Game.Gameplay.Player
         public bool _active = true;
 
         [SerializeField] PlayerSoundController _pjSoundController;
-        private bool _switch;
+        bool _switch;
 
         public bool CanAttack { get; set; } = true;
 
@@ -31,10 +31,6 @@ namespace Game.Gameplay.Player
         void Start()
         {
             _animation.AddAnimationEvent("end_reload_weapon", EVENT_END_RELOAD_WEAPON);
-        }
-        void Update()
-        {
-            
         }
 
         public void AttackInput(InputAction.CallbackContext context)
