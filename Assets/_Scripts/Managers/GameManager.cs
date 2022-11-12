@@ -50,6 +50,10 @@ namespace Game.Managers
         [Header("Scenes")]
         [SerializeField] SceneStorageSO _sceneStorage;
 
+        [Header("Audio")]
+        [SerializeField] AudioSource _audioSource;
+        [SerializeField] AudioClip _gameOver;
+
         [Header("Settings")]
         [SerializeField] State _state;
         PlayerConfig _newPlayerConfig = null;
@@ -122,6 +126,7 @@ namespace Game.Managers
             Time.timeScale = 0.5f;
             yield return new WaitForSecondsRealtime(3f);
             _deathMessege.SetActive(true);
+            _audioSource.PlayOneShot(_gameOver);
             Time.timeScale = 0f;
         }
 

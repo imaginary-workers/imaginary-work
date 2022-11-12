@@ -132,9 +132,13 @@ MonoBehaviour:
   _waitBetweenPointInSeconds: 1
   _waitOnEnable: 2.5
   _agent: {fileID: 1819776211655567606}
-  _waypoints: []
+  _waypoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   _cycle: 0
-  _pointRadiusGizmos: 0.27
+  _pointRadiusGizmos: 0.55
   _sphereColor: {r: 1, g: 0, b: 0, a: 1}
   _lineColor: {r: 0, g: 1, b: 0, a: 1}
   _random: 1

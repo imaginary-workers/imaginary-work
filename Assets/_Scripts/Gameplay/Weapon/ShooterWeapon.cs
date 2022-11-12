@@ -5,8 +5,6 @@ namespace Game.Gameplay.Weapons
 {
     public abstract class ShooterWeapon : Weapon
     {
-        [SerializeField]
-        protected WeaponSO _weaponData;
 
         [SerializeField]
         protected ObjectPooler _bulletPooler;
