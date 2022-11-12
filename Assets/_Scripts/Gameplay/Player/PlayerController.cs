@@ -11,15 +11,19 @@ namespace Game.Gameplay.Player
         [SerializeField, Range(0, 20)] float _sprintSpeed = 12f;
         [SerializeField] PlayerInput _playerInput;
         [SerializeField] PlayerAnimationManager _animator;
-        [SerializeField] PlayerSoundController _pjSoundController;
         [SerializeField] WeaponController _weaponController;
         Vector2 _moveVelocityInput;
-        bool _walk = false;
         float _currentTime = 1;
         float _time;
-        float _timer = 0;
-        [SerializeField, Range(0, 2)] float _timeStep;
         float _currentSpeed;
+
+        [Header("Audio")]
+        [SerializeField, Range(0, 2)] float _timeStep;
+        [SerializeField] PlayerSoundController _pjSoundController;
+        [SerializeField, Range(0, 2)] float _timeSprint;
+        bool _walk = false;
+        float _timer = 0;
+        bool _sprint;
 
         public bool IsCurrentDeviceMouse
             => _playerInput.currentControlScheme == "KeyboardMouse";
@@ -60,6 +64,7 @@ namespace Game.Gameplay.Player
         void Update()
         {
             CallSoundWalk();
+            CallSoundSprint();
 
             _timer += Time.deltaTime;
             if (!_jumpComponent.IsOnTheFloor)
@@ -91,6 +96,14 @@ namespace Game.Gameplay.Player
         void CallSoundWalk()
         {
             if (_walk && _timer >= _timeStep && _jumpComponent.IsOnTheFloor)
+            {
+                _pjSoundController.Walking();
+                _timer = 0;
+            }
+        }
+        void CallSoundSprint()
+        {
+            if (_sprint && _timer >= _timeSprint && _jumpComponent.IsOnTheFloor)
             {
                 _pjSoundController.Walking();
                 _timer = 0;
@@ -130,11 +143,12 @@ namespace Game.Gameplay.Player
             if (context.started)
             {
                 SprintActive(true);
+                _sprint = true;
             }
             else if (context.canceled)
             {
                 SprintActive(false);
-
+                _sprint = false;
             }
         }
 
