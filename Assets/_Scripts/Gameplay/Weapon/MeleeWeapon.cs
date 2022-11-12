@@ -17,14 +17,14 @@ namespace Game.Gameplay.Weapons
             _damaging.OnStrongHit += TriggerOnStrongHitFeedback;
         }
 
-        public override void StartAttack(){ }
+        public override void StartAttack() { }
         public override void PerformedAttack()
         {
             if (!canAttack) return;
             canAttack = false;
             StartMeleeAnimation();
         }
-        public override void CancelAttack(){ }
+        public override void CancelAttack() { }
 
         public override void SubscribeToAnimationEvents(PlayerAnimationManager animationManager)
         {
@@ -32,6 +32,12 @@ namespace Game.Gameplay.Weapons
             animationManager.AddAnimationEvent("start_melee_heatbox", EVENT_START_HITBOX);
             animationManager.AddAnimationEvent("end_melee_heatbox", EVENT_END_HITBOX);
             animationManager.AddAnimationEvent("end_melee_ani", EVENT_FINISH_ANI);
+            animationManager.AddAnimationEvent("no_hit_melee", EVENT_NO_HIT_FEEDBACK);
+        }
+
+        void EVENT_NO_HIT_FEEDBACK()
+        {
+            _audioSource.PlayOneShot(_weaponData.NoHitSound);
         }
 
         #region Anim Callbacks
@@ -40,17 +46,17 @@ namespace Game.Gameplay.Weapons
         {
             canAttack = true;
         }
-    
+
         void EVENT_END_HITBOX()
         {
             _damaging.gameObject.SetActive(false);
         }
-    
+
         void EVENT_START_HITBOX()
         {
             _damaging.gameObject.SetActive(true);
         }
-        
+
         void StartMeleeAnimation()
         {
             _animationManager.AttackMelee();
@@ -66,5 +72,5 @@ namespace Game.Gameplay.Weapons
         {
             _animationManager.HitAnimation();
         }
-    }   
+    }
 }

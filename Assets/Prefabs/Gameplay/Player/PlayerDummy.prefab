@@ -658,13 +658,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 786047b7ff7cd7846bbff16f14a37454, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _audioSource: {fileID: 0}
+  _audioSource: {fileID: 2519684814726871061}
   _playerdamageable: {fileID: 8219668241822508865}
   _playerController: {fileID: 8219668241822508868}
   _jumpComponent: {fileID: 5810076752666076082}
   _Hurt: {fileID: 8300000, guid: c612d463040046147877387d320c5178, type: 3}
   _Walking: {fileID: 8300000, guid: 604fa420f7bc20f45b249402f5e46add, type: 3}
   _jump: {fileID: 8300000, guid: f60e398a491cac548ac73eea1bc006a7, type: 3}
+  _dead: {fileID: 8300000, guid: 73c79dab9c54883498828f880b986fa1, type: 3}
 --- !u!114 &8219668241822508867
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -976,7 +977,7 @@ MonoBehaviour:
   _speedWeaponHeavy: 1
   _animation: {fileID: 1160910595356904043}
   _active: 1
-  _pjSoundController: {fileID: 0}
+  _pjSoundController: {fileID: 4280496099988934263}
 --- !u!114 &8219668241822508985
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -14,23 +14,21 @@ namespace Game.Gameplay.Player
         [SerializeField] AudioClip _Hurt;
         [SerializeField] AudioClip _Walking;
         [SerializeField] AudioClip _jump;
-        float _time;
+
 
         private void Awake()
         {
-            _audioSource = GetComponent<AudioSource>();
-            _jumpComponent = GetComponent<JumpComponent>();
+
             _jumpComponent.OnJumpEvent += Jump;
             _playerdamageable.OnTakeDamage += Damage;
+
         }
-        private void Update()
-        {
-            _time += Time.deltaTime;
-        }
+
         private void OnDestroy()
         {
             _playerdamageable.OnTakeDamage -= Damage;
             _jumpComponent.OnJumpEvent -= Jump;
+
         }
 
         public void Damage(int damage)
@@ -45,5 +43,6 @@ namespace Game.Gameplay.Player
         {
                 _audioSource.PlayOneShot(_jump);  
         }
+
     }
 }

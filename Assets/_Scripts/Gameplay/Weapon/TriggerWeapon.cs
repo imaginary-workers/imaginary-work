@@ -20,7 +20,7 @@ namespace Game.Gameplay.Weapons
         }
 
         #region public
-        public override void StartAttack(){ }
+        public override void StartAttack() { }
         public override void PerformedAttack()
         {
             if (!canAttack || Ammunition <= 0) return;
@@ -35,12 +35,18 @@ namespace Game.Gameplay.Weapons
             canAttack = true;
         }
 
-        public override void CancelAttack(){ }
+        public override void CancelAttack() { }
 
         public override void SubscribeToAnimationEvents(PlayerAnimationManager animationManager)
         {
             animationManager.AddAnimationEvent("pistol_shooting_event", EVENT_PISTOL_SHOOTING);
+            animationManager.AddAnimationEvent("end_reload_weapon", EVENT_RELOAD_FEEDBACK);
             _TriggerAttackAnimation = animationManager.AttackShooter;
+        }
+
+        void EVENT_RELOAD_FEEDBACK()
+        {
+            _audioSource.PlayOneShot(_weaponData.ReloadSound);
         }
 
 
