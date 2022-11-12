@@ -42,5 +42,13 @@ namespace Game
             yield return new WaitForSecondsRealtime(seconds);
             Time.timeScale = 1;
         }
+
+        public static IEnumerator CO_HitStop(float seconds, float timeScale, Action callback)
+        {
+            Time.timeScale = timeScale;
+            yield return new WaitForSecondsRealtime(seconds);
+            Time.timeScale = 1;
+            callback();
+        }
     }
 }

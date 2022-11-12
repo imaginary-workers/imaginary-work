@@ -26,15 +26,5 @@ namespace Game._Scripts.Gameplay.Enemies.FlyerPatrol
             _agent.isStopped = true;
             hitStop();
         }
-
-        public override void Update()
-        {
-            Exit();
-        }
-
-        public override void Exit()
-        {
-            _stateController.DestroyGameObject();
-        }
     }
 }
