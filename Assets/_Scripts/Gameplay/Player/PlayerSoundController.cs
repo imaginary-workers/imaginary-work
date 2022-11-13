@@ -1,3 +1,4 @@
+using Game.Gameplay.PowerUps;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -14,11 +15,12 @@ namespace Game.Gameplay.Player
         [SerializeField] AudioClip _Hurt;
         [SerializeField] AudioClip _Walking;
         [SerializeField] AudioClip _jump;
+        [SerializeField] AudioClip _eating;
+        [SerializeField] AudioClip _MaxAmmuation;
 
 
         private void Awake()
         {
-
             _jumpComponent.OnJumpEvent += Jump;
             _playerdamageable.OnTakeDamage += Damage;
 
@@ -28,7 +30,6 @@ namespace Game.Gameplay.Player
         {
             _playerdamageable.OnTakeDamage -= Damage;
             _jumpComponent.OnJumpEvent -= Jump;
-
         }
 
         public void Damage(int damage)
@@ -42,6 +43,14 @@ namespace Game.Gameplay.Player
         public void Jump()
         {
                 _audioSource.PlayOneShot(_jump);  
+        }
+        public void Heal()
+        {
+            _audioSource.PlayOneShot(_eating);
+        }
+        public void Amunnition()
+        {
+            _audioSource.PlayOneShot(_MaxAmmuation);
         }
 
     }

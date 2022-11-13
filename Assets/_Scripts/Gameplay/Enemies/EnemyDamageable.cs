@@ -26,6 +26,7 @@ namespace Game.Gameplay.Enemies
             {
                 _life -= damage;
                 OnTakeDamage?.Invoke(damage);
+
             }
             if (Life <= 0)
             {
