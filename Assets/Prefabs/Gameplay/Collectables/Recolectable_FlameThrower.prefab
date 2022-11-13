@@ -42,6 +42,7 @@ GameObject:
   - component: {fileID: 794309272878979320}
   - component: {fileID: 794309272878979327}
   - component: {fileID: 2966748181116869265}
+  - component: {fileID: 7466145887859451352}
   m_Layer: 0
   m_Name: Recolectable_FlameThrower
   m_TagString: Untagged
@@ -89,7 +90,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -174,6 +175,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &7466145887859451352
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 794309272878979325}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b5e1e94f9ee7cf4cb4bf47b77f83d7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _weaponType: {fileID: 11400000, guid: b764a1e102716434eb76f054bfc5bf16, type: 2}
 --- !u!1 &3207364948538577013
 GameObject:
   m_ObjectHideFlags: 0

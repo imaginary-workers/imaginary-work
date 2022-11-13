@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4094539554839050595}
   - component: {fileID: 4094539554839050604}
   - component: {fileID: 4094539554839050605}
+  - component: {fileID: 2193407095531388663}
   m_Layer: 0
   m_Name: Recolectable_NailsPistol
   m_TagString: Untagged
@@ -58,7 +59,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -143,6 +144,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &2193407095531388663
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4094539554839050606}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b5e1e94f9ee7cf4cb4bf47b77f83d7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _weaponType: {fileID: 11400000, guid: 5cb8a3494f6dcbe4f90dc1c9e89125f5, type: 2}
 --- !u!1 &4094539555525242822
 GameObject:
   m_ObjectHideFlags: 0
