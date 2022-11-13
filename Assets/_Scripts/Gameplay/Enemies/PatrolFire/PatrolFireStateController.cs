@@ -14,6 +14,7 @@ namespace Game.Gameplay.Enemies.PatrolFire
         [SerializeField] EnemyBurstShooter _enemyShooter;
         [SerializeField] AnimatorController _animatorController;
         [SerializeField] SpawnDrops _spawner;
+        [SerializeField] Ragdoll _ragdoll;
         NormalState _normalState;
         AttackState _attackState;
         GameObject _player;
@@ -48,7 +49,7 @@ namespace Game.Gameplay.Enemies.PatrolFire
 
         protected override void SetDeadState()
         {
-            deadState = new DeadState(this, _animatorController, 5, _agent, _spawner, HitStopEffect);
+            deadState = new DeadState(this, _ragdoll, 5, _agent, _spawner, HitStopEffect);
         }
 
         void ChangeToTakeStrongDamageState()

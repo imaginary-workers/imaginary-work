@@ -7,7 +7,7 @@ namespace Game.Gameplay.Enemies.PatrolFire
     public class DeadState : AbstractDeadState
     {
         NavMeshAgent _agent;
-        AnimatorController _animatorController;
+        Ragdoll _ragdoll;
         SpawnDrops _spawn;
         float _secondsToDestroy;
         PatrolFireStateController _stateController;
@@ -15,14 +15,14 @@ namespace Game.Gameplay.Enemies.PatrolFire
 
         public DeadState(
             PatrolFireStateController stateController,
-            AnimatorController animatorController,
+            Ragdoll ragdoll,
             float secondToDestroy,
             NavMeshAgent agent,
             SpawnDrops spawner,
             Action hitStop
             ) : base(hitStop)
         {
-            _animatorController = animatorController;
+            _ragdoll = ragdoll;
             _secondsToDestroy = secondToDestroy;
             _stateController = stateController;
             _agent = agent;
@@ -35,7 +35,7 @@ namespace Game.Gameplay.Enemies.PatrolFire
             _agent.isStopped = true;
             base.Enter();
             _spawn.Drop();
-            _animatorController.Death();
+            _ragdoll.SetEnabled(true);
         }
 
         public override void Update()

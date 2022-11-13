@@ -86,7 +86,6 @@ namespace Game.Managers
             {
                 var weapons = Player.GetComponent<WeaponInventory>().Weapons;
                 var weaponsCount = weapons.Count;
-                Debug.Log(weaponsCount);
                 for (int i = 0; i < weaponsCount; i++)
                 {
                     if (weapons[i].IsLocked)
