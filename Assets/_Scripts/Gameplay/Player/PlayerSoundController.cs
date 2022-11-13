@@ -1,7 +1,3 @@
-using Game.Gameplay.PowerUps;
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Game.Gameplay.Player
@@ -10,23 +6,20 @@ namespace Game.Gameplay.Player
     {
         [SerializeField] AudioSource _audioSource;
         [SerializeField] PlayerDamageable _playerdamageable;
-        [SerializeField] PlayerController _playerController;
         [SerializeField] JumpComponent _jumpComponent;
-        [SerializeField] AudioClip _Hurt;
-        [SerializeField] AudioClip _Walking;
+        [SerializeField] AudioClip _hurt;
+        [SerializeField] AudioClip _walking;
         [SerializeField] AudioClip _jump;
         [SerializeField] AudioClip _eating;
-        [SerializeField] AudioClip _MaxAmmuation;
+        [SerializeField] AudioClip _dropAmmuation;
 
-
-        private void Awake()
+        void Awake()
         {
             _jumpComponent.OnJumpEvent += Jump;
             _playerdamageable.OnTakeDamage += Damage;
-
         }
 
-        private void OnDestroy()
+        void OnDestroy()
         {
             _playerdamageable.OnTakeDamage -= Damage;
             _jumpComponent.OnJumpEvent -= Jump;
@@ -34,11 +27,11 @@ namespace Game.Gameplay.Player
 
         public void Damage(int damage)
         {
-            _audioSource.PlayOneShot(_Hurt);
+            _audioSource.PlayOneShot(_hurt);
         }
         public void Walking()
         {
-            _audioSource.PlayOneShot(_Walking);
+            _audioSource.PlayOneShot(_walking);
         }
         public void Jump()
         {
@@ -50,8 +43,7 @@ namespace Game.Gameplay.Player
         }
         public void Amunnition()
         {
-            _audioSource.PlayOneShot(_MaxAmmuation);
+            _audioSource.PlayOneShot(_dropAmmuation);
         }
-
     }
 }

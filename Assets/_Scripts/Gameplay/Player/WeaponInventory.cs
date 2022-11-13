@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Game.Gameplay.Weapons;
+using Game.Managers;
 using Game.SO;
 using UnityEngine;
 
@@ -25,9 +26,10 @@ namespace Game.Gameplay.Player
 
         public void UnlockedWeapon(WeaponSO data)
         {
-            var weapon = Weapons.Find(weapon => weapon.Data == data);
-            if (weapon == null) return;
-            weapon.UnLocked();
+            var weaponIndex = Weapons.FindIndex(weapon => weapon.Data == data);
+            if (weaponIndex == -1) return;
+            Weapons[weaponIndex].UnLocked();
+            GameManager.Instance.UnlockedWeaponUI(weaponIndex);
         }
     }
 }

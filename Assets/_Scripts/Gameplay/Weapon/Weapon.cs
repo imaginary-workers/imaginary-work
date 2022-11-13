@@ -16,7 +16,7 @@ namespace Game.Gameplay.Weapons
         public int Ammunition { get; protected set; } = -1;
         [field: SerializeField]
         public bool IsLocked { get; private set; } = true;
-        public void UnLocked() => IsLocked = true;
+        public void UnLocked() => IsLocked = false;
         public bool IsHeavy { get; protected set; } = false;
         public int ReserveAmmunition { get; protected set; } = -1;
         public Vector3 Target { set; protected get; } = Vector3.zero;

@@ -28,18 +28,20 @@ namespace Game.Gameplay.Player
             GameManager.Instance.UpdateBulletCounter(CurrentWeapon.Ammunition);
         }
 
-        public void SwitchWeapon(int slot)
+        public bool SwitchWeapon(int slot)
         {
-            if (slot == CurrentSlot) return;
+            if (slot == CurrentSlot) return false;
 
             var weapon = _inventory.GetWeapon(slot);
+            if (weapon.IsLocked) return false;
             CurrentSlot = slot;
-            if (weapon == null) return;
+            if (weapon == null) return false;
 
             CurrentWeapon.gameObject.SetActive(false);
             CurrentWeapon = weapon;
             CurrentWeapon.gameObject.SetActive(true);
             GameManager.Instance.UpdateBulletCounter(CurrentWeapon.Ammunition);
+            return true;
         }
 
         public bool ReloadReserveWeapons()
