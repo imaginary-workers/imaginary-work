@@ -80,7 +80,8 @@
      <Compile Include="Assets\_Scripts\Gameplay\Weapon\ShooterWeapon.cs" />
      <Compile Include="Assets\_Scripts\EZ Camera Shake\Scripts\CameraShaker.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Enemies\PatrolFire\NormalState.cs" />
-     <Compile Include="Assets\WeaponUnlonkerComponent.cs" />
+     <Compile Include="Assets\_Scripts\Gameplay\WeaponUnlonkerComponent.cs" />
+     <Compile Include="Assets\_Scripts\Gameplay\Enemies\CollectableEnemy\DeadState.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Player\PlayerAnimationManager.cs" />
      <Compile Include="Assets\_Scripts\SO\WeaponSO.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Enemies\FollowMelee\AnimationEvent.cs" />
@@ -141,15 +142,14 @@
      <Compile Include="Assets\_Scripts\EZ Camera Shake\Demo\Sample Scripts\ShakeByDistance.cs" />
      <Compile Include="Assets\_Scripts\ActionRepeater.cs" />
      <Compile Include="Assets\_Scripts\EZ Camera Shake\Demo\Sample Scripts\ShakeOnKeyPress.cs" />
+     <Compile Include="Assets\_Scripts\Gameplay\Enemies\CollectableEnemy\MinionEnemy.cs" />
      <Compile Include="Assets\_Scripts\EZ Camera Shake\Scripts\CameraShakePresets.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Interactable\DestructableObject.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Enemies\FollowMelee\FollowState.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Enemies\State.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\CameraFollowTarget.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Enemies\PatrolFire\AttackState.cs" />
-     <Compile Include="Assets\_Scripts\RagdollTest.cs" />
-     <Compile Include="Assets\_Scripts\Gameplay\Enemies\CollectableEnemy\MinionEnemy.cs" />
-     <Compile Include="Assets\_Scripts\Gameplay\Enemies\CollectableEnemy\DeadState.cs" />
+     <Compile Include="Assets\_Scripts\Gameplay\Enemies\Ragdoll.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
