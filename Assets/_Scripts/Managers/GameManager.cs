@@ -132,7 +132,7 @@ namespace Game.Managers
 
         public void NewGame()
         {
-            var sceneSO = _sceneStorage.FindSceneByName("Level0");
+            var sceneSO = _sceneStorage.FindSceneByName("Level01");
             StartCoroutine(CO_NextScene(sceneSO));
         }
 
