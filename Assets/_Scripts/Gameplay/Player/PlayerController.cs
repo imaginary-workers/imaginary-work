@@ -18,12 +18,13 @@ namespace Game.Gameplay.Player
         float _currentSpeed;
 
         [Header("Audio")]
-        [SerializeField, Range(0, 2)] float _timeStep;
+        [SerializeField, Range(0, 2)] float _timeWalk;
         [SerializeField] PlayerSoundController _pjSoundController;
         [SerializeField, Range(0, 2)] float _timeSprint;
-        bool _walk = false;
+        bool _isMoving = false;
         float _timer = 0;
         bool _sprint;
+        float _timeStep;
 
         public bool IsCurrentDeviceMouse
             => _playerInput.currentControlScheme == "KeyboardMouse";
@@ -54,6 +55,7 @@ namespace Game.Gameplay.Player
         {
             _time = _currentTime;
             _currentSpeed = _normalSpeed;
+            _timeStep = _timeWalk;
         }
 
         void Start()
@@ -64,7 +66,6 @@ namespace Game.Gameplay.Player
         void Update()
         {
             CallSoundWalk();
-            CallSoundSprint();
 
             _timer += Time.deltaTime;
             if (!_jumpComponent.IsOnTheFloor)
@@ -95,31 +96,26 @@ namespace Game.Gameplay.Player
         #endregion
         void CallSoundWalk()
         {
-            if (_walk && _timer >= _timeStep && _jumpComponent.IsOnTheFloor)
+            if (_isMoving && _timer >= _timeStep && _jumpComponent.IsOnTheFloor)
             {
                 _pjSoundController.Walking();
+                _sprint = false;
                 _timer = 0;
             }
         }
-        void CallSoundSprint()
-        {
-            if (_sprint && _timer >= _timeSprint && _jumpComponent.IsOnTheFloor)
-            {
-                _pjSoundController.Walking();
-                _timer = 0;
-            }
-        }
+
 
         #region inputmethods
 
         public void MoveInput(InputAction.CallbackContext context)
         {
             _moveVelocityInput = context.ReadValue<Vector2>();
-            _walk = true;
+
+            _isMoving = true;
             if (context.canceled)
             {
                 _moveVelocityInput = Vector2.zero;
-                _walk = false;
+                _isMoving = false;
             }
         }
 
@@ -143,12 +139,10 @@ namespace Game.Gameplay.Player
             if (context.started)
             {
                 SprintActive(true);
-                _sprint = true;
             }
             else if (context.canceled)
             {
                 SprintActive(false);
-                _sprint = false;
             }
         }
 
@@ -158,11 +152,13 @@ namespace Game.Gameplay.Player
             if (active)
             {
                 _currentSpeed = _sprintSpeed;
+                _timeStep = _timeSprint;
                 _animator.StartSprint();
             }
             else
             {
                 _currentSpeed = _normalSpeed;
+                _timeStep = _timeWalk;
                 _animator.StopSprint();
             }
         }
