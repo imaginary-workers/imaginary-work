@@ -8,6 +8,7 @@ using UnityEngine.UI;
 using Game.Gameplay.Enemies;
 using System.Collections;
 using Game.Audio;
+using Game.UI;
 
 namespace Game.Managers
 {
@@ -41,6 +42,7 @@ namespace Game.Managers
         [SerializeField] Text _bulletCounterText;
         [SerializeField] Text _reserveCounterText;
         [SerializeField] Text _countEnemyText;
+        [SerializeField] InventoryUIController _inventoryUI;
         [Header("Option Menu")]
         [SerializeField] GameObject _optionsMenu;
 
@@ -80,6 +82,23 @@ namespace Game.Managers
         void Start()
         {
             MusicManager.singleton.UpdateMusic(_sceneStorage.FindSceneByName(SceneManager.GetActiveScene().name));
+            if (_state == State.Gameplay)
+            {
+                var weapons = Player.GetComponent<WeaponInventory>().Weapons;
+                var weaponsCount = weapons.Count;
+                Debug.Log(weaponsCount);
+                for (int i = 0; i < weaponsCount; i++)
+                {
+                    if (weapons[i].IsLocked)
+                    {
+                        _inventoryUI.SetUnlokedIcon(i, true);
+                    }
+                    else
+                    {
+                        _inventoryUI.SetUnlokedIcon(i, false);
+                    }
+                }
+            }
         }
 
         void Update()
@@ -238,6 +257,16 @@ namespace Game.Managers
         public void UpdateEnemyCount()
         {
             _countEnemyText.text = Enemy.countEnemy.ToString();
+        }
+
+        public void SetActiveSlot(int slot)
+        {
+            _inventoryUI.SetSlotColorActive(slot);
+        }
+
+        public void UnlockedWeaponUI(int slot)
+        {
+            _inventoryUI.SetUnlokedIcon(slot, false);
         }
 
 #endregion

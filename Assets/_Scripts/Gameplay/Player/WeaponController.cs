@@ -82,7 +82,7 @@ namespace Game.Gameplay.Player
             bool reserve = _manager.ReloadReserveWeapons();
             if (reserve)
             {
-                UpdateUI();
+                UpdateAmmoUI();
             }
             return reserve;
 
@@ -92,14 +92,16 @@ namespace Game.Gameplay.Player
         {
             if (!_active) return;
             if (_manager.CurrentSlot == slot) return;
+            if (!_manager.SwitchWeapon(slot)) return;
+
             CurrentWeapon.CancelAttack();
             _animation.BackToIdle();
             CanAttack = true;
             if (CurrentWeapon.IsHeavy)
                 PlayerBackToDefault();
             _playerController.CanSprint = true;
-            _manager.SwitchWeapon(slot);
-            UpdateUI();
+            UpdateSlotUI(slot);
+            UpdateAmmoUI();
         }
 
         void PlayerBackToDefault()
@@ -112,7 +114,12 @@ namespace Game.Gameplay.Player
         {
             _playerController.Speed = _speedWeaponHeavy;
         }
-        void UpdateUI()
+
+        void UpdateSlotUI(int slot)
+        {
+            GameManager.Instance.SetActiveSlot(slot);
+        }
+        void UpdateAmmoUI()
         {
             GameManager.Instance.UpdateBulletCounter(CurrentWeapon.Ammunition);
             GameManager.Instance.UpdateReserveCounter(CurrentWeapon.ReserveAmmunition);
@@ -121,7 +128,7 @@ namespace Game.Gameplay.Player
         void EVENT_END_RELOAD_WEAPON()
         {
             CurrentWeapon.ReloadAmmunition();
-            UpdateUI();
+            UpdateAmmoUI();
             CanAttack = true;
         }
     }
