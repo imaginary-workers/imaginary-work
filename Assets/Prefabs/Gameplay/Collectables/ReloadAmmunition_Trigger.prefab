@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5644494450054607228}
   - component: {fileID: 8436852729393297861}
   - component: {fileID: 8764760811691661549}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Box
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -112,7 +112,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6011622929625324916}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -145,7 +145,7 @@ GameObject:
   - component: {fileID: 2172595377915751633}
   - component: {fileID: 7129609219489656364}
   - component: {fileID: 4188300365151889362}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: BoxTop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -227,7 +227,7 @@ GameObject:
   - component: {fileID: 5330323190590452269}
   - component: {fileID: 264825167489753189}
   - component: {fileID: -1238642639564295129}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: ReloadAmmunition_Trigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -382,7 +382,7 @@ GameObject:
   - component: {fileID: 1936410706645969720}
   - component: {fileID: 5430258156385309933}
   - component: {fileID: 8037965612373230363}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Tools
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -463,6 +463,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Recolectable Effect
       objectReference: {fileID: 0}
+    - target: {fileID: 5848978827400721205, guid: 46887d8f0dbac3f44887cc354ec7c199, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 5848978827400721208, guid: 46887d8f0dbac3f44887cc354ec7c199, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -506,6 +510,14 @@ PrefabInstance:
     - target: {fileID: 5848978827400721208, guid: 46887d8f0dbac3f44887cc354ec7c199, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5848978827677917923, guid: 46887d8f0dbac3f44887cc354ec7c199, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 5848978827815472829, guid: 46887d8f0dbac3f44887cc354ec7c199, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 46887d8f0dbac3f44887cc354ec7c199, type: 3}
