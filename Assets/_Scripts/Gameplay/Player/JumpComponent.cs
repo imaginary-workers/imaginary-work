@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace Game.Gameplay.Player
@@ -14,7 +15,7 @@ namespace Game.Gameplay.Player
         bool _onTheFloor = true;
         bool _alreadyJump = false;
         float _extraTime = 0;
-
+        public event Action OnJumpEvent;
         public bool IsOnTheFloor { get { return _onTheFloor; } }
         public void JumpAction()
         {
@@ -23,6 +24,7 @@ namespace Game.Gameplay.Player
             {
                 _alreadyJump = true;
                 _rigidbody.AddForce(Vector3.up * _jumpForce, ForceMode.VelocityChange);
+                OnJumpEvent?.Invoke();
             }
         }
 
@@ -58,6 +60,7 @@ namespace Game.Gameplay.Player
             Gizmos.color = Color.yellow;
             Gizmos.DrawSphere(_cheeckFloor.transform.position, _checkFloorRadius);
         }
+
 #endif
     }
 }

@@ -16,7 +16,16 @@ namespace Game.Gameplay.Player
         float _currentTime = 1;
         float _time;
         float _currentSpeed;
-        
+
+        [Header("Audio")]
+        [SerializeField, Range(0, 2)] float _timeWalk;
+        [SerializeField] PlayerSoundController _pjSoundController;
+        [SerializeField, Range(0, 2)] float _timeSprint;
+        bool _isMoving = false;
+        float _timer = 0;
+        bool _sprint;
+        float _timeStep;
+
         public bool IsCurrentDeviceMouse
             => _playerInput.currentControlScheme == "KeyboardMouse";
 
@@ -32,7 +41,7 @@ namespace Game.Gameplay.Player
         {
             get => _normalSpeed;
         }
-        
+
         public float SprintSpeed
         {
             get => _sprintSpeed;
@@ -46,6 +55,7 @@ namespace Game.Gameplay.Player
         {
             _time = _currentTime;
             _currentSpeed = _normalSpeed;
+            _timeStep = _timeWalk;
         }
 
         void Start()
@@ -55,6 +65,9 @@ namespace Game.Gameplay.Player
 
         void Update()
         {
+            CallSoundWalk();
+
+            _timer += Time.deltaTime;
             if (!_jumpComponent.IsOnTheFloor)
             {
                 SprintActive(false);
@@ -68,7 +81,7 @@ namespace Game.Gameplay.Player
             /*if ((_currentTime < 0 || _jumpComponent.IsOnTheFloor))
             {
             }
-
+            //NO BORRAR ES LA INMOBILIDAD EN EL SALTO, HAY QUE ARREGLAR UN BUG PARA HABILITARLA
             if (!_jumpComponent.IsOnTheFloor)
             {
                 _currentTime -= Time.deltaTime;
@@ -79,25 +92,40 @@ namespace Game.Gameplay.Player
             }*/
         }
 
+
         #endregion
+        void CallSoundWalk()
+        {
+            if (_isMoving && _timer >= _timeStep && _jumpComponent.IsOnTheFloor)
+            {
+                _pjSoundController.Walking();
+                _sprint = false;
+                _timer = 0;
+            }
+        }
+
 
         #region inputmethods
 
         public void MoveInput(InputAction.CallbackContext context)
         {
             _moveVelocityInput = context.ReadValue<Vector2>();
+
+            _isMoving = true;
             if (context.canceled)
             {
                 _moveVelocityInput = Vector2.zero;
+                _isMoving = false;
             }
         }
 
         public void JumpInput(InputAction.CallbackContext context)
         {
-            if (context.performed)
+            if (context.started)
             {
                 _jumpComponent.JumpAction();
             }
+
         }
 
         public void LookInput(InputAction.CallbackContext context)
@@ -115,7 +143,6 @@ namespace Game.Gameplay.Player
             else if (context.canceled)
             {
                 SprintActive(false);
-                
             }
         }
 
@@ -125,11 +152,13 @@ namespace Game.Gameplay.Player
             if (active)
             {
                 _currentSpeed = _sprintSpeed;
+                _timeStep = _timeSprint;
                 _animator.StartSprint();
             }
             else
             {
                 _currentSpeed = _normalSpeed;
+                _timeStep = _timeWalk;
                 _animator.StopSprint();
             }
         }

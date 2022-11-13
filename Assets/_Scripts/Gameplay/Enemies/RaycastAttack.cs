@@ -1,4 +1,5 @@
 using Game.SO;
+using System;
 using UnityEngine;
 
 namespace Game.Gameplay.Enemies
@@ -13,6 +14,7 @@ namespace Game.Gameplay.Enemies
         [Header("Opcional")]
         [SerializeField] ElementSO _attackElement = null;
         float _time;
+        public event Action OnAttack;
 
         public float MaxDistance
         {
@@ -34,7 +36,8 @@ namespace Game.Gameplay.Enemies
             Debug.DrawLine(position, _firePoint.transform.forward.normalized * _maxDistance + position, Color.red);
         }
         void Attack()
-        {           
+        {
+            OnAttack?.Invoke();
             RaycastHit hit;
             if (Physics.Raycast(_firePoint.transform.position, _firePoint.transform.forward, out hit, _maxDistance, _layerMask))
             {
