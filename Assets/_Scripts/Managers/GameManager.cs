@@ -80,10 +80,10 @@ namespace Game.Managers
 
         void Update()
         {
-            if (Enemy.countEnemy <= 0 && _state == State.Gameplay)
-            {
-                ConditionWin();
-            }
+            //if (Enemy.countEnemy <= 0 && _state == State.Gameplay)
+            //{
+            //    ConditionWin();
+            //}
         }
 
         void OnDestroy()
@@ -107,7 +107,7 @@ namespace Game.Managers
             }
         }
 
-#region Game_FLOW
+        #region Game_FLOW
 
         public void GameOver()
         {
@@ -119,8 +119,8 @@ namespace Game.Managers
             _isDeath = true;
             Cursor.lockState = CursorLockMode.None;
             _pointer.SetActive(false);
-            Time.timeScale = 0.5f;
-            yield return new WaitForSecondsRealtime(3f);
+            Time.timeScale = 0.1f;
+            yield return new WaitForSecondsRealtime(1f);
             _deathMessege.SetActive(true);
             Time.timeScale = 0f;
         }
@@ -149,20 +149,20 @@ namespace Game.Managers
             StartCoroutine(CO_NextScene(sceneSO));
         }
 
-        public void ConditionWin()
-        {
-            SceneSO sceneSO;
-            if (SceneManager.GetActiveScene().name == "Level0")
-            {
-                sceneSO = _sceneStorage.FindSceneByName("Level1");
-                StartCoroutine(CO_NextScene(sceneSO));
-            }
-            else
-            {
-                sceneSO = _sceneStorage.FindSceneByName("VictoryScreen");
-                StartCoroutine(CO_NextScene(sceneSO));
-            }
-        }
+        //public void ConditionWin()
+        //{
+        //    SceneSO sceneSO;
+        //    if (SceneManager.GetActiveScene().name == "Level0")
+        //    {
+        //        sceneSO = _sceneStorage.FindSceneByName("Level1");
+        //        StartCoroutine(CO_NextScene(sceneSO));
+        //    }
+        //    else
+        //    {
+        //        sceneSO = _sceneStorage.FindSceneByName("VictoryScreen");
+        //        StartCoroutine(CO_NextScene(sceneSO));
+        //    }
+        //}
 
         public void Quit()
         {
@@ -173,9 +173,9 @@ namespace Game.Managers
 #endif
         }
 
-#endregion
+        #endregion
 
-#region GAMEPLAY_UI
+        #region GAMEPLAY_UI
 
         public void PauseKeybord()
         {
@@ -211,7 +211,7 @@ namespace Game.Managers
         }
 
         public void OpenOptions()
-        {            
+        {
             _options = true;
             _optionsMenu.SetActive(true);
         }
@@ -235,7 +235,7 @@ namespace Game.Managers
             _countEnemyText.text = Enemy.countEnemy.ToString();
         }
 
-#endregion
+        #endregion
         IEnumerator CO_NextScene(SceneSO scene)
         {
             if (!_isChangingScene)
@@ -251,6 +251,10 @@ namespace Game.Managers
                 MusicManager.singleton.UpdateMusic(scene);
                 SceneManager.LoadScene(scene.SceneName);
             }
+        }
+        public void NextScene(SceneSO scene)
+        {
+            StartCoroutine(CO_NextScene(scene));
         }
     }
 }
