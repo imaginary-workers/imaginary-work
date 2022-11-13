@@ -10,6 +10,7 @@ namespace Game.Gameplay.PowerUps
             var weaponController = other.gameObject.GetComponent<WeaponController>();
             if (weaponController == null) return;
             if (!weaponController.ReloadReserveWeapons()) return;
+            other.GetComponent<PlayerSoundController>()?.Amunnition();
 
             Destroy(gameObject);
         }

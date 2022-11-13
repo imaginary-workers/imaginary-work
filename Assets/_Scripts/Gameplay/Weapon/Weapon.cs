@@ -1,4 +1,5 @@
 using Game.Gameplay.Player;
+using Game.SO;
 using UnityEngine;
 
 namespace Game.Gameplay.Weapons
@@ -7,6 +8,10 @@ namespace Game.Gameplay.Weapons
     {
         [SerializeField] 
         protected float attackRateInSeconds = 0f;
+        [SerializeField]
+        protected AudioSource _audioSource;
+        [SerializeField]
+        protected WeaponSO _weaponData;
         protected bool canAttack = true;
         public int Ammunition { get; protected set; } = -1;
         public bool IsHeavy { get; protected set; } = false;
