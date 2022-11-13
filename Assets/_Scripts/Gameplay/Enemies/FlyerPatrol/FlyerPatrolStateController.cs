@@ -28,7 +28,6 @@ namespace Game.Gameplay.Enemies.FlyerPatrol
             _visualField.Target = _target;
             _normalState = new NormalState(this, _agent, _patrolBehaviour, _cameraMesh, _cameraBaseMesh, _visualField, _light, _lightFocus, _normalColor);
             _attackState = new AttackState(this, _target, _cameraMesh, _cameraBaseMesh, _attack,_agent, _visualField, _light, _lightFocus, _attackColor);
-            deadState = new DeadState(_agent, this, HitStopEffect);
             _attack.enabled = false;
             ChangeState(_normalState);
         }
@@ -48,6 +47,11 @@ namespace Game.Gameplay.Enemies.FlyerPatrol
         {
             Instantiate(_particle, transform.position, Quaternion.identity);
             DestroyGameObject();
+        }
+
+        protected override void SetDeadState()
+        {
+            deadState = new DeadState(_agent, this, HitStopEffect);
         }
     }
 }
