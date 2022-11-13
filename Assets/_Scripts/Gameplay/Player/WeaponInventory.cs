@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Game.Gameplay.Weapons;
+using Game.SO;
 using UnityEngine;
 
 namespace Game.Gameplay.Player
@@ -20,6 +21,13 @@ namespace Game.Gameplay.Player
         {
             if (slot < 0 || slot >= Weapons.Count) return null;
             return Weapons[slot];
+        }
+
+        public void UnlockedWeapon(WeaponSO data)
+        {
+            var weapon = Weapons.Find(weapon => weapon.Data == data);
+            if (weapon == null) return;
+            weapon.UnLocked();
         }
     }
 }

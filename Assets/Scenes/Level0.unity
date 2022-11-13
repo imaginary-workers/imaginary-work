@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.5410525, g: 0.62022966, b: 0.7275671, a: 1}
+  m_IndirectSpecularColor: {r: 0.54133826, g: 0.6206705, b: 0.7277357, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1085,10 +1085,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 554763952014767605, guid: 8fd178cbd6604e24290ed12fb7f33ec4, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 4.199951
-      objectReference: {fileID: 0}
     - target: {fileID: 2522494733057876177, guid: 8fd178cbd6604e24290ed12fb7f33ec4, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -1097,25 +1093,9 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3948216969772264733, guid: 8fd178cbd6604e24290ed12fb7f33ec4, type: 3}
-      propertyPath: m_PlayOnAwake
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4383561984030341296, guid: 8fd178cbd6604e24290ed12fb7f33ec4, type: 3}
-      propertyPath: _audioSource
-      value: 
-      objectReference: {fileID: 907589307}
-    - target: {fileID: 5459857931465712033, guid: 8fd178cbd6604e24290ed12fb7f33ec4, type: 3}
-      propertyPath: _weaponSoundController
-      value: 
-      objectReference: {fileID: 907589295}
     - target: {fileID: 6199791740509601871, guid: 8fd178cbd6604e24290ed12fb7f33ec4, type: 3}
       propertyPath: m_Name
       value: GameplaySetUp
-      objectReference: {fileID: 0}
-    - target: {fileID: 8475996975838400899, guid: 8fd178cbd6604e24290ed12fb7f33ec4, type: 3}
-      propertyPath: _timeSprint
-      value: 0.18
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8fd178cbd6604e24290ed12fb7f33ec4, type: 3}
@@ -1357,22 +1337,6 @@ PrefabInstance:
 --- !u!1 &907589292 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8475996975838400904, guid: 8fd178cbd6604e24290ed12fb7f33ec4, type: 3}
-  m_PrefabInstance: {fileID: 875509372}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &907589295 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2420630065968859049, guid: 8fd178cbd6604e24290ed12fb7f33ec4, type: 3}
-  m_PrefabInstance: {fileID: 875509372}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 907589292}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 366fc7ce103d4d5448af89a64076658b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!82 &907589307 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 2685655132283883218, guid: 8fd178cbd6604e24290ed12fb7f33ec4, type: 3}
   m_PrefabInstance: {fileID: 875509372}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &997141492
