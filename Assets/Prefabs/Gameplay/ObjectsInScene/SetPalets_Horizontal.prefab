@@ -144,6 +144,8 @@ MonoBehaviour:
   _effectPrefab: {fileID: 5824207716733614624, guid: 31ed0e03d2761d14e8a83d1aac8a9180, type: 3}
   _effectPoint: {fileID: 146129653472887855}
   _droper: {fileID: 2976924438142110013}
+  _audioSource: {fileID: 8957972197517463973}
+  _destroy: {fileID: 8300000, guid: 93adf5a4df2a6594599035ca5a04b270, type: 3}
 --- !u!114 &2976924438142110013
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -168,9 +170,9 @@ AudioSource:
   m_GameObject: {fileID: 7148903547973043392}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  OutputAudioMixerGroup: {fileID: 1551853095085094983, guid: 3226694a2863dd0449b248f89975164d, type: 2}
+  m_audioClip: {fileID: 8300000, guid: 93adf5a4df2a6594599035ca5a04b270, type: 3}
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
