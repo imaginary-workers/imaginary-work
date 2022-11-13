@@ -8,6 +8,7 @@ using UnityEngine.UI;
 using Game.Gameplay.Enemies;
 using System.Collections;
 using Game.Audio;
+using Game.UI;
 
 namespace Game.Managers
 {
@@ -41,6 +42,7 @@ namespace Game.Managers
         [SerializeField] Text _bulletCounterText;
         [SerializeField] Text _reserveCounterText;
         [SerializeField] Text _countEnemyText;
+        [SerializeField] InventoryUIController _inventoryUI;
         [Header("Option Menu")]
         [SerializeField] GameObject _optionsMenu;
 
@@ -80,14 +82,31 @@ namespace Game.Managers
         void Start()
         {
             MusicManager.singleton.UpdateMusic(_sceneStorage.FindSceneByName(SceneManager.GetActiveScene().name));
+            if (_state == State.Gameplay)
+            {
+                var weapons = Player.GetComponent<WeaponInventory>().Weapons;
+                var weaponsCount = weapons.Count;
+                Debug.Log(weaponsCount);
+                for (int i = 0; i < weaponsCount; i++)
+                {
+                    if (weapons[i].IsLocked)
+                    {
+                        _inventoryUI.SetUnlokedIcon(i, true);
+                    }
+                    else
+                    {
+                        _inventoryUI.SetUnlokedIcon(i, false);
+                    }
+                }
+            }
         }
 
         void Update()
         {
-            //if (Enemy.countEnemy <= 0 && _state == State.Gameplay)
-            //{
-            //    ConditionWin();
-            //}
+            if (Enemy.countEnemy <= 0 && _state == State.Gameplay)
+            {
+                ConditionWin();
+            }
         }
 
         void OnDestroy()
@@ -111,7 +130,7 @@ namespace Game.Managers
             }
         }
 
-        #region Game_FLOW
+#region Game_FLOW
 
         public void GameOver()
         {
@@ -123,8 +142,8 @@ namespace Game.Managers
             _isDeath = true;
             Cursor.lockState = CursorLockMode.None;
             _pointer.SetActive(false);
-            Time.timeScale = 0.1f;
-            yield return new WaitForSecondsRealtime(1f);
+            Time.timeScale = 0.5f;
+            yield return new WaitForSecondsRealtime(3f);
             _deathMessege.SetActive(true);
             _audioSource.PlayOneShot(_gameOver);
             Time.timeScale = 0f;
@@ -132,7 +151,7 @@ namespace Game.Managers
 
         public void NewGame()
         {
-            var sceneSO = _sceneStorage.FindSceneByName("Level01");
+            var sceneSO = _sceneStorage.FindSceneByName("Level0");
             StartCoroutine(CO_NextScene(sceneSO));
         }
 
@@ -154,20 +173,20 @@ namespace Game.Managers
             StartCoroutine(CO_NextScene(sceneSO));
         }
 
-        //public void ConditionWin()
-        //{
-        //    SceneSO sceneSO;
-        //    if (SceneManager.GetActiveScene().name == "Level0")
-        //    {
-        //        sceneSO = _sceneStorage.FindSceneByName("Level1");
-        //        StartCoroutine(CO_NextScene(sceneSO));
-        //    }
-        //    else
-        //    {
-        //        sceneSO = _sceneStorage.FindSceneByName("VictoryScreen");
-        //        StartCoroutine(CO_NextScene(sceneSO));
-        //    }
-        //}
+        public void ConditionWin()
+        {
+            SceneSO sceneSO;
+            if (SceneManager.GetActiveScene().name == "Level0")
+            {
+                sceneSO = _sceneStorage.FindSceneByName("Level1");
+                StartCoroutine(CO_NextScene(sceneSO));
+            }
+            else
+            {
+                sceneSO = _sceneStorage.FindSceneByName("VictoryScreen");
+                StartCoroutine(CO_NextScene(sceneSO));
+            }
+        }
 
         public void Quit()
         {
@@ -178,9 +197,9 @@ namespace Game.Managers
 #endif
         }
 
-        #endregion
+#endregion
 
-        #region GAMEPLAY_UI
+#region GAMEPLAY_UI
 
         public void PauseKeybord()
         {
@@ -216,7 +235,7 @@ namespace Game.Managers
         }
 
         public void OpenOptions()
-        {
+        {            
             _options = true;
             _optionsMenu.SetActive(true);
         }
@@ -240,7 +259,17 @@ namespace Game.Managers
             _countEnemyText.text = Enemy.countEnemy.ToString();
         }
 
-        #endregion
+        public void SetActiveSlot(int slot)
+        {
+            _inventoryUI.SetSlotColorActive(slot);
+        }
+
+        public void UnlockedWeaponUI(int slot)
+        {
+            _inventoryUI.SetUnlokedIcon(slot, false);
+        }
+
+#endregion
         IEnumerator CO_NextScene(SceneSO scene)
         {
             if (!_isChangingScene)
@@ -256,10 +285,6 @@ namespace Game.Managers
                 MusicManager.singleton.UpdateMusic(scene);
                 SceneManager.LoadScene(scene.SceneName);
             }
-        }
-        public void NextScene(SceneSO scene)
-        {
-            StartCoroutine(CO_NextScene(scene));
         }
     }
 }

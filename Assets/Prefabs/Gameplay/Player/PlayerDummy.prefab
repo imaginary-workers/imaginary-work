@@ -644,7 +644,7 @@ MonoBehaviour:
   _playerInput: {fileID: 8219668241822508866}
   _animator: {fileID: 1160910595356904043}
   _weaponController: {fileID: 8219668241822508986}
-  _timeWalk: 0.24
+  _timeWalk: 0
   _pjSoundController: {fileID: 4280496099988934263}
   _timeSprint: 0.18
 --- !u!114 &4280496099988934263
@@ -661,13 +661,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _audioSource: {fileID: 2519684814726871061}
   _playerdamageable: {fileID: 8219668241822508865}
-  _playerController: {fileID: 8219668241822508868}
   _jumpComponent: {fileID: 5810076752666076082}
-  _Hurt: {fileID: 8300000, guid: c612d463040046147877387d320c5178, type: 3}
-  _Walking: {fileID: 8300000, guid: 604fa420f7bc20f45b249402f5e46add, type: 3}
+  _hurt: {fileID: 0}
+  _walking: {fileID: 0}
   _jump: {fileID: 8300000, guid: f60e398a491cac548ac73eea1bc006a7, type: 3}
   _eating: {fileID: 0}
-  _MaxAmmuation: {fileID: 0}
+  _dropAmmuation: {fileID: 0}
 --- !u!114 &8219668241822508867
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -825,18 +824,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Game.UI.InventoryUIController, Assembly-CSharp
-        m_MethodName: SetSlotColorActive
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
     m_ActionId: fecfa8ec-3815-4df3-8709-7b5aa76ed3a5
     m_ActionName: Player/Change Weapon 1[/Keyboard/1,/XInputControllerWindows/dpad/up]
   - m_PersistentCalls:
@@ -853,18 +840,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Game.UI.InventoryUIController, Assembly-CSharp
-        m_MethodName: SetSlotColorActive
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
     m_ActionId: c2c7921b-08fb-4d00-b493-89e299d16c8d
     m_ActionName: Player/Change Weapon 2[/Keyboard/2,/XInputControllerWindows/dpad/left]
   - m_PersistentCalls:
@@ -872,18 +847,6 @@ MonoBehaviour:
       - m_Target: {fileID: 8219668241822508986}
         m_TargetAssemblyTypeName: Game.Player.WeaponController, Assembly-CSharp
         m_MethodName: SwitchWeapon
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 2
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Game.UI.InventoryUIController, Assembly-CSharp
-        m_MethodName: SetSlotColorActive
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -943,6 +906,38 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 2e9213aa-c246-4c5d-8ed8-cd11fb4eea80
     m_ActionName: Player/Sprint[/Keyboard/shift]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7520371172983455578}
+        m_TargetAssemblyTypeName: Game.Gameplay.Player.WeaponInventory, Assembly-CSharp
+        m_MethodName: UnlockedWeapon
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: 5cb8a3494f6dcbe4f90dc1c9e89125f5, type: 2}
+          m_ObjectArgumentAssemblyTypeName: Game.SO.WeaponSO, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 6be24f9d-7030-4376-9f3c-29926f07750b
+    m_ActionName: Player/Unlock Weapon 2[/Keyboard/8]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7520371172983455578}
+        m_TargetAssemblyTypeName: Game.Gameplay.Player.WeaponInventory, Assembly-CSharp
+        m_MethodName: UnlockedWeapon
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: b764a1e102716434eb76f054bfc5bf16, type: 2}
+          m_ObjectArgumentAssemblyTypeName: Game.SO.WeaponSO, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: b12bb8fe-1194-49c6-9fdc-11fc44c3947b
+    m_ActionName: Player/Unlock Weapon 3[/Keyboard/9]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player

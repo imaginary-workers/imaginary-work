@@ -9,6 +9,7 @@
 
         void Start()
         {
+            SetDeadState();
             Damageable.OnDeath += ChangeToDeathState;
         }
         void Update()
@@ -57,5 +58,7 @@
                 return _damageable;
             }
         }
+
+        protected abstract void SetDeadState();
     }
 }

@@ -1089,6 +1089,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: 4.199951
       objectReference: {fileID: 0}
+    - target: {fileID: 826920719870558527, guid: 8fd178cbd6604e24290ed12fb7f33ec4, type: 3}
+      propertyPath: <IsLocked>k__BackingField
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2522494733057876177, guid: 8fd178cbd6604e24290ed12fb7f33ec4, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -1102,9 +1106,9 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4383561984030341296, guid: 8fd178cbd6604e24290ed12fb7f33ec4, type: 3}
-      propertyPath: _audioSource
+      propertyPath: _MaxAmmuation
       value: 
-      objectReference: {fileID: 907589307}
+      objectReference: {fileID: 8300000, guid: 42f7847675e72fe4b9dc094200b4ddd2, type: 3}
     - target: {fileID: 4383561984030341296, guid: 8fd178cbd6604e24290ed12fb7f33ec4, type: 3}
       propertyPath: _playerhealerpowerup
       value: 
@@ -1370,11 +1374,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 366fc7ce103d4d5448af89a64076658b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!82 &907589307 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 2685655132283883218, guid: 8fd178cbd6604e24290ed12fb7f33ec4, type: 3}
-  m_PrefabInstance: {fileID: 875509372}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &997141492
 GameObject:
   m_ObjectHideFlags: 0

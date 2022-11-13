@@ -81,6 +81,8 @@
     <Compile Include="Assets\_Scripts\Gameplay\Weapon\ShooterWeapon.cs" />
     <Compile Include="Assets\_Scripts\EZ Camera Shake\Scripts\CameraShaker.cs" />
     <Compile Include="Assets\_Scripts\Gameplay\Enemies\PatrolFire\NormalState.cs" />
+    <Compile Include="Assets\WeaponUnlonkerComponent.cs" />
+    <Compile Include="Assets\_Scripts\Gameplay\Enemies\CollectableEnemy\DeadState.cs" />
     <Compile Include="Assets\_Scripts\Gameplay\Player\PlayerAnimationManager.cs" />
     <Compile Include="Assets\_Scripts\SO\WeaponSO.cs" />
     <Compile Include="Assets\_Scripts\Gameplay\Enemies\FollowMelee\AnimationEvent.cs" />
@@ -94,16 +96,20 @@
     <Compile Include="Assets\_Scripts\Gameplay\Weapon\Weapon.cs" />
     <Compile Include="Assets\_Scripts\Gameplay\Weapon\TriggerWeapon.cs" />
     <Compile Include="Assets\_Scripts\Gameplay\MoveComponent.cs" />
+    <Compile Include="Assets\_Scripts\Gameplay\Player\WeaponsSoundController.cs" />
     <Compile Include="Assets\_Scripts\Gameplay\Player\FPSCamera.cs" />
     <Compile Include="Assets\_Scripts\Gameplay\Enemies\FlyerPatrol\AnimatorController.cs" />
     <Compile Include="Assets\_Scripts\Gameplay\Enemies\FlyerPatrol\DeadState.cs" />
     <Compile Include="Assets\_Scripts\Gameplay\Enemies\FollowMelee\DeadState.cs" />
+    <Compile Include="Assets\_Scripts\Gameplay\Enemies\FlyerPatrol\FlyerSoundController.cs" />
     <Compile Include="Assets\_Scripts\Audio\MusicManager.cs" />
     <Compile Include="Assets\_Scripts\Managers\GameplayConfigManager.cs" />
+    <Compile Include="Assets\_Scripts\Gameplay\Enemies\FollowMelee\MetalSoundController.cs" />
     <Compile Include="Assets\_Scripts\Gameplay\Enemies\FlyerPatrol\AttackState.cs" />
     <Compile Include="Assets\_Scripts\Gameplay\Platforms\PlatformMovable.cs" />
     <Compile Include="Assets\_Scripts\EZ Camera Shake\Scripts\CameraShakeInstance.cs" />
     <Compile Include="Assets\_Scripts\Gameplay\Enemies\PatrolFire\DeadState.cs" />
+    <Compile Include="Assets\_Scripts\Gameplay\Player\PlayerSoundController.cs" />
     <Compile Include="Assets\_Scripts\Gameplay\Bullet.cs" />
     <Compile Include="Assets\_Scripts\Gameplay\IDamageable.cs" />
     <Compile Include="Assets\_Scripts\Gameplay\Weapon\MeleeWeapon.cs" />
@@ -117,6 +123,7 @@
     <Compile Include="Assets\_Scripts\Gameplay\VisualField.cs" />
     <Compile Include="Assets\_Scripts\EZ Camera Shake\Demo\Sample Scripts\ShakeOnTrigger.cs" />
     <Compile Include="Assets\_Scripts\Gameplay\Enemies\FollowMelee\AnimatorController.cs" />
+    <Compile Include="Assets\_Scripts\RagdollTest.cs" />
     <Compile Include="Assets\Art\UI\HealthUIController.cs" />
     <Compile Include="Assets\_Scripts\Gameplay\ToNextLevel.cs" />
     <Compile Include="Assets\_Scripts\Gameplay\Player\WeaponManager.cs" />
@@ -137,16 +144,13 @@
     <Compile Include="Assets\_Scripts\EZ Camera Shake\Demo\Sample Scripts\ShakeByDistance.cs" />
     <Compile Include="Assets\_Scripts\ActionRepeater.cs" />
     <Compile Include="Assets\_Scripts\EZ Camera Shake\Demo\Sample Scripts\ShakeOnKeyPress.cs" />
+    <Compile Include="Assets\_Scripts\Gameplay\Enemies\CollectableEnemy\MinionEnemy.cs" />
     <Compile Include="Assets\_Scripts\EZ Camera Shake\Scripts\CameraShakePresets.cs" />
     <Compile Include="Assets\_Scripts\Gameplay\Interactable\DestructableObject.cs" />
     <Compile Include="Assets\_Scripts\Gameplay\Enemies\FollowMelee\FollowState.cs" />
     <Compile Include="Assets\_Scripts\Gameplay\Enemies\State.cs" />
     <Compile Include="Assets\_Scripts\Gameplay\CameraFollowTarget.cs" />
     <Compile Include="Assets\_Scripts\Gameplay\Enemies\PatrolFire\AttackState.cs" />
-    <Compile Include="Assets\_Scripts\Gameplay\Player\WeaponsSoundController.cs" />
-    <Compile Include="Assets\_Scripts\Gameplay\Player\PlayerSoundController.cs" />
-    <Compile Include="Assets\_Scripts\Gameplay\Enemies\FollowMelee\MetalSoundController.cs" />
-    <Compile Include="Assets\_Scripts\Gameplay\Enemies\FlyerPatrol\FlyerSoundController.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

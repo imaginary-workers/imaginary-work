@@ -6,6 +6,7 @@ namespace Game.UI
     public class InventoryUIController : MonoBehaviour
     {
         [SerializeField] Image[] _slotFrame;
+        [SerializeField] Image[] _slotIcon;
 
         [Header("Colors")]
         [SerializeField] Color _activeColor;
@@ -18,6 +19,10 @@ namespace Game.UI
             _slotFrame[_currentIndex].color = _activeColor;
         }
 
+        public void DesactiveAllSlots()
+        {
+            
+        }
         public void SetSlotColorActive(int index)
         {
             if (index == _currentIndex || index < 0 || index >= _slotFrame.Length) return;
@@ -25,6 +30,11 @@ namespace Game.UI
 
             _currentIndex = index;
             _slotFrame[_currentIndex].color = _activeColor;
+        }
+
+        public void SetUnlokedIcon(int slot, bool isLoked)
+        {
+            _slotIcon[slot].enabled = !isLoked;
         }
     }
 }
