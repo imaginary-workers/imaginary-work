@@ -1,7 +1,7 @@
 using Game.Gameplay.Enemies;
 using UnityEngine;
 
-namespace Game.Gameplay
+namespace Game.Gameplay.Interactable
 {
     public class DestructableObject : MonoBehaviour
     {
@@ -11,9 +11,13 @@ namespace Game.Gameplay
         [SerializeField] Transform _effectPoint;
         [SerializeField] SpawnDrops _droper;
 
+        [SerializeField] AudioSource _audioSource;
+        [SerializeField] AudioClip _destroy;
+
         void OnEnable()
         {
             _damageable.OnDeath += DestroyObject;
+            _audioSource.PlayOneShot(_destroy);
         }
 
         void OnDisable()
@@ -22,11 +26,12 @@ namespace Game.Gameplay
         }
 
         void DestroyObject()
-        {
+        {   
+            _audioSource.PlayOneShot(_destroy);
             Destroy(_mesh);
             Instantiate(_effectPrefab, _effectPoint.position, Quaternion.identity);
             _droper.Drop();
-            Destroy(gameObject);
+            Destroy(gameObject,_destroy.length+1);
         }
     }
 }
