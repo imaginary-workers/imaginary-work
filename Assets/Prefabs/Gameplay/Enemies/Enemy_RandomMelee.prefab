@@ -135,6 +135,7 @@ MonoBehaviour:
   _secondToDestroy: 3.7
   _spawn: {fileID: 4976006481002420660}
   _animatorController: {fileID: 3845487164276731176}
+  _ragdoll: {fileID: 1729910816896627537}
 --- !u!114 &7268778590236066481
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -346,6 +347,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4861305713962480776}
+  - component: {fileID: 1729910816896627537}
   m_Layer: 0
   m_Name: Mesh
   m_TagString: Untagged
@@ -369,6 +371,19 @@ Transform:
   m_Father: {fileID: 1159816316433687560}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1729910816896627537
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3410269104207759678}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0a6829aed94fa745852b02c5488fbd4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _animator: {fileID: 3117244702086275719}
 --- !u!1001 &5425753226825585282
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -482,15 +497,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1418437120138947967, guid: a0b28aafe03c9c54bad899a0dc95d999, type: 3}
       propertyPath: m_ConnectedAnchor.x
-      value: -0.15658641
+      value: -0.15658525
       objectReference: {fileID: 0}
     - target: {fileID: 1418437120138947967, guid: a0b28aafe03c9c54bad899a0dc95d999, type: 3}
       propertyPath: m_ConnectedAnchor.y
-      value: -0.0840681
+      value: -0.084068015
       objectReference: {fileID: 0}
     - target: {fileID: 1418437120138947967, guid: a0b28aafe03c9c54bad899a0dc95d999, type: 3}
       propertyPath: m_ConnectedAnchor.z
-      value: 0.014670495
+      value: 0.014669549
       objectReference: {fileID: 0}
     - target: {fileID: 1809778877464042300, guid: a0b28aafe03c9c54bad899a0dc95d999, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

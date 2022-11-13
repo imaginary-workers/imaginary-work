@@ -7,7 +7,7 @@ namespace Game.Gameplay.Enemies.FollowMelee
     public class DeadState : AbstractDeadState
     {
         NavMeshAgent _agent;
-        AnimatorController _animatorController;
+        Ragdoll _ragdoll;
         SpawnDrops _spawn;
         float _secondsToDestroy;
         FollowMeleeStateController _stateController;
@@ -15,7 +15,7 @@ namespace Game.Gameplay.Enemies.FollowMelee
 
         public DeadState(
             NavMeshAgent agent,
-            AnimatorController animatorController,
+            Ragdoll ragdoll,
             SpawnDrops spawn,
             FollowMeleeStateController stateController,
             float secondToDestroy,
@@ -23,7 +23,7 @@ namespace Game.Gameplay.Enemies.FollowMelee
         ): base(hitStop)
         {
             _agent = agent;
-            _animatorController = animatorController;
+            _ragdoll = ragdoll;
             _spawn = spawn;
             _secondsToDestroy = secondToDestroy;
             _stateController = stateController;
@@ -33,7 +33,7 @@ namespace Game.Gameplay.Enemies.FollowMelee
             _agent.speed = 0;
             base.Enter();
             _spawn.Drop();
-            _animatorController.Death();
+            _ragdoll.SetEnabled(true);
         }
         public override void Update()
         {
