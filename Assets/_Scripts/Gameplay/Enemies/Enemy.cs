@@ -28,7 +28,7 @@ namespace Game.Gameplay.Enemies
 
         protected virtual void HitStopEffect()
         {
-            StartCoroutine(Utils.CO_HitStop(0.3f, 0.001f));
+            StartCoroutine(Utils.CO_HitStop(0.05f, 0.001f));
         }
     }
 }

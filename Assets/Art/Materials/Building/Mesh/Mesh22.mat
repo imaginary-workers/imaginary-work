@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Sand
+  m_Name: Mesh22
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: _METALLICGLOSSMAP _NORMALMAP _PARALLAXMAP
   m_LightmapFlags: 4
@@ -20,7 +20,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BumpMap:
-        m_Texture: {fileID: 2800000, guid: 7d299dd571b7ced46967fd22da015385, type: 3}
+        m_Texture: {fileID: 2800000, guid: 8fc76f9c71b3ce94d880b4cc11c63f7d, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DetailAlbedoMap:
@@ -37,22 +37,22 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _EmissionMap:
         m_Texture: {fileID: 0}
-        m_Scale: {x: 0.05, y: 0.05}
+        m_Scale: {x: 0.39, y: 0.39}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 99c2eee804ee76a4895c04ffd8aa5a66, type: 3}
-        m_Scale: {x: 0.05, y: 0.05}
+        m_Texture: {fileID: 2800000, guid: 3b2d722a8ec6b574c91ab25ced312533, type: 3}
+        m_Scale: {x: 0.39, y: 0.39}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
-        m_Texture: {fileID: 2800000, guid: 10ee0de013c2bbf4aa711ebf79bd6290, type: 3}
+        m_Texture: {fileID: 2800000, guid: ab686742478b3474f8446d61132d53f0, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
-        m_Texture: {fileID: 2800000, guid: 3c8fe313779bcae43a83ace621e59d57, type: 3}
+        m_Texture: {fileID: 2800000, guid: 8306ef7e2e357b54bb9b2c8cd56ae769, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _ParallaxMap:
-        m_Texture: {fileID: 2800000, guid: e973f66f093def74f96b2ea481a20b51, type: 3}
+        m_Texture: {fileID: 2800000, guid: c6c7c7db91896cd4a85d93273672a895, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
@@ -60,7 +60,7 @@ Material:
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
-    - _GlossMapScale: 0
+    - _GlossMapScale: 0.332
     - _Glossiness: 0.5
     - _GlossyReflections: 1
     - _Metallic: 0

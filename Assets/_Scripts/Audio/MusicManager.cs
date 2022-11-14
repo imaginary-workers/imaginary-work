@@ -35,6 +35,7 @@ namespace Game.Audio
         }
         public void UpdateMusic(SceneSO scene)
         {
+            Debug.Log(scene.name + "Ja");
             if (scene.PlayOnAwake)
             {
                 MusicManager.singleton.PlayForBegenning(scene.AudioClip);

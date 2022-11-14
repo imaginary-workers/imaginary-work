@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3247428899999647226}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 3247428901600231910}
   - component: {fileID: 3247428901600231909}
   - component: {fileID: 1096866970314851208}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: PowerUp_Heal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -201,7 +201,7 @@ GameObject:
   - component: {fileID: 4951673092732646437}
   - component: {fileID: 1350817075284523230}
   - component: {fileID: 7550059350928215337}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Sandwich
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -301,6 +301,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Recolectable Effect 2
       objectReference: {fileID: 0}
+    - target: {fileID: 2201468212379769655, guid: 19b7a86923bf3d147ae1d655a237630e, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 2201468212379769658, guid: 19b7a86923bf3d147ae1d655a237630e, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -344,6 +348,14 @@ PrefabInstance:
     - target: {fileID: 2201468212379769658, guid: 19b7a86923bf3d147ae1d655a237630e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2201468212656212705, guid: 19b7a86923bf3d147ae1d655a237630e, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 2201468212788143807, guid: 19b7a86923bf3d147ae1d655a237630e, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 19b7a86923bf3d147ae1d655a237630e, type: 3}
