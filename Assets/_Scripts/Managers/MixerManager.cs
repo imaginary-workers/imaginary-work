@@ -1,3 +1,4 @@
+using System;
 using Game.Config;
 using Game.Decorator;
 using Game.SO;
@@ -15,6 +16,11 @@ namespace Game.Managers
         [SerializeField] Slider _soundSlider;
         [SerializeField] Slider _masterAudioSlider;
         AudioConfig _newAudioConfig = null;
+
+        void Awake()
+        {
+            SetToCurrentConfig();
+        }
 
         void OnEnable()
         {
