@@ -69,6 +69,7 @@
      <Compile Include="Assets\_Scripts\Gameplay\Enemies\MeleeAttack.cs" />
      <Compile Include="Assets\Art\UI\OptionMenuUI.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Player\JumpComponent.cs" />
+     <Compile Include="Assets\_Scripts\Gameplay\Enemies\Ragdoll.cs" />
      <Compile Include="Assets\Art\UI\InventoryUIController.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Enemies\FollowMelee\TakeStrongDamageState.cs" />
      <Compile Include="Assets\_Scripts\Managers\GameManager.cs" />
@@ -80,7 +81,6 @@
      <Compile Include="Assets\_Scripts\Gameplay\Weapon\ShooterWeapon.cs" />
      <Compile Include="Assets\_Scripts\EZ Camera Shake\Scripts\CameraShaker.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Enemies\PatrolFire\NormalState.cs" />
-     <Compile Include="Assets\_Scripts\Gameplay\WeaponUnlonkerComponent.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Enemies\CollectableEnemy\DeadState.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Player\PlayerAnimationManager.cs" />
      <Compile Include="Assets\_Scripts\SO\WeaponSO.cs" />
@@ -109,6 +109,7 @@
      <Compile Include="Assets\_Scripts\EZ Camera Shake\Scripts\CameraShakeInstance.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Enemies\PatrolFire\DeadState.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Player\PlayerSoundController.cs" />
+     <Compile Include="Assets\_Scripts\Gameplay\WeaponUnlonkerComponent.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Bullet.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\IDamageable.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Weapon\MeleeWeapon.cs" />
@@ -117,13 +118,15 @@
      <Compile Include="Assets\_Scripts\Gameplay\Enemies\EnemyStateController.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\EnemyShooter.cs" />
      <Compile Include="Assets\_Scripts\SO\IntSO.cs" />
+     <Compile Include="Assets\_Scripts\Gameplay\AppearAgain.cs" />
      <Compile Include="Assets\_Scripts\Config\PlayerConfig.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Enemies\PatrolFire\PatrolFireStateController.cs" />
+     <Compile Include="Assets\_Scripts\ToLevelOne.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\VisualField.cs" />
      <Compile Include="Assets\_Scripts\EZ Camera Shake\Demo\Sample Scripts\ShakeOnTrigger.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Enemies\FollowMelee\AnimatorController.cs" />
      <Compile Include="Assets\Art\UI\HealthUIController.cs" />
-     <Compile Include="Assets\_Scripts\ToLevelOne.cs" />
+     <Compile Include="Assets\_Scripts\Gameplay\ToNextLevel.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Player\WeaponManager.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Enemies\EnemyDamageable.cs" />
      <Compile Include="Assets\_Scripts\EZ Camera Shake\Scripts\Utilities\CameraUtilities.cs" />
@@ -149,7 +152,6 @@
      <Compile Include="Assets\_Scripts\Gameplay\Enemies\State.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\CameraFollowTarget.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Enemies\PatrolFire\AttackState.cs" />
-     <Compile Include="Assets\_Scripts\Gameplay\Enemies\Ragdoll.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />

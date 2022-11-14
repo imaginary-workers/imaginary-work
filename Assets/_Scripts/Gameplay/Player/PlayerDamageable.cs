@@ -1,6 +1,5 @@
 using System;
 using Game.SO;
-using Game.Managers;
 using UnityEngine;
 
 namespace Game.Gameplay.Player
