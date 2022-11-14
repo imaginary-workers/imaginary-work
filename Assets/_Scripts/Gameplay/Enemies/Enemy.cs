@@ -8,6 +8,8 @@ namespace Game.Gameplay.Enemies
     public abstract class  Enemy : MonoBehaviour
     {
         public static int countEnemy = 0;
+        internal bool count;
+
         public static event Action UpdateEnemyCount;
 
         void Awake()
