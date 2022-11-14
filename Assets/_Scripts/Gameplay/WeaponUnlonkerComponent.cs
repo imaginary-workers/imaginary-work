@@ -6,7 +6,7 @@ namespace Game.Gameplay
 {
     public class WeaponUnlonkerComponent : MonoBehaviour
     {
-        [SerializeField] WeaponSO _weaponType; 
+        [SerializeField] WeaponSO _weaponType;
         void OnTriggerEnter(Collider other)
         {
             if (other.CompareTag("Player"))
@@ -18,6 +18,7 @@ namespace Game.Gameplay
                     Destroy(gameObject);
                 }
             }
-        }
+        } 
+        
     }
 }

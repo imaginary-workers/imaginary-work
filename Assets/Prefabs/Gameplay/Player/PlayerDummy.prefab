@@ -644,7 +644,7 @@ MonoBehaviour:
   _playerInput: {fileID: 8219668241822508866}
   _animator: {fileID: 1160910595356904043}
   _weaponController: {fileID: 8219668241822508986}
-  _timeWalk: 0
+  _timeWalk: 0.24
   _pjSoundController: {fileID: 4280496099988934263}
   _timeSprint: 0.18
 --- !u!114 &4280496099988934263
@@ -1473,6 +1473,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 173985711, guid: 93342a27f451b744eb05c5ce576f0bad, type: 3}
       propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 987217466520868523, guid: 93342a27f451b744eb05c5ce576f0bad, type: 3}
+      propertyPath: <IsLocked>k__BackingField
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5695359141768821030, guid: 93342a27f451b744eb05c5ce576f0bad, type: 3}

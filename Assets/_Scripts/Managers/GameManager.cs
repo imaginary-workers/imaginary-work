@@ -181,6 +181,11 @@ namespace Game.Managers
             }
         }
 
+        public void NextScene(SceneSO sceneSO)
+        {
+            StartCoroutine(CO_NextScene(sceneSO));
+        }
+
         public void Quit()
         {
 #if UNITY_EDITOR
