@@ -14,6 +14,7 @@ namespace Game.Gameplay.Enemies.PatrolFire
         [SerializeField] EnemyBurstShooter _enemyShooter;
         [SerializeField] AnimatorController _animatorController;
         [SerializeField] SpawnDrops _spawner;
+        [SerializeField] Ragdoll _ragdoll;
         NormalState _normalState;
         AttackState _attackState;
         GameObject _player;
@@ -35,16 +36,20 @@ namespace Game.Gameplay.Enemies.PatrolFire
             _enemyShooter.enabled = false;
             _normalState = new NormalState(this, _normalBehaviour, _visualField);
             _attackState = new AttackState(this, _visualField, _agent, _lookAtTarget, _animatorController, _enemyShooter);
-            deadState = new DeadState(this, _animatorController, 5, _agent, _spawner);
             _takeStrongDamageState = new TakeStrongDamageState(this, _agent, _animatorController, _visualField);
             ChangeState(_normalState);
             Damageable.OnTakeStrongDamage += OnTakeStrongDamageHandler;
         }
 
-        public override void DestroyGameObject()
+        public override void DestroyGameObject(float seconds = 0)
         {
             Damageable.OnTakeStrongDamage -= OnTakeStrongDamageHandler;
-            base.DestroyGameObject();
+            base.DestroyGameObject(seconds);
+        }
+
+        protected override void SetDeadState()
+        {
+            deadState = new DeadState(this, _ragdoll, 5, _agent, _spawner, HitStopEffect);
         }
 
         void ChangeToTakeStrongDamageState()

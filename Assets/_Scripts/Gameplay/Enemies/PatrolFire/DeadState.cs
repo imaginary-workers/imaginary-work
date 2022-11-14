@@ -1,25 +1,28 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.AI;
 
 namespace Game.Gameplay.Enemies.PatrolFire
 {
-    public class DeadState : State
+    public class DeadState : AbstractDeadState
     {
         NavMeshAgent _agent;
-        AnimatorController _animatorController;
+        Ragdoll _ragdoll;
         SpawnDrops _spawn;
         float _secondsToDestroy;
         PatrolFireStateController _stateController;
         float _currentSecond = 0f;
+
         public DeadState(
             PatrolFireStateController stateController,
-            AnimatorController animatorController,
+            Ragdoll ragdoll,
             float secondToDestroy,
             NavMeshAgent agent,
-            SpawnDrops spawner
-            )
+            SpawnDrops spawner,
+            Action hitStop
+            ) : base(hitStop)
         {
-            _animatorController = animatorController;
+            _ragdoll = ragdoll;
             _secondsToDestroy = secondToDestroy;
             _stateController = stateController;
             _agent = agent;
@@ -30,7 +33,9 @@ namespace Game.Gameplay.Enemies.PatrolFire
         {
             _agent.speed = 0;
             _agent.isStopped = true;
-            _animatorController.Death();
+            base.Enter();
+            _spawn.Drop();
+            _ragdoll.SetEnabled(true);
         }
 
         public override void Update()
@@ -47,7 +52,6 @@ namespace Game.Gameplay.Enemies.PatrolFire
 
         public override void Exit()
         {
-            _spawn.Drop();
             _stateController.DestroyGameObject();
         }
     }

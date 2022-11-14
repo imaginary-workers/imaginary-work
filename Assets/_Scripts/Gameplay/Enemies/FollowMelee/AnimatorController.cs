@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.AI;
 
 namespace Game.Gameplay.Enemies.FollowMelee
@@ -47,6 +48,6 @@ namespace Game.Gameplay.Enemies.FollowMelee
         void OnTakeDamageHandler(int damage)
         {
             TakeDamageFeedback();
-        }    
+        }
     }
 }

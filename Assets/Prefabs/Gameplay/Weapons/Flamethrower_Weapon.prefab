@@ -42,6 +42,7 @@ GameObject:
   - component: {fileID: 1533937069260811553}
   - component: {fileID: 4735661994421724971}
   - component: {fileID: 5699871438581479572}
+  - component: {fileID: 2655825476565577125}
   m_Layer: 9
   m_Name: Flamethrower_Weapon
   m_TagString: Untagged
@@ -78,10 +79,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackRateInSeconds: 0.5
+  _audioSource: {fileID: 2655825476565577125}
   _weaponData: {fileID: 11400000, guid: b764a1e102716434eb76f054bfc5bf16, type: 2}
   _bulletPooler: {fileID: 5699871438581479572}
   _firePoint: {fileID: 7627273735651452621}
   _particle: {fileID: 3781322346412742812}
+  _weaponSoundController: {fileID: 0}
   _isHeavy: 1
 --- !u!114 &5699871438581479572
 MonoBehaviour:
@@ -99,6 +102,102 @@ MonoBehaviour:
   _pooledAmount: 6
   _willGrow: 1
   _pooledObjects: []
+--- !u!82 &2655825476565577125
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1934071586597183794}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: -7999413448015993063, guid: 3226694a2863dd0449b248f89975164d, type: 2}
+  m_audioClip: {fileID: 8300000, guid: c75a3ccd0412283488d2e109c33598fe, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1001 &2747671357748344591
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -235,6 +334,30 @@ PrefabInstance:
     - target: {fileID: 4524638268995077412, guid: 1e6e67abaeeba5c4fa0ea59f44cf0392, type: 3}
       propertyPath: m_Layer
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 7294865515583032165, guid: 1e6e67abaeeba5c4fa0ea59f44cf0392, type: 3}
+      propertyPath: LightsModule.enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7294865515583032165, guid: 1e6e67abaeeba5c4fa0ea59f44cf0392, type: 3}
+      propertyPath: VelocityModule.z.scalar
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7294865515583032165, guid: 1e6e67abaeeba5c4fa0ea59f44cf0392, type: 3}
+      propertyPath: InitialModule.maxNumParticles
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 7294865515583032165, guid: 1e6e67abaeeba5c4fa0ea59f44cf0392, type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 7294865515583032165, guid: 1e6e67abaeeba5c4fa0ea59f44cf0392, type: 3}
+      propertyPath: InitialModule.startSpeed.scalar
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7294865515583032165, guid: 1e6e67abaeeba5c4fa0ea59f44cf0392, type: 3}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 8551474992489880652, guid: 1e6e67abaeeba5c4fa0ea59f44cf0392, type: 3}
       propertyPath: m_Name

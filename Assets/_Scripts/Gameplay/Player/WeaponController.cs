@@ -1,3 +1,4 @@
+using System;
 using Game.Gameplay.Weapons;
 using Game.Managers;
 using UnityEngine;
@@ -7,19 +8,29 @@ namespace Game.Gameplay.Player
 {
     public class WeaponController : MonoBehaviour
     {
-        [SerializeField] WeaponManager manager;
+        [SerializeField] WeaponManager _manager;
         [SerializeField] PointerTarget _pointerTarget;
         [SerializeField] PlayerController _playerController;
-        [SerializeField, Range(0, 2)] float _speedWeaponHeavy = 1;       
+        [SerializeField, Range(0, 2)] float _speedWeaponHeavy = 1;
+        [SerializeField] PlayerAnimationManager _animation;
         public bool _active = true;
+
+        [SerializeField] PlayerSoundController _pjSoundController;
+        bool _switch;
+
         public bool CanAttack { get; set; } = true;
 
         Weapon CurrentWeapon
         {
             get
             {           
-                return manager.CurrentWeapon;
+                return _manager.CurrentWeapon;
             }
+        }
+
+        void Start()
+        {
+            _animation.AddAnimationEvent("end_reload_weapon", EVENT_END_RELOAD_WEAPON);
         }
 
         public void AttackInput(InputAction.CallbackContext context)
@@ -54,20 +65,24 @@ namespace Game.Gameplay.Player
         {
             if (!_active) return;
             if (!context.performed) return;
-
-            
-            CurrentWeapon.ReloadAmmunition();
-            GameManager.Instance.UpdateBulletCounter(CurrentWeapon.Ammunition);
-            UpdateUI();
+            if (CurrentWeapon.CanReloadAmmunition())
+            {
+                CanAttack = false;
+                _animation.StartReloading();
+            }
+            else
+            {
+                //TODO feedback cuando no se recarga
+            }
         }
 
         public bool ReloadReserveWeapons()
         {
             if (!_active) return false;
-            bool reserve = manager.ReloadReserveWeapons();
+            bool reserve = _manager.ReloadReserveWeapons();
             if (reserve)
             {
-                UpdateUI();
+                UpdateAmmoUI();
             }
             return reserve;
 
@@ -76,12 +91,17 @@ namespace Game.Gameplay.Player
         public void SwitchWeapon(int slot)
         {
             if (!_active) return;
+            if (_manager.CurrentSlot == slot) return;
+            if (!_manager.SwitchWeapon(slot)) return;
+
             CurrentWeapon.CancelAttack();
+            _animation.BackToIdle();
+            CanAttack = true;
             if (CurrentWeapon.IsHeavy)
                 PlayerBackToDefault();
             _playerController.CanSprint = true;
-            manager.SwitchWeapon(slot);
-            UpdateUI();
+            UpdateSlotUI(slot);
+            UpdateAmmoUI();
         }
 
         void PlayerBackToDefault()
@@ -94,9 +114,22 @@ namespace Game.Gameplay.Player
         {
             _playerController.Speed = _speedWeaponHeavy;
         }
-        void UpdateUI()
+
+        void UpdateSlotUI(int slot)
         {
+            GameManager.Instance.SetActiveSlot(slot);
+        }
+        void UpdateAmmoUI()
+        {
+            GameManager.Instance.UpdateBulletCounter(CurrentWeapon.Ammunition);
             GameManager.Instance.UpdateReserveCounter(CurrentWeapon.ReserveAmmunition);
+        }
+
+        void EVENT_END_RELOAD_WEAPON()
+        {
+            CurrentWeapon.ReloadAmmunition();
+            UpdateAmmoUI();
+            CanAttack = true;
         }
     }
 }

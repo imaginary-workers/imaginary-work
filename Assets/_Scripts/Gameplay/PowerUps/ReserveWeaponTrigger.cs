@@ -5,11 +5,12 @@ namespace Game.Gameplay.PowerUps
 {
     public class ReserveWeaponTrigger : MonoBehaviour
     {
-        void OnCollisionEnter(Collision other)
+        void OnTriggerEnter(Collider other)
         {
             var weaponController = other.gameObject.GetComponent<WeaponController>();
             if (weaponController == null) return;
             if (!weaponController.ReloadReserveWeapons()) return;
+            other.GetComponent<PlayerSoundController>()?.Amunnition();
 
             Destroy(gameObject);
         }

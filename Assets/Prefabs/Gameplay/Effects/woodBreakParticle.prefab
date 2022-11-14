@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5824207716733614637}
   - component: {fileID: 5824207716733614626}
   - component: {fileID: 5824207716733614627}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: woodBreakParticle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4875,6 +4875,14 @@ PrefabInstance:
     - target: {fileID: 1025285306637258, guid: d8f0099df63275647a8bcf646df1ca00, type: 3}
       propertyPath: m_Name
       value: DustExplosion
+      objectReference: {fileID: 0}
+    - target: {fileID: 1025285306637258, guid: d8f0099df63275647a8bcf646df1ca00, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1496339999432056, guid: d8f0099df63275647a8bcf646df1ca00, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4203849390966504, guid: d8f0099df63275647a8bcf646df1ca00, type: 3}
       propertyPath: m_RootOrder

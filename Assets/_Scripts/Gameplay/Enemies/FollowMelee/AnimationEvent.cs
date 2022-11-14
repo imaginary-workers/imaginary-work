@@ -7,6 +7,7 @@ namespace Game.Gameplay.Enemies.FollowMelee
     {
         [SerializeField] GameObject _damage;
         public event Action OnAttackStarts, OnAttackEnds, OnTakeStrongDamageStarts, OnTakeStrongDamageEnds;
+        public event Action OnAttack;
 
         void Awake()
         {
@@ -25,12 +26,15 @@ namespace Game.Gameplay.Enemies.FollowMelee
         {
             _damage.SetActive(true);
         }
-        
+
         public void Event_EndHitbox()
         {
             _damage.SetActive(false);
         }
-
+        public void Event_StartSound()
+        {
+            OnAttack?.Invoke();
+        }
         public void Event_TakeStrongDamageStarts()
         {
             OnTakeStrongDamageStarts?.Invoke();

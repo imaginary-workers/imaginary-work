@@ -17,8 +17,8 @@ GameObject:
   m_Name: Door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &7522195651084642544
 Transform:
@@ -793,8 +793,8 @@ GameObject:
   m_Name: Room_Brick
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &4438243855500493613
 Transform:
@@ -1504,10 +1504,8 @@ MonoBehaviour:
   m_Mesh: {fileID: 0}
   m_IsSelectable: 1
   m_SelectedFaces: 
-  m_SelectedEdges:
-  - a: 5
-    b: 7
-  m_SelectedVertices: 0500000007000000
+  m_SelectedEdges: []
+  m_SelectedVertices: 
 --- !u!23 &4438243855500493603
 MeshRenderer:
   m_ObjectHideFlags: 0

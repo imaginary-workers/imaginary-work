@@ -1,4 +1,6 @@
+using Game.Gameplay.Player;
 using Game.SO;
+using System;
 using UnityEngine;
 
 namespace Game.Gameplay.PowerUps
@@ -7,14 +9,18 @@ namespace Game.Gameplay.PowerUps
     {
         [SerializeField] IntSO _playerHealth;
         [SerializeField] IntSO _playerMaxHealth;
+
         int _healingPower = 15;
 
-        void OnCollisionEnter(Collision other)
+        void OnTriggerEnter(Collider other)
         {
-            if (!other.collider.CompareTag("Player")) return;
+            if (!other.CompareTag("Player")) return;
             if (_playerHealth.value >= _playerMaxHealth.value) return;
-
-            _playerHealth.value += _healingPower;
+            else
+            {
+                other.GetComponent<PlayerSoundController>()?.Heal();
+                _playerHealth.value += _healingPower;
+            }
             if (_playerHealth.value > _playerMaxHealth.value)
             {
                 _playerHealth = _playerMaxHealth;

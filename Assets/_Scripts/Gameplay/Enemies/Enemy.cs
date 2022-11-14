@@ -8,6 +8,8 @@ namespace Game.Gameplay.Enemies
     public abstract class  Enemy : MonoBehaviour
     {
         public static int countEnemy = 0;
+        internal bool count;
+
         public static event Action UpdateEnemyCount;
 
         void Awake()
@@ -23,6 +25,10 @@ namespace Game.Gameplay.Enemies
             Enemy.countEnemy--;
             Enemy.UpdateEnemyCount?.Invoke();
         }
-       
+
+        protected virtual void HitStopEffect()
+        {
+            StartCoroutine(Utils.CO_HitStop(0.05f, 0.001f));
+        }
     }
 }

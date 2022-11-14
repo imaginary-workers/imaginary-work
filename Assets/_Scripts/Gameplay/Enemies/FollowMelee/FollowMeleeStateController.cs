@@ -7,17 +7,18 @@ namespace Game.Gameplay.Enemies.FollowMelee
 {
     public class FollowMeleeStateController : EnemyStateController
     {
-        [SerializeField] PatrolBehaviour _patrolBehaviour;
-        [SerializeField, Range(0, 15)] int _rangeFollow = 15;
-        [SerializeField, Range(.1f, 3f)] float _rangeOfVisionY = 1;
-        [SerializeField] FollowPlayer _followPlayer;
-        [SerializeField] NavMeshAgent _agent;
-        [SerializeField] LookAtTarget _lookAtTarget;
-        [SerializeField, Range(0f, 5f)] float _moveSpeed = 5f;
-        [SerializeField] AnimationEvent _animationEvent;
-        [SerializeField] float _secondToDestroy = 4;
-        [SerializeField] SpawnDrops _spawn;
-        [SerializeField] AnimatorController _animatorController;
+        [SerializeField] protected PatrolBehaviour _patrolBehaviour;
+        [SerializeField, Range(0, 15)] protected int _rangeFollow = 15;
+        [SerializeField, Range(.1f, 3f)] protected float _rangeOfVisionY = 1;
+        [SerializeField] protected FollowPlayer _followPlayer;
+        [SerializeField] protected NavMeshAgent _agent;
+        [SerializeField] protected LookAtTarget _lookAtTarget;
+        [SerializeField, Range(0f, 5f)] protected float _moveSpeed = 5f;
+        [SerializeField] protected AnimationEvent _animationEvent;
+        [SerializeField] protected float _secondToDestroy = 4;
+        [SerializeField] protected SpawnDrops _spawn;
+        [SerializeField] protected AnimatorController _animatorController;
+        [SerializeField] Ragdoll _ragdoll;
         GameObject _player;
         RandomPatrolState _randomPatrolState;
         FollowState _followState;
@@ -57,11 +58,10 @@ namespace Game.Gameplay.Enemies.FollowMelee
             _patrolBehaviour.enabled = false;
             _followPlayer.enabled = false;
             _lookAtTarget.enabled = false;
-            deadState = new DeadState(_agent, _animatorController, _spawn, this, _secondToDestroy);
             _takeStrongDamageState = new TakeStrongDamageState(this, _agent, _animationEvent, _animatorController);
             ChangeState(_randomPatrolState);
         }
-        
+
         void ChangeToTakeStrongDamageState()
         {
             if (_takeStrongDamageState == null) return;
@@ -82,6 +82,10 @@ namespace Game.Gameplay.Enemies.FollowMelee
             yield return new WaitForSeconds(_takeStrongDamageRecoverTime);
             _canDoStrongDamageFeedback = true;
         }
-    }
 
+        protected override void SetDeadState()
+        {
+            deadState = new DeadState(_agent, _ragdoll, _spawn, this, _secondToDestroy, HitStopEffect);
+        }
+    }
 }

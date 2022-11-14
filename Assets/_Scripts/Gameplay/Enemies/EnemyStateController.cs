@@ -9,6 +9,7 @@
 
         void Start()
         {
+            SetDeadState();
             Damageable.OnDeath += ChangeToDeathState;
         }
         void Update()
@@ -36,10 +37,10 @@
             _currentState.Enter();
         }
 
-        public virtual void DestroyGameObject()
+        public virtual void DestroyGameObject(float seconds = 0)
         {
             Damageable.OnDeath -= ChangeToDeathState;
-            Destroy(gameObject);
+            Destroy(gameObject,seconds);
         }
 
         void ChangeToDeathState()
@@ -57,5 +58,7 @@
                 return _damageable;
             }
         }
+
+        protected abstract void SetDeadState();
     }
 }
