@@ -7,7 +7,7 @@ namespace Game.Gameplay
 {
     public class VisualField : MonoBehaviour
     {
-        public event Action<GameObject> OnEnterViewTarget, OnExitViewTarget, OnStayViewTarget;
+        public event Action<GameObject> OnEnterViewTarget, OnExitViewTarget;
 
         [SerializeField] GameObject _target = null;
         [SerializeField] float _visualAngle = 45f;
