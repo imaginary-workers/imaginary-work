@@ -100,13 +100,7 @@ namespace Game.Managers
             }
         }
 
-        void Update()
-        {
-            if (Enemy.countEnemy <= 0 && _state == State.Gameplay)
-            {
-                ConditionWin();
-            }
-        }
+
 
         void OnDestroy()
         {

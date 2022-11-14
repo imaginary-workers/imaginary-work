@@ -41,10 +41,10 @@ namespace Game.Gameplay.Enemies.PatrolFire
             Damageable.OnTakeStrongDamage += OnTakeStrongDamageHandler;
         }
 
-        public override void DestroyGameObject()
+        public override void DestroyGameObject(float seconds = 0)
         {
             Damageable.OnTakeStrongDamage -= OnTakeStrongDamageHandler;
-            base.DestroyGameObject();
+            base.DestroyGameObject(seconds);
         }
 
         protected override void SetDeadState()

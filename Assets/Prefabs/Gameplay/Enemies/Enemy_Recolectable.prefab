@@ -2241,7 +2241,11 @@ MonoBehaviour:
   _secondToDestroy: 3
   _spawn: {fileID: 3711797909165782140}
   _animatorController: {fileID: 4886771991285334240}
+  _ragdoll: {fileID: 0}
   _particle: {fileID: 5824207716733614624, guid: 31ed0e03d2761d14e8a83d1aac8a9180, type: 3}
+  _audioSource: {fileID: 7106751413396066847}
+  _audioClip: {fileID: 8300000, guid: 93adf5a4df2a6594599035ca5a04b270, type: 3}
+  _mesh: {fileID: 6475915272168858870}
 --- !u!114 &4886771991285334240
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2354,7 +2358,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 1551853095085094983, guid: 3226694a2863dd0449b248f89975164d, type: 2}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 93adf5a4df2a6594599035ca5a04b270, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1

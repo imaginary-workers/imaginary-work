@@ -26,7 +26,7 @@ namespace Game.Gameplay.Enemies.FollowMelee
         {
             _damage.SetActive(true);
         }
-        
+
         public void Event_EndHitbox()
         {
             _damage.SetActive(false);

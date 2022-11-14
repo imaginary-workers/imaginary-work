@@ -6,6 +6,9 @@ namespace Game.Gameplay.Enemies.CollectableEnemy
     public class MinionEnemy: FollowMeleeStateController
     {
         [SerializeField] GameObject _particle;
+        [SerializeField] AudioSource _audioSource;
+        [SerializeField] AudioClip _audioClip;
+        [SerializeField] GameObject _mesh;
 
         protected override void HitStopEffect()
         {
@@ -14,8 +17,10 @@ namespace Game.Gameplay.Enemies.CollectableEnemy
 
         void ActiveDestroyFeedback()
         {
+            _audioSource.PlayOneShot(_audioClip);
             Instantiate(_particle, transform.position, Quaternion.identity);
-            DestroyGameObject();
+            Destroy(_mesh);
+            DestroyGameObject(_audioClip.length);
         }
 
         protected override void SetDeadState()
