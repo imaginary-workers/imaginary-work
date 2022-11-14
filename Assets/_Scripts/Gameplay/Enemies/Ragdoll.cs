@@ -12,6 +12,7 @@ namespace Game.Gameplay.Enemies
         {
             _rigidbodies = transform.GetComponentsInChildren<Rigidbody>();
             _colliders = transform.GetComponentsInChildren<Collider>();
+            SetEnabled(false);
         }
 
         public void SetEnabled(bool enabled)
