@@ -23,7 +23,6 @@ namespace Game.Gameplay.Interactable
         void OnEnable()
         {
             _damageable.OnDeath += DestroyObject;
-            _audioSource.PlayOneShot(_destroy);
         }
 
         void OnDisable()
