@@ -1,17 +1,15 @@
-using System;
+using Game.Audio;
 using Game.Config;
 using Game.Decorator;
 using Game.SO;
 using UnityEngine;
-using UnityEngine.Audio;
 using UnityEngine.UI;
 
-namespace Game.Managers
+namespace Game.UI
 {
-    public class MixerManager : MonoBehaviour
+    public class MixerUI : MonoBehaviour
     {
         [SerializeField] GameplaySettingsSO _gameplaySettings;
-        [SerializeField] AudioMixer _audioMixer;
         [SerializeField] Slider _musicSlider;
         [SerializeField] Slider _soundSlider;
         [SerializeField] Slider _masterAudioSlider;
@@ -44,27 +42,27 @@ namespace Game.Managers
         {
             var uiAudioDecorator = new AudioConfig01Decorator(NewAudioConfig);
             uiAudioDecorator.Master = value;
-            UpdateAudioMixer(NewAudioConfig);
+            MixerManager.singleton.UpdateAudioMixer(NewAudioConfig);
         }
 
         public void ChangedSoundValue(float value)
         {
             var uiAudioDecorator = new AudioConfig01Decorator(NewAudioConfig);
             uiAudioDecorator.Sound = value;
-            UpdateAudioMixer(NewAudioConfig);
+            MixerManager.singleton.UpdateAudioMixer(NewAudioConfig);
         }
 
         public void ChangedMusicValue(float value)
         {
             var uiAudioDecorator = new AudioConfig01Decorator(NewAudioConfig);
             uiAudioDecorator.Music = value;
-            UpdateAudioMixer(NewAudioConfig);
+            MixerManager.singleton.UpdateAudioMixer(NewAudioConfig);
         }
 
         void SetToCurrentConfig()
         {
             var audioConfig = _gameplaySettings.AudioConfig;
-            UpdateAudioMixer(audioConfig);
+            MixerManager.singleton.UpdateAudioMixer(audioConfig);
             var audioUiDecorator = new AudioConfig01Decorator(audioConfig);
             _musicSlider.value = audioUiDecorator.Music;
             _soundSlider.value = audioUiDecorator.Sound;
@@ -81,12 +79,6 @@ namespace Game.Managers
 
                 return _newAudioConfig;
             }
-        }
-        void UpdateAudioMixer(AudioConfig config)
-        {
-            _audioMixer.SetFloat("Master", config.Master);
-            _audioMixer.SetFloat("Music", config.Music);
-            _audioMixer.SetFloat("Sound", config.Sound);
         }
     }
 }
