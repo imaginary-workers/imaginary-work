@@ -19,6 +19,7 @@ namespace Game.Gameplay.Enemies.FollowMelee
         [SerializeField] protected SpawnDrops _spawn;
         [SerializeField] protected AnimatorController _animatorController;
         [SerializeField] Ragdoll _ragdoll;
+        [SerializeField] protected Collider _collider;
         GameObject _player;
         RandomPatrolState _randomPatrolState;
         FollowState _followState;
@@ -85,7 +86,7 @@ namespace Game.Gameplay.Enemies.FollowMelee
 
         protected override void SetDeadState()
         {
-            deadState = new DeadState(_agent, _ragdoll, _spawn, this, _secondToDestroy, HitStopEffect);
+            deadState = new DeadState(_agent, _ragdoll, _spawn, this, _secondToDestroy, HitStopEffect, _collider);
         }
     }
 }
