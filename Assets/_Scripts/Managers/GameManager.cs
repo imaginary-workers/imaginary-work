@@ -221,6 +221,7 @@ namespace Game.Managers
         public void Resume()
         {
             _isPaused = false;
+            _optionsMenu.GetComponent<OptionMenuUI>().CancelOptions();
             _pauseMenu.SetActive(false);
             _pointer.SetActive(true);
             Cursor.lockState = CursorLockMode.Locked;
