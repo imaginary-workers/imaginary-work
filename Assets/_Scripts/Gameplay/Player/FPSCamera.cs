@@ -12,7 +12,6 @@ namespace Game.Gameplay.Player
         [SerializeField, Range(0, 10f)] float _magnitud;
         [SerializeField, Range(0, 10f)] float _roughness;
         [SerializeField, Range(0, 10f)] float _fadeOutTime;
-        [SerializeField] Camera _camera;
         [SerializeField] PlayerController _playerController;
         [SerializeField] GameplaySettingsSO _gameplaySettingsSo;
         [SerializeField] PlayerDamageable _pjDamageable;
@@ -52,8 +51,7 @@ namespace Game.Gameplay.Player
             var lookInput = _playerController.LookInputDirection;
             if (lookInput.sqrMagnitude < _threshold) return;
 
-            var isCurrentDeviceMouse = _playerController.IsCurrentDeviceMouse;
-            float deltaTimeMultiplier = isCurrentDeviceMouse ? 1.0f : Time.deltaTime;
+            float deltaTimeMultiplier = Time.deltaTime;
             _targetPitch += lookInput.y * _config.rotationSpeed * deltaTimeMultiplier * (_config.invertedYAxis ? 1 : -1);
             _rotationVelocity = lookInput.x * _config.rotationSpeed * deltaTimeMultiplier * (_config.invertedXAxis ? -1 : 1);
             _targetPitch = Utils.ClampAngle(_targetPitch, _config.bottomClamp, _config.topClamp);

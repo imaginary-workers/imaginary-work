@@ -42,9 +42,9 @@ namespace Game.Managers
             NewPlayerConfig.invertedXAxis = to;
         }
 
-        public void ChangedRotationSpeedValue()
+        public void ChangedRotationSpeedValue(float value)
         {
-            NewPlayerConfig.rotationSpeed = _speedRotatioSlider.value;
+            NewPlayerConfig.rotationSpeed = value;
         }
 
         PlayerConfig NewPlayerConfig
