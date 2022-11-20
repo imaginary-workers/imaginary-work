@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 3065984907490188248}
   - component: {fileID: 3783450199538012795}
   - component: {fileID: 1407237558603088284}
-  - component: {fileID: 4538224817066143856}
   m_Layer: 0
   m_Name: Ascensor
   m_TagString: Untagged
@@ -83,20 +82,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &4538224817066143856
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 608940963220299334}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -5511996699474248536, guid: c8d385db3cbf4ae4299fce800a6fcdff, type: 3}
 --- !u!1 &1448395491726557675
 GameObject:
   m_ObjectHideFlags: 0
@@ -123,13 +108,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1448395491726557675}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.5351088, y: 68.3, z: -122.2439}
+  m_LocalRotation: {x: 0, y: -1, z: 0, w: 0}
+  m_LocalPosition: {x: -118, y: 68.3, z: -122.2439}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6070232664226083829}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -180, z: 0}
 --- !u!33 &9006987549273839065
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -329,7 +314,6 @@ GameObject:
   - component: {fileID: 4019146616984242249}
   - component: {fileID: 6157864833270324331}
   - component: {fileID: 7987941963908339615}
-  - component: {fileID: 7689117413929589048}
   m_Layer: 0
   m_Name: Estructura
   m_TagString: Untagged
@@ -401,20 +385,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &7689117413929589048
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4964814698628021916}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 6606501483488557099, guid: c8d385db3cbf4ae4299fce800a6fcdff, type: 3}
 --- !u!1 &8627986650170605875
 GameObject:
   m_ObjectHideFlags: 0
