@@ -917,7 +917,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _gameplaySettings: {fileID: 11400000, guid: ad91dff427b50604e96c166048168afa, type: 2}
-  _audioMixer: {fileID: 24100000, guid: 3226694a2863dd0449b248f89975164d, type: 2}
   _musicSlider: {fileID: 112582543298704539}
   _soundSlider: {fileID: 6964476536992381385}
   _masterAudioSlider: {fileID: 8034225557952807357}
@@ -933,7 +932,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03ab8353a0b757c409bcd902264e5540, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _mixerManager: {fileID: 6411221460574045541}
+  mixerUI: {fileID: 6411221460574045541}
   _gameplayManager: {fileID: 5986543768314753860}
 --- !u!114 &5986543768314753860
 MonoBehaviour:
@@ -1819,7 +1818,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8846137989897067294, guid: cc07491ed5f88344190ef447bd643c90, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8846137989897067294, guid: cc07491ed5f88344190ef447bd643c90, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
@@ -1836,7 +1835,7 @@ PrefabInstance:
     - target: {fileID: -8846137989897067294, guid: cc07491ed5f88344190ef447bd643c90, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 6411221460574045541}
+      objectReference: {fileID: 5677875622159078570}
     - target: {fileID: -8846137989897067294, guid: cc07491ed5f88344190ef447bd643c90, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
@@ -1855,7 +1854,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8846137989897067294, guid: cc07491ed5f88344190ef447bd643c90, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ConfirmChange
+      value: ConfirmOptions
       objectReference: {fileID: 0}
     - target: {fileID: -8846137989897067294, guid: cc07491ed5f88344190ef447bd643c90, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
@@ -1867,7 +1866,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8846137989897067294, guid: cc07491ed5f88344190ef447bd643c90, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: Game.Managers.MixerManager, Assembly-CSharp
+      value: Game.UI.OptionMenuUI, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: -8846137989897067294, guid: cc07491ed5f88344190ef447bd643c90, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
