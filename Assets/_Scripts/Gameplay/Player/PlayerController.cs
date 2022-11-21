@@ -23,7 +23,6 @@ namespace Game.Gameplay.Player
         [SerializeField, Range(0, 2)] float _timeSprint;
         bool _isMoving = false;
         float _timer = 0;
-        bool _sprint;
         float _timeStep;
 
         public bool IsCurrentDeviceMouse
@@ -99,7 +98,6 @@ namespace Game.Gameplay.Player
             if (_isMoving && _timer >= _timeStep && _jumpComponent.IsOnTheFloor)
             {
                 _pjSoundController.Walking();
-                _sprint = false;
                 _timer = 0;
             }
         }

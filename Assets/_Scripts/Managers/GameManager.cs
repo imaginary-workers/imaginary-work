@@ -58,13 +58,10 @@ namespace Game.Managers
 
         [Header("Settings")]
         [SerializeField] State _state;
-        PlayerConfig _newPlayerConfig = null;
-        AudioConfig _newAudioConfig = null;
         bool _isPaused = false;
         bool _isDeath = false;
         bool _isChangingScene = false;
-        bool _options = false;
-        float _secondsToDisplayDeathScreenInSeconds = 1f;
+        const float _secondsToDisplayDeathScreenInSeconds = 3f;
 
         void Awake()
         {
@@ -136,7 +133,7 @@ namespace Game.Managers
             Cursor.lockState = CursorLockMode.None;
             _pointer.SetActive(false);
             Time.timeScale = 0.5f;
-            yield return new WaitForSecondsRealtime(3f);
+            yield return new WaitForSecondsRealtime(_secondsToDisplayDeathScreenInSeconds);
             _deathMessege.SetActive(true);
             _audioSource.PlayOneShot(_gameOver);
             Time.timeScale = 0f;
@@ -144,7 +141,7 @@ namespace Game.Managers
 
         public void NewGame()
         {
-            var sceneSO = _sceneStorage.FindSceneByName("Level0");
+            var sceneSO = _sceneStorage.FindSceneByName("Level01");
             StartCoroutine(CO_NextScene(sceneSO));
         }
 
@@ -179,6 +176,11 @@ namespace Game.Managers
                 sceneSO = _sceneStorage.FindSceneByName("VictoryScreen");
                 StartCoroutine(CO_NextScene(sceneSO));
             }
+        }
+
+        public void NextScene(SceneSO sceneSO)
+        {
+            StartCoroutine(CO_NextScene(sceneSO));
         }
 
         public void Quit()
@@ -219,6 +221,7 @@ namespace Game.Managers
         public void Resume()
         {
             _isPaused = false;
+            _optionsMenu.GetComponent<OptionMenuUI>().CancelOptions();
             _pauseMenu.SetActive(false);
             _pointer.SetActive(true);
             Cursor.lockState = CursorLockMode.Locked;
@@ -228,8 +231,7 @@ namespace Game.Managers
         }
 
         public void OpenOptions()
-        {            
-            _options = true;
+        {
             _optionsMenu.SetActive(true);
         }
         public void UpdateBulletCounter(int amunicion)

@@ -15,12 +15,12 @@ namespace Game.Gameplay.Enemies
         [SerializeField] private List<GameObject> _waypoints;
         [Tooltip("If is active, it will go through the points in cycles. If is NOT, it will go back and forth.")]
         [SerializeField] bool _cycle = false;
-
+#if UNITY_EDITOR
         [Space]
         [SerializeField, Range(0f, 5f)] float _pointRadiusGizmos = 2f;
         [SerializeField] Color _sphereColor = Color.red;
         [SerializeField] Color _lineColor = Color.green;
-
+#endif
         Vector3[] _patrol;
         int _target = 0;
         int _direction = 1;

@@ -24,7 +24,11 @@ namespace Game.Gameplay.Weapons
             canAttack = false;
             StartMeleeAnimation();
         }
-        public override void CancelAttack() { }
+
+        public override void CancelAttack()
+        {
+            canAttack = true;
+        }
 
         public override void SubscribeToAnimationEvents(PlayerAnimationManager animationManager)
         {

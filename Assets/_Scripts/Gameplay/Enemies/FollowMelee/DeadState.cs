@@ -12,6 +12,7 @@ namespace Game.Gameplay.Enemies.FollowMelee
         float _secondsToDestroy;
         FollowMeleeStateController _stateController;
         float _currentSecond = 0f;
+        Collider _enemyCollider;
 
         public DeadState(
             NavMeshAgent agent,
@@ -19,7 +20,9 @@ namespace Game.Gameplay.Enemies.FollowMelee
             SpawnDrops spawn,
             FollowMeleeStateController stateController,
             float secondToDestroy,
-            Action hitStop
+            Action hitStop,
+            Collider enemyCollider
+
         ): base(hitStop)
         {
             _agent = agent;
@@ -27,10 +30,12 @@ namespace Game.Gameplay.Enemies.FollowMelee
             _spawn = spawn;
             _secondsToDestroy = secondToDestroy;
             _stateController = stateController;
+            _enemyCollider = enemyCollider;
         }
         public override void Enter()
         {
             _agent.speed = 0;
+            _enemyCollider.enabled = false;
             base.Enter();
             _spawn.Drop();
             _ragdoll.SetEnabled(true);

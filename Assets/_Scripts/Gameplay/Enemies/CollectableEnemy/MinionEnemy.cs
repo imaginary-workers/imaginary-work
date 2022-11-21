@@ -19,13 +19,13 @@ namespace Game.Gameplay.Enemies.CollectableEnemy
         {
             _audioSource.PlayOneShot(_audioClip);
             Instantiate(_particle, transform.position, Quaternion.identity);
-            Destroy(_mesh);
             DestroyGameObject(_audioClip.length);
+            Destroy(_mesh);
         }
 
         protected override void SetDeadState()
         {
-            deadState = new DeadState(_agent, this, ActiveDestroyFeedback);
+            deadState = new DeadState(_agent, _animatorController, _spawn, ActiveDestroyFeedback, _collider);
         }
     }
 }
