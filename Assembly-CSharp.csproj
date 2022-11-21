@@ -88,6 +88,7 @@
      <Compile Include="Assets\_Scripts\Gameplay\ObjectPooler.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Platforms\TiltablePlatform.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Enemies\FollowMelee\RandomPatrolState.cs" />
+     <Compile Include="Assets\_Scripts\Gameplay\LiftStart.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\OnPlayerOver.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Player\PointerTarget.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Enemies\FollowPlayer.cs" />
@@ -121,7 +122,6 @@
      <Compile Include="Assets\_Scripts\Gameplay\AppearAgain.cs" />
      <Compile Include="Assets\_Scripts\Config\PlayerConfig.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Enemies\PatrolFire\PatrolFireStateController.cs" />
-     <Compile Include="Assets\_Scripts\ToLevelOne.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\VisualField.cs" />
      <Compile Include="Assets\_Scripts\EZ Camera Shake\Demo\Sample Scripts\ShakeOnTrigger.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Enemies\FollowMelee\AnimatorController.cs" />
@@ -153,6 +153,12 @@
      <Compile Include="Assets\_Scripts\Gameplay\Enemies\State.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\CameraFollowTarget.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Enemies\PatrolFire\AttackState.cs" />
+     <Compile Include="Assets\_Scripts\Gameplay\Weapon\NailsWeapon.cs" />
+     <Compile Include="Assets\_Scripts\ToLevelOne.cs" />
+     <Compile Include="Assets\_Scripts\Gameplay\Weapon\FlameThrowerWeapon.cs" />
+     <Compile Include="Assets\_Scripts\Gameplay\LiftEnd.cs" />
+     <Compile Include="Assets\_Scripts\Gameplay\PlayerChecker.cs" />
+     <Compile Include="Assets\_Scripts\Gameplay\Lift.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />

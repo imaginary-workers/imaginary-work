@@ -11,6 +11,7 @@ namespace Game.Gameplay.Enemies
         internal bool count;
 
         public static event Action UpdateEnemyCount;
+        public static event Action OnNoEnemies;
 
         void Awake()
         {
@@ -24,6 +25,10 @@ namespace Game.Gameplay.Enemies
         {
             Enemy.countEnemy--;
             Enemy.UpdateEnemyCount?.Invoke();
+            if (Enemy.countEnemy == 0)
+            {
+                Enemy.OnNoEnemies?.Invoke();
+            }
         }
 
         protected virtual void HitStopEffect()
