@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,10 +10,17 @@ namespace Game.UI
         [SerializeField] GameObject _icon;
         [SerializeField] Image _bar;
 
-        // Start is called before the first frame update
+        [Range(0,1)]public float value; //solo de prueba
+
         void Start()
         {
             UpdateSkillBar(0f, 1f);
+        }
+
+        //Solo de prueba
+        private void Update()
+        {
+            UpdateSkillBar(value, 1);
         }
 
         public void UpdateSkillBar(float value, float maxValue)
