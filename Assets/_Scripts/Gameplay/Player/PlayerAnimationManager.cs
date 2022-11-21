@@ -39,9 +39,13 @@ namespace Game.Gameplay.Player
             _myAni.SetTrigger("MeleeTrigger");
         }
 
-        public void AttackShooter()
+        public void PistolShooter()
         {
             _myAni.SetTrigger("PistolTrigger");
+        }
+        public void FireShooter()
+        {
+            _myAni.SetTrigger("FireTrigger");
         }
 
         public void StartSprint()
