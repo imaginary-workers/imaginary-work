@@ -7,6 +7,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 219564702724551274, guid: f0d4d81f2e5de89449cedf985be141d5, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7753369550890742768, guid: f0d4d81f2e5de89449cedf985be141d5, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -53,7 +57,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7753369550890742772, guid: f0d4d81f2e5de89449cedf985be141d5, type: 3}
       propertyPath: m_Name
-      value: Ascensor
+      value: Lift StartGame
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f0d4d81f2e5de89449cedf985be141d5, type: 3}
@@ -62,9 +66,14 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7753369550890742772, guid: f0d4d81f2e5de89449cedf985be141d5, type: 3}
   m_PrefabInstance: {fileID: 6537499451006882350}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2425126772991021511 stripped
+--- !u!95 &7667272441397151195 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 3521325301811189749, guid: f0d4d81f2e5de89449cedf985be141d5, type: 3}
+  m_PrefabInstance: {fileID: 6537499451006882350}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4514413377522349350 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8871557927349568489, guid: f0d4d81f2e5de89449cedf985be141d5, type: 3}
+  m_CorrespondingSourceObject: {fileID: 7214685314230396680, guid: f0d4d81f2e5de89449cedf985be141d5, type: 3}
   m_PrefabInstance: {fileID: 6537499451006882350}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
@@ -85,5 +94,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86feff10e4526874f87fe928b017d33e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _animator: {fileID: 0}
-  _checker: {fileID: 2425126772991021511}
+  _animator: {fileID: 7667272441397151195}
+  _checker: {fileID: 4514413377522349350}

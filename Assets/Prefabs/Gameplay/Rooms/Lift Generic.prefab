@@ -38,6 +38,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7753369550890742768}
     m_Modifications:
+    - target: {fileID: 2021447798742488715, guid: a801f41e1825b6942a0417350b949f5f, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2909474902425323012, guid: a801f41e1825b6942a0417350b949f5f, type: 3}
       propertyPath: m_Name
       value: Ascensor Mesh
@@ -85,6 +89,14 @@ PrefabInstance:
     - target: {fileID: 3639517897970785233, guid: a801f41e1825b6942a0417350b949f5f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8745258994210233873, guid: a801f41e1825b6942a0417350b949f5f, type: 3}
+      propertyPath: m_Name
+      value: Player Checker
+      objectReference: {fileID: 0}
+    - target: {fileID: 8745258994210233873, guid: a801f41e1825b6942a0417350b949f5f, type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a801f41e1825b6942a0417350b949f5f, type: 3}

@@ -8,7 +8,7 @@ namespace Game.Gameplay
     public class LiftEnd : Lift
     {
         [SerializeField] PlayerChecker _checker;
-            [SerializeField] SceneSO _nextScene;
+        [SerializeField] SceneSO _nextScene;
 
         void Start()
         {
