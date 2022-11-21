@@ -1,8 +1,12 @@
+using Game.Gameplay.Player;
 using Game.Managers;
+using System;
 using UnityEngine;
 
 namespace Game.Gameplay.Weapons
 {
+  
+
     public class ParticleWeapon : ShooterWeapon
     {
         [SerializeField] GameObject _particle;

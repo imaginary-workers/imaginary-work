@@ -462,7 +462,6 @@ MonoBehaviour:
   _magnitud: 0.73
   _roughness: 3.15
   _fadeOutTime: 1.53
-  _camera: {fileID: 1425224901}
   _playerController: {fileID: 8219668241822508868}
   _gameplaySettingsSo: {fileID: 11400000, guid: ad91dff427b50604e96c166048168afa, type: 2}
   _pjDamageable: {fileID: 8219668241822508865}
@@ -1003,8 +1002,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Weapons>k__BackingField:
   - {fileID: 921895296802912248}
-  - {fileID: 8317203324079426338}
-  - {fileID: 5510054347609544550}
+  - {fileID: 530260335858197081}
+  - {fileID: 5230242577655802148}
 --- !u!114 &5810076752666076082
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1628,7 +1627,15 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4538244712190913964, guid: 7cd12200bd3156040955aebf80ad1489, type: 3}
+      propertyPath: _weaponSoundController
+      value: 
+      objectReference: {fileID: 2748643659555909998}
     - target: {fileID: 4735661994421724971, guid: 7cd12200bd3156040955aebf80ad1489, type: 3}
+      propertyPath: _weaponSoundController
+      value: 
+      objectReference: {fileID: 2748643659555909998}
+    - target: {fileID: 4997407529903462761, guid: 7cd12200bd3156040955aebf80ad1489, type: 3}
       propertyPath: _weaponSoundController
       value: 
       objectReference: {fileID: 2748643659555909998}
@@ -1639,15 +1646,15 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1533937069260811553, guid: 7cd12200bd3156040955aebf80ad1489, type: 3}
   m_PrefabInstance: {fileID: 995249622090657869}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &5510054347609544550 stripped
+--- !u!114 &5230242577655802148 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4735661994421724971, guid: 7cd12200bd3156040955aebf80ad1489, type: 3}
+  m_CorrespondingSourceObject: {fileID: 4997407529903462761, guid: 7cd12200bd3156040955aebf80ad1489, type: 3}
   m_PrefabInstance: {fileID: 995249622090657869}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2044f204f20b1e64e89037256a9c373d, type: 3}
+  m_Script: {fileID: 11500000, guid: 561d1d69241153546ad974082ba530ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &7056965217599916547
@@ -1713,6 +1720,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7400747408266242138, guid: 2995e5e25acebc3479602f2226558c20, type: 3}
+      propertyPath: _weaponSoundController
+      value: 
+      objectReference: {fileID: 2748643659555909998}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2995e5e25acebc3479602f2226558c20, type: 3}
 --- !u!4 &3995261601922071138 stripped
@@ -1720,14 +1731,14 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6241255965032067169, guid: 2995e5e25acebc3479602f2226558c20, type: 3}
   m_PrefabInstance: {fileID: 7056965217599916547}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &8317203324079426338 stripped
+--- !u!114 &530260335858197081 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1334125567140118817, guid: 2995e5e25acebc3479602f2226558c20, type: 3}
+  m_CorrespondingSourceObject: {fileID: 7400747408266242138, guid: 2995e5e25acebc3479602f2226558c20, type: 3}
   m_PrefabInstance: {fileID: 7056965217599916547}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 521219c045af4d17a96fc76235f9ae1c, type: 3}
+  m_Script: {fileID: 11500000, guid: f8706a03ba17ca64e8186782552cbcf1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

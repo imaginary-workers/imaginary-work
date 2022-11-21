@@ -9,11 +9,13 @@ namespace Game.SO
         [SerializeField] int _maxReserveAmunicion = 0;
         [SerializeField] AudioClip _reloadSound;
         [SerializeField] AudioClip _noHitSound;
+        [SerializeField] AudioClip _shootSound;
         public int MaxAmunicion => _maxAmunicion;
 
         public AudioClip ReloadSound => _reloadSound;
 
         public AudioClip NoHitSound => _noHitSound;
+        public AudioClip ShootSound => _shootSound;
         public int MaxReserveAmunicion => _maxReserveAmunicion;
     }
 }
