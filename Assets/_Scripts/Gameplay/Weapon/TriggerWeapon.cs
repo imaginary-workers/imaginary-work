@@ -56,7 +56,7 @@ namespace Game.Gameplay.Weapons
             Ammunition--;
             GameManager.Instance.UpdateBulletCounter(Ammunition);
 
-            _particles.Play();
+            _particles?.Play();
             IsShoot();
         }
 
