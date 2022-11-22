@@ -32,17 +32,20 @@ namespace Game.Managers
         [SerializeField] GameObject _player;
         [SerializeField] IntSO _maxHealth;
         [SerializeField] IntSO _health;
+        [SerializeField] Transform _liftStart;
 
         [Header("HUD Objets")]
         [Header("Menus")]
         [SerializeField] GameObject _pauseMenu;
         [SerializeField] GameObject _deathMessege;
+        
         [Header("GameCanvas Element")]
         [SerializeField] GameObject _pointer;
         [SerializeField] Text _bulletCounterText;
         [SerializeField] Text _reserveCounterText;
         [SerializeField] Text _countEnemyText;
         [SerializeField] InventoryUIController _inventoryUI;
+        
         [Header("Option Menu")]
         [SerializeField] GameObject _optionsMenu;
 
@@ -73,6 +76,11 @@ namespace Game.Managers
             {
                 Enemy.UpdateEnemyCount += UpdateEnemyCount;
                 Player.GetComponent<PlayerDamageable>().OnDeath += GameOver;
+                if (_liftStart != null)
+                {
+                    Player.transform.position = _liftStart.position;
+                    Player.transform.forward = _liftStart.forward * -1;
+                }
             }
         }
 
