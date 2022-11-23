@@ -1,4 +1,6 @@
-﻿namespace Game.Gameplay.Enemies
+﻿using UnityEngine;
+
+namespace Game.Gameplay.Enemies
 {
     public abstract class EnemyStateController: Enemy
     {
@@ -43,7 +45,7 @@
             Destroy(gameObject,seconds);
         }
 
-        void ChangeToDeathState()
+        void ChangeToDeathState(GameObject damaging)
         {
             if (deadState == null) return;
             ChangeState(deadState);
