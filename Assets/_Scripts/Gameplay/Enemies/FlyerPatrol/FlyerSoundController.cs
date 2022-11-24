@@ -23,6 +23,5 @@ namespace Game
         {
             _audioSource.PlayOneShot(_attack);
         }
-
     }
 }

@@ -1,4 +1,3 @@
-using Game.Config;
 using Game.Gameplay.Player;
 using UnityEditor;
 using UnityEngine;
@@ -8,6 +7,7 @@ using UnityEngine.UI;
 using Game.Gameplay.Enemies;
 using System.Collections;
 using Game.Audio;
+using Game.Gameplay.Lifts;
 using Game.UI;
 
 namespace Game.Managers
@@ -32,17 +32,20 @@ namespace Game.Managers
         [SerializeField] GameObject _player;
         [SerializeField] IntSO _maxHealth;
         [SerializeField] IntSO _health;
+        LiftStart _liftStart;
 
         [Header("HUD Objets")]
         [Header("Menus")]
         [SerializeField] GameObject _pauseMenu;
         [SerializeField] GameObject _deathMessege;
+        
         [Header("GameCanvas Element")]
         [SerializeField] GameObject _pointer;
         [SerializeField] Text _bulletCounterText;
         [SerializeField] Text _reserveCounterText;
         [SerializeField] Text _countEnemyText;
         [SerializeField] InventoryUIController _inventoryUI;
+        
         [Header("Option Menu")]
         [SerializeField] GameObject _optionsMenu;
 
@@ -73,6 +76,14 @@ namespace Game.Managers
             {
                 Enemy.UpdateEnemyCount += UpdateEnemyCount;
                 Player.GetComponent<PlayerDamageable>().OnDeath += GameOver;
+                _liftStart = GameObject.FindObjectOfType<LiftStart>();
+                if (_liftStart != null)
+                {
+                    SetPlayerControlActive(false);
+                    _liftStart.PlacePlayer(Player);
+                    _liftStart.Start();
+                    _liftStart.Lift.OnUpFinished += ResumePlayerControl;
+                }
             }
         }
 
@@ -105,6 +116,10 @@ namespace Game.Managers
             {
                 Enemy.UpdateEnemyCount -= UpdateEnemyCount;
                 Player.GetComponent<PlayerDamageable>().OnDeath -= GameOver;
+                if (_liftStart != null)
+                {
+                    _liftStart.Lift.OnUpFinished -= ResumePlayerControl;
+                }
             }
         }
 
@@ -213,20 +228,18 @@ namespace Game.Managers
             _pointer.SetActive(false);
             Cursor.lockState = CursorLockMode.None;
             Time.timeScale = 0;
-            _player.GetComponent<PlayerController>().enabled = false;
-            _player.GetComponent<WeaponController>()._active = false;
-
+            SetPlayerControlActive(false);
         }
 
         public void Resume()
         {
             _isPaused = false;
+            _optionsMenu.GetComponent<OptionMenuUI>().CancelOptions();
             _pauseMenu.SetActive(false);
             _pointer.SetActive(true);
             Cursor.lockState = CursorLockMode.Locked;
             Time.timeScale = 1;
-            _player.GetComponent<PlayerController>().enabled = true;
-            _player.GetComponent<WeaponController>()._active = true;
+            SetPlayerControlActive(true);
         }
 
         public void OpenOptions()
@@ -279,6 +292,17 @@ namespace Game.Managers
                 MusicManager.singleton.UpdateMusic(scene);
                 SceneManager.LoadScene(scene.SceneName);
             }
+        }
+
+        void ResumePlayerControl()
+        {
+            SetPlayerControlActive(true);
+        }
+
+        void SetPlayerControlActive(bool active)
+        {
+            Player.GetComponent<PlayerController>().active = active;
+            Player.GetComponent<WeaponController>().active = active;
         }
     }
 }

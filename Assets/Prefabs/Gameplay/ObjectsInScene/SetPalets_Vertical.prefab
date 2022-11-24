@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 358010717141290764}
   - component: {fileID: 3256502799475022240}
   - component: {fileID: 5900733750609154173}
+  - component: {fileID: 4409791766597380288}
   m_Layer: 7
   m_Name: SetPalets_Vertical
   m_TagString: Untagged
@@ -194,6 +195,22 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!54 &4409791766597380288
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2763974646904810664}
+  serializedVersion: 2
+  m_Mass: 100
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 122
+  m_CollisionDetection: 0
 --- !u!1 &6808641976041943406
 GameObject:
   m_ObjectHideFlags: 0

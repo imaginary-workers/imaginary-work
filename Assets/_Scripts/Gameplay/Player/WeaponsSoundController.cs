@@ -21,15 +21,9 @@ namespace Game.Gameplay.Player
 
         public void ShootFire()
         {
-            _audioSource.clip = _fire;
-            _audioSource.loop = true;
-            _audioSource.Play();
+            _audioSource.PlayOneShot(_fire);
         }
-        public void ShootFireCanceled()
-        {
-            _audioSource.Stop();
-            _audioSource.loop = false;
-        }
+
 
         public void HitFail()
         {

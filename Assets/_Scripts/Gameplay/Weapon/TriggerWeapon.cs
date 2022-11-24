@@ -10,7 +10,7 @@ namespace Game.Gameplay.Weapons
     {
         [SerializeField] ParticleSystem _particles;
         [SerializeField] WeaponsSoundController _weaponSoundController;
-        Action _TriggerAttackAnimation;
+        protected Action _TriggerAttackAnimation;
         WaitForSeconds _waitAttackRate;
         void Awake()
         {
@@ -37,16 +37,9 @@ namespace Game.Gameplay.Weapons
 
         public override void CancelAttack() { }
 
-        public override void SubscribeToAnimationEvents(PlayerAnimationManager animationManager)
+        protected void EVENT_Weapon_SHOOTING()
         {
-            animationManager.AddAnimationEvent("pistol_shooting_event", EVENT_PISTOL_SHOOTING);
-            animationManager.AddAnimationEvent("end_reload_weapon", EVENT_RELOAD_FEEDBACK);
-            _TriggerAttackAnimation = animationManager.AttackShooter;
-        }
-
-        void EVENT_RELOAD_FEEDBACK()
-        {
-            _audioSource.PlayOneShot(_weaponData.ReloadSound);
+            Shoot();
         }
 
 
@@ -55,6 +48,7 @@ namespace Game.Gameplay.Weapons
         protected override void Shoot()
         {
             var bulletObject = _bulletPooler.GetPooledObject();
+            Debug.Log(bulletObject.name);
             bulletObject.transform.position = _firePoint.position;
             bulletObject.SetActive(true);
             bulletObject.transform.forward = _firePoint.forward;
@@ -62,17 +56,14 @@ namespace Game.Gameplay.Weapons
             Ammunition--;
             GameManager.Instance.UpdateBulletCounter(Ammunition);
 
-            _particles.Play();
+            _particles?.Play();
             IsShoot();
         }
 
-        void EVENT_PISTOL_SHOOTING()
-        {
-            Shoot();
-        }
+       
         void IsShoot()
         {
-            _weaponSoundController.ShootPistol();
+            _audioSource.PlayOneShot(_weaponData.ShootSound);
         }
     }
 }

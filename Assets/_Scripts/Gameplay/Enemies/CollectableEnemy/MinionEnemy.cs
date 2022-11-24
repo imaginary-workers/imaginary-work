@@ -25,7 +25,7 @@ namespace Game.Gameplay.Enemies.CollectableEnemy
 
         protected override void SetDeadState()
         {
-            deadState = new DeadState(_agent, _animatorController, _spawn, ActiveDestroyFeedback);
+            deadState = new DeadState(_agent, _animatorController, _spawn, ActiveDestroyFeedback, _collider);
         }
     }
 }
