@@ -13,7 +13,7 @@ namespace Game.Gameplay.Player
         [SerializeField] PlayerController _playerController;
         [SerializeField, Range(0, 2)] float _speedWeaponHeavy = 1;
         [SerializeField] PlayerAnimationManager _animation;
-        public bool _active = true;
+        public bool active = true;
 
         [SerializeField] PlayerSoundController _pjSoundController;
         bool _switch;
@@ -23,7 +23,7 @@ namespace Game.Gameplay.Player
         Weapon CurrentWeapon
         {
             get
-            {           
+            {
                 return _manager.CurrentWeapon;
             }
         }
@@ -35,7 +35,7 @@ namespace Game.Gameplay.Player
 
         public void AttackInput(InputAction.CallbackContext context)
         {
-            if (!_active) return;
+            if (!active) return;
             if (!CanAttack) return;
             CurrentWeapon.Target = _pointerTarget.transform.position;
             if (context.started)
@@ -63,7 +63,7 @@ namespace Game.Gameplay.Player
 
         public void ReloadWeaponInput(InputAction.CallbackContext context)
         {
-            if (!_active) return;
+            if (!active) return;
             if (!context.performed) return;
             if (CurrentWeapon.CanReloadAmmunition())
             {
@@ -78,7 +78,7 @@ namespace Game.Gameplay.Player
 
         public bool ReloadReserveWeapons()
         {
-            if (!_active) return false;
+            if (!active) return false;
             bool reserve = _manager.ReloadReserveWeapons();
             if (reserve)
             {
@@ -90,7 +90,7 @@ namespace Game.Gameplay.Player
 
         public void SwitchWeapon(int slot)
         {
-            if (!_active) return;
+            if (!active) return;
             if (_manager.CurrentSlot == slot) return;
             if (!_manager.SwitchWeapon(slot)) return;
 
