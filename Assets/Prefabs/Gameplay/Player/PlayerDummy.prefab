@@ -661,6 +661,7 @@ MonoBehaviour:
   _playerInput: {fileID: 8219668241822508866}
   _animator: {fileID: 1160910595356904043}
   _weaponController: {fileID: 8219668241822508986}
+  active: 1
   _timeWalk: 0.24
   _pjSoundController: {fileID: 4280496099988934263}
   _timeSprint: 0.18
@@ -990,7 +991,7 @@ MonoBehaviour:
   _playerController: {fileID: 8219668241822508868}
   _speedWeaponHeavy: 1
   _animation: {fileID: 1160910595356904043}
-  _active: 1
+  active: 1
   _pjSoundController: {fileID: 4280496099988934263}
 --- !u!114 &8219668241822508985
 MonoBehaviour:
@@ -1404,7 +1405,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8538140076778761173}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.6, z: 0.5}
+  m_LocalPosition: {x: 0, y: 1.6, z: 0.968}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7055353359782922695}
