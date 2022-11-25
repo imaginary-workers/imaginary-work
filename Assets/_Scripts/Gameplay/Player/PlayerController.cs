@@ -12,6 +12,7 @@ namespace Game.Gameplay.Player
         [SerializeField] PlayerInput _playerInput;
         [SerializeField] PlayerAnimationManager _animator;
         [SerializeField] WeaponController _weaponController;
+        public bool active = true;
         Vector2 _moveVelocityInput;
         float _currentTime = 1;
         float _time;
@@ -93,20 +94,13 @@ namespace Game.Gameplay.Player
 
 
         #endregion
-        void CallSoundWalk()
-        {
-            if (_isMoving && _timer >= _timeStep && _jumpComponent.IsOnTheFloor)
-            {
-                _pjSoundController.Walking();
-                _timer = 0;
-            }
-        }
 
 
         #region inputmethods
 
         public void MoveInput(InputAction.CallbackContext context)
         {
+            if (!active) return;
             _moveVelocityInput = context.ReadValue<Vector2>();
 
             _isMoving = true;
@@ -119,6 +113,7 @@ namespace Game.Gameplay.Player
 
         public void JumpInput(InputAction.CallbackContext context)
         {
+            if (!active) return;
             if (context.started)
             {
                 _jumpComponent.JumpAction();
@@ -128,11 +123,13 @@ namespace Game.Gameplay.Player
 
         public void LookInput(InputAction.CallbackContext context)
         {
+            if (!active) return;
             LookInputDirection = context.ReadValue<Vector2>();
         }
 
         public void SprintInput(InputAction.CallbackContext context)
         {
+            if (!active) return;
             if (!CanSprint) return;
             if (context.started)
             {
@@ -143,6 +140,8 @@ namespace Game.Gameplay.Player
                 SprintActive(false);
             }
         }
+
+        #endregion
 
         void SprintActive(bool active)
         {
@@ -161,6 +160,13 @@ namespace Game.Gameplay.Player
             }
         }
 
-        #endregion
+        void CallSoundWalk()
+        {
+            if (_isMoving && _timer >= _timeStep && _jumpComponent.IsOnTheFloor)
+            {
+                _pjSoundController.Walking();
+                _timer = 0;
+            }
+        }
     }
 }
