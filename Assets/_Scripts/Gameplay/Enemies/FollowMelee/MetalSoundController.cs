@@ -24,7 +24,7 @@ namespace Game.Gameplay.Enemies.FollowMelee
             _aniEvent.OnAttack -= Attack;
             _enemyDamageable.OnTakeDamage -= WeakDamage;
         }
-        public void WeakDamage(int damage)
+        public void WeakDamage(int damage, GameObject damaging)
         {
             _audioSource.PlayOneShot(_WeakDamage);
         }

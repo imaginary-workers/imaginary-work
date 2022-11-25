@@ -25,7 +25,7 @@ namespace Game.Gameplay.Player
             _jumpComponent.OnJumpEvent -= Jump;
         }
 
-        public void Damage(int damage)
+        public void Damage(int damage, GameObject damaging)
         {
             _audioSource.PlayOneShot(_hurt);
         }

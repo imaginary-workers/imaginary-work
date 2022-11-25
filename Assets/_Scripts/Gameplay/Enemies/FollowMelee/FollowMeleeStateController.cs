@@ -20,6 +20,8 @@ namespace Game.Gameplay.Enemies.FollowMelee
         [SerializeField] protected AnimatorController _animatorController;
         [SerializeField] Ragdoll _ragdoll;
         [SerializeField] protected Collider _collider;
+        [SerializeField] Transform _hitPoint;
+        [SerializeField] Damaging _damaging;
         GameObject _player;
         RandomPatrolState _randomPatrolState;
         FollowState _followState;
@@ -39,15 +41,18 @@ namespace Game.Gameplay.Enemies.FollowMelee
         void OnEnable()
         {
             Damageable.OnTakeStrongDamage += OnTakeStrongDamageHandler;
+            Damageable.OnTakeStrongDamage += OnTakeDamageHandler;
         }
 
         void OnDisable()
         {
+            Damageable.OnTakeStrongDamage -= OnTakeDamageHandler;
             Damageable.OnTakeStrongDamage -= OnTakeStrongDamageHandler;
         }
 
         protected override void OnAwakeEnemy()
         {
+            _damaging.EnemySource = gameObject;
             _player = GameManager.Player;
             _lookAtTarget.Target = _player.gameObject;
             _rangeMelee = _followPlayer.CloseRange;
@@ -70,11 +75,16 @@ namespace Game.Gameplay.Enemies.FollowMelee
             ChangeState(_takeStrongDamageState);
         }
 
-        void OnTakeStrongDamageHandler(int damage)
+        void OnTakeStrongDamageHandler(int damage, GameObject damaging)
         {
             if (!_canDoStrongDamageFeedback) return;
             StartCoroutine(CO_TakeStrongDamageRecoverTime());
             ChangeToTakeStrongDamageState();
+        }
+
+        void OnTakeDamageHandler(int obj, GameObject damaging)
+        {
+            
         }
 
         IEnumerator CO_TakeStrongDamageRecoverTime()

@@ -60,7 +60,7 @@ namespace Game.Gameplay.Enemies.PatrolFire
             ChangeState(_takeStrongDamageState);
         }
 
-        void OnTakeStrongDamageHandler(int damage)
+        void OnTakeStrongDamageHandler(int damage, GameObject damaging)
         {
             if (!_canDoStrongDamageFeedback) return;
             StartCoroutine(CO_TakeStrongDamageRecoverTime());
