@@ -21,6 +21,7 @@ namespace Game.Gameplay.Enemies.FollowMelee
         [SerializeField] Ragdoll _ragdoll;
         [SerializeField] protected Collider _collider;
         [SerializeField] Transform _hitPoint;
+        [SerializeField] Damaging _damaging;
         GameObject _player;
         RandomPatrolState _randomPatrolState;
         FollowState _followState;
@@ -51,6 +52,7 @@ namespace Game.Gameplay.Enemies.FollowMelee
 
         protected override void OnAwakeEnemy()
         {
+            _damaging.EnemySource = gameObject;
             _player = GameManager.Player;
             _lookAtTarget.Target = _player.gameObject;
             _rangeMelee = _followPlayer.CloseRange;

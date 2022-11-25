@@ -23,6 +23,7 @@ namespace Game.Gameplay
             if (_addHighToTarget > 0)
                 transformPosition.y += _addHighToTarget;
             var forwardNormalized = (transformPosition - pooledObject.transform.position).normalized;
+            pooledObject.GetComponent<Damaging>().EnemySource = gameObject;
             component.Shoot(forwardNormalized);
         }
     }

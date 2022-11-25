@@ -8,6 +8,12 @@ namespace Game.Gameplay
     {
         [SerializeField] int _damage = 0;
         [SerializeField] ElementSO _element;
+        GameObject _enemySource;
+        public GameObject EnemySource
+        {
+            set => _enemySource = value;
+            get => _enemySource ? _enemySource : gameObject;
+        }
         public event Action OnHit, OnStrongHit;
         void OnTriggerEnter(Collider other)
         {
@@ -15,7 +21,7 @@ namespace Game.Gameplay
             if (damageable == null) return;
             damageable.OnTakeDamage += Hit;
             damageable.OnTakeStrongDamage += StrongHit;
-            damageable.TakeTamage(_damage, _element, gameObject);
+            damageable.TakeTamage(_damage, _element, EnemySource);
             damageable.OnTakeDamage -= Hit;
             damageable.OnTakeStrongDamage -= StrongHit;
             DestroySelf();
