@@ -245,6 +245,7 @@ MonoBehaviour:
   _firePoint: {fileID: 6457636835327668895}
   _bulletPooler: {fileID: 7170227535695364372}
   _addHighToTarget: 1.5
+  _soundController: {fileID: 1065654459489884989}
   _timeBetweenShoot: 0.2
 --- !u!114 &7170227535695364372
 MonoBehaviour:
@@ -305,6 +306,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _audio: {fileID: 2907957311507273403}
   _attack: {fileID: 8300000, guid: 9e60d77bb88e1294fb50284c1d2c5f5c, type: 3}
+  _takeDamage: {fileID: 8300000, guid: 762acdf7cb0042f47804862bd894a779, type: 3}
+  _enemyDamageable: {fileID: 2302987543489821036}
 --- !u!82 &2907957311507273403
 AudioSource:
   m_ObjectHideFlags: 0

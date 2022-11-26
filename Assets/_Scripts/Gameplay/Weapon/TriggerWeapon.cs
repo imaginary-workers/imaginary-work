@@ -48,7 +48,6 @@ namespace Game.Gameplay.Weapons
         protected override void Shoot()
         {
             var bulletObject = _bulletPooler.GetPooledObject();
-            Debug.Log(bulletObject.name);
             bulletObject.transform.position = _firePoint.position;
             bulletObject.SetActive(true);
             bulletObject.transform.forward = _firePoint.forward;
