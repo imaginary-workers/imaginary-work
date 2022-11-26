@@ -8,11 +8,14 @@ namespace Game
     {
         [SerializeField] AudioSource _audio;
         [SerializeField] AudioClip _attack;
-        [SerializeField] AnimationEvent _sandAniEvent;
 
         private void Awake()
         {
 
+        } 
+        public void Attack()
+        {
+            _audio.PlayOneShot(_attack);
         }
     }
 }

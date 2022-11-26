@@ -9,6 +9,7 @@ namespace Game.Gameplay
         [SerializeField] Transform _firePoint;
         [SerializeField] ObjectPooler _bulletPooler;
         [SerializeField] float _addHighToTarget = 1.5f;
+        [SerializeField] SandSoundController _soundController;
         GameObject _target;
 
         public GameObject Target { set => _target = value; }
@@ -23,6 +24,7 @@ namespace Game.Gameplay
             if (_addHighToTarget > 0)
                 transformPosition.y += _addHighToTarget;
             var forwardNormalized = (transformPosition - pooledObject.transform.position).normalized;
+            _soundController.Attack();
             component.Shoot(forwardNormalized);
         }
     }

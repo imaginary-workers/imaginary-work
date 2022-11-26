@@ -11,8 +11,10 @@ namespace Game.Gameplay.Enemies.FollowMelee
         [SerializeField] AudioSource _audioSource;
         [SerializeField] AudioClip _WeakDamage;
         [SerializeField] AudioClip _Attack;
+        [SerializeField] AudioClip _takeDamageFire;
         [SerializeField] AnimationEvent _aniEvent;
         [SerializeField] EnemyDamageable _enemyDamageable;
+        [SerializeField] Damaging 
         void Awake()
         {
             _aniEvent.OnAttack += Attack;
@@ -31,6 +33,10 @@ namespace Game.Gameplay.Enemies.FollowMelee
         public void Attack()
         {
             _audioSource.PlayOneShot(_Attack);
+        }
+        public void TakeDamage()
+        {
+            _audioSource.PlayOneShot(_takeDamageFire);
         }
     }
 }
