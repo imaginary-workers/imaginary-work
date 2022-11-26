@@ -12,9 +12,15 @@ namespace Game.Gameplay.Weapons
 
         void Awake()
         {
-            _damaging.gameObject.SetActive(false);
+            _damaging?.gameObject.SetActive(false);
             _damaging.OnHit += TriggerOnHitFeedback;
             _damaging.OnStrongHit += TriggerOnStrongHitFeedback;
+        }
+
+        private void OnDestroy()
+        {
+            _damaging.OnHit -= TriggerOnHitFeedback;
+            _damaging.OnStrongHit -= TriggerOnStrongHitFeedback;
         }
 
         public override void StartAttack() { }
@@ -53,12 +59,12 @@ namespace Game.Gameplay.Weapons
 
         void EVENT_END_HITBOX()
         {
-            _damaging.gameObject.SetActive(false);
+            _damaging?.gameObject.SetActive(false);
         }
 
         void EVENT_START_HITBOX()
         {
-            _damaging.gameObject.SetActive(true);
+            _damaging?.gameObject.SetActive(true);
         }
 
         void StartMeleeAnimation()

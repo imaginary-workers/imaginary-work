@@ -31,7 +31,7 @@ namespace Game.Gameplay.Enemies.FollowMelee
         {
             _animator.SetTrigger("Attack");
         }
-        public void Death()
+        public void Death(GameObject damaging)
         {
             _animator.SetTrigger("Death");
         }      
@@ -45,7 +45,7 @@ namespace Game.Gameplay.Enemies.FollowMelee
             _animator.SetTrigger("Hit");
         }
 
-        void OnTakeDamageHandler(int damage)
+        void OnTakeDamageHandler(int damage, GameObject damaging)
         {
             TakeDamageFeedback();
         }

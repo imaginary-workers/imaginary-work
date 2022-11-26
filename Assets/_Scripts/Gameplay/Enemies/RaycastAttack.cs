@@ -41,7 +41,7 @@ namespace Game.Gameplay.Enemies
             RaycastHit hit;
             if (Physics.Raycast(_firePoint.transform.position, _firePoint.transform.forward, out hit, _maxDistance, _layerMask))
             {
-                hit.collider.GetComponent<IDamageable>()?.TakeTamage(_damage, _attackElement);
+                hit.collider.GetComponent<IDamageable>()?.TakeTamage(_damage, _attackElement, gameObject);
             }
         }
     }
