@@ -43,7 +43,7 @@ namespace Game.Gameplay.Enemies.PatrolFire
 
         public void PLAY_EVENT(string eventName)
         {
-            _events[eventName]?.Invoke();   
+            _events[eventName]?.Invoke();
         }
 
         public void AddAnimationEvent(string eventName, Action callback)
