@@ -5,7 +5,7 @@ namespace Game.Gameplay.Interactable
 {
     public class DestructableObject : MonoBehaviour
     {
-        [SerializeField] EnemyDamageable _damageable;
+        [SerializeField] ObjectDamageable _damageable;
         [SerializeField] GameObject _mesh;
         [SerializeField] GameObject _effectPrefab;
         [SerializeField] Transform _effectPoint;
