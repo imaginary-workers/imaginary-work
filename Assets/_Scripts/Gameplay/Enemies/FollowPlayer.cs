@@ -35,6 +35,7 @@ namespace Game.Gameplay.Enemies
         }
         private void OnEnable()
         {
+            _agent.isStopped = false;
             _agent.speed = _speed;
         }
     }
