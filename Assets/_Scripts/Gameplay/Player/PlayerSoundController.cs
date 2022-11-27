@@ -22,7 +22,7 @@ namespace Game.Gameplay.Player
             _jumpComponent.OnJumpEvent += Jump;
             _playerdamageable.OnTakeDamage += Damage;
             _weaponInventory.OnGrab += GrabWeapon;
-            _weaponManager.WeaponChange += Switch;
+            _weaponManager.OnWeaponChange += Switch;
         }
 
         void OnDestroy()
