@@ -1,6 +1,7 @@
 
 using Game.Gameplay.Weapons;
 using Game.Managers;
+using System;
 using UnityEngine;
 
 namespace Game.Gameplay.Player
@@ -9,6 +10,7 @@ namespace Game.Gameplay.Player
     {
         [SerializeField] WeaponInventory _inventory;
         [SerializeField] PlayerAnimationManager _animationManager;
+        public event Action WeaponChange;
 
         public int CurrentSlot { get; private set; } = 0;
         public Weapon CurrentWeapon { get; private set; }
@@ -39,6 +41,7 @@ namespace Game.Gameplay.Player
 
             CurrentWeapon.gameObject.SetActive(false);
             CurrentWeapon = weapon;
+            WeaponChange?.Invoke();
             CurrentWeapon.gameObject.SetActive(true);
             GameManager.Instance.UpdateBulletCounter(CurrentWeapon.Ammunition);
             return true;

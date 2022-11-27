@@ -7,6 +7,9 @@ namespace Game.Gameplay.Lifts
     {
         [SerializeField] Animator _animator;
         public Action OnOpened, OnClosed;
+        public event Action OpenDoor;
+        [SerializeField] AudioSource _audioSource;
+        [SerializeField] AudioClip _door;
 
         public void CloseDoors()
         {
@@ -15,6 +18,7 @@ namespace Game.Gameplay.Lifts
         public void OpenDoors()
         {
             _animator.SetTrigger("OpenDoors");
+            _audioSource.PlayOneShot(_door);
         }
 
         public void ON_OPENED_EVENT()
