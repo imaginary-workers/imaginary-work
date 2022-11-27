@@ -60,6 +60,8 @@
      <Compile Include="Assets\_Scripts\UI\HitMarkerController.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Enemies\PatrolFire\AnimatorController.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\PowerUps\ReserveWeaponTrigger.cs" />
+     <Compile Include="Assets\_Scripts\UI\PlayerDamageIndicator.cs" />
+     <Compile Include="Assets\_Scripts\DestroyInSecondsComponent.cs" />
      <Compile Include="Assets\_Scripts\SwayBehaviour.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Platforms\BreakPlatformBrain.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Enemies\EnemyBurstShooter.cs" />
@@ -71,6 +73,7 @@
      <Compile Include="Assets\_Scripts\UI\OptionMenuUI.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Player\JumpComponent.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Enemies\Ragdoll.cs" />
+     <Compile Include="Assets\_Scripts\Gameplay\Lifts\LiftDoorAnimations.cs" />
      <Compile Include="Assets\_Scripts\UI\InventoryUIController.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Enemies\FollowMelee\TakeStrongDamageState.cs" />
      <Compile Include="Assets\_Scripts\Managers\GameManager.cs" />
@@ -107,6 +110,7 @@
      <Compile Include="Assets\_Scripts\Gameplay\Enemies\FlyerPatrol\FlyerSoundController.cs" />
      <Compile Include="Assets\_Scripts\Audio\MusicManager.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Weapon\FlameThrowerWeapon.cs" />
+     <Compile Include="Assets\_Scripts\UI\SingleDamageIndicator.cs" />
      <Compile Include="Assets\_Scripts\Managers\GameplayConfigManager.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Enemies\FollowMelee\MetalSoundController.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Enemies\FlyerPatrol\AttackState.cs" />
@@ -123,6 +127,7 @@
      <Compile Include="Assets\_Scripts\Gameplay\PowerUps\PlayerHealerPowerUp.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Enemies\FlyerPatrol\FlyerPatrolStateController.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Enemies\EnemyStateController.cs" />
+     <Compile Include="Assets\_Scripts\SpecialHammer.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\EnemyShooter.cs" />
      <Compile Include="Assets\_Scripts\SO\IntSO.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\AppearAgain.cs" />
@@ -161,9 +166,6 @@
      <Compile Include="Assets\_Scripts\Gameplay\Enemies\State.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\CameraFollowTarget.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Enemies\PatrolFire\AttackState.cs" />
-     <Compile Include="Assets\_Scripts\SpecialHammer.cs" />
-     <Compile Include="Assets\_Scripts\Gameplay\Lifts\LiftDoorAnimations.cs" />
-     <Compile Include="Assets\_Scripts\Gameplay\Player\PlayerDamageIndicator.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />

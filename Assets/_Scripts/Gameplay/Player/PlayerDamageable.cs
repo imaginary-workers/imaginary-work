@@ -8,14 +8,14 @@ namespace Game.Gameplay.Player
     {
         [SerializeField] IntSO _playerLive;
         public event Action<int, GameObject> OnTakeDamage, OnTakeStrongDamage;
-        public event Action OnDeath;
+        public event Action<GameObject> OnDeath;
 
         public void TakeTamage(int damage, ElementSO element, GameObject damaging)
         {
             if (_playerLive.value - damage <= 0)
             {
                 _playerLive.value = 0;
-                OnDeath?.Invoke();
+                OnDeath?.Invoke(damaging);
             }
             else
             {
