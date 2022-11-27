@@ -6,7 +6,8 @@ namespace Game.Gameplay.Lifts
     public class LiftAnimations : MonoBehaviour
     {
         [SerializeField] Animator _animator;
-
+        [SerializeField] AudioSource _audioSource;
+        [SerializeField] AudioClip _liftSound;
         public Action OnUpFinished;
 
         public void UP_FINISHED_EVENT()
@@ -23,6 +24,7 @@ namespace Game.Gameplay.Lifts
         public void Arrive()
         {
             _animator.SetTrigger("Arrive");
+            _audioSource.PlayOneShot(_liftSound);
         }
     }
 }

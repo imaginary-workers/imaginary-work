@@ -76,5 +76,9 @@ namespace Game.Gameplay.Player
         {
             _myAni.Play("meleeWeakHit");
         }
+        public void SwitchWeapon()
+        {
+            _myAni.Play("WeaponChange");
+        }
     }
 }

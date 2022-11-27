@@ -11,15 +11,14 @@ namespace Game.Gameplay.Lifts
         [SerializeField] SceneSO _nextScene;
         [SerializeField] LiftAnimations _lift;
         [SerializeField] LiftDoorAnimations _liftDoor;
-        [SerializeField] AudioSource _audioSource;
-        [SerializeField] AudioClip _liftSound;
+
 
 
         void Start()
         {
             Enemy.OnNoEnemies += _liftDoor.OpenDoors;
             _checker.OnPlayerEnter += _liftDoor.CloseDoors;
-            _audioSource.PlayOneShot(_liftSound);
+
             _liftDoor.OnClosed += EndGame;
         }
 
