@@ -266,6 +266,7 @@ MonoBehaviour:
   _speed: 16
   _timeToDisable: 2
   _trail: {fileID: 1569349650795147577}
+  _bullet: {fileID: 1569349650795147576}
 --- !u!54 &5201573200370476491
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -280,5 +281,5 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 1
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0

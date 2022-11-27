@@ -54,12 +54,14 @@ namespace Game.Gameplay.Weapons
             bulletObject.GetComponent<Bullet>()?.Shoot(ShootDirection);
             Ammunition--;
             GameManager.Instance.UpdateBulletCounter(Ammunition);
-
-            _particles?.Play();
+            if (_particles != null)
+            {
+                _particles?.Play();
+            }
             IsShoot();
         }
 
-       
+
         void IsShoot()
         {
             _audioSource.PlayOneShot(_weaponData.ShootSound);

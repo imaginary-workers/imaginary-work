@@ -4,21 +4,22 @@ namespace Game.Gameplay.Enemies.PatrolFire
 {
     public class AttackState : State
     {
-        VisualField _visualField;
         PatrolFireStateController _controller;
+        VisualField _visualField;
         NavMeshAgent _agent;
-        ActionRepeater _shooterRepeater;
         LookAtTarget _lookAtTarget;
         AnimatorController _animatorController;
         EnemyBurstShooter _enemyShooter;
+        VisualField _visualdFieldSound;
 
         public AttackState(
             PatrolFireStateController controller,
             VisualField visualField,
             NavMeshAgent agent,
-        LookAtTarget lookAtTarget,
+            LookAtTarget lookAtTarget,
             AnimatorController animatorController,
-            EnemyBurstShooter enemyShooter
+            EnemyBurstShooter enemyShooter,
+            VisualField visualdFieldSound
             )
         {
             _controller = controller;
@@ -27,22 +28,24 @@ namespace Game.Gameplay.Enemies.PatrolFire
             _lookAtTarget = lookAtTarget;
             _animatorController = animatorController;
             _enemyShooter = enemyShooter;
+            _visualdFieldSound = visualdFieldSound;
             animatorController.AddAnimationEvent("START_SHOOTING", _enemyShooter.StartBurstShooting);
             animatorController.AddAnimationEvent("STOP_SHOOTING", _enemyShooter.StopBurstShooting);
         }
 
         public override void Enter()
         {
+
             _agent.speed = 0;
             _agent.isStopped = true;
             _lookAtTarget.enabled = true;
             _animatorController.StartAttack();
             _enemyShooter.enabled = true;
         }
-        
+
         public override void Update()
         {
-            if (!_visualField.IsTargetInView)
+            if (!_visualField.IsTargetInView && !_visualdFieldSound.IsTargetInView)
                 _controller.ChangeState(_controller.NormalState);
         }
 
