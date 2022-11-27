@@ -61,7 +61,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7753369550890742772, guid: f0d4d81f2e5de89449cedf985be141d5, type: 3}
       propertyPath: m_Name
-      value: Ascensor
+      value: Lift EndGame
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f0d4d81f2e5de89449cedf985be141d5, type: 3}
@@ -70,15 +70,37 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7753369550890742772, guid: f0d4d81f2e5de89449cedf985be141d5, type: 3}
   m_PrefabInstance: {fileID: 8781241966748404131}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &199046674599004746 stripped
+--- !u!114 &3014298706016760605 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8871557927349568489, guid: f0d4d81f2e5de89449cedf985be141d5, type: 3}
+  m_CorrespondingSourceObject: {fileID: 5767366991501785790, guid: f0d4d81f2e5de89449cedf985be141d5, type: 3}
+  m_PrefabInstance: {fileID: 8781241966748404131}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cec188f7e574ba48a8abe2807656560, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2144429317611105963 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7214685314230396680, guid: f0d4d81f2e5de89449cedf985be141d5, type: 3}
   m_PrefabInstance: {fileID: 8781241966748404131}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e65a3eab7eb04575a31b15408c8fb5f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2388529445084075527 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6411155454999044004, guid: f0d4d81f2e5de89449cedf985be141d5, type: 3}
+  m_PrefabInstance: {fileID: 8781241966748404131}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f93b6bf40253d44b9d8a63843787d80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &7753369551257289082
@@ -93,6 +115,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c3b8d5942c644be9992f2c7d9b1d1f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _animator: {fileID: 0}
-  _checker: {fileID: 199046674599004746}
+  _checker: {fileID: 2144429317611105963}
   _nextScene: {fileID: 0}
+  _lift: {fileID: 3014298706016760605}
+  _liftDoor: {fileID: 2388529445084075527}
