@@ -53,10 +53,10 @@ namespace Game.Gameplay
         }
         private void OnTriggerEnter(Collider other)
         {
-             if(other.gameObject.layer == 0 || other.gameObject.layer == 6)
+            if (other.gameObject.layer == 0 || other.gameObject.layer == 6)
             {
                 Debug.Log("holis");
-                Destroy(this);
+                DesactiveBullet();
             }
         }
     }

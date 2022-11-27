@@ -680,11 +680,15 @@ MonoBehaviour:
   _audioSource: {fileID: 2519684814726871061}
   _playerdamageable: {fileID: 8219668241822508865}
   _jumpComponent: {fileID: 5810076752666076082}
-  _hurt: {fileID: 0}
-  _walking: {fileID: 0}
+  _weaponInventory: {fileID: 7520371172983455578}
+  _weaponManager: {fileID: 8219668241822508985}
+  _hurt: {fileID: 8300000, guid: c612d463040046147877387d320c5178, type: 3}
+  _walking: {fileID: 8300000, guid: 604fa420f7bc20f45b249402f5e46add, type: 3}
   _jump: {fileID: 8300000, guid: f60e398a491cac548ac73eea1bc006a7, type: 3}
-  _eating: {fileID: 0}
-  _dropAmmuation: {fileID: 0}
+  _eating: {fileID: 8300000, guid: 016eab8c57cbe2b41be6d94e8f08ad0b, type: 3}
+  _dropAmmuation: {fileID: 8300000, guid: 966d0159e65ac66489de2834f4d1f2da, type: 3}
+  _grab: {fileID: 8300000, guid: 8fa8bdeee6357894185d8711a61b13cd, type: 3}
+  _switch: {fileID: 8300000, guid: 0ff6ed137b5d70c4c96a33407b2d330c, type: 3}
 --- !u!114 &8219668241822508867
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1056,7 +1060,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _audioSource: {fileID: 2519684814726871061}
-  _switch: {fileID: 0}
+  _switch: {fileID: 8300000, guid: 0ff6ed137b5d70c4c96a33407b2d330c, type: 3}
   _fire: {fileID: 8300000, guid: c75a3ccd0412283488d2e109c33598fe, type: 3}
   _noHit: {fileID: 8300000, guid: 382c2f30329d05d4e9387a5ea3c80307, type: 3}
   _shootPistol: {fileID: 8300000, guid: 4ef4999b671df1b469f6b588092f6b84, type: 3}
