@@ -8,5 +8,6 @@ namespace Game.Gameplay
     {
         public event Action<int, GameObject> OnTakeDamage, OnTakeStrongDamage;
         public void TakeTamage(int damage, ElementSO element, GameObject damaging);
+        public event Action<GameObject> OnDeath;
     }
 }
