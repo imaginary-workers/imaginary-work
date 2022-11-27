@@ -13,7 +13,7 @@ namespace Game.Gameplay.Weapons
         protected Transform _firePoint;
 
         protected Vector3 ShootDirection
-            => (Target - _firePoint.transform.position).normalized;
+            => (Target.position - _firePoint.transform.position).normalized;
         protected abstract void Shoot();
 
         public override bool CanReloadAmmunition()

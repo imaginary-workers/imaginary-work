@@ -37,7 +37,7 @@ namespace Game.Gameplay.Player
         {
             if (!active) return;
             if (!CanAttack) return;
-            CurrentWeapon.Target = _pointerTarget.transform.position;
+            CurrentWeapon.Target = _pointerTarget.transform;
             if (context.started)
             {
                 if (CurrentWeapon.IsHeavy)
