@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,36 +12,30 @@ namespace Game.UI
         [SerializeField] Image _myImage;
         [SerializeField, Range(0.01f,1f)] float _duration;
 
-        //public static HitMarkerController hitMarker;
+        public static HitMarkerController Instance;
 
-        //private void Awake()
-        //{
-        //    hitMarker = this;
-        //}
-
-        //Para probarlo
-        public bool tryOut;
-        private void Update()
+        void Awake()
         {
-            if (tryOut)
-            {
-                tryOut = false;
-                DisplayHitMark(false, true);
-            }
+            Instance = this;
         }
 
-        public void DisplayHitMark(bool isDeath, bool isStrong)
+        public void DisplayHitMarkStrong()
+        {
+            DisplayHitMark(_strongColor);
+        }
+        public void DisplayHitMarkWeak()
+        {
+            DisplayHitMark(_weakColor);
+        }
+        public void DisplayHitMarkDeath()
+        {
+            DisplayHitMark(_deathColor);
+        }
+        void DisplayHitMark(Color color)
         {
             StopAllCoroutines();
-
-            if (isDeath)
-                _myImage.color = _deathColor;
-            else if (isStrong)
-                _myImage.color = _strongColor;
-            else
-                _myImage.color = _weakColor;
-
-            StartCoroutine("CO_HitMarkVanish");
+            _myImage.color = color;
+            StartCoroutine(CO_HitMarkVanish());
         }
 
         IEnumerator CO_HitMarkVanish()
