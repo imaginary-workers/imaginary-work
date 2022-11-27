@@ -7,6 +7,7 @@ namespace Game.Gameplay.Player
     public class PlayerAnimationManager : MonoBehaviour
     {
         [SerializeField] Animator _myAni;
+        [SerializeField] WeaponManager _weaponManager;
         Dictionary<string, Action> _events = new Dictionary<string, Action>();
 
         public void AddAnimationEvent(string eventName, Action callback)
@@ -20,7 +21,10 @@ namespace Game.Gameplay.Player
                 _events.Add(eventName, callback);
             }
         }
-
+        private void Awake()
+        {
+            _weaponManager.OnWeaponChange += SwitchWeapon;
+        }
         public void RemoveAnimationEvent(string eventName)
         {
             _events.Remove(eventName);
@@ -61,6 +65,10 @@ namespace Game.Gameplay.Player
         {
             _myAni.SetTrigger("ReloadTrigger");
         }
+        public void SwitchWeapon()
+        {
+            _myAni.SetTrigger("WeaponChange");
+        }
 
         public void BackToIdle()
         {
@@ -76,5 +84,6 @@ namespace Game.Gameplay.Player
         {
             _myAni.Play("meleeWeakHit");
         }
+       
     }
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Game.Gameplay
 {
-    public class Damaging : MonoBehaviour
+    public class DamagingFire : MonoBehaviour
     {
         [SerializeField] int _damage = 0;
         [SerializeField] ElementSO _element;
@@ -24,12 +24,7 @@ namespace Game.Gameplay
             damageable.TakeTamage(_damage, _element, EnemySource);
             damageable.OnTakeDamage -= Hit;
             damageable.OnTakeStrongDamage -= StrongHit;
-            DestroySelf();
-        }
 
-        void DestroySelf()
-        {
-            gameObject.SetActive(false);
         }
 
         void Hit(int damage, GameObject damaging)

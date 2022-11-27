@@ -23,7 +23,7 @@ namespace Game.Gameplay.Enemies.PatrolFire
 
         void OnDisable()
         {
-            _damageable.OnTakeDamage -= damage => TakeDamageFeedback();
+            _damageable.OnTakeDamage -= OnTakeDamageHandler;
         }
 
         void LateUpdate()
@@ -43,7 +43,7 @@ namespace Game.Gameplay.Enemies.PatrolFire
 
         public void PLAY_EVENT(string eventName)
         {
-            _events[eventName]?.Invoke();   
+            _events[eventName]?.Invoke();
         }
 
         public void AddAnimationEvent(string eventName, Action callback)
@@ -72,9 +72,8 @@ namespace Game.Gameplay.Enemies.PatrolFire
             _animator.SetTrigger("Hit");
         }
 
-        void OnTakeDamageHandler(int damage)
+        void OnTakeDamageHandler(int damage, GameObject damaging)
         {
-
             TakeDamageFeedback();
         }
     }

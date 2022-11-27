@@ -5,8 +5,8 @@ using UnityEngine.AI;
 namespace Game.Gameplay.Enemies
 {
     public class FollowPlayer : MonoBehaviour
-    {          
-        [SerializeField, Range(0f,5f)]  float _speed = 5f;
+    {
+        [SerializeField, Range(0f, 5f)] float _speed = 5f;
         [SerializeField] NavMeshAgent _agent;
         [SerializeField, Range(0f, 5f)] float _closeRange = 2f;
         [SerializeField, Range(.1f, 3f)] float _rangeOfVisionY = 1;
@@ -16,7 +16,7 @@ namespace Game.Gameplay.Enemies
         {
             set => _rangeOfVisionY = value;
         }
-        
+
         public float Speed
         {
             set => _speed = value;
@@ -24,20 +24,18 @@ namespace Game.Gameplay.Enemies
 
         void Awake()
         {
-            _player = FindObjectOfType<PlayerController>();          
+            _player = FindObjectOfType<PlayerController>();
         }
         void Update()
         {
             var playerPosition = _player.transform.position;
             var currentPosition = transform.position;
-            if (Utils.IsInRangeOfVision(currentPosition, playerPosition, _closeRange, _rangeOfVisionY))
-            {
-                _agent.speed = 0;
-            }
-            else
-            {
-                _agent.SetDestination(playerPosition);
-            }
+            _agent.SetDestination(playerPosition);
+            
+        }
+        private void OnEnable()
+        {
+            _agent.speed = _speed;
         }
     }
 }
