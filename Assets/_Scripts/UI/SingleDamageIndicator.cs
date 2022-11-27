@@ -17,7 +17,7 @@ namespace Game.UI
             Player = player;
             _damageable = Enemy.GetComponent<IDamageable>();
             _damageable.OnDeath += DestroyIndicator;
-            _destroy.DestroyInSeconds(maxSeconds);
+            _destroy.DestroyInSeconds(maxSeconds, () => DestroyIndicator(Enemy));
         }
 
         public void Reuse(float maxSeconds)
@@ -47,10 +47,8 @@ namespace Game.UI
             var damagingPosition = Enemy.transform.position;
             var playerForward = playerTransform.forward;
             var damagingDirection = (damagingPosition - playerPosition).normalized;
-            // playerForward.y = damagingDirection.y = 0;
             var angle = Vector3.SignedAngle(playerForward, damagingDirection, Vector3.up);
-            // if (damagingDirection.x <= playerForward.x)
-            //     angle *= -1f;
+            angle *= -1f;
             var rotation = Quaternion.Euler(0, 0, angle);
             transform.rotation = rotation;
         }
