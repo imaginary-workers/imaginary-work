@@ -87,6 +87,7 @@
     <Compile Include="Assets\_Scripts\EZ Camera Shake\Scripts\CameraShaker.cs" />
     <Compile Include="Assets\_Scripts\Gameplay\Enemies\PatrolFire\NormalState.cs" />
     <Compile Include="Assets\_Scripts\Gameplay\Enemies\CollectableEnemy\DeadState.cs" />
+    <Compile Include="Assets\_Scripts\Explosion.cs" />
     <Compile Include="Assets\_Scripts\Gameplay\Weapon\NailsWeapon.cs" />
     <Compile Include="Assets\_Scripts\Gameplay\Player\PlayerAnimationManager.cs" />
     <Compile Include="Assets\_Scripts\SO\WeaponSO.cs" />
@@ -113,6 +114,7 @@
     <Compile Include="Assets\_Scripts\Managers\GameplayConfigManager.cs" />
     <Compile Include="Assets\_Scripts\Gameplay\Enemies\FollowMelee\MetalSoundController.cs" />
     <Compile Include="Assets\_Scripts\Gameplay\Enemies\FlyerPatrol\AttackState.cs" />
+    <Compile Include="Assets\_Scripts\Gameplay\DamagingFire.cs" />
     <Compile Include="Assets\_Scripts\UI\SkillBarController.cs" />
     <Compile Include="Assets\_Scripts\Gameplay\Platforms\PlatformMovable.cs" />
     <Compile Include="Assets\_Scripts\EZ Camera Shake\Scripts\CameraShakeInstance.cs" />
@@ -166,7 +168,6 @@
     <Compile Include="Assets\_Scripts\Gameplay\Enemies\State.cs" />
     <Compile Include="Assets\_Scripts\Gameplay\CameraFollowTarget.cs" />
     <Compile Include="Assets\_Scripts\Gameplay\Enemies\PatrolFire\AttackState.cs" />
-    <Compile Include="Assets\_Scripts\Gameplay\DamagingFire.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
