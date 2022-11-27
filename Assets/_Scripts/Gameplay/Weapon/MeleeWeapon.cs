@@ -7,7 +7,6 @@ namespace Game.Gameplay.Weapons
     public class MeleeWeapon : Weapon
     {
         [SerializeField] Damaging _damaging;
-        Action _TriggerAttackAnimation;
         PlayerAnimationManager _animationManager;
 
         void Awake()

@@ -38,10 +38,9 @@ namespace Game.Gameplay.Player
             if (weapon.IsLocked) return false;
             CurrentSlot = slot;
             if (weapon == null) return false;
-
+            OnWeaponChange?.Invoke();
             CurrentWeapon.gameObject.SetActive(false);
             CurrentWeapon = weapon;
-            OnWeaponChange?.Invoke();
             CurrentWeapon.gameObject.SetActive(true);
             GameManager.Instance.UpdateBulletCounter(CurrentWeapon.Ammunition);
             return true;
