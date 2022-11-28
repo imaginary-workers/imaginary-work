@@ -55,7 +55,6 @@ namespace Game.Gameplay
         {
             if (other.gameObject.layer == 0 || other.gameObject.layer == 6)
             {
-                Debug.Log("holis");
                 DesactiveBullet();
             }
         }

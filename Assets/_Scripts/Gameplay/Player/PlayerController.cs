@@ -12,6 +12,7 @@ namespace Game.Gameplay.Player
         [SerializeField] PlayerInput _playerInput;
         [SerializeField] PlayerAnimationManager _animator;
         [SerializeField] WeaponController _weaponController;
+        [SerializeField] Camera _camera;
         public bool active = true;
         Vector2 _moveVelocityInput;
         float _currentTime = 1;
@@ -148,12 +149,14 @@ namespace Game.Gameplay.Player
             _weaponController.CanAttack = !active;
             if (active)
             {
+               // _camera.fieldOfView = 120;
                 _currentSpeed = _sprintSpeed;
                 _timeStep = _timeSprint;
                 _animator.StartSprint();
             }
             else
             {
+                //_camera.fieldOfView = 90;
                 _currentSpeed = _normalSpeed;
                 _timeStep = _timeWalk;
                 _animator.StopSprint();
