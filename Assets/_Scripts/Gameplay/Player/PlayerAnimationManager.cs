@@ -43,6 +43,11 @@ namespace Game.Gameplay.Player
             _myAni.SetTrigger("MeleeTrigger");
         }
 
+        public void StopAttackMelee()
+        {
+            _myAni.ResetTrigger("MeleeTrigger");
+        }
+
         public void PistolShooter()
         {
             _myAni.SetTrigger("PistolTrigger");

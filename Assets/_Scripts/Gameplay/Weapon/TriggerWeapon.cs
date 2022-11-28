@@ -35,13 +35,13 @@ namespace Game.Gameplay.Weapons
             canAttack = true;
         }
 
+        public override void EndAttack() { }
         public override void CancelAttack() { }
 
         protected void EVENT_Weapon_SHOOTING()
         {
             Shoot();
         }
-
 
         #endregion
 

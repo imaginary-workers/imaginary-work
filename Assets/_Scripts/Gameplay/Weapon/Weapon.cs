@@ -25,6 +25,7 @@ namespace Game.Gameplay.Weapons
         public virtual bool ReloadReserveAmmunition() => false;
         public abstract void StartAttack();
         public abstract void PerformedAttack();
+        public abstract void EndAttack();
         public abstract void CancelAttack();
         public WeaponSO Data { get => _weaponData; }
         public virtual void SubscribeToAnimationEvents(PlayerAnimationManager playerAnimationManager) {}
