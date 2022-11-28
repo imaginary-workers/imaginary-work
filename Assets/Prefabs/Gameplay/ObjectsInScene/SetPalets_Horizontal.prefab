@@ -73,7 +73,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7148903547973043395}
   - component: {fileID: 8430341235446611171}
-  - component: {fileID: 4950379717215304433}
+  - component: {fileID: 4301757566436500262}
   - component: {fileID: 3752551909111763753}
   - component: {fileID: 2976924438142110013}
   - component: {fileID: 8957972197517463973}
@@ -114,7 +114,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.9438305, y: 1.2916595, z: 2.8300574}
   m_Center: {x: 0.011612177, y: 0.6566842, z: -0.036876798}
---- !u!114 &4950379717215304433
+--- !u!114 &4301757566436500262
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -123,7 +123,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7148903547973043392}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fc660ccbbe8a4ad4ea828415e3d77778, type: 3}
+  m_Script: {fileID: 11500000, guid: 51ec11d9006b45fe8e5a53699f862b60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _life: 1
@@ -140,7 +140,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e4c788eb39995f41920acc4effdb183, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damageable: {fileID: 4950379717215304433}
+  _damageable: {fileID: 4301757566436500262}
   _mesh: {fileID: 6696361369310061260}
   _effectPrefab: {fileID: 5824207716733614624, guid: 31ed0e03d2761d14e8a83d1aac8a9180, type: 3}
   _effectPoint: {fileID: 146129653472887855}

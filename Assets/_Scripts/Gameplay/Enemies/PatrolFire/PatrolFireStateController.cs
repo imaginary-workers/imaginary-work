@@ -9,6 +9,7 @@ namespace Game.Gameplay.Enemies.PatrolFire
     {
         [SerializeField] PatrolBehaviour _normalBehaviour;
         [SerializeField] VisualField _visualField;  
+        [SerializeField] VisualField _visualFieldSound;  
         [SerializeField] NavMeshAgent _agent;
         [SerializeField] LookAtTarget _lookAtTarget;
         [SerializeField] EnemyBurstShooter _enemyShooter;
@@ -30,14 +31,14 @@ namespace Game.Gameplay.Enemies.PatrolFire
         protected override void OnAwakeEnemy()
         {
             _player = GameManager.Player;
-            _enemyShooter.Target = _lookAtTarget.Target = _visualField.Target = _player;
+            _enemyShooter.Target = _lookAtTarget.Target = _visualField.Target = _visualFieldSound.Target = _player;
             _visualField.enabled = true;
             _normalBehaviour.enabled = false;
             _lookAtTarget.enabled = false;
             _enemyShooter.enabled = false;
-            _normalState = new NormalState(this, _normalBehaviour, _visualField);
-            _attackState = new AttackState(this, _visualField, _agent, _lookAtTarget, _animatorController, _enemyShooter);
-            _takeStrongDamageState = new TakeStrongDamageState(this, _agent, _animatorController, _visualField);
+            _normalState = new NormalState(this, _normalBehaviour, _visualField, _visualFieldSound);
+            _attackState = new AttackState(this, _visualField, _agent, _lookAtTarget, _animatorController, _enemyShooter, _visualFieldSound);
+            _takeStrongDamageState = new TakeStrongDamageState(this, _agent, _animatorController, _visualField, _visualFieldSound);
             ChangeState(_normalState);
             Damageable.OnTakeStrongDamage += OnTakeStrongDamageHandler;
         }
@@ -60,7 +61,7 @@ namespace Game.Gameplay.Enemies.PatrolFire
             ChangeState(_takeStrongDamageState);
         }
 
-        void OnTakeStrongDamageHandler(int damage)
+        void OnTakeStrongDamageHandler(int damage, GameObject damaging)
         {
             if (!_canDoStrongDamageFeedback) return;
             StartCoroutine(CO_TakeStrongDamageRecoverTime());

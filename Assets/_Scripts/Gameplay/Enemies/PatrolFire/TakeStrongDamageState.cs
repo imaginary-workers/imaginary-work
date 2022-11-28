@@ -8,18 +8,21 @@ namespace Game.Gameplay.Enemies.PatrolFire
         NavMeshAgent _agent;
         AnimatorController _animatorController;
         VisualField _visualField;
+        VisualField _visualFieldSound;
 
         public TakeStrongDamageState(
             PatrolFireStateController stateController,
             NavMeshAgent agent,
             AnimatorController animatorController,
-            VisualField visualField
+            VisualField visualField,
+            VisualField visualFieldSound
             )
         {
             _stateController = stateController;
             _agent = agent;
             _animatorController = animatorController;
             _visualField = visualField;
+            _visualFieldSound = visualFieldSound;
         }
 
         public override void Enter()
@@ -41,7 +44,7 @@ namespace Game.Gameplay.Enemies.PatrolFire
         void OnTakeStrongDamageEndsHandler()
         {
             State nextState;
-            if (_visualField.IsTargetInView)
+            if (_visualField.IsTargetInView || _visualFieldSound.IsTargetInView)
                 nextState = _stateController.AttackState;
             else
                 nextState = _stateController.NormalState;
