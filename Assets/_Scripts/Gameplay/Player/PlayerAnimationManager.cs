@@ -89,6 +89,17 @@ namespace Game.Gameplay.Player
         {
             _myAni.Play("meleeWeakHit");
         }
+
+        public void CancelAttact()
+        {
+            _myAni.ResetTrigger("MeleeTrigger");
+            _myAni.ResetTrigger("PistolTrigger");
+            _myAni.ResetTrigger("FireTrigger");
+        }
+        public void CancelReload()
+        {
+            _myAni.ResetTrigger("ReloadTrigger");
+        }
        
     }
 }

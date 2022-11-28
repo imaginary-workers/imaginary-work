@@ -77,7 +77,7 @@ namespace Game.Gameplay.Weapons
 
         private void StopMeleeAnimation()
         {
-            _animationManager.StopAttackMelee();
+            _animationManager.CancelAttact();
         }
         #endregion
 
