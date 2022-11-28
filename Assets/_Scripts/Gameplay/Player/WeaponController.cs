@@ -92,9 +92,9 @@ namespace Game.Gameplay.Player
         {
             if (!active) return;
             if (_manager.CurrentSlot == slot) return;
+            CurrentWeapon.CancelAttack();
             if (!_manager.SwitchWeapon(slot)) return;
 
-            CurrentWeapon.CancelAttack();
             _animation.BackToIdle();
             CanAttack = true;
             if (CurrentWeapon.IsHeavy)
