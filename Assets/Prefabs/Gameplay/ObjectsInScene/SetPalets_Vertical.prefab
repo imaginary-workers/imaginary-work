@@ -10,11 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 2763974646904810665}
   - component: {fileID: 7071168529936985430}
-  - component: {fileID: 534692392524591310}
   - component: {fileID: 358010717141290764}
   - component: {fileID: 3256502799475022240}
   - component: {fileID: 5900733750609154173}
   - component: {fileID: 4409791766597380288}
+  - component: {fileID: 4278308770200362378}
   m_Layer: 7
   m_Name: SetPalets_Vertical
   m_TagString: Untagged
@@ -50,27 +50,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e4c788eb39995f41920acc4effdb183, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damageable: {fileID: 534692392524591310}
+  _damageable: {fileID: 4278308770200362378}
   _mesh: {fileID: 8039592488336694713}
   _effectPrefab: {fileID: 5824207716733614624, guid: 31ed0e03d2761d14e8a83d1aac8a9180, type: 3}
   _effectPoint: {fileID: 3589677132210459468}
   _droper: {fileID: 3256502799475022240}
   _audioSource: {fileID: 5900733750609154173}
   _destroy: {fileID: 8300000, guid: 93adf5a4df2a6594599035ca5a04b270, type: 3}
---- !u!114 &534692392524591310
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2763974646904810664}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fc660ccbbe8a4ad4ea828415e3d77778, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _life: 1
-  _weakness: {fileID: 0}
 --- !u!65 &358010717141290764
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -211,6 +197,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 122
   m_CollisionDetection: 0
+--- !u!114 &4278308770200362378
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2763974646904810664}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51ec11d9006b45fe8e5a53699f862b60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _life: 1
+  _weakness: {fileID: 0}
 --- !u!1 &6808641976041943406
 GameObject:
   m_ObjectHideFlags: 0

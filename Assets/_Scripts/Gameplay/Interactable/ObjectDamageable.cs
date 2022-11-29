@@ -1,11 +1,10 @@
-using System;
+﻿using System;
 using Game.SO;
-using Game.UI;
 using UnityEngine;
 
-namespace Game.Gameplay.Enemies
+namespace Game.Gameplay.Interactable
 {
-    public class EnemyDamageable : MonoBehaviour, IDamageable
+    public class ObjectDamageable : MonoBehaviour, IDamageable
     {
         [SerializeField] int _life = 10;
         [SerializeField] ElementSO _weakness;
@@ -21,22 +20,18 @@ namespace Game.Gameplay.Enemies
             {
                 _life -= (damage * 2);
                 if (Life > 0)
-                {
                     OnTakeStrongDamage?.Invoke(damage, damaging);
-                    HitMarkerController.Instance.DisplayHitMarkStrong();
-                }
             }
             else
             {
                 _life -= damage;
                 OnTakeDamage?.Invoke(damage, damaging);
-                HitMarkerController.Instance.DisplayHitMarkWeak();
+
             }
             if (Life <= 0)
             {
                 _life = 0;
                 OnDeath?.Invoke(damaging);
-                HitMarkerController.Instance.DisplayHitMarkDeath();
             }
         }
     }

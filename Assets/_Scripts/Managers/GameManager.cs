@@ -137,7 +137,7 @@ namespace Game.Managers
 
 #region Game_FLOW
 
-        public void GameOver()
+        public void GameOver(GameObject damaging)
         {
             StartCoroutine(CO_GameOver());
         }

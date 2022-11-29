@@ -10,15 +10,14 @@ namespace Game.Gameplay
         [SerializeField] int _pooledAmount = 1;
         [SerializeField] bool _willGrow = true;
         [SerializeField] List<GameObject> _pooledObjects;
+        [SerializeField] Transform _parent;
 
         void Start()
         {
             _pooledObjects = new List<GameObject>();
             for (var i = 0; i < _pooledAmount; i++)
             {
-                var obj = Instantiate(_pooledObject);
-                obj.SetActive(false);
-                _pooledObjects.Add(obj);
+                CreateObject();
             }
         }
 
@@ -34,13 +33,22 @@ namespace Game.Gameplay
 
             if (_willGrow)
             {
-                var obj = Instantiate(_pooledObject);
-                _pooledObjects.Add(obj);
-
-                return obj;
+                return CreateObject();
             }
 
             return null;
+        }
+
+        GameObject CreateObject()
+        {
+            GameObject obj;
+            if (_parent != null)
+                obj = Instantiate(_pooledObject, _parent);
+            else
+                obj = Instantiate(_pooledObject);
+            obj.SetActive(false);
+            _pooledObjects.Add(obj);
+            return obj;
         }
     }
 }
