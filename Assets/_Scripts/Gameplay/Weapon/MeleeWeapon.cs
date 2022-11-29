@@ -30,9 +30,12 @@ namespace Game.Gameplay.Weapons
             StartMeleeAnimation();
         }
 
+        public override void EndAttack() { }
+
         public override void CancelAttack()
         {
             canAttack = true;
+            StopMeleeAnimation();
         }
 
         public override void SubscribeToAnimationEvents(PlayerAnimationManager animationManager)
@@ -70,11 +73,16 @@ namespace Game.Gameplay.Weapons
         {
             _animationManager.AttackMelee();
         }
+
+        private void StopMeleeAnimation()
+        {
+            _animationManager.CancelAttact();
+        }
         #endregion
 
         void TriggerOnStrongHitFeedback()
         {
-            _animationManager.StrongHitAnimation();
+            _animationManager.StrongHitAnimation();//
         }
 
         void TriggerOnHitFeedback()

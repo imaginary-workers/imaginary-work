@@ -40,10 +40,10 @@ namespace Game.Gameplay.Player
             CurrentWeapon.Target = _pointerTarget.transform;
             if (context.started)
             {
-                if (CurrentWeapon.IsHeavy)
-                {
-                    PlayerHeavy();
-                }
+                // if (CurrentWeapon.IsHeavy)
+                // {
+                //     PlayerHeavy();
+                // }
 
                 _playerController.CanSprint = false;
                 CurrentWeapon.StartAttack();
@@ -52,12 +52,12 @@ namespace Game.Gameplay.Player
                 CurrentWeapon.PerformedAttack();
             if (context.canceled)
             {
-                if (CurrentWeapon.IsHeavy)
-                {
-                    PlayerBackToDefault();
-                }
+                // if (CurrentWeapon.IsHeavy)
+                // {
+                //     PlayerBackToDefault();
+                // }
                 _playerController.CanSprint = true;
-                CurrentWeapon.CancelAttack();
+                CurrentWeapon.EndAttack();
             }
         }
 
@@ -92,9 +92,10 @@ namespace Game.Gameplay.Player
         {
             if (!active) return;
             if (_manager.CurrentSlot == slot) return;
+            _animation.CancelAttact();
+            CurrentWeapon.CancelAttack();
             if (!_manager.SwitchWeapon(slot)) return;
 
-            CurrentWeapon.CancelAttack();
             _animation.BackToIdle();
             CanAttack = true;
             if (CurrentWeapon.IsHeavy)
