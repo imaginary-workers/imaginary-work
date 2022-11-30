@@ -51,5 +51,12 @@ namespace Game.Gameplay
             _trail.enabled = enable;
             _trail.emitting = enable;
         }
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.gameObject.layer == 0 || other.gameObject.layer == 6)
+            {
+                DesactiveBullet();
+            }
+        }
     }
 }

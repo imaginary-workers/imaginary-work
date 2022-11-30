@@ -39,7 +39,7 @@ namespace Game.UI
             _sliderFillImage.color = _colorVariention.Evaluate(value);
         }
 
-        public void PlayDamageEffect(int x)
+        public void PlayDamageEffect(int x, GameObject damaging)
         {
             _effectAnimator.SetTrigger("Play");
         }

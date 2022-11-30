@@ -5,7 +5,7 @@ namespace Game.Gameplay.Interactable
 {
     public class DestructableObject : MonoBehaviour
     {
-        [SerializeField] EnemyDamageable _damageable;
+        [SerializeField] ObjectDamageable _damageable;
         [SerializeField] GameObject _mesh;
         [SerializeField] GameObject _effectPrefab;
         [SerializeField] Transform _effectPoint;
@@ -22,15 +22,15 @@ namespace Game.Gameplay.Interactable
 
         void OnEnable()
         {
-            _damageable.OnDeath += DestroyObject;
+            _damageable.OnDeath += DestroyThis;
         }
 
         void OnDisable()
         {
-            _damageable.OnDeath -= DestroyObject;
+            _damageable.OnDeath -= DestroyThis;
         }
 
-        void DestroyObject()
+        void DestroyThis(GameObject damage)
         {
             _collider.enabled = false;
             _audioSource.PlayOneShot(_destroy);

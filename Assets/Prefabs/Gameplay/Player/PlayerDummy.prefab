@@ -210,8 +210,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 2132270469682288655}
+  m_Children: []
   m_Father: {fileID: 1425224902}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -395,7 +394,7 @@ Transform:
   m_Children:
   - {fileID: 3374871210961474756}
   m_Father: {fileID: 7055353359782922695}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3144870522290190709
 MonoBehaviour:
@@ -425,6 +424,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5723768200107790863}
   - component: {fileID: 5202384735751134679}
+  - component: {fileID: 5220847486226909724}
   m_Layer: 3
   m_Name: GameObject
   m_TagString: Untagged
@@ -465,6 +465,24 @@ MonoBehaviour:
   _playerController: {fileID: 8219668241822508868}
   _gameplaySettingsSo: {fileID: 11400000, guid: ad91dff427b50604e96c166048168afa, type: 2}
   _pjDamageable: {fileID: 8219668241822508865}
+--- !u!114 &5220847486226909724
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5810364423732949495}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5bc2d2ea0d20a6c4f88f7e54f3a4fe86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _targetAlwaysPlayer: 0
+  _target: {fileID: 8538140076778761173}
+  _speedRotation: 10
+  _ignoreX: 0
+  _ignoreY: 0
+  _ignoreZ: 0
 --- !u!1 &7440369924887799501
 GameObject:
   m_ObjectHideFlags: 0
@@ -643,6 +661,8 @@ MonoBehaviour:
   _playerInput: {fileID: 8219668241822508866}
   _animator: {fileID: 1160910595356904043}
   _weaponController: {fileID: 8219668241822508986}
+  _camera: {fileID: 1425224901}
+  active: 1
   _timeWalk: 0.24
   _pjSoundController: {fileID: 4280496099988934263}
   _timeSprint: 0.18
@@ -661,11 +681,15 @@ MonoBehaviour:
   _audioSource: {fileID: 2519684814726871061}
   _playerdamageable: {fileID: 8219668241822508865}
   _jumpComponent: {fileID: 5810076752666076082}
-  _hurt: {fileID: 0}
-  _walking: {fileID: 0}
+  _weaponInventory: {fileID: 7520371172983455578}
+  _weaponManager: {fileID: 8219668241822508985}
+  _hurt: {fileID: 8300000, guid: c612d463040046147877387d320c5178, type: 3}
+  _walking: {fileID: 8300000, guid: 604fa420f7bc20f45b249402f5e46add, type: 3}
   _jump: {fileID: 8300000, guid: f60e398a491cac548ac73eea1bc006a7, type: 3}
-  _eating: {fileID: 0}
-  _dropAmmuation: {fileID: 0}
+  _eating: {fileID: 8300000, guid: 016eab8c57cbe2b41be6d94e8f08ad0b, type: 3}
+  _dropAmmuation: {fileID: 8300000, guid: 966d0159e65ac66489de2834f4d1f2da, type: 3}
+  _grab: {fileID: 8300000, guid: 8fa8bdeee6357894185d8711a61b13cd, type: 3}
+  _switch: {fileID: 8300000, guid: 0ff6ed137b5d70c4c96a33407b2d330c, type: 3}
 --- !u!114 &8219668241822508867
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -972,7 +996,7 @@ MonoBehaviour:
   _playerController: {fileID: 8219668241822508868}
   _speedWeaponHeavy: 1
   _animation: {fileID: 1160910595356904043}
-  _active: 1
+  active: 1
   _pjSoundController: {fileID: 4280496099988934263}
 --- !u!114 &8219668241822508985
 MonoBehaviour:
@@ -988,6 +1012,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _inventory: {fileID: 7520371172983455578}
   _animationManager: {fileID: 1160910595356904043}
+  _melee: {fileID: 921895296802912248}
 --- !u!114 &7520371172983455578
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1037,7 +1062,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _audioSource: {fileID: 2519684814726871061}
-  _switch: {fileID: 0}
+  _switch: {fileID: 8300000, guid: 0ff6ed137b5d70c4c96a33407b2d330c, type: 3}
   _fire: {fileID: 8300000, guid: c75a3ccd0412283488d2e109c33598fe, type: 3}
   _noHit: {fileID: 8300000, guid: 382c2f30329d05d4e9387a5ea3c80307, type: 3}
   _shootPistol: {fileID: 8300000, guid: 4ef4999b671df1b469f6b588092f6b84, type: 3}
@@ -1372,12 +1397,12 @@ GameObject:
   m_Component:
   - component: {fileID: 2132270469682288655}
   m_Layer: 9
-  m_Name: SwayTarget
+  m_Name: CameraAnimationTarget
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2132270469682288655
 Transform:
   m_ObjectHideFlags: 0
@@ -1385,12 +1410,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8538140076778761173}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.05}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.6, z: 0.968}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 3956021044121367517}
-  m_RootOrder: 0
+  m_Father: {fileID: 7055353359782922695}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8910876165643898647
 GameObject:
@@ -1423,6 +1448,7 @@ Transform:
   m_Children:
   - {fileID: 8219668242174349528}
   - {fileID: 5723768200107790863}
+  - {fileID: 2132270469682288655}
   - {fileID: 2089143607096353511}
   m_Father: {fileID: 8219668241822508871}
   m_RootOrder: 0
@@ -1459,6 +1485,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _myAni: {fileID: 6076358703767118725}
+  _weaponManager: {fileID: 8219668241822508985}
 --- !u!1001 &105966453148344659
 PrefabInstance:
   m_ObjectHideFlags: 0

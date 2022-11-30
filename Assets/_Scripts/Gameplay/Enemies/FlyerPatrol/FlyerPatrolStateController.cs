@@ -40,7 +40,7 @@ namespace Game.Gameplay.Enemies.FlyerPatrol
 
         protected override void HitStopEffect()
         {
-            StartCoroutine(Utils.CO_HitStop(0.3f, 0.001f, ActiveDestroyFeedback));
+            StartCoroutine(Utils.CO_HitStop(0.03f, 0.001f, ActiveDestroyFeedback));
         }
 
         void ActiveDestroyFeedback()
