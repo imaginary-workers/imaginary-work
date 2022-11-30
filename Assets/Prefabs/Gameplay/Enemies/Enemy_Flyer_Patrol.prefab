@@ -68,8 +68,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.65, z: 1}
-  m_Center: {x: 0, y: 0.15, z: 0}
+  m_Size: {x: 2, y: 0.65, z: 1.3}
+  m_Center: {x: -0.01787138, y: 0.15, z: 0}
 --- !u!195 &5912675402029469630
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -157,7 +157,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _audioSource: {fileID: 5934778444407784298}
   _attack: {fileID: 8300000, guid: 314e4a99f80a38a46a0382fae521747f, type: 3}
-  _Dead: {fileID: 8300000, guid: d251f52f25179b74889c32f3629b52e1, type: 3}
   _raycastAttack: {fileID: 4885114125338213701}
 --- !u!114 &5745978130405426769
 MonoBehaviour:
