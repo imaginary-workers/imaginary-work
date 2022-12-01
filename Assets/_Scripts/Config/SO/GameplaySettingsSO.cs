@@ -1,8 +1,7 @@
 ﻿using System;
-using Game.Config;
 using UnityEngine;
 
-namespace Game.SO
+namespace Game.Config.SO
 {
     [CreateAssetMenu(fileName = "gameplay-config", menuName = "Scriptable Object/config/gameplay", order = 0)]
     public class GameplaySettingsSO : ScriptableObject

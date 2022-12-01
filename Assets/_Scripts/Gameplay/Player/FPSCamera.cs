@@ -1,6 +1,6 @@
 ﻿using EZCameraShake;
 using Game.Config;
-using Game.SO;
+using Game.Config.SO;
 using UnityEngine;
 
 namespace Game.Gameplay.Player

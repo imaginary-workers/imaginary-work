@@ -2,7 +2,7 @@ using Game.Gameplay.Player;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using Game.SO;
+using Game.Config.SO;
 using UnityEngine.UI;
 using Game.Gameplay.Enemies;
 using System.Collections;
@@ -174,21 +174,6 @@ namespace Game.Managers
         {
             var sceneSO = _sceneStorage.FindSceneByName("MainMenu");
             StartCoroutine(CO_NextScene(sceneSO));
-        }
-
-        public void ConditionWin()
-        {
-            SceneSO sceneSO;
-            if (SceneManager.GetActiveScene().name == "Level0")
-            {
-                sceneSO = _sceneStorage.FindSceneByName("Level1");
-                StartCoroutine(CO_NextScene(sceneSO));
-            }
-            else
-            {
-                sceneSO = _sceneStorage.FindSceneByName("VictoryScreen");
-                StartCoroutine(CO_NextScene(sceneSO));
-            }
         }
 
         public void NextScene(SceneSO sceneSO)

@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using Game.Gameplay.Weapons;
 using Game.Managers;
-using Game.SO;
+using Game.Config.SO;
 using UnityEngine;
 
 namespace Game.Gameplay.Player

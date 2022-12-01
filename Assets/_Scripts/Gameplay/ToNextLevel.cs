@@ -1,6 +1,6 @@
 using Game.Gameplay.Enemies;
 using Game.Managers;
-using Game.SO;
+using Game.Config.SO;
 using UnityEngine;
 
 namespace Game.Gameplay

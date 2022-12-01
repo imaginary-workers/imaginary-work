@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
-using Game.SO;
+using Game.Config.SO;
 using Game.Managers;
 using Game.Gameplay.Player;
 

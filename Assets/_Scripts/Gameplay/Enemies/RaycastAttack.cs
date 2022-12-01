@@ -1,4 +1,4 @@
-using Game.SO;
+using Game.Config.SO;
 using System;
 using Game.Gameplay.SO;
 using UnityEngine;

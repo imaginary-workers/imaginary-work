@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Game.SO
+namespace Game.Config.SO
 {
 
     [CreateAssetMenu(fileName = "Some_Scene", menuName = "Scriptable Object/config/scene", order = 0)]
