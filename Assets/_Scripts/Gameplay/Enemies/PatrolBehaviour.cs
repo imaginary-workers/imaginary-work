@@ -76,11 +76,11 @@ namespace Game.Gameplay.Enemies
 
         void StartWaiting(float seconds)
         {
+            _agent.speed = 0;
             _waitCurrentSeconds = 0;
             _currentWaitMax = seconds;
             _isWaiting = true;
             _agent.isStopped = true;
-            _agent.speed = 0;
         }
 
         void UpdateNextDestination()

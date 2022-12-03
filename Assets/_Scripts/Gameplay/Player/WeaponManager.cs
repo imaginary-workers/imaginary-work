@@ -1,6 +1,7 @@
 
 using Game.Gameplay.Weapons;
 using Game.Managers;
+using System;
 using UnityEngine;
 
 namespace Game.Gameplay.Player
@@ -9,6 +10,7 @@ namespace Game.Gameplay.Player
     {
         [SerializeField] WeaponInventory _inventory;
         [SerializeField] PlayerAnimationManager _animationManager;
+        public event Action OnWeaponChange;
 
         public int CurrentSlot { get; private set; } = 0;
         public Weapon CurrentWeapon { get; private set; }
@@ -36,7 +38,7 @@ namespace Game.Gameplay.Player
             if (weapon.IsLocked) return false;
             CurrentSlot = slot;
             if (weapon == null) return false;
-
+            OnWeaponChange?.Invoke();
             CurrentWeapon.gameObject.SetActive(false);
             CurrentWeapon = weapon;
             CurrentWeapon.gameObject.SetActive(true);

@@ -7,14 +7,19 @@ namespace Game.Gameplay.Weapons
     public class MeleeWeapon : Weapon
     {
         [SerializeField] Damaging _damaging;
-        Action _TriggerAttackAnimation;
         PlayerAnimationManager _animationManager;
 
         void Awake()
         {
-            _damaging.gameObject.SetActive(false);
+            _damaging?.gameObject.SetActive(false);
             _damaging.OnHit += TriggerOnHitFeedback;
             _damaging.OnStrongHit += TriggerOnStrongHitFeedback;
+        }
+
+        private void OnDestroy()
+        {
+            _damaging.OnHit -= TriggerOnHitFeedback;
+            _damaging.OnStrongHit -= TriggerOnStrongHitFeedback;
         }
 
         public override void StartAttack() { }
@@ -25,9 +30,12 @@ namespace Game.Gameplay.Weapons
             StartMeleeAnimation();
         }
 
+        public override void EndAttack() { }
+
         public override void CancelAttack()
         {
             canAttack = true;
+            StopMeleeAnimation();
         }
 
         public override void SubscribeToAnimationEvents(PlayerAnimationManager animationManager)
@@ -53,23 +61,28 @@ namespace Game.Gameplay.Weapons
 
         void EVENT_END_HITBOX()
         {
-            _damaging.gameObject.SetActive(false);
+            _damaging?.gameObject.SetActive(false);
         }
 
         void EVENT_START_HITBOX()
         {
-            _damaging.gameObject.SetActive(true);
+            _damaging?.gameObject.SetActive(true);
         }
 
         void StartMeleeAnimation()
         {
             _animationManager.AttackMelee();
         }
+
+        private void StopMeleeAnimation()
+        {
+            _animationManager.CancelAttact();
+        }
         #endregion
 
         void TriggerOnStrongHitFeedback()
         {
-            _animationManager.StrongHitAnimation();
+            _animationManager.StrongHitAnimation();//
         }
 
         void TriggerOnHitFeedback()

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2638126657328502971}
   - component: {fileID: 8556542925129982412}
   - component: {fileID: 8470286259326076531}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -91,7 +91,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4470711168823013854}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -205,7 +205,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 1
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!1001 &1079878212730303020
 PrefabInstance:
@@ -261,6 +261,10 @@ PrefabInstance:
     - target: {fileID: 3322792013656578957, guid: 9c02db5472e67094d9e542e6f9d0f6a0, type: 3}
       propertyPath: m_Name
       value: SandSwirlsEffect
+      objectReference: {fileID: 0}
+    - target: {fileID: 3322792013656578957, guid: 9c02db5472e67094d9e542e6f9d0f6a0, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9c02db5472e67094d9e542e6f9d0f6a0, type: 3}
@@ -323,6 +327,10 @@ PrefabInstance:
     - target: {fileID: 3322792013656578957, guid: 9c02db5472e67094d9e542e6f9d0f6a0, type: 3}
       propertyPath: m_Name
       value: SandSwirlsEffect
+      objectReference: {fileID: 0}
+    - target: {fileID: 3322792013656578957, guid: 9c02db5472e67094d9e542e6f9d0f6a0, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9c02db5472e67094d9e542e6f9d0f6a0, type: 3}

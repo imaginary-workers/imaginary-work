@@ -26,7 +26,7 @@ namespace Game.Gameplay.Player
             _pjDamageable.OnTakeDamage += ShackeCamera;
         }
 
-        void ShackeCamera(int obj)
+        void ShackeCamera(int obj, GameObject damaging)
         {
             CameraShaker.Instance.ShakeOnce(_magnitud, _roughness, 0, _fadeOutTime);
         }

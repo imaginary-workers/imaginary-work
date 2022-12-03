@@ -1,6 +1,4 @@
-using Game.Gameplay.Player;
 using Game.Managers;
-using System;
 using UnityEngine;
 
 namespace Game.Gameplay.Weapons
@@ -35,7 +33,7 @@ namespace Game.Gameplay.Weapons
                     GameManager.Instance.UpdateBulletCounter(Ammunition);
                     if (Ammunition <= 0)
                     {
-                        CancelAttack();
+                        EndAttack();
                     }
                 }
                 else
@@ -54,13 +52,17 @@ namespace Game.Gameplay.Weapons
 
         public override void PerformedAttack() { }
 
-        public override void CancelAttack()
+        public override void EndAttack()
         {
             _particle.SetActive(false);
             _isShooting = false;
         }
 
-
+        public override void CancelAttack()
+        {
+            _particle.SetActive(false);
+            _isShooting = false;
+        }
 
         #endregion
         protected override void Shoot()

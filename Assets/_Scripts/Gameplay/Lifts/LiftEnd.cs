@@ -12,10 +12,13 @@ namespace Game.Gameplay.Lifts
         [SerializeField] LiftAnimations _lift;
         [SerializeField] LiftDoorAnimations _liftDoor;
 
+
+
         void Start()
         {
             Enemy.OnNoEnemies += _liftDoor.OpenDoors;
             _checker.OnPlayerEnter += _liftDoor.CloseDoors;
+
             _liftDoor.OnClosed += EndGame;
         }
 

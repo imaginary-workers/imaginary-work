@@ -45,7 +45,7 @@ namespace Game.Managers
         [SerializeField] Text _reserveCounterText;
         [SerializeField] Text _countEnemyText;
         [SerializeField] InventoryUIController _inventoryUI;
-        
+
         [Header("Option Menu")]
         [SerializeField] GameObject _optionsMenu;
 
@@ -79,10 +79,10 @@ namespace Game.Managers
                 _liftStart = GameObject.FindObjectOfType<LiftStart>();
                 if (_liftStart != null)
                 {
+                    _liftStart.Lift.OnUpFinished += ResumePlayerControl;
                     SetPlayerControlActive(false);
                     _liftStart.PlacePlayer(Player);
                     _liftStart.Start();
-                    _liftStart.Lift.OnUpFinished += ResumePlayerControl;
                 }
             }
         }
@@ -107,8 +107,6 @@ namespace Game.Managers
                 }
             }
         }
-
-
 
         void OnDestroy()
         {
@@ -137,7 +135,7 @@ namespace Game.Managers
 
 #region Game_FLOW
 
-        public void GameOver()
+        public void GameOver(GameObject damaging)
         {
             StartCoroutine(CO_GameOver());
         }

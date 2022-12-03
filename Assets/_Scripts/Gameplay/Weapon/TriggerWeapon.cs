@@ -35,6 +35,7 @@ namespace Game.Gameplay.Weapons
             canAttack = true;
         }
 
+        public override void EndAttack() { }
         public override void CancelAttack() { }
 
         protected void EVENT_Weapon_SHOOTING()
@@ -42,25 +43,25 @@ namespace Game.Gameplay.Weapons
             Shoot();
         }
 
-
         #endregion
 
         protected override void Shoot()
         {
             var bulletObject = _bulletPooler.GetPooledObject();
-            Debug.Log(bulletObject.name);
             bulletObject.transform.position = _firePoint.position;
             bulletObject.SetActive(true);
             bulletObject.transform.forward = _firePoint.forward;
             bulletObject.GetComponent<Bullet>()?.Shoot(ShootDirection);
             Ammunition--;
             GameManager.Instance.UpdateBulletCounter(Ammunition);
-
-            _particles?.Play();
+            if (_particles != null)
+            {
+                _particles?.Play();
+            }
             IsShoot();
         }
 
-       
+
         void IsShoot()
         {
             _audioSource.PlayOneShot(_weaponData.ShootSound);

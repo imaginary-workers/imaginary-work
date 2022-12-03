@@ -19,12 +19,13 @@ namespace Game.Gameplay.Weapons
         public void UnLocked() => IsLocked = false;
         public bool IsHeavy { get; protected set; } = false;
         public int ReserveAmmunition { get; protected set; } = -1;
-        public Vector3 Target { set; protected get; } = Vector3.zero;
+        public Transform Target { set; protected get; }
         public virtual bool CanReloadAmmunition() => false;
         public virtual void ReloadAmmunition() {}
         public virtual bool ReloadReserveAmmunition() => false;
         public abstract void StartAttack();
         public abstract void PerformedAttack();
+        public abstract void EndAttack();
         public abstract void CancelAttack();
         public WeaponSO Data { get => _weaponData; }
         public virtual void SubscribeToAnimationEvents(PlayerAnimationManager playerAnimationManager) {}
