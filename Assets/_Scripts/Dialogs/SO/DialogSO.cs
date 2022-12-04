@@ -6,5 +6,7 @@ namespace Game.Dialogs.SO
     public class DialogSO : ScriptableObject
     {
         [SerializeField, TextArea(3, 5)] string[] _sentences;
+
+        public string[] Sentences => _sentences.Clone() as string[];
     }
 }

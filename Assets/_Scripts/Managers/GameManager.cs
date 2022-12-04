@@ -94,7 +94,7 @@ namespace Game.Managers
                 if (_liftStart != null)
                 {
                     _liftStart.Lift.OnUpFinished += ResumePlayerControl;
-                    SetPlayerControlActive(false);
+                    PlayManager.Instance.SetPlayerControlActive(false);
                     _liftStart.PlacePlayer(Player);
                     _liftStart.Start();
                 }
@@ -145,14 +145,9 @@ namespace Game.Managers
 
         void ResumePlayerControl()
         {
-            SetPlayerControlActive(true);
+            PlayManager.Instance.SetPlayerControlActive(true);
         }
 
-        void SetPlayerControlActive(bool active)
-        {
-            Player.GetComponent<PlayerController>().active = active;
-            Player.GetComponent<WeaponController>().active = active;
-        }
 
         #region Game_FLOW
 
@@ -231,8 +226,7 @@ namespace Game.Managers
             _pauseMenu.SetActive(true);
             _pointer.SetActive(false);
             Cursor.lockState = CursorLockMode.None;
-            Time.timeScale = 0;
-            SetPlayerControlActive(false);
+            PlayManager.Instance.CanvasController(true);
         }
 
         public void Resume()
@@ -241,9 +235,7 @@ namespace Game.Managers
             _optionsMenu.GetComponent<OptionMenuUI>().CancelOptions();
             _pauseMenu.SetActive(false);
             _pointer.SetActive(true);
-            Cursor.lockState = CursorLockMode.Locked;
-            Time.timeScale = 1;
-            SetPlayerControlActive(true);
+            PlayManager.Instance.CanvasController(false);
         }
 
         public void OpenOptions()
