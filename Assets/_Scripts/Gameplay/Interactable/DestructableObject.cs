@@ -17,7 +17,7 @@ namespace Game.Gameplay.Interactable
 
         void Start()
         {
-            _collider = GetComponent <Collider>();
+            _collider = GetComponent<Collider>();
         }
 
         void OnEnable()
@@ -37,7 +37,7 @@ namespace Game.Gameplay.Interactable
             Destroy(_mesh);
             Instantiate(_effectPrefab, _effectPoint.position, Quaternion.identity);
             _droper.Drop();
-            Destroy(gameObject,_destroy.length+1);
+            Destroy(gameObject, _destroy.length + 1);
         }
     }
 }

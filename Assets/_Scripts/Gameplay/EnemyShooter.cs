@@ -1,5 +1,4 @@
-using System;
-using System.Collections;
+using Game.Gameplay.Enemies.PatrolFire;
 using UnityEngine;
 
 namespace Game.Gameplay
@@ -12,7 +11,10 @@ namespace Game.Gameplay
         [SerializeField] SandSoundController _soundController;
         GameObject _target;
 
-        public GameObject Target { set => _target = value; }
+        public GameObject Target
+        {
+            set => _target = value;
+        }
 
         public void ShootBullet()
         {

@@ -6,7 +6,7 @@ namespace Game.Gameplay
     {
         [SerializeField] GameObject _target;
 
-        private void Awake()
+        void Awake()
         {
             transform.forward = _target.transform.forward;
         }

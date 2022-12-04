@@ -1,6 +1,6 @@
 ﻿using Game.Gameplay.Enemies;
 using Game.Managers;
-using Game.SO;
+using Game.Scene.SO;
 using UnityEngine;
 
 namespace Game.Gameplay.Lifts
@@ -11,7 +11,6 @@ namespace Game.Gameplay.Lifts
         [SerializeField] SceneSO _nextScene;
         [SerializeField] LiftAnimations _lift;
         [SerializeField] LiftDoorAnimations _liftDoor;
-
 
 
         void Start()

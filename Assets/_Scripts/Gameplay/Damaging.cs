@@ -1,20 +1,21 @@
 using System;
-using Game.SO;
+using Game.Gameplay.SO;
 using UnityEngine;
 
 namespace Game.Gameplay
 {
     public class Damaging : MonoBehaviour
     {
-        [SerializeField] int _damage = 0;
+        [SerializeField] int _damage;
         [SerializeField] ElementSO _element;
         GameObject _enemySource;
+
         public GameObject EnemySource
         {
             set => _enemySource = value;
             get => _enemySource ? _enemySource : gameObject;
         }
-        public event Action OnHit, OnStrongHit;
+
         void OnTriggerEnter(Collider other)
         {
             var damageable = other.GetComponent<IDamageable>();
@@ -27,6 +28,8 @@ namespace Game.Gameplay
             DestroySelf();
         }
 
+        public event Action OnHit, OnStrongHit;
+
         void DestroySelf()
         {
             gameObject.SetActive(false);
@@ -36,6 +39,7 @@ namespace Game.Gameplay
         {
             OnHit?.Invoke();
         }
+
         void StrongHit(int damage, GameObject damaging)
         {
             OnStrongHit?.Invoke();
