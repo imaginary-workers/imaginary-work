@@ -630,19 +630,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogueSegment:
-  - Dialogue: "<sprite=0> Bienvenido a tu primer dia de trabajo. Para empezar prueba
-      con moverte con WASD y girar la c\xE1mara con el MOUSE."
-  - Dialogue: "Para correr debes mantener apretado SHIFT mientras te mueves.\t"
+  - Dialogue: "Bienvenido a tu primer dia de trabajo. Para empezar prueba con moverte
+      con <sprite name=\"MOVE CONTROLS\"> y girar la c\xE1mara con el <sprite name=\"MOUSE\">."
+  - Dialogue: Para correr debes mantener apretado <sprite name="SHIFT"> mientras
+      te mueves.
   - Dialogue: "Como en cualquier construccion no siempre tendras escaleras. Intenta
-      subir al siguiente piso. Con SPACE puedes saltar.\t"
+      subir al siguiente piso. Con <sprite name=\"SPACE\"> puedes saltar.\t"
   - Dialogue: Oh no! esos pallets interrupen tu paso. Para romperlos en mil pedazos
-      utiliza el ataque con el CLICK IZQUIERDO
-  - Dialogue: Estas haciendo un buen trabajo. Completa todas tus tareas para completar
-      terminar el dia laboral. Destruye a todos los enemigos.
-  - Dialogue: Estas haciendo un buen trabajo. Completa todas tus tareas para completar
-      terminar el dia laboral. Destruye a todos los enemigos.
+      utiliza el ataque con el <sprite name="LEFT CLICK">
+  - Dialogue: Estas haciendo un buen trabajo. Completa todas tus tareas para  terminar
+      tu dia laboral. Destruye a todos los enemigos.
   - Dialogue: Estas en una racha!! Tienes disponible un ataque especial. Puede utilizarla
-      con CLICK DERECHO.
+      con <sprite name="RIGHT CLICK">.
   - Dialogue: Buen trabajo!! Haz completado todas tus tareas. Dirigite al ascensor
       para continuar con tus labores.
   enterToContinue: {fileID: 4340656209144120380}
