@@ -1,24 +1,25 @@
+using System;
 using System.Collections;
-using UnityEngine;
 using TMPro;
+using UnityEngine;
 
-namespace Game
+namespace Game.UI
 {
     public class Tutorial : MonoBehaviour
     {
         public DialogueSegment[] dialogueSegment;
         public TextMeshProUGUI enterToContinue;
         public float textSpeed;
-        int dialogueIndex;
         public TextMeshProUGUI dialogueDisplay;
         bool canContinue;
+        int dialogueIndex;
 
-        private void Start()
+        void Start()
         {
             StartCoroutine(PlayDialogue(dialogueSegment[0].Dialogue));
         }
 
-        private void Update()
+        void Update()
         {
             enterToContinue.enabled = canContinue;
             if (canContinue)
@@ -29,7 +30,8 @@ namespace Game
                     gameObject.SetActive(false);
                     return;
                 }
-                StartCoroutine(PlayDialogue(dialogueSegment[dialogueIndex ].Dialogue));
+
+                StartCoroutine(PlayDialogue(dialogueSegment[dialogueIndex].Dialogue));
             }
         }
 
@@ -37,16 +39,17 @@ namespace Game
         {
             canContinue = false;
             dialogueDisplay.SetText(string.Empty);
-            for (int i = 0; i < Dialogue.Length; i++)
+            for (var i = 0; i < Dialogue.Length; i++)
             {
                 dialogueDisplay.text += Dialogue[i];
                 yield return new WaitForSeconds(1f / textSpeed);
             }
+
             canContinue = true;
         }
     }
 
-    [System.Serializable]
+    [Serializable]
     public class DialogueSegment
     {
         public string Dialogue;

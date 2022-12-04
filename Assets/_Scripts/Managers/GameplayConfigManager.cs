@@ -11,13 +11,24 @@ namespace Game.Managers
         [SerializeField] Slider _speedRotatioSlider;
         [SerializeField] Toggle _invertedXToggle;
         [SerializeField] Toggle _invertedYToggle;
-        PlayerConfig _newPlayerConfig = null;
+        PlayerConfig _newPlayerConfig;
+
+        PlayerConfig NewPlayerConfig
+        {
+            get
+            {
+                if (_newPlayerConfig == null)
+                    _newPlayerConfig = _gameplaySettings.PlayerConfig;
+
+                return _newPlayerConfig;
+            }
+        }
 
         void OnEnable()
         {
             SetToCurrentConfig();
         }
-        
+
         public void ConfirmChange()
         {
             if (_newPlayerConfig != null)
@@ -47,21 +58,10 @@ namespace Game.Managers
             NewPlayerConfig.rotationSpeed = value;
         }
 
-        PlayerConfig NewPlayerConfig
-        {
-            get
-            {
-                if (_newPlayerConfig == null)
-                    _newPlayerConfig = _gameplaySettings.PlayerConfig;
-
-                return _newPlayerConfig;
-            }
-        }
-
         void SetToCurrentConfig()
         {
             var config = _gameplaySettings.PlayerConfig;
-            _invertedXToggle.isOn = config.invertedXAxis; 
+            _invertedXToggle.isOn = config.invertedXAxis;
             _invertedYToggle.isOn = config.invertedYAxis;
             _speedRotatioSlider.value = config.rotationSpeed;
             _newPlayerConfig = null;

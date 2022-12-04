@@ -5,8 +5,8 @@ namespace Game.Gameplay.Enemies
     public class Ragdoll : MonoBehaviour
     {
         [SerializeField] Animator _animator;
-        Rigidbody[] _rigidbodies;
         Collider[] _colliders;
+        Rigidbody[] _rigidbodies;
 
         void Start()
         {
@@ -24,10 +24,8 @@ namespace Game.Gameplay.Enemies
                 rigidbody.collisionDetectionMode =
                     enabled ? CollisionDetectionMode.Continuous : CollisionDetectionMode.Discrete;
             }
-            foreach (Collider collider in _colliders)
-            {
-                collider.enabled = enabled;
-            }
+
+            foreach (var collider in _colliders) collider.enabled = enabled;
 
             _animator.enabled = !enabled;
         }

@@ -1,5 +1,3 @@
-using Game.Gameplay.Player;
-using System;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -7,15 +5,15 @@ namespace Game.Gameplay.Enemies.FollowMelee
 {
     public class MeleeAttackState : State
     {
-        FollowMeleeStateController _stateController;
-        NavMeshAgent _agent;
-        LookAtTarget _lookAtTarget;
-        AnimationEvent _animationEvent;
-        GameObject _player;
-        float _rangeMelee;
-        float _rangeOfVisionY;
-        AnimatorController _animatorController;
-        bool _isAttacking = false;
+        readonly NavMeshAgent _agent;
+        readonly AnimationEvent _animationEvent;
+        readonly AnimatorController _animatorController;
+        bool _isAttacking;
+        readonly LookAtTarget _lookAtTarget;
+        readonly GameObject _player;
+        readonly float _rangeMelee;
+        readonly float _rangeOfVisionY;
+        readonly FollowMeleeStateController _stateController;
 
         public MeleeAttackState(
             FollowMeleeStateController stateController,
@@ -51,17 +49,14 @@ namespace Game.Gameplay.Enemies.FollowMelee
         {
             if (_isAttacking) return;
 
-            Vector3 position = _stateController.transform.position;
-            Vector3 playerPosition = _player.transform.position;
+            var position = _stateController.transform.position;
+            var playerPosition = _player.transform.position;
             if (!Utils.IsInRangeOfVision(position, playerPosition, _rangeMelee, _rangeOfVisionY))
-            {
                 _stateController.ChangeState(_stateController.FollowState);
-            }
             else
-            {
                 _animatorController.Attack();
-            }
         }
+
         public override void Exit()
         {
             _lookAtTarget.enabled = false;

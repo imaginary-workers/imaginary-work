@@ -10,20 +10,22 @@ namespace Game.Gameplay.Lifts
         [SerializeField] LiftDoorAnimations _liftDoor;
 
         public LiftAnimations Lift => _lift;
+
         void Awake()
         {
             _checker.OnPlayerExit += _liftDoor.CloseDoors;
             _lift.OnUpFinished += _liftDoor.OpenDoors;
         }
 
+        public void Start()
+        {
+            _lift.Arrive();
+        }
+
         void OnDestroy()
         {
             _checker.OnPlayerExit -= _liftDoor.CloseDoors;
             _lift.OnUpFinished -= _liftDoor.OpenDoors;
-        }
-        public void Start()
-        {
-            _lift.Arrive();
         }
 
         public void PlacePlayer(GameObject player)
