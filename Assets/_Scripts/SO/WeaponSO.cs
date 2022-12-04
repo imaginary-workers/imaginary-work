@@ -1,12 +1,12 @@
 using UnityEngine;
 
-namespace Game.Gameplay.Weapons.SO
+namespace Game.SO
 {
     [CreateAssetMenu(fileName = "Weapon", menuName = "Scriptable Object/weapon", order = 0)]
     public class WeaponSO : ScriptableObject
     {
-        [SerializeField] int _maxAmunicion;
-        [SerializeField] int _maxReserveAmunicion;
+        [SerializeField] int _maxAmunicion = 0;
+        [SerializeField] int _maxReserveAmunicion = 0;
         [SerializeField] AudioClip _reloadSound;
         [SerializeField] AudioClip _reloadSoundStart;
         [SerializeField] AudioClip _noHitSound;

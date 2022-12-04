@@ -1,19 +1,18 @@
 using Game.Gameplay.Enemies;
 using Game.Managers;
-using Game.SO;
 using UnityEngine;
 
-namespace Game.Gameplay
+namespace Game
 {
-    public class ToNextLevel : MonoBehaviour
+    public class ToLevelOne : MonoBehaviour
     {
-        [SerializeField] SceneSO _nextScene;
-
+        [SerializeField] Enemy _enemy;
         private void OnTriggerEnter(Collider other)
         {
             if (other.tag == "Player" && Enemy.countEnemy <= 0)
-                GameManager.Instance.NextScene(_nextScene);
-
+            {
+                GameManager.Instance.ConditionWin();
+            }
         }
     }
 }

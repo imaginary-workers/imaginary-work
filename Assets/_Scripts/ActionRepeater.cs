@@ -7,14 +7,11 @@ namespace Game
     {
         [SerializeField] UnityEvent OnAction;
         [SerializeField] float _waitForShootInSeconds = 1;
-        float _time;
-
+        float _time = 0;
         void Update()
         {
             if (_time < _waitForShootInSeconds)
-            {
                 _time += 1 * Time.deltaTime;
-            }
             else
             {
                 OnAction?.Invoke();

@@ -5,29 +5,31 @@ using UnityEngine.AI;
 namespace Game.Gameplay.Enemies
 {
     [RequireComponent(typeof(NavMeshAgent))]
-    public abstract class Enemy : MonoBehaviour
+    public abstract class  Enemy : MonoBehaviour
     {
-        public static int countEnemy;
+        public static int countEnemy = 0;
         internal bool count;
-
-        void Awake()
-        {
-            countEnemy++;
-            UpdateEnemyCount?.Invoke();
-            OnAwakeEnemy();
-        }
-
-        void OnDestroy()
-        {
-            countEnemy--;
-            UpdateEnemyCount?.Invoke();
-            if (countEnemy == 0) OnNoEnemies?.Invoke();
-        }
 
         public static event Action UpdateEnemyCount;
         public static event Action OnNoEnemies;
 
-        protected abstract void OnAwakeEnemy();
+        void Awake()
+        {
+            Enemy.countEnemy++;
+            Enemy.UpdateEnemyCount?.Invoke();
+            OnAwakeEnemy();
+        }
+
+        protected abstract void OnAwakeEnemy(); 
+        void OnDestroy()
+        {
+            Enemy.countEnemy--;
+            Enemy.UpdateEnemyCount?.Invoke();
+            if (Enemy.countEnemy == 0)
+            {
+                Enemy.OnNoEnemies?.Invoke();
+            }
+        }
 
         protected virtual void HitStopEffect()
         {

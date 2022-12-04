@@ -5,22 +5,11 @@ namespace Game.Gameplay.Enemies
 {
     public class LookAtTarget : MonoBehaviour
     {
-        [SerializeField] bool _targetAlwaysPlayer;
+        [SerializeField] bool _targetAlwaysPlayer = false;
 
         [SerializeField] GameObject _target;
-        [SerializeField] [Range(0f, 10f)] float _speedRotation = 10f;
-        [SerializeField] bool _ignoreX, _ignoreY, _ignoreZ;
-
-        public GameObject Target
-        {
-            get => _target;
-            set => _target = value;
-        }
-
-        public float SpeedRotation
-        {
-            set => _speedRotation = value;
-        }
+        [SerializeField, Range(0f, 10f)] float _speedRotation = 10f;
+        [SerializeField] bool _ignoreX, _ignoreY, _ignoreZ = false;
 
         void Start()
         {
@@ -35,8 +24,19 @@ namespace Game.Gameplay.Enemies
                 _ignoreX ? 0 : targetDirection.x,
                 _ignoreY ? 0 : targetDirection.y,
                 _ignoreZ ? 0 : targetDirection.z
-            );
-            transform.forward = Vector3.Slerp(transform.forward, targetDirection, Time.deltaTime * _speedRotation);
+                );
+            transform.forward = Vector3.Slerp(transform.forward, targetDirection,Time.deltaTime * _speedRotation);
+        }
+
+        public GameObject Target
+        {
+            get => _target;
+            set => _target = value;
+        }
+
+        public float SpeedRotation
+        {
+            set => _speedRotation = value;
         }
     }
 }

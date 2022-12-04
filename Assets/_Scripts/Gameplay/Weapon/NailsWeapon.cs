@@ -1,5 +1,7 @@
 using Game.Gameplay.Player;
 
+
+
 namespace Game.Gameplay.Weapons
 {
     public class NailsWeapon : TriggerWeapon
@@ -11,12 +13,10 @@ namespace Game.Gameplay.Weapons
             animationManager.AddAnimationEvent("bullet_reload_weapon", EVENT_RELOAD);
             _TriggerAttackAnimation = animationManager.PistolShooter;
         }
-
         void EVENT_RELOAD_FEEDBACK()
         {
             _audioSource.PlayOneShot(_weaponData.ReloadSound);
         }
-
         void EVENT_RELOAD()
         {
             _audioSource.PlayOneShot(_weaponData.ReloadSoundStart);

@@ -1,22 +1,24 @@
 using System;
 using System.Collections.Generic;
 using Game.Gameplay.Weapons;
-using Game.Gameplay.Weapons.SO;
 using Game.Managers;
+using Game.SO;
 using UnityEngine;
 
 namespace Game.Gameplay.Player
 {
     public class WeaponInventory : MonoBehaviour
     {
-        [field: SerializeField] public List<Weapon> Weapons { get; private set; }
-
+        public event Action OnGrab;
+        [field: SerializeField]
+        public List<Weapon> Weapons { get; private set; }
         void Awake()
         {
-            foreach (var weapon in Weapons) weapon.gameObject.SetActive(false);
+            foreach (var weapon in Weapons)
+            {
+                weapon.gameObject.SetActive(false);
+            }
         }
-
-        public event Action OnGrab;
 
         public Weapon GetWeapon(int slot)
         {

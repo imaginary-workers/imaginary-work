@@ -18,23 +18,25 @@ namespace Game.Gameplay.Enemies.FlyerPatrol
         [SerializeField] Light _lightFocus;
         [SerializeField] Color _attackColor = Color.red;
         [SerializeField] Color _normalColor = new Color(1, 186, 255);
+        NormalState _normalState;
+        AttackState _attackState;
         GameObject _target;
-
-        public NormalState NormalState { get; private set; }
-
-        public AttackState AttackState { get; private set; }
 
         protected override void OnAwakeEnemy()
         {
             _target = GameManager.Player;
             _visualField.Target = _target;
-            NormalState = new NormalState(this, _agent, _patrolBehaviour, _cameraMesh, _cameraBaseMesh, _visualField,
-                _light, _lightFocus, _normalColor);
-            AttackState = new AttackState(this, _target, _cameraMesh, _cameraBaseMesh, _attack, _agent, _visualField,
-                _light, _lightFocus, _attackColor);
+            _normalState = new NormalState(this, _agent, _patrolBehaviour, _cameraMesh, _cameraBaseMesh, _visualField, _light, _lightFocus, _normalColor);
+            _attackState = new AttackState(this, _target, _cameraMesh, _cameraBaseMesh, _attack,_agent, _visualField, _light, _lightFocus, _attackColor);
             _attack.enabled = false;
-            ChangeState(NormalState);
+            ChangeState(_normalState);
         }
+
+        public NormalState NormalState
+            => _normalState;
+
+        public AttackState AttackState
+            => _attackState;
 
         protected override void HitStopEffect()
         {

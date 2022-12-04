@@ -1,4 +1,4 @@
-using Game.Scene.SO;
+using Game.SO;
 using UnityEngine;
 
 namespace Game.Audio
@@ -8,8 +8,7 @@ namespace Game.Audio
         public static MusicManager singleton;
         AudioSource _audioSource;
 
-        public AudioClip AudioMusic => _audioSource.clip;
-
+        public AudioClip AudioMusic { get => _audioSource.clip; }
         void Awake()
         {
             if (singleton != null && singleton != this)
@@ -23,25 +22,27 @@ namespace Game.Audio
                 _audioSource = GetComponent<AudioSource>();
             }
         }
-
+       
         public void Play(AudioClip music)
         {
             if (AudioMusic == music) return;
             PlayForBegenning(music);
         }
-
         public void PlayForBegenning(AudioClip music)
         {
             _audioSource.clip = music;
             _audioSource.Play();
         }
-
         public void UpdateMusic(SceneSO scene)
         {
             if (scene.PlayOnAwake)
-                singleton.PlayForBegenning(scene.AudioClip);
+            {
+                MusicManager.singleton.PlayForBegenning(scene.AudioClip);
+            }
             else
-                singleton.Play(scene.AudioClip);
+            {
+                MusicManager.singleton.Play(scene.AudioClip);
+            }
         }
     }
 }

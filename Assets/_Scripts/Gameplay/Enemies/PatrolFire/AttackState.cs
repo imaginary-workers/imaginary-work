@@ -4,13 +4,13 @@ namespace Game.Gameplay.Enemies.PatrolFire
 {
     public class AttackState : State
     {
-        readonly NavMeshAgent _agent;
-        readonly AnimatorController _animatorController;
-        readonly PatrolFireStateController _controller;
-        readonly EnemyBurstShooter _enemyShooter;
-        readonly LookAtTarget _lookAtTarget;
-        readonly VisualField _visualdFieldSound;
-        readonly VisualField _visualField;
+        PatrolFireStateController _controller;
+        VisualField _visualField;
+        NavMeshAgent _agent;
+        LookAtTarget _lookAtTarget;
+        AnimatorController _animatorController;
+        EnemyBurstShooter _enemyShooter;
+        VisualField _visualdFieldSound;
 
         public AttackState(
             PatrolFireStateController controller,
@@ -20,7 +20,7 @@ namespace Game.Gameplay.Enemies.PatrolFire
             AnimatorController animatorController,
             EnemyBurstShooter enemyShooter,
             VisualField visualdFieldSound
-        )
+            )
         {
             _controller = controller;
             _visualField = visualField;
@@ -35,6 +35,7 @@ namespace Game.Gameplay.Enemies.PatrolFire
 
         public override void Enter()
         {
+
             _agent.speed = 0;
             _agent.isStopped = true;
             _lookAtTarget.enabled = true;

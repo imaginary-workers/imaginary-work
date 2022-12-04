@@ -1,5 +1,5 @@
-﻿using System;
-using Game.Gameplay.Enemies.FollowMelee;
+﻿using Game.Gameplay.Enemies.FollowMelee;
+using System;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -7,10 +7,10 @@ namespace Game.Gameplay.Enemies.CollectableEnemy
 {
     public class DeadState : AbstractDeadState
     {
-        readonly NavMeshAgent _agent;
-        readonly AnimatorController _animatorcontroler;
-        readonly Collider _enemyCollider;
-        readonly SpawnDrops _spawnDrops;
+        NavMeshAgent _agent;     
+        AnimatorController _animatorcontroler;
+        SpawnDrops _spawnDrops;
+        Collider _enemyCollider;
 
         public DeadState(
             NavMeshAgent agent,
@@ -18,7 +18,7 @@ namespace Game.Gameplay.Enemies.CollectableEnemy
             SpawnDrops spawnDrops,
             Action hitStop,
             Collider enemyCollider
-        ) : base(hitStop)
+        ):base(hitStop)
         {
             _agent = agent;
             _animatorcontroler = animatorcontroler;

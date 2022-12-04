@@ -35,32 +35,26 @@ namespace Game.Gameplay.Player
         {
             _audioSource.PlayOneShot(_hurt);
         }
-
         public void Walking()
         {
             _audioSource.PlayOneShot(_walking);
         }
-
         public void Jump()
         {
-            _audioSource.PlayOneShot(_jump);
+                _audioSource.PlayOneShot(_jump);  
         }
-
         public void Heal()
         {
             _audioSource.PlayOneShot(_eating);
         }
-
         public void Amunnition()
         {
             _audioSource.PlayOneShot(_dropAmmuation);
         }
-
         public void GrabWeapon()
         {
             _audioSource.PlayOneShot(_grab);
         }
-
         public void Switch()
         {
             _audioSource.PlayOneShot(_switch);

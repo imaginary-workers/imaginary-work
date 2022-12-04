@@ -5,8 +5,8 @@ namespace Game.Gameplay.Player
     public class PointerTarget : MonoBehaviour
     {
         [SerializeField] Camera camera;
-        RaycastHit hitInfo;
         Ray ray;
+        RaycastHit hitInfo;
 
         void Update()
         {

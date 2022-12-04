@@ -1,7 +1,7 @@
 using Game.Audio;
 using Game.Config;
-using Game.Config.SO;
 using Game.Decorator;
+using Game.SO;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,18 +13,7 @@ namespace Game.UI
         [SerializeField] Slider _musicSlider;
         [SerializeField] Slider _soundSlider;
         [SerializeField] Slider _masterAudioSlider;
-        AudioConfig _newAudioConfig;
-
-        AudioConfig NewAudioConfig
-        {
-            get
-            {
-                if (_newAudioConfig == null)
-                    _newAudioConfig = _gameplaySettings.AudioConfig;
-
-                return _newAudioConfig;
-            }
-        }
+        AudioConfig _newAudioConfig = null;
 
         void Awake()
         {
@@ -49,7 +38,6 @@ namespace Game.UI
         {
             SetToCurrentConfig();
         }
-
         public void ChangedMasterAudioValue(float value)
         {
             var uiAudioDecorator = new AudioConfig01Decorator(NewAudioConfig);
@@ -80,6 +68,17 @@ namespace Game.UI
             _soundSlider.value = audioUiDecorator.Sound;
             _masterAudioSlider.value = audioUiDecorator.Master;
             _newAudioConfig = null;
+        }
+
+        AudioConfig NewAudioConfig
+        {
+            get
+            {
+                if (_newAudioConfig == null)
+                    _newAudioConfig = _gameplaySettings.AudioConfig;
+
+                return _newAudioConfig;
+            }
         }
     }
 }

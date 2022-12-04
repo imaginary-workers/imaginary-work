@@ -5,8 +5,17 @@ namespace Game.Gameplay.Enemies
     public class EnemyBurstShooter : EnemyShooter
     {
         [SerializeField] float _timeBetweenShoot = .2f;
-        float _currentTime;
-        bool _shooting;
+        float _currentTime = 0f;
+        bool _shooting = false;
+        public void StartBurstShooting()
+        {
+            _shooting = true;
+        }
+
+        public void StopBurstShooting()
+        {
+            _shooting = false;
+        }
 
         void Update()
         {
@@ -21,16 +30,6 @@ namespace Game.Gameplay.Enemies
             {
                 _currentTime += Time.deltaTime;
             }
-        }
-
-        public void StartBurstShooting()
-        {
-            _shooting = true;
-        }
-
-        public void StopBurstShooting()
-        {
-            _shooting = false;
         }
     }
 }

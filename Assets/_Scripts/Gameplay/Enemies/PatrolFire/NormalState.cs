@@ -2,13 +2,12 @@ namespace Game.Gameplay.Enemies.PatrolFire
 {
     public class NormalState : State
     {
-        readonly PatrolBehaviour _patrolBehaviour;
-        readonly PatrolFireStateController _stateMachine;
-        readonly VisualField _visualField;
-        readonly VisualField _visualFieldSound;
+        PatrolFireStateController _stateMachine;
+        PatrolBehaviour _patrolBehaviour;
+        VisualField _visualField;
+        VisualField _visualFieldSound;
 
-        public NormalState(PatrolFireStateController stateMachine, PatrolBehaviour patrolBehaviour,
-            VisualField visualField, VisualField visualFieldSound)
+        public NormalState(PatrolFireStateController stateMachine, PatrolBehaviour patrolBehaviour, VisualField visualField, VisualField visualFieldSound)
         {
             _stateMachine = stateMachine;
             _patrolBehaviour = patrolBehaviour;

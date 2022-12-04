@@ -1,16 +1,19 @@
+using Game.SO;
 using UnityEngine;
 
 namespace Game.Gameplay.Weapons
 {
     public abstract class ShooterWeapon : Weapon
     {
-        [SerializeField] protected ObjectPooler _bulletPooler;
 
-        [SerializeField] protected Transform _firePoint;
+        [SerializeField]
+        protected ObjectPooler _bulletPooler;
+
+        [SerializeField]
+        protected Transform _firePoint;
 
         protected Vector3 ShootDirection
             => (Target.position - _firePoint.transform.position).normalized;
-
         protected abstract void Shoot();
 
         public override bool CanReloadAmmunition()
@@ -36,7 +39,6 @@ namespace Game.Gameplay.Weapons
                 ReserveAmmunition = 0;
             }
         }
-
         public override bool ReloadReserveAmmunition()
         {
             if (ReserveAmmunition >= _weaponData.MaxReserveAmunicion) return false;

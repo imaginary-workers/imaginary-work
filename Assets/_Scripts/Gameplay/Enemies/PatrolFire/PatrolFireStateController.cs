@@ -8,8 +8,8 @@ namespace Game.Gameplay.Enemies.PatrolFire
     public class PatrolFireStateController : EnemyStateController
     {
         [SerializeField] PatrolBehaviour _normalBehaviour;
-        [SerializeField] VisualField _visualField;
-        [SerializeField] VisualField _visualFieldSound;
+        [SerializeField] VisualField _visualField;  
+        [SerializeField] VisualField _visualFieldSound;  
         [SerializeField] NavMeshAgent _agent;
         [SerializeField] LookAtTarget _lookAtTarget;
         [SerializeField] EnemyBurstShooter _enemyShooter;
@@ -17,15 +17,16 @@ namespace Game.Gameplay.Enemies.PatrolFire
         [SerializeField] SpawnDrops _spawner;
         [SerializeField] Ragdoll _ragdoll;
         [SerializeField] Collider _collider;
-        bool _canDoStrongDamageFeedback = true;
+        NormalState _normalState;
+        AttackState _attackState;
         GameObject _player;
-        readonly float _takeStrongDamageRecoverTime = 3f;
+        bool _canDoStrongDamageFeedback = true;
+        float _takeStrongDamageRecoverTime = 3f;
+        TakeStrongDamageState _takeStrongDamageState;
 
-        public AttackState AttackState { get; private set; }
-
-        public NormalState NormalState { get; private set; }
-
-        public TakeStrongDamageState TakeStrongDamageState { get; private set; }
+        public AttackState AttackState => _attackState;
+        public NormalState NormalState => _normalState;
+        public TakeStrongDamageState TakeStrongDamageState => _takeStrongDamageState;
 
         protected override void OnAwakeEnemy()
         {
@@ -35,12 +36,10 @@ namespace Game.Gameplay.Enemies.PatrolFire
             _normalBehaviour.enabled = false;
             _lookAtTarget.enabled = false;
             _enemyShooter.enabled = false;
-            NormalState = new NormalState(this, _normalBehaviour, _visualField, _visualFieldSound);
-            AttackState = new AttackState(this, _visualField, _agent, _lookAtTarget, _animatorController, _enemyShooter,
-                _visualFieldSound);
-            TakeStrongDamageState =
-                new TakeStrongDamageState(this, _agent, _animatorController, _visualField, _visualFieldSound);
-            ChangeState(NormalState);
+            _normalState = new NormalState(this, _normalBehaviour, _visualField, _visualFieldSound);
+            _attackState = new AttackState(this, _visualField, _agent, _lookAtTarget, _animatorController, _enemyShooter, _visualFieldSound);
+            _takeStrongDamageState = new TakeStrongDamageState(this, _agent, _animatorController, _visualField, _visualFieldSound);
+            ChangeState(_normalState);
             Damageable.OnTakeStrongDamage += OnTakeStrongDamageHandler;
         }
 
@@ -57,9 +56,9 @@ namespace Game.Gameplay.Enemies.PatrolFire
 
         void ChangeToTakeStrongDamageState()
         {
-            if (TakeStrongDamageState == null) return;
-
-            ChangeState(TakeStrongDamageState);
+            if (_takeStrongDamageState == null) return;
+            
+            ChangeState(_takeStrongDamageState);
         }
 
         void OnTakeStrongDamageHandler(int damage, GameObject damaging)

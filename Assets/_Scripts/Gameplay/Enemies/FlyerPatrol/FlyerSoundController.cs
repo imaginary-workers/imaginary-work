@@ -1,23 +1,24 @@
+using Game.Gameplay.Enemies;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-namespace Game.Gameplay.Enemies.FlyerPatrol
+namespace Game
 {
     public class FlyerSoundController : MonoBehaviour
     {
         [SerializeField] AudioSource _audioSource;
         [SerializeField] AudioClip _attack;
         [SerializeField] RaycastAttack _raycastAttack;
-
-        void Awake()
+        private void Awake()
         {
             _raycastAttack.OnAttack += Attack;
         }
 
-        void OnDestroy()
+        private void OnDestroy()
         {
             _raycastAttack.OnAttack -= Attack;
         }
-
         public void Attack()
         {
             _audioSource.PlayOneShot(_attack);

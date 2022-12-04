@@ -5,11 +5,17 @@ namespace Game.Gameplay
     public class Bullet : MonoBehaviour
     {
         [SerializeField] float _speed = 20;
-        [SerializeField] [Range(0f, 10f)] float _timeToDisable = 3f;
+        [SerializeField, Range(0f, 10f)] float _timeToDisable = 3f;
         [SerializeField] TrailRenderer _trail;
-        float _currentSeconds;
+        float _currentSeconds = 0;
+        bool _isMoving = false;
         Vector3 _direction;
-        bool _isMoving;
+
+        public void Shoot(Vector3 direction)
+        {
+            _direction = direction;
+            _isMoving = true;
+        }
 
         void Update()
         {
@@ -24,17 +30,6 @@ namespace Game.Gameplay
                 Move();
                 _currentSeconds += Time.deltaTime;
             }
-        }
-
-        void OnTriggerEnter(Collider other)
-        {
-            if (other.gameObject.layer == 0 || other.gameObject.layer == 6) DesactiveBullet();
-        }
-
-        public void Shoot(Vector3 direction)
-        {
-            _direction = direction;
-            _isMoving = true;
         }
 
         void DesactiveBullet()
@@ -55,6 +50,13 @@ namespace Game.Gameplay
             if (_trail == null) return;
             _trail.enabled = enable;
             _trail.emitting = enable;
+        }
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.gameObject.layer == 0 || other.gameObject.layer == 6)
+            {
+                DesactiveBullet();
+            }
         }
     }
 }

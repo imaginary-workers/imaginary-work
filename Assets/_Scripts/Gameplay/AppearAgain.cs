@@ -8,7 +8,10 @@ namespace Game.Gameplay
 
         void OnTriggerEnter(Collider other)
         {
-            if (other.CompareTag("Player")) other.transform.position = _spawn.position;
+            if (other.CompareTag("Player"))
+            {
+                other.transform.position = _spawn.position; 
+            }
         }
     }
 }

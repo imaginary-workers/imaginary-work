@@ -7,24 +7,24 @@ namespace Game.Gameplay.Player
     {
         [SerializeField] MoveComponent _moveComponent;
         [SerializeField] JumpComponent _jumpComponent;
-        [SerializeField] [Range(0, 10)] float _normalSpeed = 8f;
-        [SerializeField] [Range(0, 20)] float _sprintSpeed = 12f;
+        [SerializeField, Range(0, 10)] float _normalSpeed = 8f;
+        [SerializeField, Range(0, 20)] float _sprintSpeed = 12f;
         [SerializeField] PlayerInput _playerInput;
         [SerializeField] PlayerAnimationManager _animator;
         [SerializeField] WeaponController _weaponController;
         [SerializeField] Camera _camera;
         public bool active = true;
-
-        [Header("Audio")] [SerializeField] [Range(0, 2)]
-        float _timeWalk;
-
-        [SerializeField] PlayerSoundController _pjSoundController;
-        [SerializeField] [Range(0, 2)] float _timeSprint;
-        readonly float _currentTime = 1;
-        bool _isMoving;
         Vector2 _moveVelocityInput;
+        float _currentTime = 1;
         float _time;
-        float _timer;
+        float _currentSpeed;
+
+        [Header("Audio")]
+        [SerializeField, Range(0, 2)] float _timeWalk;
+        [SerializeField] PlayerSoundController _pjSoundController;
+        [SerializeField, Range(0, 2)] float _timeSprint;
+        bool _isMoving = false;
+        float _timer = 0;
         float _timeStep;
 
         public bool IsCurrentDeviceMouse
@@ -32,48 +32,30 @@ namespace Game.Gameplay.Player
 
         public Vector2 LookInputDirection { get; private set; }
 
-        public float Speed { get; set; }
+        public float Speed
+        {
+            get => _currentSpeed;
+            set => _currentSpeed = value;
+        }
 
-        public float NormalSpeed => _normalSpeed;
+        public float NormalSpeed
+        {
+            get => _normalSpeed;
+        }
 
-        public float SprintSpeed => _sprintSpeed;
+        public float SprintSpeed
+        {
+            get => _sprintSpeed;
+        }
 
         public bool CanSprint { get; set; } = true;
-
-        void SprintActive(bool active)
-        {
-            _weaponController.CanAttack = !active;
-            if (active)
-            {
-                // _camera.fieldOfView = 120;
-                Speed = _sprintSpeed;
-                _timeStep = _timeSprint;
-                _animator.StartSprint();
-            }
-            else
-            {
-                //_camera.fieldOfView = 90;
-                Speed = _normalSpeed;
-                _timeStep = _timeWalk;
-                _animator.StopSprint();
-            }
-        }
-
-        void CallSoundWalk()
-        {
-            if (_isMoving && _timer >= _timeStep && _jumpComponent.IsOnTheFloor)
-            {
-                _pjSoundController.Walking();
-                _timer = 0;
-            }
-        }
 
         #region unitymethods
 
         void Awake()
         {
             _time = _currentTime;
-            Speed = _normalSpeed;
+            _currentSpeed = _normalSpeed;
             _timeStep = _timeWalk;
         }
 
@@ -96,9 +78,7 @@ namespace Game.Gameplay.Player
             {
                 CanSprint = true;
             }
-
-            _moveComponent.Velocity =
-                (_moveVelocityInput.x * transform.right + transform.forward * _moveVelocityInput.y).normalized * Speed;
+            _moveComponent.Velocity = (_moveVelocityInput.x * transform.right + transform.forward * _moveVelocityInput.y).normalized * _currentSpeed;
             /*if ((_currentTime < 0 || _jumpComponent.IsOnTheFloor))
             {
             }
@@ -112,6 +92,7 @@ namespace Game.Gameplay.Player
                 _currentTime = _time;
             }*/
         }
+
 
         #endregion
 
@@ -134,7 +115,11 @@ namespace Game.Gameplay.Player
         public void JumpInput(InputAction.CallbackContext context)
         {
             if (!active) return;
-            if (context.started) _jumpComponent.JumpAction();
+            if (context.started)
+            {
+                _jumpComponent.JumpAction();
+            }
+
         }
 
         public void LookInput(InputAction.CallbackContext context)
@@ -148,10 +133,43 @@ namespace Game.Gameplay.Player
             if (!active) return;
             if (!CanSprint) return;
             if (context.started)
+            {
                 SprintActive(true);
-            else if (context.canceled) SprintActive(false);
+            }
+            else if (context.canceled)
+            {
+                SprintActive(false);
+            }
         }
 
         #endregion
+
+        void SprintActive(bool active)
+        {
+            _weaponController.CanAttack = !active;
+            if (active)
+            {
+               // _camera.fieldOfView = 120;
+                _currentSpeed = _sprintSpeed;
+                _timeStep = _timeSprint;
+                _animator.StartSprint();
+            }
+            else
+            {
+                //_camera.fieldOfView = 90;
+                _currentSpeed = _normalSpeed;
+                _timeStep = _timeWalk;
+                _animator.StopSprint();
+            }
+        }
+
+        void CallSoundWalk()
+        {
+            if (_isMoving && _timer >= _timeStep && _jumpComponent.IsOnTheFloor)
+            {
+                _pjSoundController.Walking();
+                _timer = 0;
+            }
+        }
     }
 }
