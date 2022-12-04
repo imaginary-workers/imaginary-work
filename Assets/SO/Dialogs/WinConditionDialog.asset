@@ -10,8 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4be8ee60bf3de4e439d315dc44fe578a, type: 3}
-  m_Name: MoveDialog
+  m_Name: WinConditionDialog
   m_EditorClassIdentifier: 
   _sentences:
-  - "Bienvenido a tu primer dia de trabajo. Para empezar prueba con moverte con <sprite
-    name=\"MOVE CONTROLS\"> y girar la c\xE1mara con el mouse <sprite name = \"MOUSE\">."
+  - Estas haciendo un buen trabajo, pero el dia no termino. Para pasar de nivel debes
+    completar todas las tareas.
+  - Para completar las tareas debes destruir a todos los enemigos que haya. Empieza
+    por estas tareas sencillas para ver como te va.
