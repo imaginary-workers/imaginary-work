@@ -5,16 +5,16 @@ namespace Game.Gameplay.Enemies.FlyerPatrol
 {
     public class AttackState : State
     {
-        FlyerPatrolStateController _stateController;
-        GameObject _target;
-        GameObject _cameraObject;
-        GameObject _baseCameraObject;
-        RaycastAttack _attack;
-        NavMeshAgent _agent;
-        VisualField _visualField;
-        Light _ledLight;
-        Light _focusLight;
-        Color _attackColor;
+        readonly NavMeshAgent _agent;
+        readonly RaycastAttack _attack;
+        readonly Color _attackColor;
+        readonly GameObject _baseCameraObject;
+        readonly GameObject _cameraObject;
+        readonly Light _focusLight;
+        readonly Light _ledLight;
+        readonly FlyerPatrolStateController _stateController;
+        readonly GameObject _target;
+        readonly VisualField _visualField;
 
         public AttackState(
             FlyerPatrolStateController stateController,
@@ -27,7 +27,7 @@ namespace Game.Gameplay.Enemies.FlyerPatrol
             Light ledLight,
             Light focusLight,
             Color attackColor
-            )
+        )
         {
             _stateController = stateController;
             _target = target;
@@ -55,6 +55,7 @@ namespace Game.Gameplay.Enemies.FlyerPatrol
             BaseLookTargetXZ();
             CameraLookTargetZY();
         }
+
         public override void Exit()
         {
             _attack.enabled = false;

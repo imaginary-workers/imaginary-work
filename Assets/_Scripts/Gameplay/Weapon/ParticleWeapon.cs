@@ -3,14 +3,12 @@ using UnityEngine;
 
 namespace Game.Gameplay.Weapons
 {
-  
-
     public class ParticleWeapon : ShooterWeapon
     {
         [SerializeField] GameObject _particle;
-        bool _isShooting = false;
-        float _time;
         [SerializeField] bool _isHeavy;
+        bool _isShooting;
+        float _time;
 
         void Awake()
         {
@@ -31,10 +29,7 @@ namespace Game.Gameplay.Weapons
                     _time = attackRateInSeconds;
                     Ammunition--;
                     GameManager.Instance.UpdateBulletCounter(Ammunition);
-                    if (Ammunition <= 0)
-                    {
-                        EndAttack();
-                    }
+                    if (Ammunition <= 0) EndAttack();
                 }
                 else
                 {
@@ -42,7 +37,17 @@ namespace Game.Gameplay.Weapons
                 }
             }
         }
+
+        protected override void Shoot()
+        {
+            var bulletObject = _bulletPooler.GetPooledObject();
+            bulletObject.SetActive(true);
+            bulletObject.transform.position = _firePoint.position;
+            bulletObject.GetComponent<Bullet>()?.Shoot(ShootDirection);
+        }
+
         #region public
+
         public override void StartAttack()
         {
             if (Ammunition <= 0) return;
@@ -50,7 +55,9 @@ namespace Game.Gameplay.Weapons
             _isShooting = true;
         }
 
-        public override void PerformedAttack() { }
+        public override void PerformedAttack()
+        {
+        }
 
         public override void EndAttack()
         {
@@ -65,12 +72,5 @@ namespace Game.Gameplay.Weapons
         }
 
         #endregion
-        protected override void Shoot()
-        {
-            var bulletObject = _bulletPooler.GetPooledObject();
-            bulletObject.SetActive(true);
-            bulletObject.transform.position = _firePoint.position;
-            bulletObject.GetComponent<Bullet>()?.Shoot(ShootDirection);
-        }
     }
 }

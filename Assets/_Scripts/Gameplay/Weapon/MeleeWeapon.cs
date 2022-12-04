@@ -1,4 +1,3 @@
-using System;
 using Game.Gameplay.Player;
 using UnityEngine;
 
@@ -16,13 +15,16 @@ namespace Game.Gameplay.Weapons
             _damaging.OnStrongHit += TriggerOnStrongHitFeedback;
         }
 
-        private void OnDestroy()
+        void OnDestroy()
         {
             _damaging.OnHit -= TriggerOnHitFeedback;
             _damaging.OnStrongHit -= TriggerOnStrongHitFeedback;
         }
 
-        public override void StartAttack() { }
+        public override void StartAttack()
+        {
+        }
+
         public override void PerformedAttack()
         {
             if (!canAttack) return;
@@ -30,7 +32,9 @@ namespace Game.Gameplay.Weapons
             StartMeleeAnimation();
         }
 
-        public override void EndAttack() { }
+        public override void EndAttack()
+        {
+        }
 
         public override void CancelAttack()
         {
@@ -50,6 +54,16 @@ namespace Game.Gameplay.Weapons
         void EVENT_NO_HIT_FEEDBACK()
         {
             _audioSource.PlayOneShot(_weaponData.NoHitSound);
+        }
+
+        void TriggerOnStrongHitFeedback()
+        {
+            _animationManager.StrongHitAnimation(); //
+        }
+
+        void TriggerOnHitFeedback()
+        {
+            _animationManager.HitAnimation();
         }
 
         #region Anim Callbacks
@@ -74,20 +88,11 @@ namespace Game.Gameplay.Weapons
             _animationManager.AttackMelee();
         }
 
-        private void StopMeleeAnimation()
+        void StopMeleeAnimation()
         {
             _animationManager.CancelAttact();
         }
+
         #endregion
-
-        void TriggerOnStrongHitFeedback()
-        {
-            _animationManager.StrongHitAnimation();//
-        }
-
-        void TriggerOnHitFeedback()
-        {
-            _animationManager.HitAnimation();
-        }
     }
 }

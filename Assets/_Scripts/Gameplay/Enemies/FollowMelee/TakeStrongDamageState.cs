@@ -2,12 +2,12 @@
 
 namespace Game.Gameplay.Enemies.FollowMelee
 {
-    public class TakeStrongDamageState: State
+    public class TakeStrongDamageState : State
     {
-        EnemyStateController _stateController;
-        NavMeshAgent _agent;
-        AnimationEvent _animationEvent;
-        AnimatorController _animatorController;
+        readonly NavMeshAgent _agent;
+        readonly AnimationEvent _animationEvent;
+        readonly AnimatorController _animatorController;
+        readonly EnemyStateController _stateController;
 
         public TakeStrongDamageState(
             EnemyStateController stateController,

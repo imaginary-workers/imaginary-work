@@ -6,17 +6,20 @@ namespace Game.Gameplay.Enemies.FollowMelee
     public class AnimationEvent : MonoBehaviour
     {
         [SerializeField] GameObject _damage;
-        public event Action OnAttackStarts, OnAttackEnds, OnTakeStrongDamageStarts, OnTakeStrongDamageEnds;
-        public event Action OnAttack;
 
         void Awake()
         {
             _damage.SetActive(false);
         }
+
+        public event Action OnAttackStarts, OnAttackEnds, OnTakeStrongDamageStarts, OnTakeStrongDamageEnds;
+        public event Action OnAttack;
+
         public void Event_StartAnimation()
         {
             OnAttackStarts?.Invoke();
         }
+
         public void Event_EndAnimation()
         {
             OnAttackEnds?.Invoke();
@@ -31,10 +34,12 @@ namespace Game.Gameplay.Enemies.FollowMelee
         {
             _damage.SetActive(false);
         }
+
         public void Event_StartSound()
         {
             OnAttack?.Invoke();
         }
+
         public void Event_TakeStrongDamageStarts()
         {
             OnTakeStrongDamageStarts?.Invoke();
