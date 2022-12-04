@@ -145,7 +145,7 @@ namespace Game.Managers
 
         void ResumePlayerControl()
         {
-            PlayManager.Instance.CanvasController(true);
+            PlayManager.Instance.SetPlayerControlActive(true);
         }
 
 

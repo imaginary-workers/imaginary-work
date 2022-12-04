@@ -20,11 +20,9 @@ namespace Game.Managers
         private void Awake()
         {
             _instance = this;
-        }
-        private void Start()
-        {
             _player = GameManager.Player;
         }
+
         public void SetPlayerControlActive(bool active)
         {
             _player.GetComponent<PlayerController>().active = active;
