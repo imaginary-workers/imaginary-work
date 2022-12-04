@@ -4,16 +4,16 @@ using UnityEngine.AI;
 namespace Game.Gameplay.Enemies.FlyerPatrol
 {
     public class NormalState : State
-    {        
-        FlyerPatrolStateController _stateController;
-        NavMeshAgent _agent;
-        PatrolBehaviour _patrolBehaviour;
-        GameObject _cameraObject;
-        GameObject _baseCameraObject;
-        VisualField _visualField;
-        Light _ledLight;
-        Light _focusLight;
-        Color _color;
+    {
+        readonly NavMeshAgent _agent;
+        readonly GameObject _baseCameraObject;
+        readonly GameObject _cameraObject;
+        readonly Color _color;
+        readonly Light _focusLight;
+        readonly Light _ledLight;
+        readonly PatrolBehaviour _patrolBehaviour;
+        readonly FlyerPatrolStateController _stateController;
+        readonly VisualField _visualField;
 
         public NormalState(
             FlyerPatrolStateController stateController,
@@ -25,7 +25,7 @@ namespace Game.Gameplay.Enemies.FlyerPatrol
             Light ledLight,
             Light focusLight,
             Color color
-            )
+        )
         {
             _stateController = stateController;
             _agent = agent;
@@ -46,6 +46,7 @@ namespace Game.Gameplay.Enemies.FlyerPatrol
             _agent.isStopped = false;
             _visualField.OnEnterViewTarget += ChangeToAttack;
         }
+
         public override void Update()
         {
             BaseLookForward();
@@ -68,7 +69,7 @@ namespace Game.Gameplay.Enemies.FlyerPatrol
         void BaseLookForward()
         {
             _baseCameraObject.transform.forward = Vector3.Slerp(_baseCameraObject.transform.forward,
-                (_stateController.transform.forward).normalized, Time.deltaTime * 3.5f);
+                _stateController.transform.forward.normalized, Time.deltaTime * 3.5f);
         }
 
         void ChangeToAttack(GameObject target)

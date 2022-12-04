@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Game.Gameplay.Enemies.CollectableEnemy
 {
-    public class MinionEnemy: FollowMeleeStateController
+    public class MinionEnemy : FollowMeleeStateController
     {
         [SerializeField] GameObject _particle;
         [SerializeField] AudioSource _audioSource;

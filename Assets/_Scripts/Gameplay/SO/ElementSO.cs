@@ -1,7 +1,9 @@
 ﻿using UnityEngine;
 
-namespace Game.SO
+namespace Game.Gameplay.SO
 {
     [CreateAssetMenu(fileName = "Element", menuName = "Scriptable Object/element", order = 0)]
-    public class ElementSO : ScriptableObject { }
+    public class ElementSO : ScriptableObject
+    {
+    }
 }

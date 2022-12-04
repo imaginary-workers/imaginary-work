@@ -4,12 +4,12 @@ namespace Game.Gameplay.Enemies.FollowMelee
 {
     public class FollowState : State
     {
-        FollowMeleeStateController _stateController;
-        FollowPlayer _followPlayer;
-        LookAtTarget _lookAtTarget;
-        GameObject _player;
-        float _rangeMelee;
-        float _rangeOfVisionY;
+        readonly FollowPlayer _followPlayer;
+        readonly LookAtTarget _lookAtTarget;
+        readonly GameObject _player;
+        readonly float _rangeMelee;
+        readonly float _rangeOfVisionY;
+        readonly FollowMeleeStateController _stateController;
 
         public FollowState(
             FollowMeleeStateController stateController,
@@ -18,7 +18,7 @@ namespace Game.Gameplay.Enemies.FollowMelee
             GameObject player,
             float rangeMelee,
             float rangeOfVisionY
-            )
+        )
         {
             _stateController = stateController;
             _followPlayer = followPlayer;
@@ -32,21 +32,18 @@ namespace Game.Gameplay.Enemies.FollowMelee
         {
             _followPlayer.enabled = true;
             _lookAtTarget.enabled = true;
-            
         }
+
         public override void Update()
         {
-            Vector3 position = _stateController.transform.position;
-            Vector3 playerPosition = _player.transform.position;
+            var position = _stateController.transform.position;
+            var playerPosition = _player.transform.position;
             if (!Utils.IsInRangeOfVision(position, playerPosition, _stateController.RangeFollow, _rangeOfVisionY))
-            {
                 _stateController.ChangeState(_stateController.RandomPatrolState);
-            }
-            else if(Utils.IsInRangeOfVision(position, playerPosition, _rangeMelee, _rangeOfVisionY))
-            {
+            else if (Utils.IsInRangeOfVision(position, playerPosition, _rangeMelee, _rangeOfVisionY))
                 _stateController.ChangeState(_stateController.MeleeState);
-            }
         }
+
         public override void Exit()
         {
             _followPlayer.enabled = false;

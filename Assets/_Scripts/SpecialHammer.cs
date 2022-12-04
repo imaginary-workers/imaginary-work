@@ -1,7 +1,5 @@
 using Game.Gameplay;
 using Game.Gameplay.Player;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Game
@@ -11,15 +9,16 @@ namespace Game
         [SerializeField] PlayerController _controller;
         [SerializeField] MoveComponent _move;
         [SerializeField] SwayBehaviour _sway;
-        Vector3 _offset;
 
         [SerializeField] GameObject _explosion;
         [SerializeField] Transform _pointOfExplosion;
+        Vector3 _offset;
 
-        private void Start()
+        void Start()
         {
             _offset = _sway.transform.position;
         }
+
         void StartSpecial()
         {
             _controller.enabled = false;
