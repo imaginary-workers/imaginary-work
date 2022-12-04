@@ -15,6 +15,7 @@ namespace Game.Dialogs
         public float textSpeed;
         bool canContinue;
         int dialogueIndex;
+        [SerializeField] private DialogManager _dialogManager;
 
         public void StartDialog(DialogSO dialog)
         {
@@ -30,7 +31,12 @@ namespace Game.Dialogs
 
         public void DisplayNextSentence()
         {
-            if (_sentences.Count <= 0) return;
+            StopAllCoroutines();
+            if (_sentences.Count <= 0)
+            {
+                _dialogManager.DialogFinished();
+                return;
+            }
             StartCoroutine(CO_DisplaySentence());
         }
 
@@ -80,6 +86,7 @@ namespace Game.Dialogs
         private void UpdateButtonUI()
         {
             _continueButton.gameObject.SetActive(true);
+            _continueButton.Select();
             if (_sentences.Count > 0)
             {
                 //TODO display next button

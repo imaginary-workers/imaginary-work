@@ -1,4 +1,5 @@
 using Game.Dialogs.SO;
+using Game.Managers;
 using UnityEngine;
 
 namespace Game.Dialogs
@@ -21,8 +22,15 @@ namespace Game.Dialogs
 
         void DialogHandler(DialogSO dialog)
         {
+            PlayManager.Instance.CanvasController(true, false);
             _canvas.SetActive(true);
             _dialogUI.StartDialog(dialog);
+        }
+
+        public void DialogFinished()
+        {
+            PlayManager.Instance.CanvasController(false, false);
+            _canvas.SetActive(false);
         }
     }
 }
