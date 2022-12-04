@@ -1,8 +1,8 @@
-using Game.Gameplay.Player;
-using Game.Managers;
-using Game.SO;
 using UnityEngine;
 using UnityEngine.UI;
+using Game.SO;
+using Game.Managers;
+using Game.Gameplay.Player;
 
 namespace Game.UI
 {
@@ -13,9 +13,8 @@ namespace Game.UI
         [SerializeField] Gradient _colorVariention;
         [SerializeField] Animator _effectAnimator;
 
-        [Header("Player's Life")] [SerializeField]
-        IntSO _maxPlayerLife;
-
+        [Header("Player's Life")]
+        [SerializeField] IntSO _maxPlayerLife;
         [SerializeField] IntSO _actualPlayerLife;
 
         void Start()
@@ -35,7 +34,7 @@ namespace Game.UI
             float actualValue = _actualPlayerLife.value;
             float maxValue = _maxPlayerLife.value;
 
-            var value = actualValue / maxValue;
+            float value = actualValue / maxValue;
             _slider.value = value;
             _sliderFillImage.color = _colorVariention.Evaluate(value);
         }

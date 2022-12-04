@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.AI;
 
 namespace Game.Gameplay.Enemies.FollowMelee
@@ -15,21 +16,20 @@ namespace Game.Gameplay.Enemies.FollowMelee
             _damageParticle.Stop();
         }
 
-        void Update()
-        {
-            _animator.SetFloat("Speed", _agent.speed);
-        }
-
         void OnEnable()
         {
             _damageable.OnTakeDamage += OnTakeDamageHandler;
         }
 
+        void Update()
+        {
+            _animator.SetFloat("Speed", _agent.speed);
+        }
         public void Attack()
         {
             _animator.SetTrigger("Attack");
         }
-
+              
         public void TakeDamageFeedback()
         {
             _damageParticle.Play();

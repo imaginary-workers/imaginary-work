@@ -7,65 +7,32 @@ namespace Game.Gameplay
 {
     public class VisualField : MonoBehaviour
     {
-        [SerializeField] GameObject _target;
+        public event Action<GameObject> OnEnterViewTarget, OnExitViewTarget;
+
+        [SerializeField] GameObject _target = null;
         [SerializeField] float _visualAngle = 45f;
         [SerializeField] float _visualDistance = 10f;
-        [SerializeField] [Range(0f, 30f)] float _rangeOfVisionYUp = 1.5f;
-        [SerializeField] [Range(0f, -30f)] float _rangeOfVisionYDown = -1.5f;
+        [SerializeField, Range(0f, 30f)] float _rangeOfVisionYUp = 1.5f;
+        [SerializeField, Range(0f, -30f)] float _rangeOfVisionYDown = -1.5f;
         [SerializeField] float _maxTime = .2f;
         [SerializeField] LayerMask _obstacleLayer;
         [SerializeField] LayerMask _targetLayer;
-        RaycastHit _hitInfo;
-        Ray _ray;
+        bool _isTargetInView = false;
         WaitForSeconds _waitForSeconds;
-
-        public bool IsTargetInView { get; private set; }
-
-        public GameObject Target
-        {
-            set => _target = value;
-        }
+        Ray _ray;
+        RaycastHit _hitInfo;
 
         void Start()
         {
-            if (_target == null) Debug.LogError("VisualField must have a target");
+            if (_target == null)
+            {
+                Debug.LogError("VisualField must have a target");
+            }
             _ray = new Ray();
             _hitInfo = new RaycastHit();
             _waitForSeconds = new WaitForSeconds(_maxTime);
             StartCoroutine(CO_FindTarget());
         }
-
-
-#if UNITY_EDITOR
-
-        void OnDrawGizmos()
-        {
-            var transformPosition = transform.position;
-            var viewAngleLeft = Utils.DirectionFromAngle(transform.eulerAngles.y, -_visualAngle / 2);
-            var viewAngleRight = Utils.DirectionFromAngle(transform.eulerAngles.y, _visualAngle / 2);
-
-            transformPosition.y += _rangeOfVisionYDown;
-            Handles.color = Color.white;
-            Handles.DrawWireArc(transformPosition, Vector3.up, Vector3.forward, 360, _visualDistance);
-            Handles.color = Color.yellow;
-            Handles.DrawLine(transformPosition, transformPosition + viewAngleLeft * _visualDistance);
-            Handles.DrawLine(transformPosition, transformPosition + viewAngleRight * _visualDistance);
-            transformPosition.y += _rangeOfVisionYUp - _rangeOfVisionYDown;
-            Handles.color = Color.white;
-            Handles.DrawWireArc(transformPosition, Vector3.up, Vector3.forward, 360, _visualDistance);
-            Handles.color = Color.yellow;
-            Handles.DrawLine(transformPosition, transformPosition + viewAngleLeft * _visualDistance);
-            Handles.DrawLine(transformPosition, transformPosition + viewAngleRight * _visualDistance);
-
-            if (_target == null) return;
-            if (CanSeeTarget())
-            {
-                Handles.color = Color.red;
-                Handles.DrawLine(transform.position, _target.transform.position);
-            }
-        }
-#endif
-        public event Action<GameObject> OnEnterViewTarget, OnExitViewTarget;
 
         IEnumerator CO_FindTarget()
         {
@@ -74,30 +41,42 @@ namespace Game.Gameplay
                 yield return _waitForSeconds;
                 if (CanSeeTarget())
                 {
-                    if (!IsTargetInView)
+                    if (!_isTargetInView)
                     {
-                        IsTargetInView = true;
+                        _isTargetInView = true;
                         OnEnterViewTarget?.Invoke(_target);
                     }
                 }
                 else
                 {
-                    if (IsTargetInView)
+                    if (_isTargetInView)
                     {
-                        IsTargetInView = false;
+                        _isTargetInView = false;
                         OnExitViewTarget?.Invoke(_target);
                     }
                 }
             }
         }
 
+        public bool IsTargetInView => _isTargetInView;
+        public GameObject Target { set => _target = value; }
+        
         bool CanSeeTarget()
         {
             var position = transform.position;
             var target = _target.transform;
-            if (!IsTargetInRange(position)) return false;
-            if (!IsTargetInAngle(position, target.position)) return false;
-            if (ThereIsObstacleBetween(position, target.position)) return false;
+            if (!IsTargetInRange(position))
+            {
+                return false;
+            }
+            if (!IsTargetInAngle(position, target.position))
+            {
+                return false;
+            }
+            if (ThereIsObstacleBetween(position, target.position))
+            {
+                return false;
+            }
 
             return true;
         }
@@ -110,8 +89,12 @@ namespace Game.Gameplay
 
             var distance = Utils.pythagoreanTheorem(_visualDistance, Mathf.Abs(targetPosition.y - position.y));
             if (Physics.Raycast(_ray, out _hitInfo, distance, _obstacleLayer))
+            {
                 if (_hitInfo.collider.gameObject != _target)
+                {
                     return true;
+                }
+            }
 
             return false;
         }
@@ -131,5 +114,36 @@ namespace Game.Gameplay
             targetPosition.y = position.y = 0;
             return Vector3.Angle(transform.forward, (targetPosition - position).normalized) < _visualAngle / 2;
         }
+
+
+#if UNITY_EDITOR
+       
+       void OnDrawGizmos()
+        {
+            var transformPosition = transform.position;
+            var viewAngleLeft = Utils.DirectionFromAngle(transform.eulerAngles.y, -_visualAngle / 2);
+            var viewAngleRight = Utils.DirectionFromAngle(transform.eulerAngles.y, _visualAngle / 2);
+       
+            transformPosition.y += _rangeOfVisionYDown;
+            Handles.color = Color.white;
+            Handles.DrawWireArc(transformPosition, Vector3.up, Vector3.forward, 360, _visualDistance);
+            Handles.color = Color.yellow;
+            Handles.DrawLine(transformPosition, transformPosition + viewAngleLeft * _visualDistance);
+            Handles.DrawLine(transformPosition, transformPosition + viewAngleRight * _visualDistance);
+            transformPosition.y += _rangeOfVisionYUp - _rangeOfVisionYDown;
+            Handles.color = Color.white;
+            Handles.DrawWireArc(transformPosition, Vector3.up, Vector3.forward, 360, _visualDistance);
+            Handles.color = Color.yellow;
+            Handles.DrawLine(transformPosition, transformPosition + viewAngleLeft * _visualDistance);
+            Handles.DrawLine(transformPosition, transformPosition + viewAngleRight * _visualDistance);
+       
+            if (_target == null) return;
+            if (CanSeeTarget())
+            {
+                Handles.color = Color.red;
+                Handles.DrawLine(transform.position, _target.transform.position);
+            }
+        }
+#endif
     }
 }

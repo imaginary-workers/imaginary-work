@@ -1,5 +1,5 @@
 ﻿using Game.Config;
-using Game.Config.SO;
+using Game.SO;
 using UnityEngine;
 using UnityEngine.Audio;
 

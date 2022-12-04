@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Game.Gameplay.Player
@@ -10,7 +12,7 @@ namespace Game.Gameplay.Player
         [SerializeField] AudioClip _noHit;
         [SerializeField] AudioClip _shootPistol;
         [SerializeField] AudioClip _recoveryPistol;
-        public bool _fireOn;
+        public bool _fireOn = false;
 
         public void SwitchWeapon()
         {

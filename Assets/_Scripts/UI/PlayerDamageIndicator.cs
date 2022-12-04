@@ -10,8 +10,7 @@ namespace Game.UI
         [SerializeField] PlayerDamageable _damageable;
         [SerializeField] ObjectPooler _damageIngicatorPooler;
         [SerializeField] float _timeToDisappear = 3f;
-        readonly List<SingleDamageIndicator> _indicators = new List<SingleDamageIndicator>();
-
+        List<SingleDamageIndicator> _indicators = new List<SingleDamageIndicator>(); 
         void OnEnable()
         {
             _damageable.OnTakeDamage += TakeDamageHandler;
@@ -30,7 +29,6 @@ namespace Game.UI
                 damageIndicator.Reuse(_timeToDisappear);
                 return;
             }
-
             var indicator = _damageIngicatorPooler.GetPooledObject();
             indicator.SetActive(true);
             var singleDamageIndicator = indicator.GetComponent<SingleDamageIndicator>();

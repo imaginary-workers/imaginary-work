@@ -5,10 +5,17 @@ namespace Game
 {
     public class DestroyInSecondsComponent : MonoBehaviour
     {
-        Action _callback;
-        bool _canCount;
-        float _time;
         float _timeToDestroy;
+        float _time;
+        bool _canCount;
+        private Action _callback;
+
+        void OnEnable()
+        {
+            _timeToDestroy = 0;
+            _time = 0;
+            _canCount = false;
+        }
 
         void Update()
         {
@@ -25,20 +32,12 @@ namespace Game
             }
         }
 
-        void OnEnable()
-        {
-            _timeToDestroy = 0;
-            _time = 0;
-            _canCount = false;
-        }
-
         public void DestroyInSeconds(float seconds)
         {
             _time = 0;
             _timeToDestroy = seconds;
             _canCount = true;
         }
-
         public void DestroyInSeconds(float seconds, Action callback)
         {
             _time = 0;

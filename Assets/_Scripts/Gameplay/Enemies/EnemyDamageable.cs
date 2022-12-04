@@ -1,5 +1,5 @@
 using System;
-using Game.Gameplay.SO;
+using Game.SO;
 using Game.UI;
 using UnityEngine;
 
@@ -9,17 +9,17 @@ namespace Game.Gameplay.Enemies
     {
         [SerializeField] int _life = 10;
         [SerializeField] ElementSO _weakness;
-        public int Life => _life;
         public event Action<int, GameObject> OnTakeDamage, OnTakeStrongDamage;
         public event Action<GameObject> OnDeath;
+        public int Life => _life;
 
         public void TakeTamage(int damage, ElementSO element, GameObject damaging)
-        {
+        {                      
             if (Life <= 0) return;
 
             if (_weakness == element)
             {
-                _life -= damage * 2;
+                _life -= (damage * 2);
                 if (Life > 0)
                 {
                     OnTakeStrongDamage?.Invoke(damage, damaging);
@@ -32,7 +32,6 @@ namespace Game.Gameplay.Enemies
                 OnTakeDamage?.Invoke(damage, damaging);
                 HitMarkerController.Instance.DisplayHitMarkWeak();
             }
-
             if (Life <= 0)
             {
                 _life = 0;

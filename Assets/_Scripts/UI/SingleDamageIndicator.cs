@@ -6,20 +6,11 @@ namespace Game.UI
 {
     public class SingleDamageIndicator : MonoBehaviour
     {
+        public event Action<SingleDamageIndicator> OnDesactiveIndicator; 
         [SerializeField] DestroyInSecondsComponent _destroy;
-        IDamageable _damageable;
-        public GameObject Enemy { get; private set; }
-        public GameObject Player { get; private set; }
-
-        void Update()
-        {
-            if (Enemy == null) return;
-
-            PointToDamageOrigin();
-        }
-
-        public event Action<SingleDamageIndicator> OnDesactiveIndicator;
-
+        private IDamageable _damageable;
+        public GameObject Enemy { get; private set; } = null;
+        public GameObject Player { get; private set; } = null;
         public void Init(GameObject enemy, GameObject player, float maxSeconds)
         {
             Enemy = enemy;
@@ -32,6 +23,13 @@ namespace Game.UI
         public void Reuse(float maxSeconds)
         {
             _destroy.DestroyInSeconds(maxSeconds);
+        }
+
+        void Update()
+        {
+            if (Enemy == null) return;
+
+            PointToDamageOrigin();
         }
 
         public void DestroyIndicator(GameObject damaging)

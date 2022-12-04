@@ -1,6 +1,7 @@
-using System;
+
 using Game.Gameplay.Weapons;
 using Game.Managers;
+using System;
 using UnityEngine;
 
 namespace Game.Gameplay.Player
@@ -9,10 +10,10 @@ namespace Game.Gameplay.Player
     {
         [SerializeField] WeaponInventory _inventory;
         [SerializeField] PlayerAnimationManager _animationManager;
+        public event Action OnWeaponChange;
 
-        public int CurrentSlot { get; private set; }
+        public int CurrentSlot { get; private set; } = 0;
         public Weapon CurrentWeapon { get; private set; }
-
         void Awake()
         {
             var weapon = _inventory.GetWeapon(CurrentSlot);
@@ -28,8 +29,6 @@ namespace Game.Gameplay.Player
         {
             GameManager.Instance.UpdateBulletCounter(CurrentWeapon.Ammunition);
         }
-
-        public event Action OnWeaponChange;
 
         public bool SwitchWeapon(int slot)
         {
@@ -62,7 +61,10 @@ namespace Game.Gameplay.Player
 
         void SubscribeWeaponsAnimations()
         {
-            foreach (var weapon in _inventory.Weapons) weapon.SubscribeToAnimationEvents(_animationManager);
+            foreach (var weapon in _inventory.Weapons)
+            {
+                weapon.SubscribeToAnimationEvents(_animationManager);
+            }
         }
     }
 }

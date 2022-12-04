@@ -1,5 +1,5 @@
 using System;
-using Game.Gameplay.SO;
+using Game.SO;
 using UnityEngine;
 
 namespace Game.Gameplay

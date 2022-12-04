@@ -6,16 +6,19 @@ namespace Game.Config
     [Serializable]
     public sealed class AudioConfig : IAudioConfig
     {
-        [SerializeField] [Range(-80f, 20f)] float _master;
+        [SerializeField, Range(-80f, 20f)]
+        float _master = 0f;
 
-        [SerializeField] [Range(-80f, 20f)] float _sound;
+        [SerializeField, Range(-80f, 20f)]
+        float _sound = 0f;
 
-        [SerializeField] [Range(-80f, 20f)] float _music;
+        [SerializeField, Range(-80f, 20f)]
+        float _music = 0f;
 
         public AudioConfig(AudioConfig audioConfig)
         {
             Master = audioConfig.Master;
-            Sound = audioConfig.Sound;
+            Sound = audioConfig.Sound;           
             Music = audioConfig.Music;
         }
 
@@ -28,7 +31,10 @@ namespace Game.Config
             get => _master;
             set
             {
-                if (value >= -80f && value <= 20f) _master = value;
+                if (value >= -80f && value <= 20f)
+                {
+                    _master = value;
+                }
             }
         }
 
@@ -37,7 +43,10 @@ namespace Game.Config
             get => _sound;
             set
             {
-                if (value >= -80f && value <= 20f) _sound = value;
+                if (value >= -80f && value <= 20f)
+                {
+                    _sound = value;
+                }
             }
         }
 
@@ -46,7 +55,10 @@ namespace Game.Config
             get => _music;
             set
             {
-                if (value >= -80f && value <= 20f) _music = value;
+                if (value >= -80f && value <= 20f)
+                {
+                    _music = value;
+                }
             }
         }
     }

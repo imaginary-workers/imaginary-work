@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Game
@@ -6,7 +8,7 @@ namespace Game
     {
         [SerializeField] GameObject _explosion;
 
-        void OnTriggerEnter(Collider other)
+        private void OnTriggerEnter(Collider other)
         {
             var e = Instantiate(_explosion);
             e.transform.position = transform.position;

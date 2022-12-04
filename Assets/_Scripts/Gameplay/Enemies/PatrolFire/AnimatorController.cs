@@ -11,18 +11,11 @@ namespace Game.Gameplay.Enemies.PatrolFire
         [SerializeField] Animator _animator;
         [SerializeField] EnemyDamageable _damageable;
         [SerializeField] ParticleSystem _damageParticle;
-        readonly Dictionary<string, Action> _events = new Dictionary<string, Action>();
-
-        void Awake()
+        Dictionary<string, Action> _events = new Dictionary<string, Action>();
+        private void Awake()
         {
             _damageParticle.Stop();
         }
-
-        void LateUpdate()
-        {
-            _animator.SetFloat("Speed", _agent.speed);
-        }
-
         void OnEnable()
         {
             _damageable.OnTakeDamage += OnTakeDamageHandler;
@@ -31,6 +24,11 @@ namespace Game.Gameplay.Enemies.PatrolFire
         void OnDisable()
         {
             _damageable.OnTakeDamage -= OnTakeDamageHandler;
+        }
+
+        void LateUpdate()
+        {
+            _animator.SetFloat("Speed", _agent.speed);
         }
 
         public void StartAttack()
@@ -66,9 +64,9 @@ namespace Game.Gameplay.Enemies.PatrolFire
 
         public void TakeDamageFeedback()
         {
-            _damageParticle.Play();
+          _damageParticle.Play();
         }
-
+        
         public void TakeStrongDamageFeedback()
         {
             _animator.SetTrigger("Hit");

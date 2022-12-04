@@ -1,5 +1,5 @@
-﻿using EZCameraShake;
-using UnityEngine;
+﻿using UnityEngine;
+using EZCameraShake;
 
 /*
  * This script shakes the camera based on the player object's distance to the object this script is attached to.
@@ -15,18 +15,18 @@ public class ShakeByDistance : MonoBehaviour
     //Our saved shake instance.
     private CameraShakeInstance _shakeInstance;
 
-    private void Start()
+    void Start()
     {
         //Create the shake instance. We will modify its properties in Update()
         _shakeInstance = CameraShaker.Instance.StartShake(2, 14, 0);
     }
 
-    private void Update()
+	void Update ()
     {
         //Get the distance from the player to this object.
-        var currentDistance = Vector3.Distance(Player.transform.position, transform.position);
+        float currentDistance = Vector3.Distance(Player.transform.position, this.transform.position);
 
         //Scale the magnitude of our saved shake, so that the scale is higher the closer we get to the object.
         _shakeInstance.ScaleMagnitude = 1 - Mathf.Clamp01(currentDistance / Distance);
-    }
+	}
 }

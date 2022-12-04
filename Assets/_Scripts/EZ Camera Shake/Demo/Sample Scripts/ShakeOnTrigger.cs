@@ -1,5 +1,5 @@
-﻿using EZCameraShake;
-using UnityEngine;
+﻿using UnityEngine;
+using EZCameraShake;
 
 /*
  * This script begins shaking the camera when the player enters the trigger, and stops shaking when the player leaves.
@@ -9,7 +9,7 @@ public class ShakeOnTrigger : MonoBehaviour
     //Our saved shake instance.
     private CameraShakeInstance _shakeInstance;
 
-    private void Start()
+    void Start()
     {
         //We make a single shake instance that we will fade in and fade out when the player enters and leaves the trigger area.
         _shakeInstance = CameraShaker.Instance.StartShake(2, 15, 2);
@@ -22,7 +22,7 @@ public class ShakeOnTrigger : MonoBehaviour
     }
 
     //When the player enters the trigger, begin shaking.
-    private void OnTriggerEnter(Collider c)
+    void OnTriggerEnter(Collider c)
     {
         //Check to make sure the object that entered the trigger was the player.
         if (c.CompareTag("Player"))
@@ -30,11 +30,14 @@ public class ShakeOnTrigger : MonoBehaviour
     }
 
     //When the player exits the trigger, stop shaking.
-    private void OnTriggerExit(Collider c)
+    void OnTriggerExit(Collider c)
     {
         //Check to make sure the object that exited the trigger was the player.
         if (c.CompareTag("Player"))
+        {
             //Fade out the shake over 3 seconds.
-            _shakeInstance.StartFadeOut(3f);
+            _shakeInstance.StartFadeOut(3f);        
+        }
+            
     }
 }
