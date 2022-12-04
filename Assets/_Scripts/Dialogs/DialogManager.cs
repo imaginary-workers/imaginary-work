@@ -1,43 +1,28 @@
-using System;
-using System.Collections.Generic;
 using Game.Dialogs.SO;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace Game.Dialogs
 {
     public class DialogManager : MonoBehaviour
     {
         [SerializeField] DialogEventSO _dialogEvent;
-        [SerializeField] TextMesh _text;
-        [SerializeField] Button _button;
-        [SerializeField] Animator _dialogAnimator;
-        Queue<string> sentences;
+        [SerializeField] private GameObject _canvas;
+        [SerializeField] private DialogUI _dialogUI;
 
-        private void OnEnable()
+        void OnEnable()
         {
             _dialogEvent.Subscribe(DialogHandler);
         }
 
-        private void OnDisable()
+        void OnDisable()
         {
             _dialogEvent.Unsubscribe(DialogHandler);
         }
 
-        private void DialogHandler(DialogSO dialog)
+        void DialogHandler(DialogSO dialog)
         {
-            ShowDialogBoxUI();
-            PrintNextSentences();
-        }
-
-        private void ShowDialogBoxUI()
-        {
-            
-        }
-
-        private void PrintNextSentences()
-        {
-            
+            _canvas.SetActive(true);
+            _dialogUI.StartDialog(dialog);
         }
     }
 }
