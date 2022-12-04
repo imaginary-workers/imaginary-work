@@ -14,7 +14,7 @@ namespace Game.Gameplay.Lifts
         {
             OnUpFinished.Invoke();
         }
-        
+
 
         public void Depart()
         {

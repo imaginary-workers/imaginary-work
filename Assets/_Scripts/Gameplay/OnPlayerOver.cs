@@ -5,18 +5,24 @@ namespace Game.Gameplay
 {
     public class OnPlayerOver : MonoBehaviour
     {
-        public event Action<GameObject> OnPlayerOverEnter, OnPlayerOverExit;  
         [SerializeField] string _playerTag = "";
         [SerializeField] BoxCollider _collider;
-        [Tooltip("it calculate base on the scale and position. If it grows or move set it to false")]
-        [SerializeField] bool _isStaticObject = true;
+
+        [Tooltip("it calculate base on the scale and position. If it grows or move set it to false")] [SerializeField]
+        bool _isStaticObject = true;
+
         float _localScaleX, _localScaleZ, _borderX1, _borderX2, _borderZ1, _borderZ2;
 
-        public bool IsPlayerOver { get; private set; } = false;
+        public bool IsPlayerOver { get; private set; }
 
         void Awake()
         {
             SetBorders();
+        }
+
+        public void Reset()
+        {
+            IsPlayerOver = false;
         }
 
         void OnCollisionEnter(Collision other)
@@ -39,8 +45,8 @@ namespace Game.Gameplay
             IsPlayerOver = false;
             OnPlayerOverExit?.Invoke(other.gameObject);
         }
-        
-        public void Reset() => IsPlayerOver = false;
+
+        public event Action<GameObject> OnPlayerOverEnter, OnPlayerOverExit;
 
         bool IsInAreaXZ(Transform other)
         {
@@ -50,7 +56,9 @@ namespace Game.Gameplay
         }
 
         bool IsOver(Transform other)
-            => other.position.y > transform.position.y;
+        {
+            return other.position.y > transform.position.y;
+        }
 
         void SetBorders()
         {

@@ -5,7 +5,7 @@ namespace Game
     public class ParticlesController : MonoBehaviour
     {
         [SerializeField] ParticleSystem _particle;
-        [Range(1, 10)][SerializeField] float _delayOff;
+        [Range(1, 10)] [SerializeField] float _delayOff;
 
         void Start()
         {
@@ -16,7 +16,6 @@ namespace Game
         {
             gameObject.SetActive(true);
             _particle.Play();
-
         }
 
         public void TurnOff()
@@ -29,6 +28,5 @@ namespace Game
         {
             gameObject.SetActive(false);
         }
-
     }
 }

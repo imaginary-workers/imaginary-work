@@ -5,54 +5,50 @@ namespace Game.Gameplay.Platforms
 {
     public class BreakPlatformBrain : MonoBehaviour
     {
-        public event Action<int> OnChangeLayer;
-
         [SerializeField] OnPlayerOver _onPlayerOver;
-        [SerializeField, Range(0f, 5f)] float _timeToBreakLayer = 5;
+        [SerializeField] [Range(0f, 5f)] float _timeToBreakLayer = 5;
         [SerializeField] int _maxLayers = 3;
-        [SerializeField, Range(.1f, 10f)] int _timeToRespawn = 0;
+        [SerializeField] [Range(.1f, 10f)] int _timeToRespawn;
         [SerializeField] Collider _collider;
-        float _time = 0;
-        int _currentLayer = 3;
+        float _time;
 
         public int MaxLayers => _maxLayers;
-        public int CurrentLayer => _currentLayer;
+        public int CurrentLayer { get; private set; } = 3;
 
         void Awake()
         {
-            _currentLayer = _maxLayers;
+            CurrentLayer = _maxLayers;
         }
 
         void Update()
         {
-            if (_onPlayerOver.IsPlayerOver && _currentLayer != 0)
-            {
-                _time += 1 * Time.deltaTime;
-            }
+            if (_onPlayerOver.IsPlayerOver && CurrentLayer != 0) _time += 1 * Time.deltaTime;
 
-            if (_time >= _timeToBreakLayer && _currentLayer > 0)
+            if (_time >= _timeToBreakLayer && CurrentLayer > 0)
             {
                 _time = 0;
-                _currentLayer--;
-                OnChangeLayer?.Invoke(_currentLayer);
-                if (_currentLayer <= 0)
+                CurrentLayer--;
+                OnChangeLayer?.Invoke(CurrentLayer);
+                if (CurrentLayer <= 0)
                 {
                     _collider.enabled = false;
                     _onPlayerOver.Reset();
                 }
             }
 
-            if (_currentLayer == 0)
+            if (CurrentLayer == 0)
             {
                 _time += 1 * Time.deltaTime;
                 if (_time >= _timeToRespawn)
                 {
-                    _currentLayer = _maxLayers;
+                    CurrentLayer = _maxLayers;
                     _time = 0;
-                    OnChangeLayer?.Invoke(_currentLayer);
+                    OnChangeLayer?.Invoke(CurrentLayer);
                     _collider.enabled = true;
                 }
             }
         }
+
+        public event Action<int> OnChangeLayer;
     }
 }

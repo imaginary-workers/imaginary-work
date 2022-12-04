@@ -937,7 +937,7 @@ MonoBehaviour:
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 11400000, guid: 5cb8a3494f6dcbe4f90dc1c9e89125f5, type: 2}
-          m_ObjectArgumentAssemblyTypeName: Game.SO.WeaponSO, Assembly-CSharp
+          m_ObjectArgumentAssemblyTypeName: Game.Gameplay.Weapons.SO.WeaponSO, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -953,7 +953,7 @@ MonoBehaviour:
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 11400000, guid: b764a1e102716434eb76f054bfc5bf16, type: 2}
-          m_ObjectArgumentAssemblyTypeName: Game.SO.WeaponSO, Assembly-CSharp
+          m_ObjectArgumentAssemblyTypeName: Game.Gameplay.Weapons.SO.WeaponSO, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -1012,7 +1012,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _inventory: {fileID: 7520371172983455578}
   _animationManager: {fileID: 1160910595356904043}
-  _melee: {fileID: 921895296802912248}
 --- !u!114 &7520371172983455578
 MonoBehaviour:
   m_ObjectHideFlags: 0

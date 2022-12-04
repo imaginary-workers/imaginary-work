@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Game
@@ -9,7 +7,7 @@ namespace Game
         [SerializeField] Transform _originTarget;
         [SerializeField] float _localZOffset = 2f;
 
-        private void Start()
+        void Start()
         {
             transform.parent = null;
         }

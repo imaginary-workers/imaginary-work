@@ -1,4 +1,3 @@
-using System;
 using Game.Gameplay.Weapons;
 using Game.Managers;
 using UnityEngine;
@@ -11,7 +10,7 @@ namespace Game.Gameplay.Player
         [SerializeField] WeaponManager _manager;
         [SerializeField] PointerTarget _pointerTarget;
         [SerializeField] PlayerController _playerController;
-        [SerializeField, Range(0, 2)] float _speedWeaponHeavy = 1;
+        [SerializeField] [Range(0, 2)] float _speedWeaponHeavy = 1;
         [SerializeField] PlayerAnimationManager _animation;
         public bool active = true;
 
@@ -20,13 +19,7 @@ namespace Game.Gameplay.Player
 
         public bool CanAttack { get; set; } = true;
 
-        Weapon CurrentWeapon
-        {
-            get
-            {
-                return _manager.CurrentWeapon;
-            }
-        }
+        Weapon CurrentWeapon => _manager.CurrentWeapon;
 
         void Start()
         {
@@ -48,6 +41,7 @@ namespace Game.Gameplay.Player
                 _playerController.CanSprint = false;
                 CurrentWeapon.StartAttack();
             }
+
             if (context.performed)
                 CurrentWeapon.PerformedAttack();
             if (context.canceled)
@@ -70,22 +64,15 @@ namespace Game.Gameplay.Player
                 CanAttack = false;
                 _animation.StartReloading();
             }
-            else
-            {
-                //TODO feedback cuando no se recarga
-            }
+            //TODO feedback cuando no se recarga
         }
 
         public bool ReloadReserveWeapons()
         {
             if (!active) return false;
-            bool reserve = _manager.ReloadReserveWeapons();
-            if (reserve)
-            {
-                UpdateAmmoUI();
-            }
+            var reserve = _manager.ReloadReserveWeapons();
+            if (reserve) UpdateAmmoUI();
             return reserve;
-
         }
 
         public void SwitchWeapon(int slot)
@@ -120,6 +107,7 @@ namespace Game.Gameplay.Player
         {
             GameManager.Instance.SetActiveSlot(slot);
         }
+
         void UpdateAmmoUI()
         {
             GameManager.Instance.UpdateBulletCounter(CurrentWeapon.Ammunition);
