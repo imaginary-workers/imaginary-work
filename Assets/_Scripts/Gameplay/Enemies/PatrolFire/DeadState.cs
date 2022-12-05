@@ -34,10 +34,10 @@ namespace Game.Gameplay.Enemies.PatrolFire
 
         public override void Enter()
         {
+            base.Enter();
             _agent.speed = 0;
             _agent.isStopped = true;
             _enemyCollider.enabled = false;
-            base.Enter();
             _spawn.Drop();
             _ragdoll.SetEnabled(true);
         }

@@ -28,6 +28,7 @@ namespace Game.Gameplay.Enemies.CollectableEnemy
 
         public override void Enter()
         {
+            base.Enter();
             _agent.speed = 0;
             _agent.isStopped = true;
             _animatorcontroler.enabled = false;

@@ -22,6 +22,7 @@ namespace Game._Scripts.Gameplay.Enemies.FlyerPatrol
 
         public override void Enter()
         {
+            base.Enter();
             _agent.speed = 0;
             _agent.isStopped = true;
             hitStop();

@@ -11,7 +11,7 @@ namespace Game.Gameplay
 
         void OnTriggerEnter(Collider other)
         {
-            if (other.tag == "Player" && Enemy.countEnemy <= 0)
+            if (other.tag == "Player" && Enemy.CountEnemy <= 0)
                 GameManager.Instance.NextScene(_nextScene);
         }
     }

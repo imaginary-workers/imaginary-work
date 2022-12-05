@@ -7,7 +7,15 @@ namespace Game.Gameplay.Enemies
     [RequireComponent(typeof(NavMeshAgent))]
     public abstract class Enemy : MonoBehaviour
     {
-        public static int countEnemy;
+        static int countEnemy;
+        public static int CountEnemy => countEnemy; 
+
+        public static void SubstractEnemy()
+        {
+            countEnemy--;
+            UpdateEnemyCount?.Invoke();
+            if (countEnemy == 0) OnNoEnemies?.Invoke();
+        }
         internal bool count;
 
         void Awake()
@@ -15,13 +23,6 @@ namespace Game.Gameplay.Enemies
             countEnemy++;
             UpdateEnemyCount?.Invoke();
             OnAwakeEnemy();
-        }
-
-        void OnDestroy()
-        {
-            countEnemy--;
-            UpdateEnemyCount?.Invoke();
-            if (countEnemy == 0) OnNoEnemies?.Invoke();
         }
 
         public static event Action UpdateEnemyCount;
