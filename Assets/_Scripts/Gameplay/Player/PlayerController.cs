@@ -24,6 +24,7 @@ namespace Game.Gameplay.Player
         [SerializeField] float _normalView = 90;
         [SerializeField] float _sprintView = 120;
         [SerializeField] private float _fovTimeEffect = 0;
+        [SerializeField] ParticleSystem _speedLinesFx;
         readonly float _currentTime = 1;
         bool _isMoving;
         Vector2 _moveVelocityInput;
@@ -56,6 +57,7 @@ namespace Game.Gameplay.Player
                 Speed = _sprintSpeed;
                 _timeStep = _timeSprint;
                 _animator.StartSprint();
+                _speedLinesFx.Play();
             }
             else
             {
@@ -64,6 +66,7 @@ namespace Game.Gameplay.Player
                 Speed = _normalSpeed;
                 _timeStep = _timeWalk;
                 _animator.StopSprint();
+                _speedLinesFx.Stop();
             }
         }
         public void MoveDefault()
