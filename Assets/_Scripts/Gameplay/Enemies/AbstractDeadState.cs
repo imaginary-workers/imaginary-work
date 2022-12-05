@@ -13,7 +13,7 @@ namespace Game.Gameplay.Enemies
 
         public override void Enter()
         {
-            // hitStop();
+            Enemy.SubstractEnemy();
         }
     }
 }
