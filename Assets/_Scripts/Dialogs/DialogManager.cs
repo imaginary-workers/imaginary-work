@@ -22,6 +22,7 @@ namespace Game.Dialogs
 
         void DialogHandler(DialogSO dialog)
         {
+            GameManager.Instance.CanPause = false;
             PlayManager.Instance.CanvasController(true, false);
             _canvas.SetActive(true);
             _dialogUI.StartDialog(dialog);
@@ -29,6 +30,7 @@ namespace Game.Dialogs
 
         public void DialogFinished()
         {
+            GameManager.Instance.CanPause = true;
             PlayManager.Instance.CanvasController(false, false);
             _canvas.SetActive(false);
         }
