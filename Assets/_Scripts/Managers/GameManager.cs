@@ -110,6 +110,7 @@ namespace Game.Managers
             MusicManager.singleton.UpdateMusic(_sceneStorage.FindSceneByName(SceneManager.GetActiveScene().name));
             if (_state == State.Gameplay)
             {
+                UpdateEnemyCount();
                 var weapons = Player.GetComponent<WeaponInventory>().Weapons;
                 var weaponsCount = weapons.Count;
                 for (var i = 0; i < weaponsCount; i++)
@@ -139,6 +140,7 @@ namespace Game.Managers
 
                 yield return new WaitForSecondsRealtime(1f);
 
+                Enemy.ResetEnemyCount();
                 _health.value = _maxHealth.value;
                 Cursor.lockState = CursorLockMode.None;
                 Time.timeScale = 1;
