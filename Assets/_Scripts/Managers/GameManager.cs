@@ -261,7 +261,7 @@ namespace Game.Managers
 
         public void UpdateEnemyCount()
         {
-            _countEnemyText.text = Enemy.countEnemy.ToString();
+            _countEnemyText.text = Enemy.CountEnemy.ToString();
         }
 
         public void SetActiveSlot(int slot)
