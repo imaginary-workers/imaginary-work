@@ -73,6 +73,7 @@ namespace Game.Gameplay.Player
         {
             _moveVelocityInput = Vector2.zero;
             LookInputDirection = Vector2.zero;
+            _isMoving = false;
             SprintActive(false);
         }
         void CallSoundWalk()
