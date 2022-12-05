@@ -53,6 +53,7 @@
   </PropertyGroup>
   <ItemGroup>
      <Compile Include="Assets\_Scripts\Utils.cs" />
+     <Compile Include="Assets\_Scripts\Tutorial\NoEnemiesListener.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Enemies\FlyerPatrol\NormalState.cs" />
      <Compile Include="Assets\_Scripts\Dialogs\DialogManager.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Enemies\Enemy.cs" />
@@ -62,6 +63,8 @@
      <Compile Include="Assets\_Scripts\Gameplay\Enemies\PatrolFire\AnimatorController.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\PowerUps\ReserveWeaponTrigger.cs" />
      <Compile Include="Assets\_Scripts\UI\PlayerDamageIndicator.cs" />
+     <Compile Include="Assets\_Scripts\Tutorial\FirstEvent.cs" />
+     <Compile Include="Assets\_Scripts\Managers\PlayManager.cs" />
      <Compile Include="Assets\_Scripts\DestroyInSecondsComponent.cs" />
      <Compile Include="Assets\_Scripts\SwayBehaviour.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Platforms\BreakPlatformBrain.cs" />
@@ -81,6 +84,7 @@
      <Compile Include="Assets\_Scripts\Gameplay\Enemies\FollowMelee\MeleeAttackState.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Interactable\ObjectDamageable.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Player\WeaponController.cs" />
+     <Compile Include="Assets\DestroyListenner.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Lifts\LiftAnimations.cs" />
      <Compile Include="Assets\_Scripts\UI\MixerUI.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Enemies\LookAtTarget.cs" />
@@ -113,6 +117,7 @@
      <Compile Include="Assets\_Scripts\Gameplay\Enemies\FollowMelee\DeadState.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Enemies\FlyerPatrol\FlyerSoundController.cs" />
      <Compile Include="Assets\_Scripts\Audio\MusicManager.cs" />
+     <Compile Include="Assets\_Scripts\Dialogs\DialogEmitter.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Weapon\FlameThrowerWeapon.cs" />
      <Compile Include="Assets\_Scripts\UI\SingleDamageIndicator.cs" />
      <Compile Include="Assets\_Scripts\Managers\GameplayConfigManager.cs" />
@@ -134,15 +139,18 @@
      <Compile Include="Assets\_Scripts\Gameplay\Enemies\EnemyStateController.cs" />
      <Compile Include="Assets\_Scripts\SpecialHammer.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\EnemyShooter.cs" />
+     <Compile Include="Assets\_Scripts\Scene\SO\SceneSO.cs" />
      <Compile Include="Assets\_Scripts\SO\IntSO.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\AppearAgain.cs" />
      <Compile Include="Assets\_Scripts\Config\PlayerConfig.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Enemies\PatrolFire\PatrolFireStateController.cs" />
+     <Compile Include="Assets\_Scripts\Tutorial\WeaponUnlonkerComponentDecorator.cs" />
      <Compile Include="Assets\_Scripts\Dialogs\SO\DialogEventSO.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\VisualField.cs" />
      <Compile Include="Assets\_Scripts\EZ Camera Shake\Demo\Sample Scripts\ShakeOnTrigger.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Enemies\FollowMelee\AnimatorController.cs" />
      <Compile Include="Assets\_Scripts\UI\HealthUIController.cs" />
+     <Compile Include="Assets\_Scripts\Tutorial\TriggerEmiter.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\ToNextLevel.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Player\WeaponManager.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Enemies\EnemyDamageable.cs" />
@@ -164,6 +172,8 @@
      <Compile Include="Assets\_Scripts\EZ Camera Shake\Demo\Sample Scripts\ShakeByDistance.cs" />
      <Compile Include="Assets\_Scripts\ActionRepeater.cs" />
      <Compile Include="Assets\_Scripts\EZ Camera Shake\Demo\Sample Scripts\ShakeOnKeyPress.cs" />
+     <Compile Include="Assets\_Scripts\VictorySceneCorrutine.cs" />
+     <Compile Include="Assets\_Scripts\Dialogs\DialogUI.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Enemies\CollectableEnemy\MinionEnemy.cs" />
      <Compile Include="Assets\_Scripts\EZ Camera Shake\Scripts\CameraShakePresets.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Interactable\DestructableObject.cs" />
@@ -172,11 +182,7 @@
      <Compile Include="Assets\_Scripts\Gameplay\Enemies\State.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\CameraFollowTarget.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Enemies\PatrolFire\AttackState.cs" />
-     <Compile Include="Assets\_Scripts\Scene\SO\SceneSO.cs" />
-     <Compile Include="Assets\_Scripts\Dialogs\DialogEmitter.cs" />
-     <Compile Include="Assets\_Scripts\VictorySceneCorrutine.cs" />
-     <Compile Include="Assets\_Scripts\Dialogs\DialogUI.cs" />
-     <Compile Include="Assets\_Scripts\Managers\PlayManager.cs" />
+     <Compile Include="Assets\_Scripts\Dialogs\SO\DialogInfo.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
@@ -798,6 +804,9 @@
  <Reference Include="Unity.TextMeshPro">
  <HintPath>E:/workspace/Unity/Projects/imaginary-work/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
  </Reference>
+ <Reference Include="Unity.2D.Sprite.Editor">
+ <HintPath>E:/workspace/Unity/Projects/imaginary-work/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
+ </Reference>
  <Reference Include="Unity.ProBuilder">
  <HintPath>E:/workspace/Unity/Projects/imaginary-work/Library/ScriptAssemblies/Unity.ProBuilder.dll</HintPath>
  </Reference>
@@ -818,9 +827,6 @@
  </Reference>
  <Reference Include="Unity.PlasticSCM.Editor">
  <HintPath>E:/workspace/Unity/Projects/imaginary-work/Library/ScriptAssemblies/Unity.PlasticSCM.Editor.dll</HintPath>
- </Reference>
- <Reference Include="Unity.2D.Sprite.Editor">
- <HintPath>E:/workspace/Unity/Projects/imaginary-work/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
  </Reference>
   </ItemGroup>
   <ItemGroup>
