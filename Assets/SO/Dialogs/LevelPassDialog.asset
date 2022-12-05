@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: LevelPassDialog
   m_EditorClassIdentifier: 
   _sentences:
-  - 'Buen trabajo!! Haz completado todas tus tareas. Al destruir a todos los enemigos
-    vas a poder utilizar el ascensor. '
-  - El ascensor estara cerrado siempre que haya tareas por completar en el piso.
-    Veras una luz verde cuando este habilitado.
+  - text: 'Buen trabajo!! Haz completado todas tus tareas. Al destruir a todos los
+      enemigos vas a poder utilizar el ascensor. '
+    image: {fileID: 0}
+  - text: El ascensor estara cerrado siempre que haya tareas por completar en el
+      piso. Veras una luz verde cuando este habilitado.
+    image: {fileID: 0}

@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: WinConditionDialog
   m_EditorClassIdentifier: 
   _sentences:
-  - Estas haciendo un buen trabajo, pero el dia no termino. Para pasar de nivel debes
-    completar todas las tareas.
-  - Para completar las tareas debes destruir a todos los enemigos que haya. Empieza
-    por estas tareas sencillas. Suerte!
+  - text: Estas haciendo un buen trabajo, pero el dia no termino. Para pasar de nivel
+      debes completar todas las tareas.
+    image: {fileID: 21300000, guid: 67b3b8e12950fad4f948a385c3d379fb, type: 3}
+  - text: Para completar las tareas debes destruir a todos los enemigos que haya.
+      Empieza por estas tareas sencillas. Suerte!
+    image: {fileID: 0}
