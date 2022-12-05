@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2743447157972576974}
   - component: {fileID: 2743447157972576972}
   - component: {fileID: 2743447157972576973}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Effect (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4874,7 +4874,7 @@ GameObject:
   - component: {fileID: 2743447158125555907}
   - component: {fileID: 2743447158125555905}
   - component: {fileID: 2743447158125555906}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: WaveYellow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9852,7 +9852,7 @@ GameObject:
   - component: {fileID: 2743447158143670657}
   - component: {fileID: 2743447158143670687}
   - component: {fileID: 2743447158143670656}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Lightning
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14917,7 +14917,7 @@ GameObject:
   - component: {fileID: 2743447158370961170}
   - component: {fileID: 2743447158370961168}
   - component: {fileID: 2743447158370961169}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Sparks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19825,7 +19825,7 @@ GameObject:
   - component: {fileID: 2743447158928871717}
   - component: {fileID: 2743447158928871715}
   - component: {fileID: 2743447158928871716}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: WaveWhite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24685,7 +24685,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2743447159072041218}
-  m_Layer: 0
+  - component: {fileID: 8932533552715686272}
+  - component: {fileID: -8678351177926513449}
+  - component: {fileID: 6085973860568839177}
+  m_Layer: 8
   m_Name: ShockWave
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24711,6 +24714,48 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8932533552715686272
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2743447159072041219}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2536b0ac08e34f84b61544fc441c3477, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _speed: 0
+  _timeToDisable: 1
+  _trail: {fileID: 0}
+--- !u!114 &-8678351177926513449
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2743447159072041219}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85ed7111929482549a69d5eb7d9b2636, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _damage: 25
+  _element: {fileID: 0}
+--- !u!65 &6085973860568839177
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2743447159072041219}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.4310174, y: 1.2594755, z: 2.6353254}
+  m_Center: {x: -0.08124298, y: 0.6397377, z: -0.019312143}
 --- !u!1 &2743447159322619501
 GameObject:
   m_ObjectHideFlags: 0
@@ -24722,7 +24767,7 @@ GameObject:
   - component: {fileID: 2743447159322619500}
   - component: {fileID: 2743447159322619498}
   - component: {fileID: 2743447159322619499}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Crack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
