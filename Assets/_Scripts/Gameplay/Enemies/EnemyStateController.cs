@@ -59,8 +59,10 @@ namespace Game.Gameplay.Enemies
 
         void ChangeToDeathState(GameObject damaging)
         {
-            if (deadState == null) return;
-            ChangeState(deadState);
+            if (this.deadState == null) return;
+            var deadState = this.deadState as AbstractDeadState;
+            deadState.Damaging = damaging;
+            ChangeState(this.deadState);
         }
 
         protected abstract void SetDeadState();

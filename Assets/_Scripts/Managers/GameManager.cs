@@ -80,7 +80,7 @@ namespace Game.Managers
             }
         }
 
-        public bool CanPause { get;  set; } = false;
+        public bool CanPause { get;  set; } = true;
 
         void Awake()
         {

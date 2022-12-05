@@ -7,6 +7,8 @@ namespace Game.Gameplay.Enemies
         [SerializeField] Animator _animator;
         Collider[] _colliders;
         Rigidbody[] _rigidbodies;
+        [SerializeField] Rigidbody _chest;
+        [SerializeField] float _knockbackForce = 100;
 
         void Start()
         {
@@ -28,6 +30,11 @@ namespace Game.Gameplay.Enemies
             foreach (var collider in _colliders) collider.enabled = enabled;
 
             _animator.enabled = !enabled;
+        }
+
+        public void Knockback(Vector3 direction)
+        {
+            _chest.AddForce(direction.normalized * _knockbackForce, ForceMode.Impulse);
         }
     }
 }

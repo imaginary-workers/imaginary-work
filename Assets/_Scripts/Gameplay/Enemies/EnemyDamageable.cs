@@ -15,6 +15,7 @@ namespace Game.Gameplay.Enemies
 
         public void TakeTamage(int damage, ElementSO element, GameObject damaging)
         {
+            var position = damaging.transform.position;
             if (Life <= 0) return;
 
             if (_weakness == element)

@@ -40,6 +40,7 @@ namespace Game.Gameplay.Enemies.PatrolFire
             _enemyCollider.enabled = false;
             _spawn.Drop();
             _ragdoll.SetEnabled(true);
+            _ragdoll.Knockback(Damaging.transform.forward);
         }
 
         public override void Update()
