@@ -58,7 +58,11 @@ namespace Game.Gameplay.Player
                 _animator.StopSprint();
             }
         }
-
+        public void MoveDefault()
+        {
+            _moveVelocityInput = Vector2.zero;
+            LookInputDirection = Vector2.zero;
+        }
         void CallSoundWalk()
         {
             if (_isMoving && _timer >= _timeStep && _jumpComponent.IsOnTheFloor)
