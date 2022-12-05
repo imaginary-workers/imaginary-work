@@ -2,7 +2,7 @@ using Game.Dialogs;
 using Game.Gameplay.Enemies;
 using UnityEngine;
 
-namespace Game
+namespace Game.Tutorial
 {
     public class NoEnemiesListener : MonoBehaviour
     {
