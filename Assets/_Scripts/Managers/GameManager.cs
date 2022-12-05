@@ -45,6 +45,7 @@ namespace Game.Managers
 
         [Header("Option Menu")] [SerializeField]
         GameObject _optionsMenu;
+        [SerializeField] GameObject _controlsMenu;
 
         [Header("BlackScreen Transition")] [SerializeField]
         Animator _blackScreenAnimator;
@@ -176,10 +177,11 @@ namespace Game.Managers
             StartCoroutine(CO_NextScene(sceneSO));
         }
 
-        public void ControlsMenu()
+        public void ControlsMenu(bool activate)
         {
-            var sceneSO = _sceneStorage.FindSceneByName("ControlsMenu");
-            StartCoroutine(CO_NextScene(sceneSO));
+            //var sceneSO = _sceneStorage.FindSceneByName("ControlsMenu");
+            //StartCoroutine(CO_NextScene(sceneSO));
+            _controlsMenu.SetActive(activate);
         }
 
         public void RestartLevel()
