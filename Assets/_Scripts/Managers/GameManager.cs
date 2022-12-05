@@ -80,6 +80,8 @@ namespace Game.Managers
             }
         }
 
+        public bool CanPause { get;  set; } = false;
+
         void Awake()
         {
             _instance = this;
@@ -213,7 +215,7 @@ namespace Game.Managers
         public void PauseKeybord()
         {
             if (_isDeath) return;
-
+            if(!CanPause) return;
             if (_isPaused)
                 Resume();
             else
