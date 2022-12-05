@@ -8,7 +8,12 @@ namespace Game.Gameplay.Enemies
     public abstract class Enemy : MonoBehaviour
     {
         static int countEnemy;
-        public static int CountEnemy => countEnemy; 
+        public static int CountEnemy => countEnemy;
+
+        public static void ResetEnemyCount()
+        {
+            countEnemy = 0;
+        }
 
         public static void SubstractEnemy()
         {
