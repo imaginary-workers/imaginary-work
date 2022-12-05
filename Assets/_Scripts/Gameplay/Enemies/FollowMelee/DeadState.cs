@@ -34,9 +34,9 @@ namespace Game.Gameplay.Enemies.FollowMelee
 
         public override void Enter()
         {
+            base.Enter();
             _agent.speed = 0;
             _enemyCollider.enabled = false;
-            base.Enter();
             _spawn.Drop();
             _ragdoll.SetEnabled(true);
         }
