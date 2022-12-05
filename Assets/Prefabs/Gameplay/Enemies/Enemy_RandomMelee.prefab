@@ -390,7 +390,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _animator: {fileID: 3117244702086275719}
   _chest: {fileID: 2113817967208235024}
-  _knockbackForce: 1000
+  _knockbackForce: 150
 --- !u!1001 &5425753226825585282
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -529,6 +529,10 @@ PrefabInstance:
     - target: {fileID: 1352627416256555352, guid: a0b28aafe03c9c54bad899a0dc95d999, type: 3}
       propertyPath: m_ConnectedAnchor.x
       value: 0.000000007450581
+      objectReference: {fileID: 0}
+    - target: {fileID: 1352627416256555352, guid: a0b28aafe03c9c54bad899a0dc95d999, type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: 0.37520126
       objectReference: {fileID: 0}
     - target: {fileID: 1352627416256555352, guid: a0b28aafe03c9c54bad899a0dc95d999, type: 3}
       propertyPath: m_ConnectedAnchor.z
