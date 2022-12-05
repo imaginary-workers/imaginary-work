@@ -9,9 +9,11 @@ namespace Game.Dialogs
 {
     public class DialogUI : MonoBehaviour
     {
-        Queue<string> _sentences = new Queue<string>();
+        Queue<DialogInfo> _sentences = new Queue<DialogInfo>();
         public Button _continueButton;
         public TextMeshProUGUI dialogueDisplay;
+        public Image image;
+        [SerializeField] Color _color;
         public float textSpeed;
         bool canContinue;
         int dialogueIndex;
@@ -43,9 +45,21 @@ namespace Game.Dialogs
         private IEnumerator CO_DisplaySentence()
         {
             dialogueDisplay.SetText(string.Empty);
-            string sentence = _sentences.Dequeue() as string;
+            DialogInfo dialog = _sentences.Dequeue();
+            string sentence = dialog.text;
             var isSpecialCharacter = false;
             string specialCharacter = "";
+
+            if(dialog.image == null)
+            {
+                image.color = Color.clear;
+            }
+            else
+            {
+                image.sprite = dialog.image;
+                image.color = _color;
+            }
+
             foreach (var character in sentence)
             {
                 if (character == '<')
