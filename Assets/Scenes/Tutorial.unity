@@ -677,7 +677,7 @@ Light:
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-  m_Color: {r: 0.60488605, g: 0.6509434, b: 0.6398803, a: 1}
+  m_Color: {r: 0.13656996, g: 0.8638234, b: 0.8773585, a: 1}
   m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
@@ -1225,6 +1225,10 @@ PrefabInstance:
       propertyPath: _chancePercentage
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8136529863102361937, guid: 7206dbb052fc7714e8e66bd6484b1e9a, type: 3}
+      propertyPath: _dialog
+      value: 
+      objectReference: {fileID: 11400000, guid: 9b7e5de4e0d765b4bb168de8caa44d1b, type: 2}
     - target: {fileID: 8136529863102361942, guid: 7206dbb052fc7714e8e66bd6484b1e9a, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -8769,7 +8773,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5326246754400681759, guid: cf5b11980a31d0044a8b84b8e87b45bc, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -7.94
+      value: -11.74
       objectReference: {fileID: 0}
     - target: {fileID: 5326246754400681759, guid: cf5b11980a31d0044a8b84b8e87b45bc, type: 3}
       propertyPath: m_LocalPosition.y
@@ -8777,7 +8781,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5326246754400681759, guid: cf5b11980a31d0044a8b84b8e87b45bc, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 40.01
+      value: 40.84
       objectReference: {fileID: 0}
     - target: {fileID: 5326246754400681759, guid: cf5b11980a31d0044a8b84b8e87b45bc, type: 3}
       propertyPath: m_LocalRotation.w
