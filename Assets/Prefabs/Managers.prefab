@@ -1,5 +1,48 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1897154818740191560
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1865116174504159968}
+  - component: {fileID: 9213160403399933743}
+  m_Layer: 0
+  m_Name: PlayManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1865116174504159968
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1897154818740191560}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -23.769108, y: 12.705381, z: 15.899612}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8156174785048938696}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &9213160403399933743
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1897154818740191560}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d901d7ec5560ca4e848906006e4bfc3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8156174783109850436
 GameObject:
   m_ObjectHideFlags: 0
@@ -127,9 +170,11 @@ MonoBehaviour:
   _bulletCounterText: {fileID: 0}
   _reserveCounterText: {fileID: 0}
   _countEnemyText: {fileID: 0}
+  _inventoryUI: {fileID: 0}
   _optionsMenu: {fileID: 0}
   _blackScreenAnimator: {fileID: 0}
   _sceneStorage: {fileID: 11400000, guid: b011bacbe9f5c4241abc20885df274b3, type: 2}
+  _audioSource: {fileID: 0}
   _gameOver: {fileID: 0}
   _state: 0
 --- !u!1 &8156174785048938699
@@ -161,6 +206,7 @@ Transform:
   m_Children:
   - {fileID: 8156174783109850435}
   - {fileID: 8156174783294118935}
+  - {fileID: 1865116174504159968}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

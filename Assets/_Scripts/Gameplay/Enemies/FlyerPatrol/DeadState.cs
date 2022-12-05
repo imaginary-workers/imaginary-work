@@ -7,14 +7,14 @@ namespace Game._Scripts.Gameplay.Enemies.FlyerPatrol
 {
     public class DeadState : AbstractDeadState
     {
-        NavMeshAgent _agent;
+        readonly NavMeshAgent _agent;
         FlyerPatrolStateController _stateController;
 
         public DeadState(
             NavMeshAgent agent,
             FlyerPatrolStateController stateController,
             Action hitStop
-            ) : base(hitStop)
+        ) : base(hitStop)
         {
             _agent = agent;
             _stateController = stateController;
@@ -22,6 +22,7 @@ namespace Game._Scripts.Gameplay.Enemies.FlyerPatrol
 
         public override void Enter()
         {
+            base.Enter();
             _agent.speed = 0;
             _agent.isStopped = true;
             hitStop();

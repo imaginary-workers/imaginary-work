@@ -1,6 +1,6 @@
 using Game.Gameplay.Enemies;
 using Game.Managers;
-using Game.SO;
+using Game.Scene.SO;
 using UnityEngine;
 
 namespace Game.Gameplay
@@ -9,11 +9,10 @@ namespace Game.Gameplay
     {
         [SerializeField] SceneSO _nextScene;
 
-        private void OnTriggerEnter(Collider other)
+        void OnTriggerEnter(Collider other)
         {
-            if (other.tag == "Player" && Enemy.countEnemy <= 0)
+            if (other.tag == "Player" && Enemy.CountEnemy <= 0)
                 GameManager.Instance.NextScene(_nextScene);
-
         }
     }
 }

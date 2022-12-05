@@ -12,9 +12,11 @@ namespace Game.Gameplay.Enemies
             this.hitStop = hitStop;
         }
 
+        public GameObject Damaging { get; set; }
+
         public override void Enter()
         {
-           // hitStop();
+            Enemy.SubstractEnemy();
         }
     }
 }

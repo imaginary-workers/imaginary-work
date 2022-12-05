@@ -114,7 +114,7 @@ MonoBehaviour:
   _light: {fileID: 2567770015003555644}
   _lightFocus: {fileID: 465989763577330155}
   _attackColor: {r: 1, g: 0, b: 0, a: 1}
-  _normalColor: {r: 0.003921569, g: 0.7294118, b: 1, a: 1}
+  _normalColor: {r: 0.0039215684, g: 1, b: 0.21261194, a: 1}
 --- !u!114 &5184913850856923581
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -139,10 +139,10 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   _cycle: 0
+  _random: 0
   _pointRadiusGizmos: 0.27
   _sphereColor: {r: 1, g: 0, b: 0, a: 1}
   _lineColor: {r: 0, g: 1, b: 0, a: 1}
-  _random: 0
 --- !u!114 &3489068605694392369
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -157,7 +157,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _audioSource: {fileID: 5934778444407784298}
   _attack: {fileID: 8300000, guid: 314e4a99f80a38a46a0382fae521747f, type: 3}
-  _Dead: {fileID: 8300000, guid: d251f52f25179b74889c32f3629b52e1, type: 3}
   _raycastAttack: {fileID: 4885114125338213701}
 --- !u!114 &5745978130405426769
 MonoBehaviour:

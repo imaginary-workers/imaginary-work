@@ -3,11 +3,11 @@ using UnityEngine;
 
 namespace Game.Decorator
 {
-    public class AudioConfig01Decorator: IAudioConfig
+    public class AudioConfig01Decorator : IAudioConfig
     {
-        AudioConfig _wrapped;
         const float minRange = 0.0001f;
         const float maxRange = 1f;
+        readonly AudioConfig _wrapped;
 
         public AudioConfig01Decorator(AudioConfig wrapped)
         {
@@ -36,24 +36,19 @@ namespace Game.Decorator
         {
             float newValue;
             if (n < minRange)
-            {
                 newValue = minRange;
-            }
             else if (n > maxRange)
-            {
                 newValue = maxRange;
-            }
             else
-            {
                 newValue = n;
-            }
 
-            return Mathf.Log10(newValue) * 20;;
+            return Mathf.Log10(newValue) * 20;
+            ;
         }
 
         float FromDbTo01(float db)
         {
-            float newValue = Mathf.Pow(10, db /20);
+            var newValue = Mathf.Pow(10, db / 20);
 
             if (newValue < minRange)
                 newValue = minRange;

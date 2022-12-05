@@ -6,15 +6,16 @@ namespace Game.Gameplay.Lifts
     public class LiftDoorAnimations : MonoBehaviour
     {
         [SerializeField] Animator _animator;
-        public Action OnOpened, OnClosed;
-        public event Action OpenDoor;
         [SerializeField] AudioSource _audioSource;
         [SerializeField] AudioClip _door;
+        public Action OnOpened, OnClosed;
+        public event Action OpenDoor;
 
         public void CloseDoors()
         {
             _animator.SetTrigger("CloseDoors");
         }
+
         public void OpenDoors()
         {
             _animator.SetTrigger("OpenDoors");
@@ -25,7 +26,7 @@ namespace Game.Gameplay.Lifts
         {
             OnOpened?.Invoke();
         }
-        
+
         public void ON_CLOSED_EVENT()
         {
             OnClosed?.Invoke();

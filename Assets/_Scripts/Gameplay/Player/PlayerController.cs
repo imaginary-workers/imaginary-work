@@ -7,55 +7,89 @@ namespace Game.Gameplay.Player
     {
         [SerializeField] MoveComponent _moveComponent;
         [SerializeField] JumpComponent _jumpComponent;
-        [SerializeField, Range(0, 10)] float _normalSpeed = 8f;
-        [SerializeField, Range(0, 20)] float _sprintSpeed = 12f;
+        [SerializeField] [Range(0, 10)] float _normalSpeed = 8f;
+        [SerializeField] [Range(0, 20)] float _sprintSpeed = 12f;
         [SerializeField] PlayerInput _playerInput;
         [SerializeField] PlayerAnimationManager _animator;
         [SerializeField] WeaponController _weaponController;
         [SerializeField] Camera _camera;
         public bool active = true;
-        Vector2 _moveVelocityInput;
-        float _currentTime = 1;
-        float _time;
-        float _currentSpeed;
 
-        [Header("Audio")]
-        [SerializeField, Range(0, 2)] float _timeWalk;
+        [Header("Audio")] [SerializeField] [Range(0, 2)]
+        float _timeWalk;
+
         [SerializeField] PlayerSoundController _pjSoundController;
-        [SerializeField, Range(0, 2)] float _timeSprint;
-        bool _isMoving = false;
-        float _timer = 0;
+        [SerializeField] [Range(0, 2)] float _timeSprint;
+        [Header("FOV")]
+        [SerializeField] float _normalView = 90;
+        [SerializeField] float _sprintView = 120;
+        [SerializeField] private float _fovTimeEffect = 0;
+        [SerializeField] ParticleSystem _speedLinesFx;
+        readonly float _currentTime = 1;
+        bool _isMoving;
+        Vector2 _moveVelocityInput;
+        float _time;
+        float _timer;
         float _timeStep;
+        private bool _activeFov = false;
+        private float _currentfovTimeEffect = 0;
 
         public bool IsCurrentDeviceMouse
             => _playerInput.currentControlScheme == "KeyboardMouse";
 
         public Vector2 LookInputDirection { get; private set; }
 
-        public float Speed
-        {
-            get => _currentSpeed;
-            set => _currentSpeed = value;
-        }
+        public float Speed { get; set; }
 
-        public float NormalSpeed
-        {
-            get => _normalSpeed;
-        }
+        public float NormalSpeed => _normalSpeed;
 
-        public float SprintSpeed
-        {
-            get => _sprintSpeed;
-        }
+        public float SprintSpeed => _sprintSpeed;
 
         public bool CanSprint { get; set; } = true;
+
+        void SprintActive(bool active)
+        {
+            _weaponController.CanAttack = !active;
+            if (active)
+            {
+                _activeFov = true;
+                _currentfovTimeEffect = _fovTimeEffect;
+                Speed = _sprintSpeed;
+                _timeStep = _timeSprint;
+                _animator.StartSprint();
+                _speedLinesFx.Play();
+            }
+            else
+            {
+                _activeFov = false;
+                _currentfovTimeEffect = _fovTimeEffect;
+                Speed = _normalSpeed;
+                _timeStep = _timeWalk;
+                _animator.StopSprint();
+                _speedLinesFx.Stop();
+            }
+        }
+        public void MoveDefault()
+        {
+            _moveVelocityInput = Vector2.zero;
+            LookInputDirection = Vector2.zero;
+            SprintActive(false);
+        }
+        void CallSoundWalk()
+        {
+            if (_isMoving && _timer >= _timeStep && _jumpComponent.IsOnTheFloor)
+            {
+                _pjSoundController.Walking();
+                _timer = 0;
+            }
+        }
 
         #region unitymethods
 
         void Awake()
         {
             _time = _currentTime;
-            _currentSpeed = _normalSpeed;
+            Speed = _normalSpeed;
             _timeStep = _timeWalk;
         }
 
@@ -78,7 +112,23 @@ namespace Game.Gameplay.Player
             {
                 CanSprint = true;
             }
-            _moveComponent.Velocity = (_moveVelocityInput.x * transform.right + transform.forward * _moveVelocityInput.y).normalized * _currentSpeed;
+
+            _moveComponent.Velocity =
+                (_moveVelocityInput.x * transform.right + transform.forward * _moveVelocityInput.y).normalized * Speed;
+
+            if (_currentfovTimeEffect > 0)
+            {
+                if (_activeFov)
+                {
+                    _camera.fieldOfView = Mathf.Lerp(_normalView,_sprintView, _currentfovTimeEffect);
+                }
+                else
+                {
+                    _camera.fieldOfView = Mathf.Lerp(_sprintView,_normalView, _currentfovTimeEffect);
+                }
+
+                _currentfovTimeEffect -= Time.deltaTime;
+            }
             /*if ((_currentTime < 0 || _jumpComponent.IsOnTheFloor))
             {
             }
@@ -92,7 +142,6 @@ namespace Game.Gameplay.Player
                 _currentTime = _time;
             }*/
         }
-
 
         #endregion
 
@@ -115,11 +164,7 @@ namespace Game.Gameplay.Player
         public void JumpInput(InputAction.CallbackContext context)
         {
             if (!active) return;
-            if (context.started)
-            {
-                _jumpComponent.JumpAction();
-            }
-
+            if (context.started) _jumpComponent.JumpAction();
         }
 
         public void LookInput(InputAction.CallbackContext context)
@@ -133,43 +178,10 @@ namespace Game.Gameplay.Player
             if (!active) return;
             if (!CanSprint) return;
             if (context.started)
-            {
                 SprintActive(true);
-            }
-            else if (context.canceled)
-            {
-                SprintActive(false);
-            }
+            else if (context.canceled) SprintActive(false);
         }
 
         #endregion
-
-        void SprintActive(bool active)
-        {
-            _weaponController.CanAttack = !active;
-            if (active)
-            {
-               // _camera.fieldOfView = 120;
-                _currentSpeed = _sprintSpeed;
-                _timeStep = _timeSprint;
-                _animator.StartSprint();
-            }
-            else
-            {
-                //_camera.fieldOfView = 90;
-                _currentSpeed = _normalSpeed;
-                _timeStep = _timeWalk;
-                _animator.StopSprint();
-            }
-        }
-
-        void CallSoundWalk()
-        {
-            if (_isMoving && _timer >= _timeStep && _jumpComponent.IsOnTheFloor)
-            {
-                _pjSoundController.Walking();
-                _timer = 0;
-            }
-        }
     }
 }

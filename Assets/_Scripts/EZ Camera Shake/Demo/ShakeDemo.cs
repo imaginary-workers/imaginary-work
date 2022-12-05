@@ -1,26 +1,21 @@
-﻿using UnityEngine;
+﻿using EZCameraShake;
+using UnityEngine;
 using UnityEngine.SceneManagement;
-using EZCameraShake;
 
-public class ShakeDemo : MonoBehaviour 
+public class ShakeDemo : MonoBehaviour
 {
-    Vector3 posInf = new Vector3(0.25f, 0.25f, 0.25f);
-    Vector3 rotInf = new Vector3(1, 1, 1);
-    float magn = 1, rough = 1, fadeIn = 0.1f, fadeOut = 2f;
+    private float magn = 1, rough = 1, fadeIn = 0.1f, fadeOut = 2f;
 
-    bool modValues;
-    bool showList;
+    private bool modValues;
+    private Vector3 posInf = new Vector3(0.25f, 0.25f, 0.25f);
+    private Vector3 rotInf = new Vector3(1, 1, 1);
 
-    CameraShakeInstance shake;
+    private CameraShakeInstance shake;
+    private bool showList;
 
-    delegate float Slider(float val, string prefix, float min, float max, int pad);
-
-	void OnGUI()
+    private void OnGUI()
     {
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        }
+        if (Input.GetKeyDown(KeyCode.R)) SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 
         Slider s = delegate(float val, string prefix, float min, float max, int pad)
         {
@@ -69,20 +64,13 @@ public class ShakeDemo : MonoBehaviour
                 shake.DeleteOnInactive = true;
                 shake.StartFadeOut(fadeOut);
                 shake = null;
-                
             }
 
             if (shake != null)
             {
                 GUILayout.BeginHorizontal();
-                if (GUILayout.Button("Fade Out"))
-                {
-                    shake.StartFadeOut(fadeOut);
-                }
-                if (GUILayout.Button("Fade In"))
-                {
-                    shake.StartFadeIn(fadeIn);
-                }
+                if (GUILayout.Button("Fade Out")) shake.StartFadeOut(fadeOut);
+                if (GUILayout.Button("Fade In")) shake.StartFadeIn(fadeIn);
                 GUILayout.EndHorizontal();
 
                 modValues = GUILayout.Toggle(modValues, "Modify Instance Values");
@@ -102,7 +90,7 @@ public class ShakeDemo : MonoBehaviour
 
         if (GUILayout.Button("Shake!"))
         {
-            CameraShakeInstance c = CameraShaker.Instance.ShakeOnce(magn, rough, fadeIn, fadeOut);
+            var c = CameraShaker.Instance.ShakeOnce(magn, rough, fadeIn, fadeOut);
             c.PositionInfluence = posInf;
             c.RotationInfluence = rotInf;
         }
@@ -125,12 +113,13 @@ public class ShakeDemo : MonoBehaviour
 
         if (showList)
         {
-            int index = 1;
-            foreach (CameraShakeInstance c in CameraShaker.Instance.ShakeInstances)
+            var index = 1;
+            foreach (var c in CameraShaker.Instance.ShakeInstances)
             {
-                string state = c.CurrentState.ToString();
+                var state = c.CurrentState.ToString();
 
-                GUILayout.Label("#" + index + ": Magnitude: " + c.Magnitude.ToString("F2") + ", Roughness: " + c.Roughness.ToString("F2"));
+                GUILayout.Label("#" + index + ": Magnitude: " + c.Magnitude.ToString("F2") + ", Roughness: " +
+                                c.Roughness.ToString("F2"));
                 GUILayout.Label("      Position Influence: " + c.PositionInfluence);
                 GUILayout.Label("      Rotation Influence: " + c.RotationInfluence);
                 GUILayout.Label("      State: " + state);
@@ -138,6 +127,9 @@ public class ShakeDemo : MonoBehaviour
                 index++;
             }
         }
+
         GUILayout.EndArea();
-	}
+    }
+
+    private delegate float Slider(float val, string prefix, float min, float max, int pad);
 }
