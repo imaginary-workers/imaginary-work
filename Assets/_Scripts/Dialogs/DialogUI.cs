@@ -19,7 +19,6 @@ namespace Game.Dialogs
 
         public void StartDialog(DialogSO dialog)
         {
-            _continueButton.gameObject.SetActive(false);
             var sentences = dialog.Sentences;
             foreach (var sentence in sentences)
             {
@@ -31,6 +30,7 @@ namespace Game.Dialogs
 
         public void DisplayNextSentence()
         {
+            _continueButton.gameObject.SetActive(false);
             StopAllCoroutines();
             if (_sentences.Count <= 0)
             {
