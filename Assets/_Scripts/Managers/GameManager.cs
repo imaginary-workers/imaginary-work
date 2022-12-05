@@ -91,6 +91,7 @@ namespace Game.Managers
                 _deathMessege.SetActive(false);
             if (_state == State.Gameplay)
             {
+                _health.value = _maxHealth.value;
                 Enemy.UpdateEnemyCount += UpdateEnemyCount;
                 Player.GetComponent<PlayerDamageable>().OnDeath += GameOver;
                 _liftStart = FindObjectOfType<LiftStart>();
