@@ -9,9 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4be8ee60bf3de4e439d315dc44fe578a, type: 3}
-  m_Name: ReloadDialog
+  m_Script: {fileID: 11500000, guid: edf3f3c33caebb949af40e921a06aa9c, type: 3}
+  m_Name: Tutorial_Scene
   m_EditorClassIdentifier: 
-  _sentences:
-  - "La pistola no tiene clavos infinitos. Debes recargar el arma pulsando el bot\xF3n
-    <sprite name=\"R\">"
+  _sceneName: Tutorial
+  _audioClip: {fileID: 8300000, guid: 88b99b6c083c7af4c8a2810e5f20e08f, type: 3}
+  _playOnAwake: 1
