@@ -2262,7 +2262,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _animator: {fileID: 6759351660973117263}
-  _enemyDamagable: {fileID: 886987554402510956}
   _agent: {fileID: 8100224352805061613}
   _damageable: {fileID: 886987554402510956}
   _damageParticle: {fileID: 4072013431584209224}
@@ -2284,10 +2283,10 @@ MonoBehaviour:
   _agent: {fileID: 8100224352805061613}
   _waypoints: []
   _cycle: 1
+  _random: 0
   _pointRadiusGizmos: 0.25
   _sphereColor: {r: 1, g: 0, b: 0, a: 1}
   _lineColor: {r: 0, g: 1, b: 0, a: 1}
-  _random: 0
 --- !u!114 &2925403318208515357
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2349,7 +2348,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc660ccbbe8a4ad4ea828415e3d77778, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _life: 2
+  _life: 1
   _weakness: {fileID: 0}
 --- !u!82 &7106751413396066847
 AudioSource:
