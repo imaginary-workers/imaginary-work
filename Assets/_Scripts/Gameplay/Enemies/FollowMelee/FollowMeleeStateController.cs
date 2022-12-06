@@ -20,7 +20,6 @@ namespace Game.Gameplay.Enemies.FollowMelee
         [SerializeField] protected AnimatorController _animatorController;
         [SerializeField] Ragdoll _ragdoll;
         [SerializeField] protected Collider _collider;
-        [SerializeField] Transform _hitPoint;
         [SerializeField] Damaging _damaging;
         bool _canDoStrongDamageFeedback = true;
         bool _isAttacking;
@@ -96,7 +95,7 @@ namespace Game.Gameplay.Enemies.FollowMelee
 
         protected override void SetDeadState()
         {
-            deadState = new DeadState(_agent, _ragdoll, _spawn, this, _secondToDestroy, HitStopEffect, _collider);
+            deadState = new DeadState(_agent, _ragdoll, _spawn, this, _secondToDestroy, _collider);
         }
     }
 }

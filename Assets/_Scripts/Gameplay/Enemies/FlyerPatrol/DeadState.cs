@@ -1,6 +1,5 @@
 ﻿using System;
 using Game.Gameplay.Enemies;
-using Game.Gameplay.Enemies.FlyerPatrol;
 using UnityEngine.AI;
 
 namespace Game._Scripts.Gameplay.Enemies.FlyerPatrol
@@ -8,16 +7,15 @@ namespace Game._Scripts.Gameplay.Enemies.FlyerPatrol
     public class DeadState : AbstractDeadState
     {
         readonly NavMeshAgent _agent;
-        FlyerPatrolStateController _stateController;
+        readonly Action _deathCallback;
 
         public DeadState(
             NavMeshAgent agent,
-            FlyerPatrolStateController stateController,
-            Action hitStop
-        ) : base(hitStop)
+            Action deathCallback
+        )
         {
             _agent = agent;
-            _stateController = stateController;
+            _deathCallback = deathCallback;
         }
 
         public override void Enter()
@@ -25,7 +23,7 @@ namespace Game._Scripts.Gameplay.Enemies.FlyerPatrol
             base.Enter();
             _agent.speed = 0;
             _agent.isStopped = true;
-            hitStop();
+            _deathCallback?.Invoke();
         }
     }
 }

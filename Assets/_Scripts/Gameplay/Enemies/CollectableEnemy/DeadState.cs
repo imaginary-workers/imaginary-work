@@ -11,18 +11,20 @@ namespace Game.Gameplay.Enemies.CollectableEnemy
         readonly AnimatorController _animatorcontroler;
         readonly Collider _enemyCollider;
         readonly SpawnDrops _spawnDrops;
+        readonly Action _deadCallback;
 
         public DeadState(
             NavMeshAgent agent,
             AnimatorController animatorcontroler,
             SpawnDrops spawnDrops,
-            Action hitStop,
+            Action deadCallback,
             Collider enemyCollider
-        ) : base(hitStop)
+        )
         {
             _agent = agent;
             _animatorcontroler = animatorcontroler;
             _spawnDrops = spawnDrops;
+            _deadCallback = deadCallback;
             _enemyCollider = enemyCollider;
         }
 
@@ -33,7 +35,7 @@ namespace Game.Gameplay.Enemies.CollectableEnemy
             _agent.isStopped = true;
             _animatorcontroler.enabled = false;
             _enemyCollider.enabled = false;
-            hitStop();
+            _deadCallback?.Invoke();
             _spawnDrops.Drop();
         }
     }

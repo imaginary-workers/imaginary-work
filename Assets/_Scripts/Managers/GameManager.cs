@@ -95,6 +95,7 @@ namespace Game.Managers
                 Enemy.UpdateEnemyCount += UpdateEnemyCount;
                 Player.GetComponent<PlayerDamageable>().OnDeath += GameOver;
                 _liftStart = FindObjectOfType<LiftStart>();
+                PlayManager.Instance.CanvasController(false, false);
                 if (_liftStart != null)
                 {
                     _liftStart.Lift.OnUpFinished += ResumePlayerControl;

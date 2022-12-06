@@ -1,9 +1,8 @@
 using Game.Dialogs;
-using Game.Gameplay;
 using Game.Gameplay.Interactable;
 using UnityEngine;
 
-namespace Game
+namespace Game.Tutorial
 {
     public class DestroyListenner : MonoBehaviour
     {

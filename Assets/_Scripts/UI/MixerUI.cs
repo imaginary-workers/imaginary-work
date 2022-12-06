@@ -1,7 +1,6 @@
 using Game.Audio;
 using Game.Config;
 using Game.Config.SO;
-using Game.Decorator;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -52,21 +51,21 @@ namespace Game.UI
 
         public void ChangedMasterAudioValue(float value)
         {
-            var uiAudioDecorator = new AudioConfig01Decorator(NewAudioConfig);
+            var uiAudioDecorator = new AudioConfigUIDecorator(NewAudioConfig);
             uiAudioDecorator.Master = value;
             MixerManager.singleton.UpdateAudioMixer(NewAudioConfig);
         }
 
         public void ChangedSoundValue(float value)
         {
-            var uiAudioDecorator = new AudioConfig01Decorator(NewAudioConfig);
+            var uiAudioDecorator = new AudioConfigUIDecorator(NewAudioConfig);
             uiAudioDecorator.Sound = value;
             MixerManager.singleton.UpdateAudioMixer(NewAudioConfig);
         }
 
         public void ChangedMusicValue(float value)
         {
-            var uiAudioDecorator = new AudioConfig01Decorator(NewAudioConfig);
+            var uiAudioDecorator = new AudioConfigUIDecorator(NewAudioConfig);
             uiAudioDecorator.Music = value;
             MixerManager.singleton.UpdateAudioMixer(NewAudioConfig);
         }
@@ -75,7 +74,7 @@ namespace Game.UI
         {
             var audioConfig = _gameplaySettings.AudioConfig;
             MixerManager.singleton.UpdateAudioMixer(audioConfig);
-            var audioUiDecorator = new AudioConfig01Decorator(audioConfig);
+            var audioUiDecorator = new AudioConfigUIDecorator(audioConfig);
             _musicSlider.value = audioUiDecorator.Music;
             _soundSlider.value = audioUiDecorator.Sound;
             _masterAudioSlider.value = audioUiDecorator.Master;

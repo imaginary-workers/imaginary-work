@@ -94,11 +94,6 @@ namespace Game.Gameplay.Player
             _timeStep = _timeWalk;
         }
 
-        void Start()
-        {
-            Cursor.lockState = CursorLockMode.Locked;
-        }
-
         void Update()
         {
             CallSoundWalk();
