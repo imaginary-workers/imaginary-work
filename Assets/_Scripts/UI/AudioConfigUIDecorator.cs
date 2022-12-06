@@ -1,15 +1,15 @@
 ﻿using Game.Config;
 using UnityEngine;
 
-namespace Game.Decorator
+namespace Game.UI
 {
-    public class AudioConfig01Decorator : IAudioConfig
+    public class AudioConfigUIDecorator : IAudioConfig
     {
         const float minRange = 0.0001f;
         const float maxRange = 1f;
         readonly AudioConfig _wrapped;
 
-        public AudioConfig01Decorator(AudioConfig wrapped)
+        public AudioConfigUIDecorator(AudioConfig wrapped)
         {
             _wrapped = wrapped;
         }

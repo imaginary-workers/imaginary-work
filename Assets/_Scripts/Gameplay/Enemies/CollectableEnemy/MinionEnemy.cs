@@ -10,11 +10,6 @@ namespace Game.Gameplay.Enemies.CollectableEnemy
         [SerializeField] AudioClip _audioClip;
         [SerializeField] GameObject _mesh;
 
-        protected override void HitStopEffect()
-        {
-            StartCoroutine(Utils.CO_HitStop(0.3f, 0.001f, ActiveDestroyFeedback));
-        }
-
         void ActiveDestroyFeedback()
         {
             _audioSource.PlayOneShot(_audioClip);

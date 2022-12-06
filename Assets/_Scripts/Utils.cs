@@ -35,20 +35,5 @@ namespace Game
         {
             return Mathf.Sqrt(a * a + b * b);
         }
-
-        public static IEnumerator CO_HitStop(float seconds, float timeScale = 0f)
-        {
-            Time.timeScale = timeScale;
-            yield return new WaitForSecondsRealtime(seconds);
-            Time.timeScale = 1;
-        }
-
-        public static IEnumerator CO_HitStop(float seconds, float timeScale, Action callback)
-        {
-            Time.timeScale = timeScale;
-            yield return new WaitForSecondsRealtime(seconds);
-            Time.timeScale = 1;
-            callback();
-        }
     }
 }
