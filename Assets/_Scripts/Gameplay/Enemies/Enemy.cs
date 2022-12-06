@@ -13,6 +13,7 @@ namespace Game.Gameplay.Enemies
         public static void ResetEnemyCount()
         {
             countEnemy = 0;
+            UpdateEnemyCount?.Invoke();
         }
 
         public static void SubstractEnemy()
