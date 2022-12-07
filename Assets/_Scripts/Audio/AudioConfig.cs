@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace Game.Config
+namespace Game.Audio
 {
     [Serializable]
     public sealed class AudioConfig : IAudioConfig
@@ -12,7 +12,7 @@ namespace Game.Config
 
         [SerializeField] [Range(-80f, 20f)] float _music;
 
-        public AudioConfig(AudioConfig audioConfig)
+        public AudioConfig(IAudioConfig audioConfig)
         {
             Master = audioConfig.Master;
             Sound = audioConfig.Sound;

@@ -1,5 +1,4 @@
 using Game.Audio;
-using Game.Config;
 using Game.Config.SO;
 using UnityEngine;
 using UnityEngine.UI;
@@ -12,9 +11,9 @@ namespace Game.UI
         [SerializeField] Slider _musicSlider;
         [SerializeField] Slider _soundSlider;
         [SerializeField] Slider _masterAudioSlider;
-        AudioConfig _newAudioConfig;
+        IAudioConfig _newAudioConfig;
 
-        AudioConfig NewAudioConfig
+        IAudioConfig NewAudioConfig
         {
             get
             {

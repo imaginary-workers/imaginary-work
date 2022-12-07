@@ -5,8 +5,8 @@ namespace Game.Dialogs
 {
     public class DialogEmitter : MonoBehaviour
     {
-        [SerializeField] private DialogEventSO _dialogEvent;
-        [SerializeField] private DialogSO _dialog;
+        [SerializeField] DialogEventSO _dialogEvent;
+        [SerializeField] DialogSO _dialog;
 
         [ContextMenu("Emit Dialog")]
         public void Emit()

@@ -1,4 +1,4 @@
-﻿using Game.Config;
+﻿using Game.Audio;
 using UnityEngine;
 
 namespace Game.UI
@@ -7,9 +7,9 @@ namespace Game.UI
     {
         const float minRange = 0.0001f;
         const float maxRange = 1f;
-        readonly AudioConfig _wrapped;
+        readonly IAudioConfig _wrapped;
 
-        public AudioConfigUIDecorator(AudioConfig wrapped)
+        public AudioConfigUIDecorator(IAudioConfig wrapped)
         {
             _wrapped = wrapped;
         }

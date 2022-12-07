@@ -1,9 +1,10 @@
+using Game.Audio;
 using UnityEngine;
 
 namespace Game.Scene.SO
 {
     [CreateAssetMenu(fileName = "Some_Scene", menuName = "Scriptable Object/config/scene", order = 0)]
-    public class SceneSO : ScriptableObject
+    public class SceneSO : ScriptableObject, IAudioClipContainer
     {
         [SerializeField] string _sceneName;
         [SerializeField] AudioClip _audioClip;

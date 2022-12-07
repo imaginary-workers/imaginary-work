@@ -36,7 +36,7 @@ namespace Game.Audio
             _audioSource.Play();
         }
 
-        public void UpdateMusic(SceneSO scene)
+        public void UpdateMusic(IAudioClipContainer scene)
         {
             if (scene.PlayOnAwake)
                 singleton.PlayForBegenning(scene.AudioClip);

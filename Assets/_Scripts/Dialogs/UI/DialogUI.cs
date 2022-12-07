@@ -4,22 +4,21 @@ using Game.Dialogs.SO;
 using Game.Managers;
 using TMPro;
 using UnityEngine;
-using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
-namespace Game.Dialogs
+namespace Game.Dialogs.UI
 {
     public class DialogUI : MonoBehaviour
     {
-        Queue<DialogInfo> _sentences = new Queue<DialogInfo>();
-        public Button _continueButton;
-        public TextMeshProUGUI dialogueDisplay;
-        public Image image;
-        [SerializeField] Color _color;
-        public float textSpeed;
-        bool canContinue;
-        int dialogueIndex;
+        [Header("Dependencies")]
         [SerializeField] DialogManager _dialogManager;
+        [SerializeField] GameObject _continueFeedback;
+        [SerializeField] TextMeshProUGUI _dialogTextDisplay;
+        [SerializeField] Image _image;
+        [SerializeField] Color _color;
+        [Header("Config")]
+        [SerializeField] float _textSpeed;
+        Queue<DialogInfo> _sentences = new Queue<DialogInfo>();
         DialogInfo _currentDialog;
 
         public void StartDialog(DialogSO dialog)
@@ -36,7 +35,7 @@ namespace Game.Dialogs
         public void DisplayNextSentence()
         {
             PlayManager.Instance.CanvasController(true, false);
-            _continueButton.gameObject.SetActive(false);
+            _continueFeedback.gameObject.SetActive(false);
             StopAllCoroutines();
             if (_sentences.Count <= 0)
             {
@@ -48,20 +47,20 @@ namespace Game.Dialogs
 
         IEnumerator CO_DisplaySentence()
         {
-            dialogueDisplay.SetText(string.Empty);
+            _dialogTextDisplay.SetText(string.Empty);
             _currentDialog = _sentences.Dequeue();
-            string sentence = _currentDialog.text;
+            string sentence = _currentDialog.Text;
             var isSpecialCharacter = false;
             string specialCharacter = "";
 
-            if(_currentDialog.image == null)
+            if(_currentDialog.Image == null)
             {
-                image.color = Color.clear;
+                _image.color = Color.clear;
             }
             else
             {
-                image.sprite = _currentDialog.image;
-                image.color = _color;
+                _image.sprite = _currentDialog.Image;
+                _image.color = _color;
             }
 
             foreach (var character in sentence)
@@ -88,8 +87,8 @@ namespace Game.Dialogs
                         nextCharacter += character;
                     }
 
-                    dialogueDisplay.text += nextCharacter;
-                    yield return new WaitForSeconds(1f / textSpeed);
+                    _dialogTextDisplay.text += nextCharacter;
+                    yield return new WaitForSeconds(1f / _textSpeed);
                 }
 
                 if (character == '>')
@@ -99,13 +98,12 @@ namespace Game.Dialogs
             }
 
             _currentDialog = null;
-            UpdateButtonUI();
+            UpdateFeedbackContinue();
         }
 
-        void UpdateButtonUI()
+        void UpdateFeedbackContinue()
         {
-            _continueButton.gameObject.SetActive(true);
-            _continueButton.Select();
+            _continueFeedback.gameObject.SetActive(true);
             if (_sentences.Count > 0)
             {
                 //TODO display next button
@@ -116,7 +114,7 @@ namespace Game.Dialogs
             }
         }
 
-        public void Funcionaaaa()
+        public void Continue()
         {
             if (_currentDialog == null)
             {
@@ -125,7 +123,7 @@ namespace Game.Dialogs
             else
             {
                 StopAllCoroutines();
-                dialogueDisplay.text += _currentDialog.text;
+                _dialogTextDisplay.text = _currentDialog.Text;
                 _currentDialog = null;
             }
         }

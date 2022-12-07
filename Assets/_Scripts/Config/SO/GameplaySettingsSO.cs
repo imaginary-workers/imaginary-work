@@ -1,4 +1,5 @@
 ﻿using System;
+using Game.Audio;
 using UnityEngine;
 
 namespace Game.Config.SO
@@ -15,7 +16,7 @@ namespace Game.Config.SO
             private set => _playerConfig = new PlayerConfig(value);
         }
 
-        public AudioConfig AudioConfig
+        public IAudioConfig AudioConfig
         {
             get => new AudioConfig(_audioConfig);
             private set => _audioConfig = new AudioConfig(value);
@@ -29,7 +30,7 @@ namespace Game.Config.SO
             OnChange?.Invoke();
         }
 
-        public void ChangeAudioConfig(AudioConfig audioConfig)
+        public void ChangeAudioConfig(IAudioConfig audioConfig)
         {
             AudioConfig = audioConfig;
             OnChange?.Invoke();

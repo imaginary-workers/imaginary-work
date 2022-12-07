@@ -1,4 +1,5 @@
 using Game.Dialogs.SO;
+using Game.Dialogs.UI;
 using Game.Managers;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -42,7 +43,7 @@ namespace Game.Dialogs
         {
             if (context.performed &&_onDialog)
             {
-                _dialogUI.Funcionaaaa();
+                _dialogUI.Continue();
             }
         }
     }

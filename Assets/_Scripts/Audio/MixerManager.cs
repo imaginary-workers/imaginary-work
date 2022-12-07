@@ -29,7 +29,7 @@ namespace Game.Audio
             UpdateAudioMixer(_gameplaySettings.AudioConfig);
         }
 
-        public void UpdateAudioMixer(AudioConfig newAudioConfig)
+        public void UpdateAudioMixer(IAudioConfig newAudioConfig)
         {
             _audioMixer.SetFloat("Master", newAudioConfig.Master);
             _audioMixer.SetFloat("Music", newAudioConfig.Music);

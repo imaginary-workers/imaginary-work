@@ -104,7 +104,7 @@
      <Compile Include="Assets\_Scripts\Gameplay\OnPlayerOver.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Player\PointerTarget.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Enemies\FollowPlayer.cs" />
-     <Compile Include="Assets\_Scripts\Config\AudioConfig.cs" />
+     <Compile Include="Assets\_Scripts\Audio\AudioConfig.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Weapon\Weapon.cs" />
      <Compile Include="Assets\_Scripts\Dialogs\SO\DialogSO.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Weapon\TriggerWeapon.cs" />
@@ -166,13 +166,12 @@
      <Compile Include="Assets\_Scripts\Gameplay\SO\ElementSO.cs" />
      <Compile Include="Assets\_Scripts\UI\AudioConfigUIDecorator.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Enemies\PatrolBehaviour.cs" />
-     <Compile Include="Assets\_Scripts\Dialogs\SO\DialogInfo.cs" />
+     <Compile Include="Assets\_Scripts\Dialogs\DialogInfo.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Enemies\RaycastAttack.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Damaging.cs" />
      <Compile Include="Assets\_Scripts\EZ Camera Shake\Demo\Sample Scripts\ShakeByDistance.cs" />
      <Compile Include="Assets\_Scripts\EZ Camera Shake\Demo\Sample Scripts\ShakeOnKeyPress.cs" />
      <Compile Include="Assets\_Scripts\VictorySceneCorrutine.cs" />
-     <Compile Include="Assets\_Scripts\Dialogs\DialogUI.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Enemies\CollectableEnemy\MinionEnemy.cs" />
      <Compile Include="Assets\_Scripts\EZ Camera Shake\Scripts\CameraShakePresets.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Interactable\DestructableObject.cs" />
@@ -181,6 +180,8 @@
      <Compile Include="Assets\_Scripts\Gameplay\Enemies\State.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\CameraFollowTarget.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Enemies\PatrolFire\AttackState.cs" />
+     <Compile Include="Assets\_Scripts\Audio\IAudioClipContainer.cs" />
+     <Compile Include="Assets\_Scripts\Dialogs\UI\DialogUI.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
