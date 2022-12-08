@@ -124,6 +124,7 @@ namespace Game.Gameplay.Weapons
             var e = Instantiate(_explosion);
             e.transform.position = _pointOfExplosion.position;
             e.transform.forward = player.transform.forward;
+            e.GetComponent<Bullet>()?.Shoot(Vector3.zero);
             //CameraShake
         }
 
