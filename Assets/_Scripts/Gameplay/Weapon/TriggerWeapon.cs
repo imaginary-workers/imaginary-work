@@ -6,12 +6,13 @@ using UnityEngine;
 
 namespace Game.Gameplay.Weapons
 {
-    public class TriggerWeapon : ShooterWeapon
+    public abstract class TriggerWeapon : ShooterWeapon
     {
         [SerializeField] ParticleSystem _particles;
         [SerializeField] WeaponsSoundController _weaponSoundController;
         protected Action _TriggerAttackAnimation;
         WaitForSeconds _waitAttackRate;
+        protected bool isSpecial = false;
 
         void Awake()
         {
@@ -27,7 +28,10 @@ namespace Game.Gameplay.Weapons
             bulletObject.SetActive(true);
             bulletObject.transform.forward = _firePoint.forward;
             bulletObject.GetComponent<Bullet>()?.Shoot(ShootDirection);
-            Ammunition--;
+            if (!isSpecial)
+            {
+                Ammunition--;
+            }
             GameManager.Instance.UpdateBulletCounter(Ammunition);
             if (_particles != null) _particles?.Play();
             IsShoot();
@@ -49,6 +53,7 @@ namespace Game.Gameplay.Weapons
         {
             if (!canAttack || Ammunition <= 0) return;
             canAttack = false;
+            isSpecial = false;
             _TriggerAttackAnimation.Invoke();
             StartCoroutine(CO_AttackRate());
         }
@@ -64,18 +69,6 @@ namespace Game.Gameplay.Weapons
         }
 
         public override void CancelAttack()
-        {
-        }
-
-        public override void StartSpecial()
-        {
-        }
-
-        public override void PerformedSpecial()
-        {
-        }
-
-        public override void EndSpecial()
         {
         }
 

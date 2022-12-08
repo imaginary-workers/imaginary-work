@@ -108,5 +108,10 @@ namespace Game.Gameplay.Player
         {
             _myAni.SetTrigger("HammerSpecial");
         }
+        
+        public void AttackPistolSpecial()
+        {
+            _myAni.SetTrigger("PistolSpecial");
+        }
     }
 }

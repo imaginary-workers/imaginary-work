@@ -11,6 +11,18 @@ namespace Game.Gameplay.Weapons
             _TriggerAttackAnimation = animationManager.FireShooter;
         }
 
+        public override void StartSpecial()
+        {
+        }
+
+        public override void PerformedSpecial()
+        {
+        }
+
+        public override void EndSpecial()
+        {
+        }
+
         void EVENT_START_RELOAD()
         {
             _audioSource.PlayOneShot(_weaponData.ReloadSound);
