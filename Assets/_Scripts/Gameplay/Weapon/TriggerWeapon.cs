@@ -67,6 +67,18 @@ namespace Game.Gameplay.Weapons
         {
         }
 
+        public override void StartSpecial()
+        {
+        }
+
+        public override void PerformedSpecial()
+        {
+        }
+
+        public override void EndSpecial()
+        {
+        }
+
         protected void EVENT_Weapon_SHOOTING()
         {
             Shoot();

@@ -103,5 +103,10 @@ namespace Game.Gameplay.Player
         {
             _myAni.ResetTrigger("ReloadTrigger");
         }
+
+        public void AttackMeleeSpecial()
+        {
+            _myAni.SetTrigger("HammerSpecial");
+        }
     }
 }

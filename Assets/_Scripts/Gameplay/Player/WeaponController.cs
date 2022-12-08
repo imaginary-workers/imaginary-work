@@ -33,11 +33,6 @@ namespace Game.Gameplay.Player
             CurrentWeapon.Target = _pointerTarget.transform;
             if (context.started)
             {
-                // if (CurrentWeapon.IsHeavy)
-                // {
-                //     PlayerHeavy();
-                // }
-
                 _playerController.CanSprint = false;
                 CurrentWeapon.StartAttack();
             }
@@ -46,12 +41,28 @@ namespace Game.Gameplay.Player
                 CurrentWeapon.PerformedAttack();
             if (context.canceled)
             {
-                // if (CurrentWeapon.IsHeavy)
-                // {
-                //     PlayerBackToDefault();
-                // }
                 _playerController.CanSprint = true;
                 CurrentWeapon.EndAttack();
+            }
+        }
+        
+        public void AttackSpecialInput(InputAction.CallbackContext context)
+        {
+            if (!active) return;
+            if (!CanAttack) return;
+            CurrentWeapon.Target = _pointerTarget.transform;
+            if (context.started)
+            {
+                _playerController.CanSprint = false;
+                CurrentWeapon.StartSpecial();
+            }
+
+            if (context.performed)
+                CurrentWeapon.PerformedSpecial();
+            if (context.canceled)
+            {
+                _playerController.CanSprint = true;
+                CurrentWeapon.EndSpecial();
             }
         }
 
@@ -85,22 +96,9 @@ namespace Game.Gameplay.Player
 
             _animation.BackToIdle();
             CanAttack = true;
-            if (CurrentWeapon.IsHeavy)
-                PlayerBackToDefault();
             _playerController.CanSprint = true;
             UpdateSlotUI(slot);
             UpdateAmmoUI();
-        }
-
-        void PlayerBackToDefault()
-        {
-            _playerController.Speed = _playerController.NormalSpeed;
-            _playerController.CanSprint = true;
-        }
-
-        void PlayerHeavy()
-        {
-            _playerController.Speed = _speedWeaponHeavy;
         }
 
         void UpdateSlotUI(int slot)
