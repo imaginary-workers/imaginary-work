@@ -1539,22 +1539,22 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_Events:
   - time: 0
-    functionName: StartSpecial
-    data: 
+    functionName: PLAYER_EVENT
+    data: start_special_event
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
   - time: 1
-    functionName: SpawnExplosion
-    data: 
+    functionName: PLAYER_EVENT
+    data: spawn_explosion_event
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
   - time: 2.5833333
-    functionName: EndSpecial
-    data: 
+    functionName: PLAYER_EVENT
+    data: end_special_event
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0

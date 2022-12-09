@@ -21,9 +21,9 @@ namespace Game.Gameplay.Enemies
             if (_weakness == element)
             {
                 _life -= damage * 2;
+                    OnTakeStrongDamage?.Invoke(damage, damaging);
                 if (Life > 0)
                 {
-                    OnTakeStrongDamage?.Invoke(damage, damaging);
                     HitMarkerController.Instance.DisplayHitMarkStrong();
                 }
             }

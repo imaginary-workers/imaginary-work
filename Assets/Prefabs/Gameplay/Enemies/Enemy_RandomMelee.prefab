@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4976006481002420660}
   - component: {fileID: 8846074023536706980}
   - component: {fileID: 2351737370147773741}
+  - component: {fileID: 3129759943887197970}
   m_Layer: 7
   m_Name: Enemy_RandomMelee
   m_TagString: Untagged
@@ -139,7 +140,6 @@ MonoBehaviour:
   _animatorController: {fileID: 3845487164276731176}
   _ragdoll: {fileID: 1729910816896627537}
   _collider: {fileID: 2887304925957310152}
-  _hitPoint: {fileID: 0}
   _damaging: {fileID: 6362276152600465228}
 --- !u!114 &7268778590236066481
 MonoBehaviour:
@@ -343,6 +343,20 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &3129759943887197970
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1871783242920672996}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d024a1d7d37e714d800dff4907e5eda, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _enemyDamageable: {fileID: 8846074023536706980}
+  _weaponSO: {fileID: 11400000, guid: b764a1e102716434eb76f054bfc5bf16, type: 2}
 --- !u!1 &3410269104207759678
 GameObject:
   m_ObjectHideFlags: 0

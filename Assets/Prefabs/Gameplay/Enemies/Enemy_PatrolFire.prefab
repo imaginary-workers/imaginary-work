@@ -71,6 +71,7 @@ GameObject:
   - component: {fileID: 1065654459489884989}
   - component: {fileID: 2907957311507273403}
   - component: {fileID: 7162781201960902539}
+  - component: {fileID: 6244994373892412051}
   m_Layer: 7
   m_Name: Enemy_PatrolFire
   m_TagString: Untagged
@@ -434,6 +435,20 @@ MonoBehaviour:
   _targetLayer:
     serializedVersion: 2
     m_Bits: 8
+--- !u!114 &6244994373892412051
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 564365771632663800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d024a1d7d37e714d800dff4907e5eda, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _enemyDamageable: {fileID: 2302987543489821036}
+  _weaponSO: {fileID: 11400000, guid: 3ca41bb16976d2a419b1e71793672039, type: 2}
 --- !u!1 &3324573506319657963
 GameObject:
   m_ObjectHideFlags: 0
@@ -1437,11 +1452,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1b5f8753827b529408da03480473b3a8, type: 3}
---- !u!1 &5392008873554557235 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 963572683487227916, guid: 1b5f8753827b529408da03480473b3a8, type: 3}
-  m_PrefabInstance: {fileID: 5155231518037084479}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &8961525832977884421 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4311831069941673018, guid: 1b5f8753827b529408da03480473b3a8, type: 3}
@@ -1485,6 +1495,11 @@ GameObject:
 --- !u!1 &8231285115707038428 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3868708572608205795, guid: 1b5f8753827b529408da03480473b3a8, type: 3}
+  m_PrefabInstance: {fileID: 5155231518037084479}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5392008873554557235 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 963572683487227916, guid: 1b5f8753827b529408da03480473b3a8, type: 3}
   m_PrefabInstance: {fileID: 5155231518037084479}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &4051741347440729947 stripped
