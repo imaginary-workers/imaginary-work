@@ -6470,33 +6470,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Flamethrower_Weapon
       objectReference: {fileID: 0}
-    - target: {fileID: 1934071586597183794, guid: 7cd12200bd3156040955aebf80ad1489, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4538244712190913964, guid: 7cd12200bd3156040955aebf80ad1489, type: 3}
-      propertyPath: _weaponSoundController
-      value: 
-      objectReference: {fileID: 2748643659555909998}
-    - target: {fileID: 4735661994421724971, guid: 7cd12200bd3156040955aebf80ad1489, type: 3}
-      propertyPath: _weaponSoundController
-      value: 
-      objectReference: {fileID: 2748643659555909998}
     - target: {fileID: 4997407529903462761, guid: 7cd12200bd3156040955aebf80ad1489, type: 3}
-      propertyPath: specialBulletPooler
+      propertyPath: _particles
       value: 
-      objectReference: {fileID: 277965431940105074}
-    - target: {fileID: 4997407529903462761, guid: 7cd12200bd3156040955aebf80ad1489, type: 3}
-      propertyPath: _weaponSoundController
-      value: 
-      objectReference: {fileID: 2748643659555909998}
+      objectReference: {fileID: 1663158426682278906}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7cd12200bd3156040955aebf80ad1489, type: 3}
---- !u!1 &1664332531140596095 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1934071586597183794, guid: 7cd12200bd3156040955aebf80ad1489, type: 3}
-  m_PrefabInstance: {fileID: 995249622090657869}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1767229513866288492 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1533937069260811553, guid: 7cd12200bd3156040955aebf80ad1489, type: 3}
@@ -6507,29 +6486,12 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4997407529903462761, guid: 7cd12200bd3156040955aebf80ad1489, type: 3}
   m_PrefabInstance: {fileID: 995249622090657869}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1664332531140596095}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 561d1d69241153546ad974082ba530ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &277965431940105074
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1664332531140596095}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 86e3613be9a542bca23fdc5646be0244, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _pooledObject: {fileID: 86472681991517733, guid: 2a81cb17ee854704e85e01e22dfb2c2f, type: 3}
-  _pooledAmount: 1
-  _willGrow: 1
-  _pooledObjects: []
-  _parent: {fileID: 0}
 --- !u!1001 &7056965217599916547
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6615,3 +6577,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8706a03ba17ca64e8186782552cbcf1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!198 &1663158426682278906 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 8573685730542143993, guid: 2995e5e25acebc3479602f2226558c20, type: 3}
+  m_PrefabInstance: {fileID: 7056965217599916547}
+  m_PrefabAsset: {fileID: 0}

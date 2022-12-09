@@ -9,7 +9,7 @@ namespace Game.Gameplay.Weapons
     public abstract class TriggerWeapon : ShooterWeapon
     {
         [SerializeField] ParticleSystem _particles;
-        [SerializeField] WeaponsSoundController _weaponSoundController;
+        [SerializeField] ObjectPooler specialBulletPooler;
         protected Action _TriggerAttackAnimation;
         WaitForSeconds _waitAttackRate;
         protected bool isSpecial = false;
@@ -23,7 +23,8 @@ namespace Game.Gameplay.Weapons
 
         protected override void Shoot()
         {
-            var bulletObject = _bulletPooler.GetPooledObject();
+            var pooler = !isSpecial ? _bulletPooler : specialBulletPooler;
+            var bulletObject = pooler.GetPooledObject();
             bulletObject.transform.position = _firePoint.position;
             bulletObject.SetActive(true);
             bulletObject.transform.forward = _firePoint.forward;
@@ -31,8 +32,8 @@ namespace Game.Gameplay.Weapons
             if (!isSpecial)
             {
                 Ammunition--;
+                GameManager.Instance.UpdateBulletCounter(Ammunition);
             }
-            GameManager.Instance.UpdateBulletCounter(Ammunition);
             if (_particles != null) _particles?.Play();
             IsShoot();
         }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using Game.Gameplay.Player;
 using UnityEngine;
@@ -16,8 +17,20 @@ namespace Game.Gameplay.Weapons
             animationManager.AddAnimationEvent("end_reload_weapon", EVENT_RELOAD_FEEDBACK);
             animationManager.AddAnimationEvent("pistol_shooting_event", EVENT_Weapon_SHOOTING);
             animationManager.AddAnimationEvent("bullet_reload_weapon", EVENT_RELOAD);
+            animationManager.AddAnimationEvent("pistol_shooting_start_event", EVENT_SHOOTING_START_SPECIAL);
+            animationManager.AddAnimationEvent("pistol_shooting_end_event", EVENT_SHOOTING_END_SPECIAL);
             _animationManager = animationManager;
             _TriggerAttackAnimation = animationManager.PistolShooter;
+        }
+
+        private void EVENT_SHOOTING_START_SPECIAL()
+        {
+            isSpecial = true;
+        }
+
+        private void EVENT_SHOOTING_END_SPECIAL()
+        {
+            isSpecial = false;
         }
 
         void EVENT_RELOAD_FEEDBACK()
