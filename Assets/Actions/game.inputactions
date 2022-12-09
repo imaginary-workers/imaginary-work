@@ -33,6 +33,15 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "Fire Special",
+                    "type": "Button",
+                    "id": "f53ccc28-2973-4cce-b717-05a928bbb9b5",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "Reload",
                     "type": "Button",
                     "id": "f9e4a709-14d9-4d95-9446-b941f8540a2f",
@@ -108,6 +117,15 @@
                     "name": "Unlock Weapon 3",
                     "type": "Button",
                     "id": "b12bb8fe-1194-49c6-9fdc-11fc44c3947b",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Skip",
+                    "type": "Button",
+                    "id": "4be711b5-887c-4e61-a737-adc5f49f0770",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -414,6 +432,17 @@
                 },
                 {
                     "name": "",
+                    "id": "9f42112f-1f26-43c4-8a2f-e606d7267574",
+                    "path": "<Gamepad>/leftStickPress",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Sprint",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "1cd837a2-cbe4-47b3-8570-d4a3629c469f",
                     "path": "<Keyboard>/8",
                     "interactions": "",
@@ -431,6 +460,50 @@
                     "processors": "",
                     "groups": "Keyboard&Mouse",
                     "action": "Unlock Weapon 3",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "21e359fd-5ef3-46c5-b936-8edf5894fc85",
+                    "path": "<Gamepad>/rightShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Gamepad",
+                    "action": "Fire Special",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "efd149b5-88e0-4671-bd60-895af20d9074",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "Fire Special",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "905bed26-cd02-491f-bafe-cb1d321fbe8e",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Gamepad",
+                    "action": "Skip",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "782d93e7-3ec5-4af9-9100-6568e9cd3267",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "Skip",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

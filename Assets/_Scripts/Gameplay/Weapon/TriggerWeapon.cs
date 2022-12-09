@@ -6,12 +6,13 @@ using UnityEngine;
 
 namespace Game.Gameplay.Weapons
 {
-    public class TriggerWeapon : ShooterWeapon
+    public abstract class TriggerWeapon : ShooterWeapon
     {
         [SerializeField] ParticleSystem _particles;
-        [SerializeField] WeaponsSoundController _weaponSoundController;
+        [SerializeField] ObjectPooler specialBulletPooler;
         protected Action _TriggerAttackAnimation;
         WaitForSeconds _waitAttackRate;
+        protected bool isSpecial = false;
 
         void Awake()
         {
@@ -22,13 +23,18 @@ namespace Game.Gameplay.Weapons
 
         protected override void Shoot()
         {
-            var bulletObject = _bulletPooler.GetPooledObject();
+            var pooler = !isSpecial ? _bulletPooler : specialBulletPooler;
+            var bulletObject = pooler.GetPooledObject();
             bulletObject.transform.position = _firePoint.position;
             bulletObject.SetActive(true);
             bulletObject.transform.forward = _firePoint.forward;
             bulletObject.GetComponent<Bullet>()?.Shoot(ShootDirection);
-            Ammunition--;
-            GameManager.Instance.UpdateBulletCounter(Ammunition);
+            if (!isSpecial)
+            {
+                Ammunition--;
+                GameManager.Instance.UpdateBulletCounter(Ammunition);
+            }
+            else _weaponData.Energy = 0;
             if (_particles != null) _particles?.Play();
             IsShoot();
         }
@@ -49,6 +55,7 @@ namespace Game.Gameplay.Weapons
         {
             if (!canAttack || Ammunition <= 0) return;
             canAttack = false;
+            isSpecial = false;
             _TriggerAttackAnimation.Invoke();
             StartCoroutine(CO_AttackRate());
         }
@@ -65,6 +72,7 @@ namespace Game.Gameplay.Weapons
 
         public override void CancelAttack()
         {
+            canAttack = true;
         }
 
         protected void EVENT_Weapon_SHOOTING()
