@@ -1,9 +1,6 @@
 using Game.Gameplay.Enemies;
 using Game.Gameplay.Weapons.SO;
-using Game.SO;
-using System;
-using System.Collections;
-using System.Collections.Generic;
+using Game.Managers;
 using UnityEngine;
 
 namespace Game
@@ -25,6 +22,7 @@ namespace Game
         private void AddEnergy(int arg1, GameObject arg2)
         {
             _weaponSO.Energy++;
+            GameManager.Instance.UpdateEnergyBar(_weaponSO.Energy, _weaponSO.MaxEnergy);
         }
     }
 }
