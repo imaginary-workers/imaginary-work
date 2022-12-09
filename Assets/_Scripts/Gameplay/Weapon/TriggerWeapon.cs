@@ -34,6 +34,7 @@ namespace Game.Gameplay.Weapons
                 Ammunition--;
                 GameManager.Instance.UpdateBulletCounter(Ammunition);
             }
+            else _weaponData.Energy = 0;
             if (_particles != null) _particles?.Play();
             IsShoot();
         }
@@ -71,6 +72,7 @@ namespace Game.Gameplay.Weapons
 
         public override void CancelAttack()
         {
+            canAttack = true;
         }
 
         protected void EVENT_Weapon_SHOOTING()

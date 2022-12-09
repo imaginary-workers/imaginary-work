@@ -26,6 +26,7 @@ namespace Game.Gameplay.Weapons
         }
         private void EVENT_Weapon_SHOOTING_END()
         {
+            canAttack = true;
             isSpecial = false;
         }
 
@@ -36,6 +37,8 @@ namespace Game.Gameplay.Weapons
 
         public override void PerformedSpecial()
         {
+            if (!canAttack || _weaponData.Energy != _weaponData.MaxEnergy) return;
+            canAttack = false;
             _animationManager.AttackFireSpecial();
         }
 

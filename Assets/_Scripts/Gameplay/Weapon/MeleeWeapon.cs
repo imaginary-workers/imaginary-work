@@ -72,9 +72,10 @@ namespace Game.Gameplay.Weapons
 
         public override void PerformedSpecial()
         {
-            if (!canAttack) return;
+            if (!canAttack || _weaponData.Energy != _weaponData.MaxEnergy) return;
             canAttack = false;
             StartMeleeSpecialAnimation();
+            _weaponData.Energy = 0;
         }
 
         public override void EndSpecial()
