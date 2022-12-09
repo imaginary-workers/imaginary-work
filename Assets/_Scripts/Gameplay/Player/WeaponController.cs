@@ -58,7 +58,11 @@ namespace Game.Gameplay.Player
             }
 
             if (context.performed)
+            {
                 CurrentWeapon.PerformedSpecial();
+                var data = CurrentWeapon.Data;
+                GameManager.Instance.UpdateEnergyBar(data.Energy, data.MaxEnergy);
+            }
             if (context.canceled)
             {
                 _playerController.CanSprint = true;
@@ -99,6 +103,8 @@ namespace Game.Gameplay.Player
             _playerController.CanSprint = true;
             UpdateSlotUI(slot);
             UpdateAmmoUI();
+            var data = CurrentWeapon.Data;
+            GameManager.Instance.UpdateEnergyBar(data.Energy, data.MaxEnergy);
         }
 
         void UpdateSlotUI(int slot)
