@@ -8,7 +8,7 @@ namespace Game.Gameplay.Enemies.Kamikaze
 {
     public class AnimatorController : MonoBehaviour
     {
-        Animator _ani;
+        [SerializeField] Animator _ani;
         [SerializeField] NavMeshAgent _agent;
         readonly Dictionary<string, Action> _events = new Dictionary<string, Action>();
 
@@ -34,7 +34,7 @@ namespace Game.Gameplay.Enemies.Kamikaze
         {
             _ani.SetFloat("Speed", _agent.speed);
         }
-        void AnticipationExplode()
+        public void AnticipationExplode()
         {
             _ani.SetTrigger("Attack");
         }

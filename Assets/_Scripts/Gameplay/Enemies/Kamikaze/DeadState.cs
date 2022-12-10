@@ -8,8 +8,14 @@ namespace Game.Gameplay.Enemies.Kamikaze
     {
         KamikazeStateController _controller;
 
+        public DeadState(KamikazeStateController controller)
+        {
+            _controller = controller;
+        }
+
         public override void Enter()
         {
+            Debug.Log("XX");
           _controller.DestroyGameObject();
         }
     }

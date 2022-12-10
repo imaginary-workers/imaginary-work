@@ -1,43 +1,43 @@
 using Game.Managers;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-using static UnityEngine.GraphicsBuffer;
 
 namespace Game.Gameplay.Enemies.Kamikaze
 {
     public class KamikazeStateController : EnemyStateController
     {
-        [SerializeField] VisualField _visual;
-        [SerializeField] VisualField _visualExplosion;
         [SerializeField] NavMeshAgent _navMesh;
+        [SerializeField] private FollowPlayer _followPlayer;
         [SerializeField] AnimatorController _animatorController;
         [SerializeField] GameObject _explosionPrefab;
-        GameObject _target;
 
+        [field: SerializeField]
+        public float RangeFollow { get; set; } = 15;
+        [field: SerializeField]
+        public float RangeOfVisionY { get; set; } = 1;
+        [field: SerializeField]
+        public float RangeExplosion { get; set; }
         public DeadState Dead { get; private set; }
         public IdleState Idle { get; private set; }
         public FollowState Follow { get; private set; }
         public ExplosionState Explosion { get; private set; }
         [field: SerializeField] public float NormalSpeed { get; private set; }
-        public GameObject Target { get; internal set; }
+        public GameObject Target { get; private set; }
 
         protected override void OnAwakeEnemy()
         {
             _navMesh.speed = NormalSpeed;
-            _target = GameManager.Player;
-            _visual.Target = _target;
-            _visualExplosion.Target = _target;
-            Idle = new IdleState(this, _navMesh, _visual);
-            Follow = new FollowState(this, _navMesh, _visual, _visualExplosion);
+            Target = GameManager.Player;
+            Idle = new IdleState(this, _navMesh);
+            Follow = new FollowState(this, _navMesh, _followPlayer);
             Explosion = new ExplosionState(this, _navMesh, _animatorController);
+            _followPlayer.enabled = false;
             ChangeState(Idle);
         }
 
         protected override void SetDeadState()
         {
-            Dead = new DeadState();
+            Dead = new DeadState(this);
         }
         
         public void Explode()

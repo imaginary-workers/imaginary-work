@@ -53,6 +53,7 @@ namespace Game.Gameplay.Enemies
 
         public virtual void DestroyGameObject(float seconds = 0)
         {
+            Debug.Log("destruido");
             Damageable.OnDeath -= ChangeToDeathState;
             Destroy(gameObject, seconds);
         }

@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 1407113441194894117}
   - component: {fileID: 7762417525691920518}
   - component: {fileID: 5538883743852784006}
-  - component: {fileID: 8997936184574221000}
-  - component: {fileID: 395185394736845973}
   - component: {fileID: 7975491360448408747}
   - component: {fileID: 4204418081734766400}
+  - component: {fileID: 8717397993899331729}
+  - component: {fileID: 7481701723370601729}
   m_Layer: 7
   m_Name: KamikazeEnemy
   m_TagString: Untagged
@@ -71,60 +71,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c828a17fd6375bd43bfbfa9ac800ddda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _visual: {fileID: 8997936184574221000}
-  _visualExplosion: {fileID: 395185394736845973}
   _navMesh: {fileID: 7762417525691920518}
+  _followPlayer: {fileID: 7481701723370601729}
   _animatorController: {fileID: 6312362796066457697}
   _explosionPrefab: {fileID: 1025285306637258, guid: d8f0099df63275647a8bcf646df1ca00, type: 3}
+  <RangeFollow>k__BackingField: 10
+  <RangeOfVisionY>k__BackingField: 1
+  <RangeExplosion>k__BackingField: 2
   <NormalSpeed>k__BackingField: 6
---- !u!114 &8997936184574221000
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1787017096017295775}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9585349173aa79541843e6370af12c45, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _target: {fileID: 0}
-  _visualAngle: 360
-  _visualDistance: 20
-  _rangeOfVisionYUp: 1.5
-  _rangeOfVisionYDown: -1.5
-  _maxTime: 0.2
-  _obstacleLayer:
-    serializedVersion: 2
-    m_Bits: 192
-  _targetLayer:
-    serializedVersion: 2
-    m_Bits: 8
---- !u!114 &395185394736845973
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1787017096017295775}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9585349173aa79541843e6370af12c45, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _target: {fileID: 0}
-  _visualAngle: 360
-  _visualDistance: 5
-  _rangeOfVisionYUp: 1.5
-  _rangeOfVisionYDown: -1.5
-  _maxTime: 0.2
-  _obstacleLayer:
-    serializedVersion: 2
-    m_Bits: 192
-  _targetLayer:
-    serializedVersion: 2
-    m_Bits: 8
 --- !u!54 &7975491360448408747
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -155,6 +109,36 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0}
+--- !u!114 &8717397993899331729
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1787017096017295775}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc660ccbbe8a4ad4ea828415e3d77778, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _life: 2
+  _weakness: {fileID: 11400000, guid: acc81f72dbdb81b40b95f8578c3fba01, type: 2}
+--- !u!114 &7481701723370601729
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1787017096017295775}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28cefdf2f6d06f147b0b3099e296051d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _speed: 5
+  _agent: {fileID: 7762417525691920518}
+  _closeRange: 2
+  _rangeOfVisionY: 1
 --- !u!1 &6975067841226795155
 GameObject:
   m_ObjectHideFlags: 0
@@ -557,6 +541,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8319771768812558816, guid: c3fb685691a62f645b81bbd0e87fb899, type: 3}
   m_PrefabInstance: {fileID: 3077306116956831455}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &7659303704814269140 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 4683631154753997835, guid: c3fb685691a62f645b81bbd0e87fb899, type: 3}
+  m_PrefabInstance: {fileID: 3077306116956831455}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &6312362796066457697
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -569,4 +558,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de4b3bd3d1b4b0444a406a13cef1e2dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _ani: {fileID: 7659303704814269140}
   _agent: {fileID: 7762417525691920518}

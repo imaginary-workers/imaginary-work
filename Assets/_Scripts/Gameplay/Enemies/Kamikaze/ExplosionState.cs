@@ -21,10 +21,11 @@ namespace Game.Gameplay.Enemies.Kamikaze
 
         public override void Enter()
         {
+            Debug.Log("Explo");
             _ani.AddAnimationEvent("explosion_event", EXPLOSION_EVENT);
             agent.isStopped = true;
             agent.speed = 0;
-
+            _ani.AnticipationExplode();
         }
 
         private void EXPLOSION_EVENT()

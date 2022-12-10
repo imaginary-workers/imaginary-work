@@ -9,25 +9,30 @@ namespace Game.Gameplay.Enemies.Kamikaze
     {
         KamikazeStateController _controller;
         NavMeshAgent _navMeshAgent;
-        VisualField _field;
+        private GameObject _target;
+        private float _rangeOfVisionY;
+        private float _rangeFollow;
 
-        public IdleState(KamikazeStateController controller, NavMeshAgent navMeshAgent, VisualField field)
+        public IdleState(KamikazeStateController controller, NavMeshAgent navMeshAgent)
         {
             _controller = controller;
             _navMeshAgent = navMeshAgent;
-            _field = field;
+            _target = _controller.Target;
+            _rangeOfVisionY = _controller.RangeOfVisionY;
+            _rangeFollow = _controller.RangeFollow;
         }
         public override void Enter()
         {
+            Debug.Log("Idl");
             _navMeshAgent.isStopped = true;
             _navMeshAgent.speed = 0;
         }
         public override void Update()
         {
-            if (_field.IsTargetInView)
-            {
+            var position = _controller.transform.position;
+            var playerPosition = _target.transform.position;
+            if (Utils.IsInRangeOfVision(position, playerPosition, _rangeFollow, _rangeOfVisionY))
                 _controller.ChangeState(_controller.Follow);
-            }
         }
         public override void Exit()
         {
