@@ -530,6 +530,63 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!1001 &223286021
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3529269226714317104, guid: 0640c794667cb33498275508716bf508, type: 3}
+      propertyPath: m_RootOrder
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3529269226714317104, guid: 0640c794667cb33498275508716bf508, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 15.22
+      objectReference: {fileID: 0}
+    - target: {fileID: 3529269226714317104, guid: 0640c794667cb33498275508716bf508, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 7.57
+      objectReference: {fileID: 0}
+    - target: {fileID: 3529269226714317104, guid: 0640c794667cb33498275508716bf508, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 20.78
+      objectReference: {fileID: 0}
+    - target: {fileID: 3529269226714317104, guid: 0640c794667cb33498275508716bf508, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.0040516485
+      objectReference: {fileID: 0}
+    - target: {fileID: 3529269226714317104, guid: 0640c794667cb33498275508716bf508, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.012231144
+      objectReference: {fileID: 0}
+    - target: {fileID: 3529269226714317104, guid: 0640c794667cb33498275508716bf508, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.87871903
+      objectReference: {fileID: 0}
+    - target: {fileID: 3529269226714317104, guid: 0640c794667cb33498275508716bf508, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.47716555
+      objectReference: {fileID: 0}
+    - target: {fileID: 3529269226714317104, guid: 0640c794667cb33498275508716bf508, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 56.981
+      objectReference: {fileID: 0}
+    - target: {fileID: 3529269226714317104, guid: 0640c794667cb33498275508716bf508, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -181.976
+      objectReference: {fileID: 0}
+    - target: {fileID: 3529269226714317104, guid: 0640c794667cb33498275508716bf508, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -2.668
+      objectReference: {fileID: 0}
+    - target: {fileID: 4301407157979847562, guid: 0640c794667cb33498275508716bf508, type: 3}
+      propertyPath: m_Name
+      value: BossSandArm
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 0640c794667cb33498275508716bf508, type: 3}
 --- !u!1 &286996162
 GameObject:
   m_ObjectHideFlags: 0
@@ -1026,63 +1083,6 @@ MonoBehaviour:
   m_SelectedFaces: 
   m_SelectedEdges: []
   m_SelectedVertices: 
---- !u!1001 &409757923
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 8548553740168533627, guid: c21051380d98da747a76aff5795c5baf, type: 3}
-      propertyPath: m_RootOrder
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 8548553740168533627, guid: c21051380d98da747a76aff5795c5baf, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 8548553740168533627, guid: c21051380d98da747a76aff5795c5baf, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 7.57
-      objectReference: {fileID: 0}
-    - target: {fileID: 8548553740168533627, guid: c21051380d98da747a76aff5795c5baf, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 20.78
-      objectReference: {fileID: 0}
-    - target: {fileID: 8548553740168533627, guid: c21051380d98da747a76aff5795c5baf, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: -0.0040516485
-      objectReference: {fileID: 0}
-    - target: {fileID: 8548553740168533627, guid: c21051380d98da747a76aff5795c5baf, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0.012231144
-      objectReference: {fileID: 0}
-    - target: {fileID: 8548553740168533627, guid: c21051380d98da747a76aff5795c5baf, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0.87871903
-      objectReference: {fileID: 0}
-    - target: {fileID: 8548553740168533627, guid: c21051380d98da747a76aff5795c5baf, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0.47716555
-      objectReference: {fileID: 0}
-    - target: {fileID: 8548553740168533627, guid: c21051380d98da747a76aff5795c5baf, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 56.981
-      objectReference: {fileID: 0}
-    - target: {fileID: 8548553740168533627, guid: c21051380d98da747a76aff5795c5baf, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: -181.976
-      objectReference: {fileID: 0}
-    - target: {fileID: 8548553740168533627, guid: c21051380d98da747a76aff5795c5baf, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: -2.668
-      objectReference: {fileID: 0}
-    - target: {fileID: 9072854363455966401, guid: c21051380d98da747a76aff5795c5baf, type: 3}
-      propertyPath: m_Name
-      value: bossWoodArm
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: c21051380d98da747a76aff5795c5baf, type: 3}
 --- !u!1 &412924353
 GameObject:
   m_ObjectHideFlags: 0
@@ -1119,7 +1119,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh28508
+  m_Name: pb_Mesh17714
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1298,7 +1298,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh28520
+  m_Name: pb_Mesh17726
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1462,7 +1462,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh28546
+  m_Name: pb_Mesh17752
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -3784,7 +3784,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh28448
+  m_Name: pb_Mesh17652
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -4871,6 +4871,63 @@ MonoBehaviour:
   m_SelectedFaces: 
   m_SelectedEdges: []
   m_SelectedVertices: 
+--- !u!1001 &1821562579
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 8389603821577124488, guid: e4bef04e32696f941813632b2e3175da, type: 3}
+      propertyPath: m_RootOrder
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 8389603821577124488, guid: e4bef04e32696f941813632b2e3175da, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8389603821577124488, guid: e4bef04e32696f941813632b2e3175da, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 7.57
+      objectReference: {fileID: 0}
+    - target: {fileID: 8389603821577124488, guid: e4bef04e32696f941813632b2e3175da, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 20.78
+      objectReference: {fileID: 0}
+    - target: {fileID: 8389603821577124488, guid: e4bef04e32696f941813632b2e3175da, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.0040516485
+      objectReference: {fileID: 0}
+    - target: {fileID: 8389603821577124488, guid: e4bef04e32696f941813632b2e3175da, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.012231144
+      objectReference: {fileID: 0}
+    - target: {fileID: 8389603821577124488, guid: e4bef04e32696f941813632b2e3175da, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.87871903
+      objectReference: {fileID: 0}
+    - target: {fileID: 8389603821577124488, guid: e4bef04e32696f941813632b2e3175da, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.47716555
+      objectReference: {fileID: 0}
+    - target: {fileID: 8389603821577124488, guid: e4bef04e32696f941813632b2e3175da, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 56.981
+      objectReference: {fileID: 0}
+    - target: {fileID: 8389603821577124488, guid: e4bef04e32696f941813632b2e3175da, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -181.976
+      objectReference: {fileID: 0}
+    - target: {fileID: 8389603821577124488, guid: e4bef04e32696f941813632b2e3175da, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -2.668
+      objectReference: {fileID: 0}
+    - target: {fileID: 9162024327597350962, guid: e4bef04e32696f941813632b2e3175da, type: 3}
+      propertyPath: m_Name
+      value: BossWoodArm
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e4bef04e32696f941813632b2e3175da, type: 3}
 --- !u!1001 &1860510672
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4991,7 +5048,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh28478
+  m_Name: pb_Mesh17682
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -5222,7 +5279,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh28574
+  m_Name: pb_Mesh17780
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
