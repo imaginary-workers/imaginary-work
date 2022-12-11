@@ -67,6 +67,7 @@
      <Compile Include="Assets\_Scripts\Managers\PlayManager.cs" />
      <Compile Include="Assets\_Scripts\DestroyInSecondsComponent.cs" />
      <Compile Include="Assets\_Scripts\SwayBehaviour.cs" />
+     <Compile Include="Assets\_Scripts\Gameplay\Enemies\Kamikaze\IdleState.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Platforms\BreakPlatformBrain.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Enemies\EnemyBurstShooter.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Enemies\AbstractDeadState.cs" />
@@ -83,8 +84,10 @@
      <Compile Include="Assets\_Scripts\Gameplay\Enemies\FollowMelee\FollowMeleeStateController.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Enemies\FollowMelee\MeleeAttackState.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Interactable\ObjectDamageable.cs" />
+     <Compile Include="Assets\_Scripts\Gameplay\Enemies\Kamikaze\AnimatorController.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Player\WeaponController.cs" />
      <Compile Include="Assets\_Scripts\Tutorial\DestroyListenner.cs" />
+     <Compile Include="Assets\_Scripts\Gameplay\Enemies\Kamikaze\KamikazeStateController.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Lifts\LiftAnimations.cs" />
      <Compile Include="Assets\_Scripts\UI\MixerUI.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Enemies\LookAtTarget.cs" />
@@ -108,6 +111,7 @@
      <Compile Include="Assets\_Scripts\Gameplay\Weapon\Weapon.cs" />
      <Compile Include="Assets\_Scripts\Dialogs\SO\DialogSO.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Weapon\TriggerWeapon.cs" />
+     <Compile Include="Assets\_Scripts\Gameplay\Enemies\Kamikaze\DeadState.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\MoveComponent.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Player\WeaponsSoundController.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Player\FPSCamera.cs" />
@@ -138,6 +142,7 @@
      <Compile Include="Assets\_Scripts\Gameplay\Enemies\EnemyStateController.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\EnemyShooter.cs" />
      <Compile Include="Assets\_Scripts\Scene\SO\SceneSO.cs" />
+     <Compile Include="Assets\_Scripts\Gameplay\Enemies\Kamikaze\ExplosionState.cs" />
      <Compile Include="Assets\_Scripts\SO\IntSO.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\AppearAgain.cs" />
      <Compile Include="Assets\_Scripts\Config\PlayerConfig.cs" />
@@ -151,6 +156,7 @@
      <Compile Include="Assets\_Scripts\Tutorial\TriggerEmiter.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\ToNextLevel.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Player\WeaponManager.cs" />
+     <Compile Include="Assets\_Scripts\Gameplay\Enemies\EnergyReward.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Enemies\EnemyDamageable.cs" />
      <Compile Include="Assets\_Scripts\EZ Camera Shake\Scripts\Utilities\CameraUtilities.cs" />
      <Compile Include="Assets\_Scripts\Scene\SO\SceneStorageSO.cs" />
@@ -174,12 +180,12 @@
      <Compile Include="Assets\_Scripts\Gameplay\Enemies\CollectableEnemy\MinionEnemy.cs" />
      <Compile Include="Assets\_Scripts\EZ Camera Shake\Scripts\CameraShakePresets.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Interactable\DestructableObject.cs" />
+     <Compile Include="Assets\_Scripts\Gameplay\Enemies\Kamikaze\FollowState.cs" />
      <Compile Include="Assets\_Scripts\Audio\MixerManager.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Enemies\FollowMelee\FollowState.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Enemies\State.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\CameraFollowTarget.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Enemies\PatrolFire\AttackState.cs" />
-     <Compile Include="Assets\_Scripts\Gameplay\Enemies\EnergyReward.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
