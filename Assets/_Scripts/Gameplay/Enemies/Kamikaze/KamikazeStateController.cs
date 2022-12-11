@@ -7,9 +7,12 @@ namespace Game.Gameplay.Enemies.Kamikaze
     public class KamikazeStateController : EnemyStateController
     {
         [SerializeField] NavMeshAgent _navMesh;
-        [SerializeField] private FollowPlayer _followPlayer;
+        [SerializeField] FollowPlayer _followPlayer;
         [SerializeField] AnimatorController _animatorController;
         [SerializeField] GameObject _explosionPrefab;
+        [SerializeField] int _explosionDamage;
+        [SerializeField] LayerMask _playerLayer;
+        [SerializeField, Range(1, 10)] float _explosionRadius;
 
         [field: SerializeField]
         public float RangeFollow { get; set; } = 15;
@@ -30,7 +33,7 @@ namespace Game.Gameplay.Enemies.Kamikaze
             Target = GameManager.Player;
             Idle = new IdleState(this, _navMesh);
             Follow = new FollowState(this, _navMesh, _followPlayer);
-            Explosion = new ExplosionState(this, _navMesh, _animatorController);
+            Explosion = new ExplosionState(this, _navMesh, _animatorController,_explosionRadius, _playerLayer, _explosionDamage);
             _followPlayer.enabled = false;
             ChangeState(Idle);
         }
@@ -44,5 +47,13 @@ namespace Game.Gameplay.Enemies.Kamikaze
         {
             Instantiate(_explosionPrefab,transform.position,Quaternion.identity);
         }
+
+#if UNITY_EDITOR
+        private void OnDrawGizmos()
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawSphere(transform.position, _explosionRadius);
+        }
+#endif
     }
 }

@@ -23,7 +23,6 @@ namespace Game.Gameplay.Enemies.Kamikaze
         }
         public override void Enter()
         {
-            Debug.Log("Idl");
             _navMeshAgent.isStopped = true;
             _navMeshAgent.speed = 0;
         }

@@ -13,7 +13,7 @@ namespace Game.Gameplay.Enemies
         public event Action<int, GameObject> OnTakeDamage, OnTakeStrongDamage;
         public event Action<GameObject> OnDeath;
 
-        public void TakeTamage(int damage, ElementSO element, GameObject damaging)
+        public void TakeDamage(int damage, ElementSO element, GameObject damaging)
         {
             var position = damaging.transform.position;
             if (Life <= 0) return;

@@ -11,7 +11,7 @@ namespace Game.Gameplay.Player
         public event Action<int, GameObject> OnTakeDamage, OnTakeStrongDamage;
         public event Action<GameObject> OnDeath;
 
-        public void TakeTamage(int damage, ElementSO element, GameObject damaging)
+        public void TakeDamage(int damage, ElementSO element, GameObject damaging)
         {
             if (_playerLive.value - damage <= 0)
             {

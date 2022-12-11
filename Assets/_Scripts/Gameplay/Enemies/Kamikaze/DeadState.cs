@@ -1,7 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 namespace Game.Gameplay.Enemies.Kamikaze
 {
     public class DeadState : State
@@ -15,7 +11,6 @@ namespace Game.Gameplay.Enemies.Kamikaze
 
         public override void Enter()
         {
-            Debug.Log("XX");
           _controller.DestroyGameObject();
         }
     }

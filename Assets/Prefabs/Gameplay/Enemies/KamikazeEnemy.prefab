@@ -75,6 +75,11 @@ MonoBehaviour:
   _followPlayer: {fileID: 7481701723370601729}
   _animatorController: {fileID: 6312362796066457697}
   _explosionPrefab: {fileID: 5824207716733614624, guid: fad588849f9abbe4cb9a9bb62970bbbb, type: 3}
+  _explosionDamage: 0
+  _playerLayer:
+    serializedVersion: 2
+    m_Bits: 8
+  _explosionRadius: 4
   <RangeFollow>k__BackingField: 10
   <RangeOfVisionY>k__BackingField: 1
   <RangeExplosion>k__BackingField: 2
@@ -103,7 +108,7 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1787017096017295775}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.5
   m_Height: 2

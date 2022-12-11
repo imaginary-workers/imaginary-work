@@ -12,7 +12,7 @@ namespace Game.Gameplay.Interactable
         public event Action<int, GameObject> OnTakeDamage, OnTakeStrongDamage;
         public event Action<GameObject> OnDeath;
 
-        public void TakeTamage(int damage, ElementSO element, GameObject damaging)
+        public void TakeDamage(int damage, ElementSO element, GameObject damaging)
         {
             if (Life <= 0) return;
 
