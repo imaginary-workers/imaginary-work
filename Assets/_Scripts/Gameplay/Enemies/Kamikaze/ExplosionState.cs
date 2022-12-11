@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Game.Managers;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -22,6 +23,7 @@ namespace Game.Gameplay.Enemies.Kamikaze
         public override void Enter()
         {
             Debug.Log("Explo");
+            PlayManager.Instance.SetPlayerControlActive(false, true);
             _ani.AddAnimationEvent("explosion_event", EXPLOSION_EVENT);
             agent.isStopped = true;
             agent.speed = 0;
@@ -31,6 +33,7 @@ namespace Game.Gameplay.Enemies.Kamikaze
         private void EXPLOSION_EVENT()
         {
             _controller.Explode();
+            PlayManager.Instance.SetPlayerControlActive(true);
             _controller.ChangeState(_controller.Dead);
         }
 
