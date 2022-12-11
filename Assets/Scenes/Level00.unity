@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.90837485, g: 0.9363625, b: 1.040885, a: 1}
+  m_IndirectSpecularColor: {r: 0.9047284, g: 0.9334449, b: 1.0389434, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1196,14 +1196,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 554763952014767605, guid: 8fd178cbd6604e24290ed12fb7f33ec4, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 4.199951
-      objectReference: {fileID: 0}
-    - target: {fileID: 826920719870558527, guid: 8fd178cbd6604e24290ed12fb7f33ec4, type: 3}
-      propertyPath: <IsLocked>k__BackingField
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2522494733057876177, guid: 8fd178cbd6604e24290ed12fb7f33ec4, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -1212,29 +1204,17 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3948216969772264733, guid: 8fd178cbd6604e24290ed12fb7f33ec4, type: 3}
-      propertyPath: m_PlayOnAwake
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4383561984030341296, guid: 8fd178cbd6604e24290ed12fb7f33ec4, type: 3}
-      propertyPath: _MaxAmmuation
-      value: 
-      objectReference: {fileID: 8300000, guid: 42f7847675e72fe4b9dc094200b4ddd2, type: 3}
-    - target: {fileID: 4383561984030341296, guid: 8fd178cbd6604e24290ed12fb7f33ec4, type: 3}
-      propertyPath: _playerhealerpowerup
-      value: 
-      objectReference: {fileID: 3247428901600231909, guid: 8f8834a19a7529948bd46c775dcc0296, type: 3}
-    - target: {fileID: 5459857931465712033, guid: 8fd178cbd6604e24290ed12fb7f33ec4, type: 3}
-      propertyPath: _weaponSoundController
-      value: 
-      objectReference: {fileID: 907589295}
     - target: {fileID: 6199791740509601871, guid: 8fd178cbd6604e24290ed12fb7f33ec4, type: 3}
       propertyPath: m_Name
       value: GameplaySetUp
       objectReference: {fileID: 0}
-    - target: {fileID: 8475996975838400899, guid: 8fd178cbd6604e24290ed12fb7f33ec4, type: 3}
-      propertyPath: _timeWalk
-      value: 0.24
+    - target: {fileID: 8475996975838400896, guid: 8fd178cbd6604e24290ed12fb7f33ec4, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.76
+      objectReference: {fileID: 0}
+    - target: {fileID: 8475996975838400896, guid: 8fd178cbd6604e24290ed12fb7f33ec4, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 2.36
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8fd178cbd6604e24290ed12fb7f33ec4, type: 3}
@@ -1478,17 +1458,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8475996975838400904, guid: 8fd178cbd6604e24290ed12fb7f33ec4, type: 3}
   m_PrefabInstance: {fileID: 875509372}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &907589295 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2420630065968859049, guid: 8fd178cbd6604e24290ed12fb7f33ec4, type: 3}
-  m_PrefabInstance: {fileID: 875509372}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 907589292}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 366fc7ce103d4d5448af89a64076658b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &997141492
 GameObject:
   m_ObjectHideFlags: 0
@@ -1867,6 +1836,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 395185394736845973, guid: 85e4c323aefe8d642b9c34705c6b1ca0, type: 3}
+      propertyPath: _rangeOfVisionYUp
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 1407113441194894117, guid: 85e4c323aefe8d642b9c34705c6b1ca0, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -1914,6 +1887,14 @@ PrefabInstance:
     - target: {fileID: 1787017096017295775, guid: 85e4c323aefe8d642b9c34705c6b1ca0, type: 3}
       propertyPath: m_Name
       value: KamikazeEnemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 7762417525691920518, guid: 85e4c323aefe8d642b9c34705c6b1ca0, type: 3}
+      propertyPath: m_StoppingDistance
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8997936184574221000, guid: 85e4c323aefe8d642b9c34705c6b1ca0, type: 3}
+      propertyPath: _rangeOfVisionYUp
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 85e4c323aefe8d642b9c34705c6b1ca0, type: 3}
@@ -2625,7 +2606,7 @@ Transform:
   m_LocalScale: {x: 100, y: 1, z: 100}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2072532751
 GameObject:
