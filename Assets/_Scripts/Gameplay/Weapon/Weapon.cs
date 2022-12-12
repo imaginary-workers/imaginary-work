@@ -17,7 +17,6 @@ namespace Game.Gameplay.Weapons
 
         [field: SerializeField] public bool IsLocked { get; private set; } = true;
 
-        public bool IsHeavy { get; protected set; } = false;
         public int ReserveAmmunition { get; protected set; } = -1;
         public Transform Target { set; protected get; }
         public WeaponSO Data => _weaponData;
@@ -49,5 +48,9 @@ namespace Game.Gameplay.Weapons
         public virtual void SubscribeToAnimationEvents(PlayerAnimationManager playerAnimationManager)
         {
         }
+
+        public abstract void StartSpecial();
+        public abstract void PerformedSpecial();
+        public abstract void EndSpecial();
     }
 }

@@ -11,6 +11,8 @@ namespace Game.Gameplay.Weapons.SO
         [SerializeField] AudioClip _reloadSoundStart;
         [SerializeField] AudioClip _noHitSound;
         [SerializeField] AudioClip _shootSound;
+        [SerializeField] int _energy;
+        [SerializeField] int _maxEnergy;
         public int MaxAmunicion => _maxAmunicion;
 
         public AudioClip ReloadSound => _reloadSound;
@@ -19,5 +21,8 @@ namespace Game.Gameplay.Weapons.SO
         public AudioClip NoHitSound => _noHitSound;
         public AudioClip ShootSound => _shootSound;
         public int MaxReserveAmunicion => _maxReserveAmunicion;
+
+        public int Energy { get => _energy; set => _energy = Mathf.Clamp(value,0,MaxEnergy); }
+        public int MaxEnergy { get => _maxEnergy; }
     }
 }

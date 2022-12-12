@@ -7,7 +7,7 @@ namespace Game.Gameplay
     public interface IDamageable
     {
         public event Action<int, GameObject> OnTakeDamage, OnTakeStrongDamage;
-        public void TakeTamage(int damage, ElementSO element, GameObject damaging);
+        public void TakeDamage(int damage, ElementSO element, GameObject damaging);
         public event Action<GameObject> OnDeath;
     }
 }

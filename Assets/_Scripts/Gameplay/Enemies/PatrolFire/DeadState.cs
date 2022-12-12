@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.AI;
 
 namespace Game.Gameplay.Enemies.PatrolFire
@@ -20,9 +19,8 @@ namespace Game.Gameplay.Enemies.PatrolFire
             float secondToDestroy,
             NavMeshAgent agent,
             SpawnDrops spawner,
-            Action hitStop,
             Collider enemyCollider
-        ) : base(hitStop)
+        )
         {
             _ragdoll = ragdoll;
             _secondsToDestroy = secondToDestroy;

@@ -618,9 +618,23 @@ AnimationClip:
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
   m_Events:
+  - time: 0
+    functionName: PLAYER_EVENT
+    data: fire_special_start_event
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
   - time: 0.56666666
     functionName: PLAYER_EVENT
-    data: fire_shooting_event
+    data: fire_special_shooting_event
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.65
+    functionName: PLAYER_EVENT
+    data: fire_special_end_event
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0

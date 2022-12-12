@@ -24,39 +24,46 @@ namespace Game.Managers
         const float _secondsToDisplayDeathScreenInSeconds = 3f;
         static GameManager _instance;
 
-        [Header("Player Info")] [SerializeField]
+        [Header("Player Info")]
+        [SerializeField]
         GameObject _player;
 
         [SerializeField] IntSO _maxHealth;
         [SerializeField] IntSO _health;
 
-        [Header("HUD Objets")] [Header("Menus")] [SerializeField]
+        [Header("HUD Objets")]
+        [Header("Menus")]
+        [SerializeField]
         GameObject _pauseMenu;
 
         [SerializeField] GameObject _deathMessege;
 
-        [Header("GameCanvas Element")] [SerializeField]
+        [Header("GameCanvas Element")]
+        [SerializeField]
         GameObject _pointer;
+        [SerializeField] SkillBarController _barController;
 
         [SerializeField] Text _bulletCounterText;
         [SerializeField] Text _reserveCounterText;
         [SerializeField] Text _countEnemyText;
         [SerializeField] InventoryUIController _inventoryUI;
 
-        [Header("Option Menu")] [SerializeField]
+        [Header("Option Menu")]
+        [SerializeField]
         GameObject _optionsMenu;
         [SerializeField] GameObject _controlsMenu;
 
-        [Header("BlackScreen Transition")] [SerializeField]
+        [Header("BlackScreen Transition")]
+        [SerializeField]
         Animator _blackScreenAnimator;
 
-        [Header("Scenes")] [SerializeField] SceneStorageSO _sceneStorage;
+        [Header("Scenes")][SerializeField] SceneStorageSO _sceneStorage;
 
-        [Header("Audio")] [SerializeField] AudioSource _audioSource;
+        [Header("Audio")][SerializeField] AudioSource _audioSource;
 
         [SerializeField] AudioClip _gameOver;
 
-        [Header("Settings")] [SerializeField] State _state;
+        [Header("Settings")][SerializeField] State _state;
 
         bool _isChangingScene;
         bool _isDeath;
@@ -81,7 +88,7 @@ namespace Game.Managers
             }
         }
 
-        public bool CanPause { get;  set; } = true;
+        public bool CanPause { get; set; } = true;
 
         void Awake()
         {
@@ -95,6 +102,7 @@ namespace Game.Managers
                 Enemy.UpdateEnemyCount += UpdateEnemyCount;
                 Player.GetComponent<PlayerDamageable>().OnDeath += GameOver;
                 _liftStart = FindObjectOfType<LiftStart>();
+                PlayManager.Instance.CanvasController(false, false);
                 if (_liftStart != null)
                 {
                     _liftStart.Lift.OnUpFinished += ResumePlayerControl;
@@ -220,7 +228,7 @@ namespace Game.Managers
         public void PauseKeybord()
         {
             if (_isDeath) return;
-            if(!CanPause) return;
+            if (!CanPause) return;
             if (_isPaused)
                 Resume();
             else
@@ -258,6 +266,10 @@ namespace Game.Managers
                 _bulletCounterText.text = amunicion.ToString();
         }
 
+        public void UpdateEnergyBar(int value, int maxValue)
+        {
+            _barController.UpdateSkillBar(value, maxValue);
+        }
         public void UpdateReserveCounter(int amunicion)
         {
             if (amunicion < 0)

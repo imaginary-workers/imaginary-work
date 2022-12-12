@@ -52,7 +52,7 @@ namespace Game.Gameplay.Enemies.PatrolFire
 
         protected override void SetDeadState()
         {
-            deadState = new DeadState(this, _ragdoll, 5, _agent, _spawner, HitStopEffect, _collider);
+            deadState = new DeadState(this, _ragdoll, 5, _agent, _spawner, _collider);
         }
 
         void ChangeToTakeStrongDamageState()

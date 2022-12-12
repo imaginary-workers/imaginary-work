@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -20,9 +19,8 @@ namespace Game.Gameplay.Enemies.FollowMelee
             SpawnDrops spawn,
             FollowMeleeStateController stateController,
             float secondToDestroy,
-            Action hitStop,
             Collider enemyCollider
-        ) : base(hitStop)
+        )
         {
             _agent = agent;
             _ragdoll = ragdoll;

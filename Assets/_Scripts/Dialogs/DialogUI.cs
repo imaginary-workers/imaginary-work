@@ -1,8 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using Game.Dialogs.SO;
+using Game.Managers;
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 namespace Game.Dialogs
@@ -17,7 +19,8 @@ namespace Game.Dialogs
         public float textSpeed;
         bool canContinue;
         int dialogueIndex;
-        [SerializeField] private DialogManager _dialogManager;
+        [SerializeField] DialogManager _dialogManager;
+        DialogInfo _currentDialog;
 
         public void StartDialog(DialogSO dialog)
         {
@@ -32,6 +35,7 @@ namespace Game.Dialogs
 
         public void DisplayNextSentence()
         {
+            PlayManager.Instance.CanvasController(true, false);
             _continueButton.gameObject.SetActive(false);
             StopAllCoroutines();
             if (_sentences.Count <= 0)
@@ -42,21 +46,21 @@ namespace Game.Dialogs
             StartCoroutine(CO_DisplaySentence());
         }
 
-        private IEnumerator CO_DisplaySentence()
+        IEnumerator CO_DisplaySentence()
         {
             dialogueDisplay.SetText(string.Empty);
-            DialogInfo dialog = _sentences.Dequeue();
-            string sentence = dialog.text;
+            _currentDialog = _sentences.Dequeue();
+            string sentence = _currentDialog.text;
             var isSpecialCharacter = false;
             string specialCharacter = "";
 
-            if(dialog.image == null)
+            if(_currentDialog.image == null)
             {
                 image.color = Color.clear;
             }
             else
             {
-                image.sprite = dialog.image;
+                image.sprite = _currentDialog.image;
                 image.color = _color;
             }
 
@@ -94,10 +98,11 @@ namespace Game.Dialogs
                 }
             }
 
+            _currentDialog = null;
             UpdateButtonUI();
         }
 
-        private void UpdateButtonUI()
+        void UpdateButtonUI()
         {
             _continueButton.gameObject.SetActive(true);
             _continueButton.Select();
@@ -108,6 +113,20 @@ namespace Game.Dialogs
             else
             {
                 //TODO display quit button
+            }
+        }
+
+        public void Funcionaaaa()
+        {
+            if (_currentDialog == null)
+            {
+                DisplayNextSentence();
+            }
+            else
+            {
+                StopAllCoroutines();
+                dialogueDisplay.text += _currentDialog.text;
+                _currentDialog = null;
             }
         }
     }
