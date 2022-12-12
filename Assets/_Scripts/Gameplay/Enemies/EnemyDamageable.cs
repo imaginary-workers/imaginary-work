@@ -9,6 +9,9 @@ namespace Game.Gameplay.Enemies
     {
         [SerializeField] int _life = 10;
         [SerializeField] ElementSO _weakness;
+
+        [field: SerializeField]
+        public bool Mortal { get; set; } = true;
         public int Life => _life;
         public event Action<int, GameObject> OnTakeDamage, OnTakeStrongDamage;
         public event Action<GameObject> OnDeath;
@@ -20,8 +23,9 @@ namespace Game.Gameplay.Enemies
 
             if (_weakness == element)
             {
-                _life -= damage * 2;
-                    OnTakeStrongDamage?.Invoke(damage, damaging);
+                if (Mortal)
+                    _life -= damage * 2;
+                OnTakeStrongDamage?.Invoke(damage * 2, damaging);
                 if (Life > 0)
                 {
                     HitMarkerController.Instance.DisplayHitMarkStrong();
@@ -29,7 +33,8 @@ namespace Game.Gameplay.Enemies
             }
             else
             {
-                _life -= damage;
+                if (Mortal)
+                    _life -= damage; 
                 OnTakeDamage?.Invoke(damage, damaging);
                 HitMarkerController.Instance.DisplayHitMarkWeak();
             }

@@ -9,6 +9,7 @@ namespace Game.Gameplay
         [SerializeField] int _damage;
         [SerializeField] ElementSO _element;
         GameObject _enemySource;
+        [SerializeField] int _bossLayer = 13;
 
         public GameObject EnemySource
         {
@@ -25,6 +26,13 @@ namespace Game.Gameplay
             damageable.TakeDamage(_damage, _element, EnemySource);
             damageable.OnTakeDamage -= Hit;
             damageable.OnTakeStrongDamage -= StrongHit;
+            if (other.gameObject.layer == _bossLayer)
+                DestroySelf();
+        }
+
+        void DestroySelf()
+        {
+            gameObject.SetActive(false);
         }
 
         public event Action OnHit, OnStrongHit;
