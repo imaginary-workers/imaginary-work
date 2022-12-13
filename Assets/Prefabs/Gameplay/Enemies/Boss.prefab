@@ -115,6 +115,7 @@ GameObject:
   - component: {fileID: 1948798419}
   - component: {fileID: 1948798418}
   - component: {fileID: 1948798409}
+  - component: {fileID: 4763464559954278674}
   m_Layer: 13
   m_Name: Bajo_LowPoly
   m_TagString: Untagged
@@ -230,6 +231,20 @@ MonoBehaviour:
   _life: 2147483647
   _weakness: {fileID: 11400000, guid: cba21a7574166b54482bca8fd5fe4f07, type: 2}
   <Mortal>k__BackingField: 1
+--- !u!114 &4763464559954278674
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2572099264942717557}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d024a1d7d37e714d800dff4907e5eda, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _enemyDamageable: {fileID: 1948798409}
+  _weaponSO: {fileID: 11400000, guid: b764a1e102716434eb76f054bfc5bf16, type: 2}
 --- !u!1 &4347331646305999509
 GameObject:
   m_ObjectHideFlags: 0
@@ -244,6 +259,7 @@ GameObject:
   - component: {fileID: 894454996}
   - component: {fileID: 894454994}
   - component: {fileID: 6354456414754532302}
+  - component: {fileID: 4142283817666535946}
   m_Layer: 13
   m_Name: Head_LowPoly
   m_TagString: Untagged
@@ -359,6 +375,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 402.9206, y: 256.4627, z: 351.19708}
   m_Center: {x: 0, y: 104.85032, z: 50.543247}
+--- !u!114 &4142283817666535946
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4347331646305999509}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d024a1d7d37e714d800dff4907e5eda, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _enemyDamageable: {fileID: 894454996}
+  _weaponSO: {fileID: 11400000, guid: 5cb8a3494f6dcbe4f90dc1c9e89125f5, type: 2}
 --- !u!1 &4803284643874414489
 GameObject:
   m_ObjectHideFlags: 0
@@ -373,6 +403,7 @@ GameObject:
   - component: {fileID: 1948798416}
   - component: {fileID: 1948798417}
   - component: {fileID: 1948798408}
+  - component: {fileID: 6625329892585906536}
   m_Layer: 13
   m_Name: Medio_LowPoly
   m_TagString: Untagged
@@ -488,6 +519,20 @@ MonoBehaviour:
   _life: 2147483647
   _weakness: {fileID: 11400000, guid: cba21a7574166b54482bca8fd5fe4f07, type: 2}
   <Mortal>k__BackingField: 1
+--- !u!114 &6625329892585906536
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4803284643874414489}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d024a1d7d37e714d800dff4907e5eda, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _enemyDamageable: {fileID: 1948798408}
+  _weaponSO: {fileID: 11400000, guid: b764a1e102716434eb76f054bfc5bf16, type: 2}
 --- !u!1 &5115191163619001513
 GameObject:
   m_ObjectHideFlags: 0
@@ -1283,6 +1328,7 @@ GameObject:
   - component: {fileID: 1948798414}
   - component: {fileID: 1948798415}
   - component: {fileID: 1948798407}
+  - component: {fileID: 5012676413543291235}
   m_Layer: 13
   m_Name: Superior_LowPoly
   m_TagString: Untagged
@@ -1398,6 +1444,20 @@ MonoBehaviour:
   _life: 2147483647
   _weakness: {fileID: 11400000, guid: cba21a7574166b54482bca8fd5fe4f07, type: 2}
   <Mortal>k__BackingField: 1
+--- !u!114 &5012676413543291235
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8990556566883279351}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d024a1d7d37e714d800dff4907e5eda, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _enemyDamageable: {fileID: 1948798407}
+  _weaponSO: {fileID: 11400000, guid: b764a1e102716434eb76f054bfc5bf16, type: 2}
 --- !u!1001 &7016564241171715127
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1526,6 +1586,20 @@ MonoBehaviour:
   _life: 2147483647
   _weakness: {fileID: 11400000, guid: ca0c053b9a40131419c975c8a63b7e1f, type: 2}
   <Mortal>k__BackingField: 1
+--- !u!114 &7142753536438261968
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2196020033481798661}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d024a1d7d37e714d800dff4907e5eda, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _enemyDamageable: {fileID: 3422953976988522602}
+  _weaponSO: {fileID: 11400000, guid: 3ca41bb16976d2a419b1e71793672039, type: 2}
 --- !u!1001 &7016564242792993249
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1658,3 +1732,17 @@ MonoBehaviour:
   _life: 2147483647
   _weakness: {fileID: 11400000, guid: ca0c053b9a40131419c975c8a63b7e1f, type: 2}
   <Mortal>k__BackingField: 1
+--- !u!114 &7661098990162124128
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6552300976786917995}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d024a1d7d37e714d800dff4907e5eda, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _enemyDamageable: {fileID: 4737034069084463083}
+  _weaponSO: {fileID: 11400000, guid: 3ca41bb16976d2a419b1e71793672039, type: 2}
