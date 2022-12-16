@@ -1,28 +1,32 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
+using UnityEngine.UIElements;
 
 namespace Game.Gameplay.Enemies.Boss
 {
     public class AttackState : State
     {
-        private readonly BossStateController _bossStateController;
-
+         readonly BossStateController _bossStateController;
+         
         public AttackState(BossStateController bossStateController)
         {
             _bossStateController = bossStateController;
         }
-
-        // Start is called before the first frame update
-        void Start()
+        public override void Enter()
         {
-        
         }
 
-        // Update is called once per frame
-        void Update()
+        public override void Update()
         {
-        
+
         }
+
+        public override void Exit()
+        {
+            base.Exit();
+        }
+
     }
 }

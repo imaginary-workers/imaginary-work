@@ -6,10 +6,12 @@ namespace Game.Gameplay.Enemies.Boss
     public class BossStateController : Enemy
     {
         [SerializeField] float _speed;
+        [SerializeField] float _minAttackTime;
+        [SerializeField] float _maxAttackTime;
         State _currentState;
         EnemyDamageable _damageable;
         State _lastState;
-        private GameObject _player;
+        GameObject _player;
 
         public IdleState IdleState { get; set; }
         public AttackState AttackState { get; set; }
@@ -22,7 +24,7 @@ namespace Game.Gameplay.Enemies.Boss
         protected override void OnAwakeEnemy()
         {
             _player = GameManager.Player;
-            IdleState = new IdleState(this, _speed, _player.transform);
+            IdleState = new IdleState(this, _speed, _player.transform, _minAttackTime, _maxAttackTime);
             AttackState = new AttackState(this);
             AttackComboState = new AttackComboState(this);
             AttackDistanceState = new AttackDistanceState(this);
