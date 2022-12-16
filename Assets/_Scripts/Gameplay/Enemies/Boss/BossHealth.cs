@@ -42,18 +42,17 @@ namespace Game.Gameplay.Enemies.Boss
 
         void OnTakeStrongDamageHandler(int damage, GameObject arg2)
         {
-            if (IsImmune) return;
             TakeAnyDamageHandler(damage);
         }
 
         void OnTakeDamageHandler(int damage, GameObject arg2)
         {
-            if (IsImmune) return;
             TakeAnyDamageHandler(damage);
         }
 
         void TakeAnyDamageHandler(int damage)
         {
+            if (IsImmune) return;
             OnTakeAnyDamage?.Invoke();
             if (IsWeak)
             {
@@ -69,6 +68,7 @@ namespace Game.Gameplay.Enemies.Boss
                 {
                     _bossHealth.value = 0;
                 }
+                _currentPhase++;
                 IsWeak = false;
             }
             else

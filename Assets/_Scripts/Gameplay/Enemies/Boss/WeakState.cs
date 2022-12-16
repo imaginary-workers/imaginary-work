@@ -22,8 +22,10 @@ namespace Game.Gameplay.Enemies.Boss
         public override void Enter()
         {
             Debug.Log("Weak");
+            _animatorController.ResetAllTriggers();
             _time = 0;
             _bossHealth.IsImmune = true;
+            _bossHealth.IsWeak = true;
             _bossHealth.OnTakeAnyDamage += ChangeToNextState;
             _animatorController.Weak();
         }
@@ -44,8 +46,8 @@ namespace Game.Gameplay.Enemies.Boss
 
         public override void Exit()
         {
+            // _bossHealth.IsWeak = false;
             Debug.Log("Exit Weak");
-            _animatorController.Idle();
         }
     }
 }

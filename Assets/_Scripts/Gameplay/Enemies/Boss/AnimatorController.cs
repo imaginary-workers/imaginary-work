@@ -30,5 +30,10 @@ namespace Game.Gameplay.Enemies.Boss
         {
             _animator.SetTrigger(_weak);
         }
+
+        public void ResetAllTriggers()
+        {
+            _animator.ResetTrigger(_idle);
+        }
     }
 }
