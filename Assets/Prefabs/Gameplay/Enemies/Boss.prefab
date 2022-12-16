@@ -1274,6 +1274,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7016564241735233726}
     m_Modifications:
+    - target: {fileID: 2309830210934461570, guid: 0640c794667cb33498275508716bf508, type: 3}
+      propertyPath: InitialModule.maxNumParticles
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 2309830210934461570, guid: 0640c794667cb33498275508716bf508, type: 3}
+      propertyPath: EmissionModule.rateOverDistance.scalar
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 3529269226714317104, guid: 0640c794667cb33498275508716bf508, type: 3}
       propertyPath: m_RootOrder
       value: 0
