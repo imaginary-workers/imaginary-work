@@ -4,8 +4,13 @@ using UnityEngine;
 
 namespace Game.Gameplay.Enemies.Boss
 {
-    public class AttackDistanceState : MonoBehaviour
+    public class AttackDistanceState : State
     {
+        public AttackDistanceState(BossStateController bossStateController)
+        {
+            
+        }
+
         // Start is called before the first frame update
         void Start()
         {

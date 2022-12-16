@@ -4,8 +4,13 @@ using UnityEngine;
 
 namespace Game.Gameplay.Enemies.Boss
 {
-    public class SpawnState : MonoBehaviour
+    public class SpawnState : State
     {
+        public SpawnState(BossStateController bossStateController)
+        {
+            
+        }
+
         // Start is called before the first frame update
         void Start()
         {

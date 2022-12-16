@@ -4,8 +4,15 @@ using UnityEngine;
 
 namespace Game.Gameplay.Enemies.Boss
 {
-    public class AttackState : MonoBehaviour
+    public class AttackState : State
     {
+        private readonly BossStateController _bossStateController;
+
+        public AttackState(BossStateController bossStateController)
+        {
+            _bossStateController = bossStateController;
+        }
+
         // Start is called before the first frame update
         void Start()
         {
