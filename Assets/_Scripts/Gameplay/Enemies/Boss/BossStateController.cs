@@ -14,6 +14,11 @@ namespace Game.Gameplay.Enemies.Boss
         [SerializeField] int _attackCounts = 3;
         [SerializeField] float _waitBetween;
         [SerializeField] float _waitToIdle;
+        [Header("Combo Attack")]
+        [SerializeField] float _waitComboToIdle;
+        [Header("Weak")]
+        [SerializeField] BossHealth _bossHealth;
+        [SerializeField] float _waitToStaggerFinished;
         State _currentState;
         EnemyDamageable _damageable;
         State _lastState;
@@ -30,19 +35,25 @@ namespace Game.Gameplay.Enemies.Boss
         protected override void OnAwakeEnemy()
         {
             _player = GameManager.Player;
-            IdleState = new IdleState(this, _speed, _player.transform, _minAttackTime, _maxAttackTime);
+            IdleState = new IdleState(this, _animatorController, _speed, _player.transform, _minAttackTime, _maxAttackTime);
             AttackState = new AttackState(this, _animatorController, _attackCounts, _waitBetween, _waitToIdle);
-            AttackComboState = new AttackComboState(this);
+            AttackComboState = new AttackComboState(this, _animatorController, _waitComboToIdle);
             AttackDistanceState = new AttackDistanceState(this);
             SpawnState = new SpawnState(this);
-            WeakState = new WeakState(this);
+            WeakState = new WeakState(this, _animatorController, _bossHealth, _waitToStaggerFinished);
             DeadState = new DeadState();
             ChangeState(IdleState);
+            _bossHealth.OnEnterWeak += ChangeToWeakState;
         }
 
         void Update()
         {
             _currentState.Update();
+        }
+
+        void ChangeToWeakState()
+        {
+            ChangeState(WeakState);
         }
 
         public void ChangeState(State nextState)

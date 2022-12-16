@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Game.Gameplay.Enemies.Boss
@@ -10,6 +8,7 @@ namespace Game.Gameplay.Enemies.Boss
         [SerializeField] string _attackRight;
         [SerializeField] string _attackLeft;
         [SerializeField] string _idle;
+        [SerializeField] string _weak;
 
         public void AttackRigth()
         {
@@ -23,7 +22,13 @@ namespace Game.Gameplay.Enemies.Boss
 
         public void Idle()
         {
+            Debug.Log("Idle");
             _animator.SetTrigger(_idle);
+        }
+
+        public void Weak()
+        {
+            _animator.SetTrigger(_weak);
         }
     }
 }

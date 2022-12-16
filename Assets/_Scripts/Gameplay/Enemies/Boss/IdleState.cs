@@ -7,6 +7,7 @@ namespace Game.Gameplay.Enemies.Boss
     public class IdleState : State
     {
         readonly BossStateController _bossStateController;
+        private readonly AnimatorController _animatorController;
         float _speed;
         private Vector3 _position;
         readonly Transform _target;
@@ -15,9 +16,10 @@ namespace Game.Gameplay.Enemies.Boss
         readonly Transform _transform;
         float _time;
         float _timeMax;
-        public IdleState(BossStateController bossStateController, float speed, Transform target, float minAttackTime, float maxAttackTime)
+        public IdleState(BossStateController bossStateController, AnimatorController animatorController, float speed, Transform target, float minAttackTime, float maxAttackTime)
         {
             _bossStateController = bossStateController;
+            _animatorController = animatorController;
             _speed = speed;
             _target = target;
             _minAttackTime = minAttackTime;
@@ -27,6 +29,7 @@ namespace Game.Gameplay.Enemies.Boss
 
         public override void Enter()
         {
+            _animatorController.Idle();
             _time = 0;
             _position = _transform.position;
             _timeMax = Random.Range(_minAttackTime, _maxAttackTime);

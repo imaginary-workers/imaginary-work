@@ -53,7 +53,6 @@ namespace Game.Gameplay.Enemies.Boss
 
         public override void Exit()
         {
-            _animatorController.Idle();
             if (_attackCounter >= _attackCounts)
                 _attackCounter = 0;
         }

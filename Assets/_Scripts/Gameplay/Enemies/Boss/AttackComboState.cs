@@ -6,21 +6,29 @@ namespace Game.Gameplay.Enemies.Boss
 {
     public class AttackComboState : State
     {
-        public AttackComboState(BossStateController bossStateController)
+        readonly BossStateController _bossStateController;
+        readonly AnimatorController _animatorController;
+        readonly float _waitToIdle;
+
+        public AttackComboState(BossStateController bossStateController, AnimatorController animatorController, float waitToIdle)
+        {
+            _bossStateController = bossStateController;
+            _animatorController = animatorController;
+            _waitToIdle = waitToIdle;
+        }
+        public override void Enter()
         {
             
         }
 
-        // Start is called before the first frame update
-        void Start()
+        public override void Update()
         {
-        
+            base.Update();
         }
 
-        // Update is called once per frame
-        void Update()
+        public override void Exit()
         {
-        
+            base.Exit();
         }
     }
 }

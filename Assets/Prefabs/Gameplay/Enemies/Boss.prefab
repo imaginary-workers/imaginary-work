@@ -942,7 +942,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7016564242284890819}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 0, y: 5.03, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.7014, y: 1.7014, z: 1.7014}
   m_Children:
   - {fileID: 7016564242903763937}
@@ -984,6 +984,7 @@ MonoBehaviour:
   _attackRight: SlamR
   _attackLeft: SlamL
   _idle: Idle
+  _weak: Staggerd
 --- !u!1 &7016564242334033486
 GameObject:
   m_ObjectHideFlags: 0
@@ -1145,7 +1146,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8796382cfdb546046bae62430efe06b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bossHealth: {fileID: 11400000, guid: cec3ab124efb71c41a517f16190ac57d, type: 2}
+  _bossHealth: {fileID: 11400000, guid: cec3ab124efb71c41a517f16190ac57d, type: 2}
+  _maxHealth: 20
+  _endPhase1: 10
+  _endPhase2: 5
+  amountToWeakBeforeEndPhase: 2
 --- !u!114 &8123698908835193367
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1165,6 +1170,9 @@ MonoBehaviour:
   _attackCounts: 3
   _waitBetween: 2
   _waitToIdle: 4
+  _waitComboToIdle: 0
+  _bossHealth: {fileID: 1948798396}
+  _waitToStaggerFinished: 1.25
 --- !u!1 &7016564242531055540
 GameObject:
   m_ObjectHideFlags: 0
@@ -1522,6 +1530,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 13
       objectReference: {fileID: 0}
+    - target: {fileID: 9162024327597350962, guid: e4bef04e32696f941813632b2e3175da, type: 3}
+      propertyPath: m_TagString
+      value: BossRightArm
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e4bef04e32696f941813632b2e3175da, type: 3}
 --- !u!4 &1527287867664150207 stripped
@@ -1667,6 +1679,10 @@ PrefabInstance:
     - target: {fileID: 4301407157979847562, guid: 0640c794667cb33498275508716bf508, type: 3}
       propertyPath: m_Layer
       value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 4301407157979847562, guid: 0640c794667cb33498275508716bf508, type: 3}
+      propertyPath: m_TagString
+      value: BossLeftArm
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0640c794667cb33498275508716bf508, type: 3}
