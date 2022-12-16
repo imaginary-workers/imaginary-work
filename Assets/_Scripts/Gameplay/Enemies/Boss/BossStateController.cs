@@ -5,9 +5,15 @@ namespace Game.Gameplay.Enemies.Boss
 {
     public class BossStateController : Enemy
     {
+        [Header("Idle")]
         [SerializeField] float _speed;
         [SerializeField] float _minAttackTime;
         [SerializeField] float _maxAttackTime;
+        [Header("Attack")]
+        [SerializeField] AnimatorController _animatorController;
+        [SerializeField] int _attackCounts = 3;
+        [SerializeField] float _waitBetween;
+        [SerializeField] float _waitToIdle;
         State _currentState;
         EnemyDamageable _damageable;
         State _lastState;
@@ -25,7 +31,7 @@ namespace Game.Gameplay.Enemies.Boss
         {
             _player = GameManager.Player;
             IdleState = new IdleState(this, _speed, _player.transform, _minAttackTime, _maxAttackTime);
-            AttackState = new AttackState(this);
+            AttackState = new AttackState(this, _animatorController, _attackCounts, _waitBetween, _waitToIdle);
             AttackComboState = new AttackComboState(this);
             AttackDistanceState = new AttackDistanceState(this);
             SpawnState = new SpawnState(this);

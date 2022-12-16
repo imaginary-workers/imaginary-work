@@ -6,16 +6,24 @@ namespace Game.Gameplay.Enemies.Boss
 {
     public class AnimatorController : MonoBehaviour
     {
-        // Start is called before the first frame update
-        void Start()
+        [SerializeField] Animator _animator;
+        [SerializeField] string _attackRight;
+        [SerializeField] string _attackLeft;
+        [SerializeField] string _idle;
+
+        public void AttackRigth()
         {
-        
+            _animator.SetTrigger(_attackRight);
         }
 
-        // Update is called once per frame
-        void Update()
+        public void AttackLeft()
         {
-        
+            _animator.SetTrigger(_attackLeft);
+        }
+
+        public void Idle()
+        {
+            _animator.SetTrigger(_idle);
         }
     }
 }

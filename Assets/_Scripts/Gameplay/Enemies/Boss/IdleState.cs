@@ -20,13 +20,14 @@ namespace Game.Gameplay.Enemies.Boss
             _bossStateController = bossStateController;
             _speed = speed;
             _target = target;
-            this._minAttackTime = minAttackTime;
-            this._maxAttackTime = maxAttackTime;
+            _minAttackTime = minAttackTime;
+            _maxAttackTime = maxAttackTime;
             _transform = _bossStateController.transform;
         }
 
         public override void Enter()
         {
+            _time = 0;
             _position = _transform.position;
             _timeMax = Random.Range(_minAttackTime, _maxAttackTime);
         }
