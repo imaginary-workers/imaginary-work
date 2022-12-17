@@ -21,6 +21,14 @@ namespace Game.Gameplay.Enemies.Kamikaze
             _rangeOfVisionY = _controller.RangeOfVisionY;
             _rangeFollow = _controller.RangeFollow;
         }
+
+        public float RangeFollow
+        {
+            set
+            {
+                _rangeFollow = value;
+            }
+        }
         public override void Enter()
         {
             _navMeshAgent.isStopped = true;

@@ -1,6 +1,8 @@
+using UnityEngine;
+
 namespace Game.Gameplay.Enemies.Kamikaze
 {
-    public class DeadState : State
+    public class DeadState : AbstractDeadState
     {
         KamikazeStateController _controller;
 
@@ -11,6 +13,8 @@ namespace Game.Gameplay.Enemies.Kamikaze
 
         public override void Enter()
         {
+            base.Enter();
+          _controller.Explode();
           _controller.DestroyGameObject();
         }
     }

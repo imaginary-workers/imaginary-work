@@ -62,14 +62,17 @@
      <Compile Include="Assets\_Scripts\UI\HitMarkerController.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Enemies\PatrolFire\AnimatorController.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\PowerUps\ReserveWeaponTrigger.cs" />
+     <Compile Include="Assets\_Scripts\Gameplay\Enemies\Boss\AttackState.cs" />
      <Compile Include="Assets\_Scripts\UI\PlayerDamageIndicator.cs" />
      <Compile Include="Assets\_Scripts\Tutorial\FirstEvent.cs" />
      <Compile Include="Assets\_Scripts\Managers\PlayManager.cs" />
+     <Compile Include="Assets\_Scripts\Gameplay\Enemies\Boss\WeakState.cs" />
      <Compile Include="Assets\_Scripts\DestroyInSecondsComponent.cs" />
      <Compile Include="Assets\_Scripts\SwayBehaviour.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Enemies\Kamikaze\IdleState.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Platforms\BreakPlatformBrain.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Enemies\EnemyBurstShooter.cs" />
+     <Compile Include="Assets\_Scripts\Gameplay\Enemies\Boss\BossStateController.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Enemies\AbstractDeadState.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Player\WeaponInventory.cs" />
      <Compile Include="Assets\_Scripts\Config\SO\GameplaySettingsSO.cs" />
@@ -97,6 +100,7 @@
      <Compile Include="Assets\_Scripts\Gameplay\Enemies\CollectableEnemy\DeadState.cs" />
      <Compile Include="Assets\_Scripts\Explosion.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Weapon\NailsWeapon.cs" />
+     <Compile Include="Assets\_Scripts\Gameplay\Enemies\Boss\BossHealth.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Player\PlayerAnimationManager.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Weapon\SO\WeaponSO.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Enemies\FollowMelee\AnimationEvent.cs" />
@@ -111,6 +115,7 @@
      <Compile Include="Assets\_Scripts\Gameplay\Weapon\Weapon.cs" />
      <Compile Include="Assets\_Scripts\Dialogs\SO\DialogSO.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Weapon\TriggerWeapon.cs" />
+     <Compile Include="Assets\_Scripts\Gameplay\Enemies\Boss\IdleState.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Enemies\Kamikaze\DeadState.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\MoveComponent.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Player\WeaponsSoundController.cs" />
@@ -119,15 +124,18 @@
      <Compile Include="Assets\_Scripts\Gameplay\Enemies\FlyerPatrol\DeadState.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Enemies\FollowMelee\DeadState.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Enemies\FlyerPatrol\FlyerSoundController.cs" />
+     <Compile Include="Assets\_Scripts\Gameplay\Enemies\Boss\AnimatorController.cs" />
      <Compile Include="Assets\_Scripts\Audio\MusicManager.cs" />
      <Compile Include="Assets\_Scripts\Dialogs\DialogEmitter.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Weapon\FlameThrowerWeapon.cs" />
      <Compile Include="Assets\_Scripts\UI\SingleDamageIndicator.cs" />
      <Compile Include="Assets\_Scripts\Managers\GameplayConfigManager.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Enemies\FollowMelee\MetalSoundController.cs" />
+     <Compile Include="Assets\_Scripts\Gameplay\Enemies\Boss\SpawnState.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Enemies\FlyerPatrol\AttackState.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\DamagingFire.cs" />
      <Compile Include="Assets\_Scripts\UI\SkillBarController.cs" />
+     <Compile Include="Assets\_Scripts\Gameplay\Enemies\Boss\DeadState.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Platforms\PlatformMovable.cs" />
      <Compile Include="Assets\_Scripts\EZ Camera Shake\Scripts\CameraShakeInstance.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Enemies\PatrolFire\DeadState.cs" />
@@ -136,6 +144,7 @@
      <Compile Include="Assets\_Scripts\Gameplay\Lifts\LiftEnd.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Bullet.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\IDamageable.cs" />
+     <Compile Include="Assets\_Scripts\Gameplay\Enemies\Boss\AttackDistanceState.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Weapon\MeleeWeapon.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\PowerUps\PlayerHealerPowerUp.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Enemies\FlyerPatrol\FlyerPatrolStateController.cs" />
@@ -174,6 +183,7 @@
      <Compile Include="Assets\_Scripts\Gameplay\Enemies\RaycastAttack.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Damaging.cs" />
      <Compile Include="Assets\_Scripts\EZ Camera Shake\Demo\Sample Scripts\ShakeByDistance.cs" />
+     <Compile Include="Assets\_Scripts\Gameplay\Enemies\Boss\AttackComboState.cs" />
      <Compile Include="Assets\_Scripts\EZ Camera Shake\Demo\Sample Scripts\ShakeOnKeyPress.cs" />
      <Compile Include="Assets\_Scripts\VictorySceneCorrutine.cs" />
      <Compile Include="Assets\_Scripts\Dialogs\DialogUI.cs" />
@@ -186,6 +196,7 @@
      <Compile Include="Assets\_Scripts\Gameplay\Enemies\State.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\CameraFollowTarget.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Enemies\PatrolFire\AttackState.cs" />
+     <Compile Include="Assets\_Scripts\Gameplay\Enemies\Boss\RangePhaseAttacks.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />

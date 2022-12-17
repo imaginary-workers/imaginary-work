@@ -75,7 +75,7 @@ MonoBehaviour:
   _followPlayer: {fileID: 7481701723370601729}
   _animatorController: {fileID: 6312362796066457697}
   _explosionPrefab: {fileID: 5824207716733614624, guid: fad588849f9abbe4cb9a9bb62970bbbb, type: 3}
-  _explosionDamage: 0
+  _explosionDamage: 50
   _playerLayer:
     serializedVersion: 2
     m_Bits: 8
@@ -128,6 +128,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _life: 2
   _weakness: {fileID: 11400000, guid: acc81f72dbdb81b40b95f8578c3fba01, type: 2}
+  <Mortal>k__BackingField: 1
 --- !u!114 &7481701723370601729
 MonoBehaviour:
   m_ObjectHideFlags: 0

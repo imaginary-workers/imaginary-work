@@ -36,7 +36,7 @@ namespace Game.Gameplay.Enemies.Kamikaze
         }
         public void AnticipationExplode()
         {
-            _ani.SetTrigger("Attack");
+            _ani.SetBool("Attack", true);
         }
 
     }
