@@ -92,6 +92,7 @@ namespace Game.Gameplay.Enemies.Boss
 
         public virtual void DestroyGameObject(float seconds = 0)
         {
+            _bossHealth.OnEnterWeak -= ChangeToWeakState;
             Destroy(gameObject, seconds);
         }
     }

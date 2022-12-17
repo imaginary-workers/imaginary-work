@@ -208,6 +208,36 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _enemyDamageable: {fileID: 3740136272689756833}
   _weaponSO: {fileID: 11400000, guid: b764a1e102716434eb76f054bfc5bf16, type: 2}
+--- !u!1 &3945243170263379245
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3160309341407782529}
+  m_Layer: 13
+  m_Name: InstacePoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3160309341407782529
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3945243170263379245}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 29, z: 82}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5883288435755847889}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4347331646305999509
 GameObject:
   m_ObjectHideFlags: 0
@@ -308,7 +338,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _life: 2147483647
   _weakness: {fileID: 11400000, guid: acc81f72dbdb81b40b95f8578c3fba01, type: 2}
-  <Mortal>k__BackingField: 1
+  <Mortal>k__BackingField: 0
 --- !u!54 &894454994
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1068,6 +1098,16 @@ MonoBehaviour:
   _speed: 0.5
   _minAttackTime: 3
   _maxAttackTime: 5
+  _rangePhaseAttacks:
+    <RangeAttack1>k__BackingField: 1
+    <RangeShoot1>k__BackingField: 0
+    <RangeCombo1>k__BackingField: 0
+    <RangeAttack2>k__BackingField: 0.4
+    <RangeShoot2>k__BackingField: 0.6
+    <RangeCombo2>k__BackingField: 0
+    <RangeAttack3>k__BackingField: 0.3
+    <RangeShoot3>k__BackingField: 0.3
+    <RangeCombo3>k__BackingField: 0.3
   _animatorController: {fileID: 4988988366491654112}
   _attackCounts: 3
   _waitBetween: 2
@@ -1077,7 +1117,7 @@ MonoBehaviour:
   _waitToStaggerFinished: 1.25
   spawnIdleStartEvent: spawn_idle_start_event
   _enemySpawn: {fileID: 1787017096017295775, guid: 85e4c323aefe8d642b9c34705c6b1ca0, type: 3}
-  _spawnTransform: {fileID: 5762752693553314208}
+  _spawnTransform: {fileID: 3160309341407782529}
   _timeMax: 0.8
   _spawnEnemies: 5
   _rangeOfVisionOfKamikazes: 100
@@ -1486,7 +1526,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _life: 2147483647
   _weakness: {fileID: 11400000, guid: ca0c053b9a40131419c975c8a63b7e1f, type: 2}
-  <Mortal>k__BackingField: 1
+  <Mortal>k__BackingField: 0
 --- !u!114 &7142753536438261968
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1590,19 +1630,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0640c794667cb33498275508716bf508, type: 3}
---- !u!1 &6552300976786917995 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4301407157979847562, guid: 0640c794667cb33498275508716bf508, type: 3}
-  m_PrefabInstance: {fileID: 7016564242792993249}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5883288435755847889 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3529269226714317104, guid: 0640c794667cb33498275508716bf508, type: 3}
   m_PrefabInstance: {fileID: 7016564242792993249}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &5762752693553314208 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3361568829339199553, guid: 0640c794667cb33498275508716bf508, type: 3}
+--- !u!1 &6552300976786917995 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4301407157979847562, guid: 0640c794667cb33498275508716bf508, type: 3}
   m_PrefabInstance: {fileID: 7016564242792993249}
   m_PrefabAsset: {fileID: 0}
 --- !u!54 &6219891386036910355
@@ -1649,7 +1684,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _life: 2147483647
   _weakness: {fileID: 11400000, guid: ca0c053b9a40131419c975c8a63b7e1f, type: 2}
-  <Mortal>k__BackingField: 1
+  <Mortal>k__BackingField: 0
 --- !u!114 &7661098990162124128
 MonoBehaviour:
   m_ObjectHideFlags: 0

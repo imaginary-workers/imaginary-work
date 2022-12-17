@@ -39,6 +39,11 @@ namespace Game.Gameplay.Enemies.Boss
         public void ResetAllTriggers()
         {
             _animator.ResetTrigger(_idle);
+            _animator.ResetTrigger(_attackLeft);
+            _animator.ResetTrigger(_attackRight);
+            _animator.ResetTrigger(_shoot);
+            _animator.ResetTrigger(_spawn);
+            _animator.ResetTrigger(_weak);
         }
 
         internal void Shoot()
