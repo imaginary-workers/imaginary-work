@@ -9,6 +9,15 @@ namespace Game.Gameplay.Enemies.Boss
         [SerializeField] float _speed;
         [SerializeField] float _minAttackTime;
         [SerializeField] float _maxAttackTime;
+        [SerializeField, Range(0f, 1f)] float _rangeAttack;
+        [SerializeField, Range(0f, 1f)] float _rangeShoot;
+        [SerializeField, Range(0f, 1f)] float _rangeCombo;
+        [SerializeField, Range(0f, 1f)] float _rangeAttack2;
+        [SerializeField, Range(0f, 1f)] float _rangeShoot2;
+        [SerializeField, Range(0f, 1f)] float _rangeCombo2;
+        [SerializeField, Range(0f, 1f)] float _rangeAttack3;
+        [SerializeField, Range(0f, 1f)] float _rangeShoot3;
+        [SerializeField, Range(0f, 1f)] float _rangeCombo3;
         [Header("Attack")]
         [SerializeField] AnimatorController _animatorController;
         [SerializeField] int _attackCounts = 3;
