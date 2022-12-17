@@ -41,13 +41,13 @@ namespace Game.Gameplay.Enemies.Boss
         public DeadState DeadState { get; set; }
 
         protected override void OnAwakeEnemy()
-        {
+        {        
             _player = GameManager.Player;
-            IdleState = new IdleState(this, _animatorController, _speed, _player.transform, _minAttackTime, _maxAttackTime);
+            IdleState = new IdleState(this, _animatorController, _speed, _player.transform, _minAttackTime, _maxAttackTime, _bossHealth);
             AttackState = new AttackState(this, _animatorController, _attackCounts, _waitBetween, _waitToIdle);
             AttackComboState = new AttackComboState(this, _animatorController, _waitComboToIdle);
             AttackDistanceState = new AttackDistanceState(this);
-            SpawnState = new SpawnState(this,_animatorController,_bossHealth, spawnIdleStartEvent, _enemySpawn, _spawnTransform, _timeMax, _spawnEnemies, _rangeOfVisionOfKamikazes);
+            SpawnState = new SpawnState(this, _animatorController, _bossHealth, spawnIdleStartEvent, _enemySpawn, _spawnTransform, _timeMax, _spawnEnemies, _rangeOfVisionOfKamikazes);
             WeakState = new WeakState(this, _animatorController, _bossHealth, _waitToStaggerFinished);
             DeadState = new DeadState();
             ChangeState(IdleState);

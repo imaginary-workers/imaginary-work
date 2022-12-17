@@ -18,7 +18,7 @@ namespace Game.Gameplay.Enemies.Boss
         }
         public override void Enter()
         {
-            
+            Debug.Log("ataque de combo");
         }
 
         public override void Update()

@@ -6,21 +6,23 @@ namespace Game.Gameplay.Enemies.Boss
 {
     public class AttackDistanceState : State
     {
-        public AttackDistanceState(BossStateController bossStateController)
+        public override void Enter()
+        {
+            Debug.Log("distance");
+        }
+
+        public override void Update()
+        {
+
+        }
+
+        public override void Exit()
         {
             
         }
-
-        // Start is called before the first frame update
-        void Start()
+        public AttackDistanceState(BossStateController bossStateController)
         {
-        
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-        
+            
         }
     }
 }

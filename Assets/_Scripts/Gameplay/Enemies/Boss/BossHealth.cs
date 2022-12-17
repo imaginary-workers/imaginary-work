@@ -17,10 +17,11 @@ namespace Game.Gameplay.Enemies.Boss
         public event Action OnEnterWeak;
         public bool IsImmune { get; set; } = false;
         public bool IsWeak { get; set; } = false;
+        public int CurrentPhase { get => _currentPhase; private set => _currentPhase = value; }
 
         void Awake()
         {
-            _currentPhase = 1;
+            CurrentPhase = 1;
             _bossHealth.value = _maxHealth;
             _damageablesEnemyParts = GetComponentsInChildren<EnemyDamageable>();
             foreach (var enemyPart in _damageablesEnemyParts)
@@ -56,11 +57,11 @@ namespace Game.Gameplay.Enemies.Boss
             OnTakeAnyDamage?.Invoke();
             if (IsWeak)
             {
-                if (_currentPhase == 1)
+                if (CurrentPhase == 1)
                 {
                     _bossHealth.value = _endPhase1;
                 }
-                else if (_currentPhase == 2)
+                else if (CurrentPhase == 2)
                 {
                     _bossHealth.value = _endPhase2;
                 }
@@ -68,28 +69,28 @@ namespace Game.Gameplay.Enemies.Boss
                 {
                     _bossHealth.value = 0;
                 }
-                _currentPhase++;
+                CurrentPhase++;
                 IsWeak = false;
             }
             else
             {
                 _bossHealth.value -= damage;
                 if (
-                    _currentPhase == 1 && _bossHealth.value > _endPhase1 &&
+                    CurrentPhase == 1 && _bossHealth.value > _endPhase1 &&
                     _bossHealth.value <= _endPhase1 + amountToWeakBeforeEndPhase
                     )
                 {
                     OnEnterWeak?.Invoke();
                 }
                 else if (
-                    _currentPhase == 2 && _bossHealth.value > _endPhase2 &&
+                    CurrentPhase == 2 && _bossHealth.value > _endPhase2 &&
                     _bossHealth.value <= _endPhase2 + amountToWeakBeforeEndPhase
                     )
                 {
                     OnEnterWeak?.Invoke();
                 }
                 else if (
-                    _currentPhase == 3 && _bossHealth.value > 0 &&
+                    CurrentPhase == 3 && _bossHealth.value > 0 &&
                     _bossHealth.value <= amountToWeakBeforeEndPhase
                 )
                 {
