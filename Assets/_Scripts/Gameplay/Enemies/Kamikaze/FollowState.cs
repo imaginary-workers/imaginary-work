@@ -38,8 +38,6 @@ namespace Game.Gameplay.Enemies.Kamikaze
                 _controller.ChangeState(_controller.Idle);
             else if (Utils.IsInRangeOfVision(position, playerPosition, _rangeExplosion, _rangeOfVisionY))
                 _controller.ChangeState(_controller.Explosion);
-
-            // _navMeshAgent.SetDestination(_controller.Target.transform.position);
         }
         public override void Exit()
         {

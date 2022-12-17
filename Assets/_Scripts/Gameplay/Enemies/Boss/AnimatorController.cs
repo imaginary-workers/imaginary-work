@@ -27,7 +27,6 @@ namespace Game.Gameplay.Enemies.Boss
 
         public void Idle()
         {
-            Debug.Log("Idle");
             _animator.SetTrigger(_idle);
         }
 
