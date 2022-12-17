@@ -4,6 +4,7 @@ using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
 using UnityEngine.UIElements;
 using System;
+using Game.Gameplay.Enemies.Kamikaze;
 
 namespace Game.Gameplay.Enemies.Boss
 {
@@ -16,6 +17,7 @@ namespace Game.Gameplay.Enemies.Boss
         GameObject _enemySpawn;
         Transform _spawnTransform;
         float _timeMax;
+        readonly int _rangeOfVisionOfKamikazes;
 
         bool _spawnReady;
         float _time;
@@ -29,7 +31,8 @@ namespace Game.Gameplay.Enemies.Boss
             GameObject enemySpawn,
             Transform spawnTransform,
             float timeMax,
-            int spawnEnemis)
+            int spawnEnemis,
+            int rangeOfVisionOfKamikazes)
         {
             _bossStateController = bossStateController;
             _animatorController = animatorController;
@@ -39,6 +42,7 @@ namespace Game.Gameplay.Enemies.Boss
             _spawnTransform = spawnTransform;
             _timeMax = timeMax;
             _spawnEnemis = spawnEnemis;
+            _rangeOfVisionOfKamikazes = rangeOfVisionOfKamikazes;
         }
 
         public override void Enter()
@@ -57,7 +61,12 @@ namespace Game.Gameplay.Enemies.Boss
             if (_time >= _timeMax)
             {
                 _time = 0;
-                Transform.Instantiate(_enemySpawn, _spawnTransform.transform.position, Quaternion.identity);
+                var enemy = Transform.Instantiate(_enemySpawn, _spawnTransform.transform.position, Quaternion.identity);
+                var kamikazeStateController = enemy.GetComponent<KamikazeStateController>();
+                if (kamikazeStateController != null)
+                {
+                    kamikazeStateController.RangeFollow = _rangeOfVisionOfKamikazes;
+                }
                 _countSpawn++;
             }
             if(_countSpawn >= _spawnEnemis)

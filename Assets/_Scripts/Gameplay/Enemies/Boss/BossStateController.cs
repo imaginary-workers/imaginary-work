@@ -28,7 +28,8 @@ namespace Game.Gameplay.Enemies.Boss
         [SerializeField] GameObject _enemySpawn;
         [SerializeField] Transform _spawnTransform;
         [SerializeField] float _timeMax;
-        [SerializeField] int _spawnEnemis;
+        [SerializeField] int _spawnEnemies;
+        [SerializeField] int _rangeOfVisionOfKamikazes;
 
 
         public IdleState IdleState { get; set; }
@@ -46,7 +47,7 @@ namespace Game.Gameplay.Enemies.Boss
             AttackState = new AttackState(this, _animatorController, _attackCounts, _waitBetween, _waitToIdle);
             AttackComboState = new AttackComboState(this, _animatorController, _waitComboToIdle);
             AttackDistanceState = new AttackDistanceState(this);
-            SpawnState = new SpawnState(this,_animatorController,_bossHealth, spawnIdleStartEvent, _enemySpawn, _spawnTransform, _timeMax, _spawnEnemis);
+            SpawnState = new SpawnState(this,_animatorController,_bossHealth, spawnIdleStartEvent, _enemySpawn, _spawnTransform, _timeMax, _spawnEnemies, _rangeOfVisionOfKamikazes);
             WeakState = new WeakState(this, _animatorController, _bossHealth, _waitToStaggerFinished);
             DeadState = new DeadState();
             ChangeState(IdleState);
