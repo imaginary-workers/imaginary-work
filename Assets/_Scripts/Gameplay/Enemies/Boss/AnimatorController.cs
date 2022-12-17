@@ -13,6 +13,7 @@ namespace Game.Gameplay.Enemies.Boss
         [SerializeField] string _idle;
         [SerializeField] string _weak;
         [SerializeField] string _spawn;
+        [SerializeField] string _shoot;
         Dictionary<string, Action> _animationEvents = new Dictionary<string, Action>();
 
         public void AttackRigth()
@@ -38,6 +39,11 @@ namespace Game.Gameplay.Enemies.Boss
         public void ResetAllTriggers()
         {
             _animator.ResetTrigger(_idle);
+        }
+
+        internal void Shoot()
+        {
+            _animator.SetTrigger(_shoot);
         }
 
         public void Spawn()

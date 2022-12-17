@@ -30,7 +30,10 @@ namespace Game.Gameplay.Enemies.Boss
         [SerializeField] float _timeMax;
         [SerializeField] int _spawnEnemies;
         [SerializeField] int _rangeOfVisionOfKamikazes;
-
+        [Header("Shoot")]
+        [SerializeField] Transform _firePoint;
+        [SerializeField] ObjectPooler _bulletPooler;
+        [SerializeField] string shootEvent;
 
         public IdleState IdleState { get; set; }
         public AttackState AttackState { get; set; }
@@ -41,12 +44,12 @@ namespace Game.Gameplay.Enemies.Boss
         public DeadState DeadState { get; set; }
 
         protected override void OnAwakeEnemy()
-        {        
+        {
             _player = GameManager.Player;
             IdleState = new IdleState(this, _animatorController, _speed, _player.transform, _minAttackTime, _maxAttackTime, _bossHealth);
             AttackState = new AttackState(this, _animatorController, _attackCounts, _waitBetween, _waitToIdle);
             AttackComboState = new AttackComboState(this, _animatorController, _waitComboToIdle);
-            AttackDistanceState = new AttackDistanceState(this);
+            AttackDistanceState = new AttackDistanceState(this, _animatorController, _firePoint, _bulletPooler, shootEvent);
             SpawnState = new SpawnState(this, _animatorController, _bossHealth, spawnIdleStartEvent, _enemySpawn, _spawnTransform, _timeMax, _spawnEnemies, _rangeOfVisionOfKamikazes);
             WeakState = new WeakState(this, _animatorController, _bossHealth, _waitToStaggerFinished);
             DeadState = new DeadState();
