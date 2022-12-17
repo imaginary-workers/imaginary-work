@@ -46,6 +46,7 @@ namespace Game.Gameplay.Enemies.Boss
 
         public override void Exit()
         {
+            _bossHealth.OnTakeAnyDamage -= ChangeToNextState;
         }
     }
 }
