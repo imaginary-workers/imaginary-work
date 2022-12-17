@@ -21,8 +21,11 @@ namespace Game.Gameplay.Enemies.Boss
         private float _rangeCombo;
         int _Fase;
         BossHealth _bossHealt;
+        readonly RangePhaseAttacks _rangePhaseAttacks;
 
-        public IdleState(BossStateController bossStateController, AnimatorController animatorController, float speed, Transform target, float minAttackTime, float maxAttackTime, BossHealth bossHealt)
+        public IdleState(BossStateController bossStateController, AnimatorController animatorController, float speed,
+            Transform target, float minAttackTime, float maxAttackTime, BossHealth bossHealt,
+            RangePhaseAttacks rangePhaseAttacks)
         {
             _bossStateController = bossStateController;
             _animatorController = animatorController;
@@ -32,6 +35,7 @@ namespace Game.Gameplay.Enemies.Boss
             _maxAttackTime = maxAttackTime;
             _transform = _bossStateController.transform;
             _bossHealt = bossHealt;
+            _rangePhaseAttacks = rangePhaseAttacks;
         }
 
 
@@ -49,19 +53,19 @@ namespace Game.Gameplay.Enemies.Boss
             switch (_bossHealt.CurrentPhase)
             {
                 case 2:
-                    _rangeAttack = 0.5f;
-                    _rangeShoot = 0.5f;
-                    _rangeCombo = 0;
+                    _rangeAttack = _rangePhaseAttacks.RangeAttack2;
+                    _rangeShoot = _rangePhaseAttacks.RangeShoot2;
+                    _rangeCombo = _rangePhaseAttacks.RangeCombo2;
                     break;
                 case 3:
-                    _rangeAttack = 0.33f;
-                    _rangeShoot = 0.33f;
-                    _rangeCombo = 0.33f;
+                    _rangeAttack = _rangePhaseAttacks.RangeAttack3;
+                    _rangeShoot = _rangePhaseAttacks.RangeShoot3;
+                    _rangeCombo = _rangePhaseAttacks.RangeCombo3;
                     break;
                 default:
-                    _rangeAttack = 1;
-                    _rangeShoot = 0;
-                    _rangeCombo = 0;
+                    _rangeAttack = _rangePhaseAttacks.RangeAttack1;
+                    _rangeShoot = _rangePhaseAttacks.RangeShoot1;
+                    _rangeCombo = _rangePhaseAttacks.RangeCombo1;
                     break;
             }
         }

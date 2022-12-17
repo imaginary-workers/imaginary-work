@@ -49,6 +49,11 @@ namespace Game.Gameplay.Enemies.Boss
             bullet.transform.position = _firePoint.transform.position;
             bullet.transform.forward = direction.normalized;
             bullet.SetActive(true);
+            var damaging = bullet.GetComponent<Damaging>();
+            if (damaging != null)
+            {
+                damaging.EnemySource = _bossStateController.gameObject;
+            }
             bullet.GetComponent<Bullet>()?.Shoot(direction);
             _bossStateController.ChangeState(_bossStateController.IdleState);
         }

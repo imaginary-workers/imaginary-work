@@ -9,16 +9,8 @@ namespace Game.Gameplay.Enemies.Boss
         [SerializeField] float _speed;
         [SerializeField] float _minAttackTime;
         [SerializeField] float _maxAttackTime;
-        [SerializeField, Range(0f, 1f)] float _rangeAttack;
-        [SerializeField, Range(0f, 1f)] float _rangeShoot;
-        [SerializeField, Range(0f, 1f)] float _rangeCombo;
-        [SerializeField, Range(0f, 1f)] float _rangeAttack2;
-        [SerializeField, Range(0f, 1f)] float _rangeShoot2;
-        [SerializeField, Range(0f, 1f)] float _rangeCombo2;
-        [SerializeField, Range(0f, 1f)] float _rangeAttack3;
-        [SerializeField, Range(0f, 1f)] float _rangeShoot3;
-        [SerializeField, Range(0f, 1f)] float _rangeCombo3;
-        [Header("Attack")]
+        [SerializeField] RangePhaseAttacks _rangePhaseAttacks = new RangePhaseAttacks();
+        [Header("Attack"), Space]
         [SerializeField] AnimatorController _animatorController;
         [SerializeField] int _attackCounts = 3;
         [SerializeField] float _waitBetween;
@@ -54,8 +46,9 @@ namespace Game.Gameplay.Enemies.Boss
 
         protected override void OnAwakeEnemy()
         {
+            _rangePhaseAttacks.RangePhaseAttackFilter();
             _player = GameManager.Player;
-            IdleState = new IdleState(this, _animatorController, _speed, _player.transform, _minAttackTime, _maxAttackTime, _bossHealth);
+            IdleState = new IdleState(this, _animatorController, _speed, _player.transform, _minAttackTime, _maxAttackTime, _bossHealth, _rangePhaseAttacks);
             AttackState = new AttackState(this, _animatorController, _attackCounts, _waitBetween, _waitToIdle);
             AttackComboState = new AttackComboState(this, _animatorController, _waitComboToIdle);
             AttackDistanceState = new AttackDistanceState(this, _animatorController, _firePoint, _bulletPooler, shootEvent);

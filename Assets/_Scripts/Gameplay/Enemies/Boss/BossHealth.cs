@@ -1,10 +1,12 @@
 using System;
+using Game.Gameplay.SO;
+using Game.Managers;
 using Game.SO;
 using UnityEngine;
 
 namespace Game.Gameplay.Enemies.Boss
 {
-    public class BossHealth : MonoBehaviour
+    public class BossHealth : MonoBehaviour, IDamageable
     {
         [SerializeField] IntSO _bossHealth;
         [SerializeField, Range(0, 1000)] int _maxHealth;
@@ -18,6 +20,10 @@ namespace Game.Gameplay.Enemies.Boss
         public bool IsImmune { get; set; } = false;
         public bool IsWeak { get; set; } = false;
         public int CurrentPhase { get => _currentPhase; private set => _currentPhase = value; }
+        public event Action<int, GameObject> OnTakeDamage;
+        public event Action<int, GameObject> OnTakeStrongDamage;
+        public void TakeDamage(int damage, ElementSO element, GameObject damaging) { }
+        public event Action<GameObject> OnDeath;
 
         void Awake()
         {
@@ -53,6 +59,7 @@ namespace Game.Gameplay.Enemies.Boss
 
         void TakeAnyDamageHandler(int damage)
         {
+            if (_bossHealth.value <= 0) return;
             if (IsImmune) return;
             OnTakeAnyDamage?.Invoke();
             if (IsWeak)
@@ -71,6 +78,10 @@ namespace Game.Gameplay.Enemies.Boss
                 }
                 CurrentPhase++;
                 IsWeak = false;
+                if (_bossHealth.value <= 0)
+                {
+                    OnDeath?.Invoke(GameManager.Player);
+                }
             }
             else
             {
