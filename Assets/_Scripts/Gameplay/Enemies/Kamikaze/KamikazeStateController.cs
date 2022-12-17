@@ -13,9 +13,20 @@ namespace Game.Gameplay.Enemies.Kamikaze
         [SerializeField] int _explosionDamage;
         [SerializeField] LayerMask _playerLayer;
         [SerializeField, Range(1, 10)] float _explosionRadius;
-
+        [SerializeField] float _rangeFollow = 10;
         [field: SerializeField]
-        public float RangeFollow { get; set; } = 15;
+        public float RangeFollow
+        {
+            get => _rangeFollow;
+            set
+            {
+                _rangeFollow = value;
+                Idle.RangeFollow = _rangeFollow;
+                Follow.RangeFollow = _rangeFollow;
+            }
+            
+        }
+
         [field: SerializeField]
         public float RangeOfVisionY { get; set; } = 1;
         [field: SerializeField]
