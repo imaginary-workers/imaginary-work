@@ -23,6 +23,13 @@ namespace Game.Gameplay.Enemies.Boss
         EnemyDamageable _damageable;
         State _lastState;
         GameObject _player;
+        [Header("Spawn")]
+        [SerializeField] string spawnIdleStartEvent;
+        [SerializeField] GameObject _enemySpawn;
+        [SerializeField] Transform _spawnTransform;
+        [SerializeField] float _timeMax;
+        [SerializeField] int _spawnEnemis;
+
 
         public IdleState IdleState { get; set; }
         public AttackState AttackState { get; set; }
@@ -39,7 +46,7 @@ namespace Game.Gameplay.Enemies.Boss
             AttackState = new AttackState(this, _animatorController, _attackCounts, _waitBetween, _waitToIdle);
             AttackComboState = new AttackComboState(this, _animatorController, _waitComboToIdle);
             AttackDistanceState = new AttackDistanceState(this);
-            SpawnState = new SpawnState(this);
+            SpawnState = new SpawnState(this,_animatorController,_bossHealth, spawnIdleStartEvent, _enemySpawn, _spawnTransform, _timeMax, _spawnEnemis);
             WeakState = new WeakState(this, _animatorController, _bossHealth, _waitToStaggerFinished);
             DeadState = new DeadState();
             ChangeState(IdleState);

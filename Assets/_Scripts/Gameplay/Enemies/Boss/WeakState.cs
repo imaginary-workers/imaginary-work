@@ -32,7 +32,8 @@ namespace Game.Gameplay.Enemies.Boss
 
         void ChangeToNextState()
         {
-            _bossStateController.ChangeState(_bossStateController.IdleState);
+            _animatorController.Idle();
+            _bossStateController.ChangeState(_bossStateController.SpawnState);          
         }
 
         public override void Update()

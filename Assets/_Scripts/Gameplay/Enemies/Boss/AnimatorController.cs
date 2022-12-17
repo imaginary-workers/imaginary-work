@@ -1,3 +1,6 @@
+using System;
+using System.Collections.Generic;
+using UnityEditor.PackageManager;
 using UnityEngine;
 
 namespace Game.Gameplay.Enemies.Boss
@@ -9,6 +12,8 @@ namespace Game.Gameplay.Enemies.Boss
         [SerializeField] string _attackLeft;
         [SerializeField] string _idle;
         [SerializeField] string _weak;
+        [SerializeField] string _spawn;
+        Dictionary<string, Action> _animationEvents = new Dictionary<string, Action>();
 
         public void AttackRigth()
         {
@@ -34,6 +39,26 @@ namespace Game.Gameplay.Enemies.Boss
         public void ResetAllTriggers()
         {
             _animator.ResetTrigger(_idle);
+        }
+
+        public void Spawn()
+        {
+            _animator.SetTrigger(_spawn);
+        }
+        void PLAY_EVENT(string eventname)
+        {
+            if (!_animationEvents.ContainsKey(eventname)) return;
+            _animationEvents[eventname].Invoke();
+        }
+        public void AddAnimationEvent(string eventName, Action callback)
+        {
+            if (_animationEvents.ContainsKey(eventName)) return;
+            _animationEvents.Add(eventName, callback);
+        }
+
+        public void RemoveAnimationEvent(string eventName)
+        {
+            _animationEvents.Remove(eventName);
         }
     }
 }

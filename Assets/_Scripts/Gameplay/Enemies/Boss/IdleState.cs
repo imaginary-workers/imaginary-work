@@ -37,6 +37,7 @@ namespace Game.Gameplay.Enemies.Boss
 
         public override void Update()
         {
+            if (Enemy.CountEnemy > 1) return;
             _time += Time.deltaTime;
             if (_time >= _timeMax)
             {
