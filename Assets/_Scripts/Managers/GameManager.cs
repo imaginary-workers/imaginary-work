@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using Game.Audio;
 using Game.Gameplay.Enemies;
@@ -6,11 +5,9 @@ using Game.Gameplay.Lifts;
 using Game.Gameplay.Player;
 using Game.Scene.SO;
 using Game.SO;
-using Game.UI;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 namespace Game.Managers
 {
@@ -81,15 +78,6 @@ namespace Game.Managers
                 _health.value = _maxHealth.value;
                 
                 Player.GetComponent<PlayerDamageable>().OnDeath += GameOver;
-                _liftStart = FindObjectOfType<LiftStart>();
-                PlayManager.Instance.CanvasController(false, false);
-                if (_liftStart != null)
-                {
-                    _liftStart.Lift.OnUpFinished += ResumePlayerControl;
-                    PlayManager.Instance.SetPlayerControlActive(false);
-                    _liftStart.PlacePlayer(Player);
-                    _liftStart.Start();
-                }
             }
         }
 
@@ -110,8 +98,10 @@ namespace Game.Managers
             {
                 
                 Player.GetComponent<PlayerDamageable>().OnDeath -= GameOver;
-                if (_liftStart != null) _liftStart.Lift.OnUpFinished -= ResumePlayerControl;
-                _deadBossEvent?.Unregister(ChangeToDestroyBoss);
+                if (_deadBossEvent != null)
+                {
+                    _deadBossEvent.Unregister(ChangeToDestroyBoss);
+                }
             }
         }
 
@@ -131,11 +121,6 @@ namespace Game.Managers
                 MusicManager.singleton.UpdateMusic(scene);
                 SceneManager.LoadScene(scene.SceneName);
             }
-        }
-
-        void ResumePlayerControl()
-        {
-            PlayManager.Instance.SetPlayerControlActive(true);
         }
 
 

@@ -1,3 +1,5 @@
+using System;
+using Game.Managers;
 using UnityEngine;
 
 namespace Game.Gameplay.Lifts
@@ -17,8 +19,16 @@ namespace Game.Gameplay.Lifts
             _lift.OnUpFinished += _liftDoor.OpenDoors;
         }
 
-        public void Start()
+        private void Start()
         {
+            StartLift();
+        }
+
+        public void StartLift()
+        {
+            PlacePlayer(GameManager.Player);
+            PlayManager.Instance.SetPlayerControlActive(false, true);
+            PlayManager.Instance.SetCursorActive(false);
             _lift.Arrive();
         }
 
