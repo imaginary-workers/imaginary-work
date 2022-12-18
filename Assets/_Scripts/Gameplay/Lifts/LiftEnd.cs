@@ -16,7 +16,7 @@ namespace Game.Gameplay.Lifts
         void Start()
         {
             Enemy.OnNoEnemies += _liftDoor.OpenDoors;
-            _checker.OnPlayerEnter += _liftDoor.CloseDoors;
+            _checker.OnPlayerEnter += CloseDoors;
 
             _liftDoor.OnClosed += EndGame;
         }
@@ -26,6 +26,12 @@ namespace Game.Gameplay.Lifts
             Enemy.OnNoEnemies -= _liftDoor.OpenDoors;
             _checker.OnPlayerEnter -= _liftDoor.CloseDoors;
             _liftDoor.OnClosed -= EndGame;
+        }
+
+        void CloseDoors()
+        {
+            PlayManager.Instance.SetPlayerControlActive(false, true);
+            _liftDoor.CloseDoors();
         }
 
         void EndGame()

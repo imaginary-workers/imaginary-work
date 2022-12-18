@@ -15,7 +15,6 @@ namespace Game.Gameplay.Lifts
 
         void Awake()
         {
-            _checker.OnPlayerExit += _liftDoor.CloseDoors;
             _lift.OnUpFinished += _liftDoor.OpenDoors;
         }
 
