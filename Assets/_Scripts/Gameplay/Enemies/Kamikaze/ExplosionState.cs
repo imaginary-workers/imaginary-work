@@ -16,7 +16,13 @@ namespace Game.Gameplay.Enemies.Kamikaze
         LayerMask _playerLayer;
         int _damage;
 
-        public ExplosionState(KamikazeStateController controller, NavMeshAgent agent, AnimatorController ani, float explosionRadius, LayerMask playerLayer, int damage)
+
+        public ExplosionState(KamikazeStateController controller,
+            NavMeshAgent agent,
+            AnimatorController ani,
+            float explosionRadius,
+            LayerMask playerLayer,
+            int damage)
         {
             _controller = controller;
             this.agent = agent;
@@ -24,7 +30,9 @@ namespace Game.Gameplay.Enemies.Kamikaze
             _explosionRadius = explosionRadius;
             _playerLayer = playerLayer;
             _damage = damage;
+
         }
+
 
         public override void Enter()
         {

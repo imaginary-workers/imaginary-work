@@ -12,6 +12,7 @@ namespace Game.Gameplay.Enemies.Kamikaze
         [SerializeField] GameObject _explosionPrefab;
         [SerializeField] int _explosionDamage;
         [SerializeField] LayerMask _playerLayer;
+        [SerializeField] AudioClip _explosionClip;
         [SerializeField, Range(1, 10)] float _explosionRadius;
         [SerializeField] float _rangeFollow = 10;
         [field: SerializeField]
@@ -51,7 +52,7 @@ namespace Game.Gameplay.Enemies.Kamikaze
 
         protected override void SetDeadState()
         {
-            Dead = new DeadState(this);
+            Dead = new DeadState(this,_explosionClip);
         }
         
         public void Explode()
