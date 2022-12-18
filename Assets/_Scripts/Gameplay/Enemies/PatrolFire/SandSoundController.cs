@@ -12,6 +12,7 @@ namespace Game.Gameplay.Enemies.PatrolFire
         void Awake()
         {
             _enemyDamageable.OnTakeDamage += TakeDamage;
+            _enemyDamageable.OnTakeStrongDamage += TakeDamage;
         }
 
         public void Attack()
