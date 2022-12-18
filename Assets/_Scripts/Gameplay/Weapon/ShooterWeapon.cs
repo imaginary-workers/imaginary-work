@@ -9,7 +9,20 @@ namespace Game.Gameplay.Weapons
         [SerializeField] protected Transform _firePoint;
 
         protected Vector3 ShootDirection
-            => (Target.position - _firePoint.transform.position).normalized;
+        {
+            get
+            {
+                var distance = Vector3.Distance(Target.position, _firePoint.transform.position);
+                if (distance > 4)
+                {
+                    return (Target.position - _firePoint.transform.position).normalized;
+                }
+                else
+                {
+                    return _firePoint.transform.forward;
+                }
+            }
+        }
 
         protected abstract void Shoot();
 
