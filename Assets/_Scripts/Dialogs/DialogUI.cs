@@ -116,7 +116,7 @@ namespace Game.Dialogs
             }
         }
 
-        public void Funcionaaaa()
+        public void SkipToNext()
         {
             if (_currentDialog == null)
             {
@@ -125,7 +125,7 @@ namespace Game.Dialogs
             else
             {
                 StopAllCoroutines();
-                dialogueDisplay.text += _currentDialog.text;
+                dialogueDisplay.text = _currentDialog.text;
                 _currentDialog = null;
             }
         }
