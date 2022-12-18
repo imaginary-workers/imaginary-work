@@ -1,4 +1,5 @@
 ﻿using System;
+using Game.Managers;
 using UnityEngine;
 
 namespace Game.Gameplay.Lifts
@@ -13,6 +14,7 @@ namespace Game.Gameplay.Lifts
         public void UP_FINISHED_EVENT()
         {
             OnUpFinished.Invoke();
+            PlayManager.Instance.SetPlayerControlActive(true);
         }
 
 
