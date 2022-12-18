@@ -342,6 +342,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 554763952521874867, guid: 8fd178cbd6604e24290ed12fb7f33ec4, type: 3}
+      propertyPath: _deadBossEvent
+      value: 
+      objectReference: {fileID: 11400000, guid: b33a31c0bb1a1e6499ade96b48251409, type: 2}
+    - target: {fileID: 554763952521874867, guid: 8fd178cbd6604e24290ed12fb7f33ec4, type: 3}
+      propertyPath: destroyBossScene
+      value: 
+      objectReference: {fileID: 11400000, guid: 15e4fab1907114a43a9f10aa69f98139, type: 2}
     - target: {fileID: 554763952574516973, guid: 8fd178cbd6604e24290ed12fb7f33ec4, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0.48979592
@@ -653,14 +661,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4988988366491654112, guid: 946c36826aa200c45b633315e1859434, type: 3}
-      propertyPath: _weak
-      value: Staggered
-      objectReference: {fileID: 0}
-    - target: {fileID: 4988988366491654112, guid: 946c36826aa200c45b633315e1859434, type: 3}
-      propertyPath: _combo
-      value: Combo
-      objectReference: {fileID: 0}
     - target: {fileID: 7016564242523517715, guid: 946c36826aa200c45b633315e1859434, type: 3}
       propertyPath: m_Name
       value: Boss
@@ -708,10 +708,6 @@ PrefabInstance:
     - target: {fileID: 7016564242523517724, guid: 946c36826aa200c45b633315e1859434, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8123698908835193367, guid: 946c36826aa200c45b633315e1859434, type: 3}
-      propertyPath: comboevent
-      value: finish_combo_event
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 946c36826aa200c45b633315e1859434, type: 3}

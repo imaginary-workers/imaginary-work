@@ -916,6 +916,7 @@ MonoBehaviour:
   _weak: Staggered
   _spawn: Spawn
   _shoot: Shoot
+  _combo: Combo
 --- !u!1 &7016564242334033486
 GameObject:
   m_ObjectHideFlags: 0
@@ -1085,6 +1086,7 @@ MonoBehaviour:
   _endPhase1: 20
   _endPhase2: 10
   amountToWeakBeforeEndPhase: 5
+  _eventDead: {fileID: 11400000, guid: b33a31c0bb1a1e6499ade96b48251409, type: 2}
 --- !u!114 &8123698908835193367
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1115,6 +1117,7 @@ MonoBehaviour:
   _waitBetween: 2
   _waitToIdle: 4
   _waitComboToIdle: 0
+  comboevent: finish_combo_event
   _bossHealth: {fileID: 1948798396}
   _waitToStaggerFinished: 1.25
   spawnIdleStartEvent: spawn_idle_start_event
@@ -1252,8 +1255,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _animatorController: {fileID: 4988988366491654112}
+  _enemyDamageableWood: {fileID: 3422953976988522602}
+  enemyDamageableHead: {fileID: 894454996}
+  _bossHealth: {fileID: 1948798396}
   _audioSource: {fileID: 2168741387085364179}
   _attackSlam: {fileID: 8300000, guid: 8005cf03b9193404394c75499c12aec3, type: 3}
+  _damageWood: {fileID: 8300000, guid: b60b1ef8b7518b74c86a117a7f4d26c4, type: 3}
+  _damageGlass: {fileID: 8300000, guid: f90283cf53bd01641a17677c6c286c6a, type: 3}
   _slamEvent: attack_slam_event
 --- !u!1 &7016564242531055540
 GameObject:
