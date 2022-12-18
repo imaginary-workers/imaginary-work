@@ -42,7 +42,7 @@ namespace Game.Dialogs
         {
             if (context.performed &&_onDialog)
             {
-                _dialogUI.Funcionaaaa();
+                _dialogUI.SkipToNext();
             }
         }
     }
