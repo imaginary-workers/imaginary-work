@@ -16,7 +16,13 @@ namespace Game.Gameplay.Enemies.Kamikaze
         LayerMask _playerLayer;
         int _damage;
 
-        public ExplosionState(KamikazeStateController controller, NavMeshAgent agent, AnimatorController ani, float explosionRadius, LayerMask playerLayer, int damage)
+
+        public ExplosionState(KamikazeStateController controller,
+            NavMeshAgent agent,
+            AnimatorController ani,
+            float explosionRadius,
+            LayerMask playerLayer,
+            int damage)
         {
             _controller = controller;
             this.agent = agent;
@@ -24,7 +30,9 @@ namespace Game.Gameplay.Enemies.Kamikaze
             _explosionRadius = explosionRadius;
             _playerLayer = playerLayer;
             _damage = damage;
+
         }
+
 
         public override void Enter()
         {
@@ -37,13 +45,6 @@ namespace Game.Gameplay.Enemies.Kamikaze
 
         private void EXPLOSION_EVENT()
         {
-            _controller.Explode();
-            var colliders = Physics.OverlapSphere(_controller.transform.position, _explosionRadius, _playerLayer);
-            if (colliders.Length > 0)
-            {
-                colliders[0].GetComponent<IDamageable>()?.TakeDamage(_damage, null, _controller.gameObject);
-            }
-            PlayManager.Instance.SetPlayerControlActive(true);
             _controller.ChangeState(_controller.Dead);
         }
 

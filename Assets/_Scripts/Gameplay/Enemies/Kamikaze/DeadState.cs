@@ -1,17 +1,26 @@
+using UnityEngine;
+
 namespace Game.Gameplay.Enemies.Kamikaze
 {
-    public class DeadState : State
+    public class DeadState : AbstractDeadState
     {
         KamikazeStateController _controller;
+        AudioClip _explosionClip;
 
-        public DeadState(KamikazeStateController controller)
+
+        public DeadState(KamikazeStateController controller, AudioClip explosionClip)
         {
             _controller = controller;
+            _explosionClip = explosionClip;
+
         }
 
         public override void Enter()
         {
-          _controller.DestroyGameObject();
+            base.Enter();
+            AudioSource.PlayClipAtPoint(_explosionClip,_controller.transform.position);
+            _controller.Explode();
+            _controller.DestroyGameObject();
         }
     }
 }

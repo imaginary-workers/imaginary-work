@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 4204418081734766400}
   - component: {fileID: 8717397993899331729}
   - component: {fileID: 7481701723370601729}
+  - component: {fileID: 7045638469793841602}
   m_Layer: 7
   m_Name: KamikazeEnemy
   m_TagString: Untagged
@@ -75,12 +76,14 @@ MonoBehaviour:
   _followPlayer: {fileID: 7481701723370601729}
   _animatorController: {fileID: 6312362796066457697}
   _explosionPrefab: {fileID: 5824207716733614624, guid: fad588849f9abbe4cb9a9bb62970bbbb, type: 3}
-  _explosionDamage: 0
+  _explosionDamage: 50
   _playerLayer:
     serializedVersion: 2
     m_Bits: 8
+  _audioSource: {fileID: 7045638469793841602}
+  _explosionClip: {fileID: 8300000, guid: c6c6b6ecdb0392e4386c1e5131c0e31e, type: 3}
   _explosionRadius: 4
-  <RangeFollow>k__BackingField: 10
+  _rangeFollow: 10
   <RangeOfVisionY>k__BackingField: 1
   <RangeExplosion>k__BackingField: 2
   <NormalSpeed>k__BackingField: 6
@@ -128,6 +131,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _life: 2
   _weakness: {fileID: 11400000, guid: acc81f72dbdb81b40b95f8578c3fba01, type: 2}
+  <Mortal>k__BackingField: 1
 --- !u!114 &7481701723370601729
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -144,6 +148,102 @@ MonoBehaviour:
   _agent: {fileID: 7762417525691920518}
   _closeRange: 2
   _rangeOfVisionY: 1
+--- !u!82 &7045638469793841602
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1787017096017295775}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 1551853095085094983, guid: 3226694a2863dd0449b248f89975164d, type: 2}
+  m_audioClip: {fileID: 8300000, guid: c6c6b6ecdb0392e4386c1e5131c0e31e, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &6975067841226795155
 GameObject:
   m_ObjectHideFlags: 0

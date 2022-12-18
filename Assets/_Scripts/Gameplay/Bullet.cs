@@ -30,10 +30,10 @@ namespace Game.Gameplay
         {
             if (other.gameObject.layer == 0 || other.gameObject.layer == 6) DesactiveBullet();
         }
-
+        
         public void Shoot(Vector3 direction)
         {
-            _direction = direction;
+            _direction = direction.normalized;
             _isMoving = true;
         }
 

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using Game.Audio;
 using Game.Gameplay.Enemies;
@@ -31,33 +32,13 @@ namespace Game.Managers
         [SerializeField] IntSO _maxHealth;
         [SerializeField] IntSO _health;
 
-        [Header("HUD Objets")]
-        [Header("Menus")]
-        [SerializeField]
-        GameObject _pauseMenu;
-
-        [SerializeField] GameObject _deathMessege;
-
-        [Header("GameCanvas Element")]
-        [SerializeField]
-        GameObject _pointer;
-        [SerializeField] SkillBarController _barController;
-
-        [SerializeField] Text _bulletCounterText;
-        [SerializeField] Text _reserveCounterText;
-        [SerializeField] Text _countEnemyText;
-        [SerializeField] InventoryUIController _inventoryUI;
-
-        [Header("Option Menu")]
-        [SerializeField]
-        GameObject _optionsMenu;
-        [SerializeField] GameObject _controlsMenu;
-
         [Header("BlackScreen Transition")]
         [SerializeField]
         Animator _blackScreenAnimator;
 
         [Header("Scenes")][SerializeField] SceneStorageSO _sceneStorage;
+        [SerializeField] eventSO _deadBossEvent;
+        [SerializeField] SceneSO destroyBossScene;
 
         [Header("Audio")][SerializeField] AudioSource _audioSource;
 
@@ -66,9 +47,11 @@ namespace Game.Managers
         [Header("Settings")][SerializeField] State _state;
 
         bool _isChangingScene;
-        bool _isDeath;
-        bool _isPaused;
+
+        public bool IsDeath { get; private set; }
+
         LiftStart _liftStart;
+        [SerializeField] GameplayUIManager _gameplayUIManager;
 
         public static GameManager Instance
         {
@@ -88,18 +71,15 @@ namespace Game.Managers
             }
         }
 
-        public bool CanPause { get; set; } = true;
 
         void Awake()
         {
             _instance = this;
-
-            if (_deathMessege != null)
-                _deathMessege.SetActive(false);
+            _deadBossEvent?.RegisterEvent(ChangeToDestroyBoss);
             if (_state == State.Gameplay)
             {
                 _health.value = _maxHealth.value;
-                Enemy.UpdateEnemyCount += UpdateEnemyCount;
+                
                 Player.GetComponent<PlayerDamageable>().OnDeath += GameOver;
                 _liftStart = FindObjectOfType<LiftStart>();
                 PlayManager.Instance.CanvasController(false, false);
@@ -116,26 +96,22 @@ namespace Game.Managers
         void Start()
         {
             MusicManager.singleton.UpdateMusic(_sceneStorage.FindSceneByName(SceneManager.GetActiveScene().name));
-            if (_state == State.Gameplay)
-            {
-                UpdateEnemyCount();
-                var weapons = Player.GetComponent<WeaponInventory>().Weapons;
-                var weaponsCount = weapons.Count;
-                for (var i = 0; i < weaponsCount; i++)
-                    if (weapons[i].IsLocked)
-                        _inventoryUI.SetUnlokedIcon(i, true);
-                    else
-                        _inventoryUI.SetUnlokedIcon(i, false);
-            }
+        }
+
+        private void ChangeToDestroyBoss()
+        {
+            Debug.Log("scenemuerte");
+            NextScene(destroyBossScene);
         }
 
         void OnDestroy()
         {
             if (_state == State.Gameplay)
             {
-                Enemy.UpdateEnemyCount -= UpdateEnemyCount;
+                
                 Player.GetComponent<PlayerDamageable>().OnDeath -= GameOver;
                 if (_liftStart != null) _liftStart.Lift.OnUpFinished -= ResumePlayerControl;
+                _deadBossEvent?.Unregister(ChangeToDestroyBoss);
             }
         }
 
@@ -172,12 +148,12 @@ namespace Game.Managers
 
         IEnumerator CO_GameOver()
         {
-            _isDeath = true;
+            IsDeath = true;
             Cursor.lockState = CursorLockMode.None;
-            _pointer.SetActive(false);
+            _gameplayUIManager.SetPointerActive(false);
             Time.timeScale = 0.5f;
             yield return new WaitForSecondsRealtime(_secondsToDisplayDeathScreenInSeconds);
-            _deathMessege.SetActive(true);
+            _gameplayUIManager.SetDeathMessegeActive(true);
             _audioSource.PlayOneShot(_gameOver);
             Time.timeScale = 0f;
         }
@@ -186,13 +162,6 @@ namespace Game.Managers
         {
             var sceneSO = _sceneStorage.FindSceneByName("Tutorial");
             StartCoroutine(CO_NextScene(sceneSO));
-        }
-
-        public void ControlsMenu(bool activate)
-        {
-            //var sceneSO = _sceneStorage.FindSceneByName("ControlsMenu");
-            //StartCoroutine(CO_NextScene(sceneSO));
-            _controlsMenu.SetActive(activate);
         }
 
         public void RestartLevel()
@@ -220,79 +189,6 @@ namespace Game.Managers
             Application.Quit();
 #endif
         }
-
-        #endregion
-
-        #region GAMEPLAY_UI
-
-        public void PauseKeybord()
-        {
-            if (_isDeath) return;
-            if (!CanPause) return;
-            if (_isPaused)
-                Resume();
-            else
-                Pause();
-        }
-
-        public void Pause()
-        {
-            _isPaused = true;
-            _pauseMenu.SetActive(true);
-            _pointer.SetActive(false);
-            Cursor.lockState = CursorLockMode.None;
-            PlayManager.Instance.CanvasController(true);
-        }
-
-        public void Resume()
-        {
-            _isPaused = false;
-            _optionsMenu.GetComponent<OptionMenuUI>().CancelOptions();
-            _pauseMenu.SetActive(false);
-            _pointer.SetActive(true);
-            PlayManager.Instance.CanvasController(false);
-        }
-
-        public void OpenOptions()
-        {
-            _optionsMenu.SetActive(true);
-        }
-
-        public void UpdateBulletCounter(int amunicion)
-        {
-            if (amunicion < 0)
-                _bulletCounterText.text = "";
-            else
-                _bulletCounterText.text = amunicion.ToString();
-        }
-
-        public void UpdateEnergyBar(int value, int maxValue)
-        {
-            _barController.UpdateSkillBar(value, maxValue);
-        }
-        public void UpdateReserveCounter(int amunicion)
-        {
-            if (amunicion < 0)
-                _reserveCounterText.text = "-";
-            else
-                _reserveCounterText.text = amunicion.ToString();
-        }
-
-        public void UpdateEnemyCount()
-        {
-            _countEnemyText.text = Enemy.CountEnemy.ToString();
-        }
-
-        public void SetActiveSlot(int slot)
-        {
-            _inventoryUI.SetSlotColorActive(slot);
-        }
-
-        public void UnlockedWeaponUI(int slot)
-        {
-            _inventoryUI.SetUnlokedIcon(slot, false);
-        }
-
         #endregion
     }
 }

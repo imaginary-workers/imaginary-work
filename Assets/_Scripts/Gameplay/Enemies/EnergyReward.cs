@@ -22,7 +22,7 @@ namespace Game
         private void AddEnergy(int arg1, GameObject arg2)
         {
             _weaponSO.Energy++;
-            GameManager.Instance.UpdateEnergyBar(_weaponSO.Energy, _weaponSO.MaxEnergy);
+            GameplayUIManager.Instance.UpdateEnergyBar(_weaponSO.Energy, _weaponSO.MaxEnergy);
         }
     }
 }
