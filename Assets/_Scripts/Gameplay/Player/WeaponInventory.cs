@@ -13,7 +13,11 @@ namespace Game.Gameplay.Player
 
         void Awake()
         {
-            foreach (var weapon in Weapons) weapon.gameObject.SetActive(false);
+            foreach (var weapon in Weapons)
+            {
+                weapon.Data.Energy = 0;
+                weapon.gameObject.SetActive(false);
+            }
         }
 
         public event Action OnGrab;

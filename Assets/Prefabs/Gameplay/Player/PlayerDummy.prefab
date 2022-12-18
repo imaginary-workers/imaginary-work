@@ -65,7 +65,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 3575
+    m_Bits: 11767
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -5584,6 +5584,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: Game.Dialogs.DialogManager, Assembly-CSharp
+        m_MethodName: NextSentenceDialog
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: b207fc0a-e92d-4fa0-80ff-c28e9b4e8509
     m_ActionName: Player/Fire[/Mouse/leftButton]
   - m_PersistentCalls:
@@ -6458,22 +6470,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Flamethrower_Weapon
       objectReference: {fileID: 0}
-    - target: {fileID: 1934071586597183794, guid: 7cd12200bd3156040955aebf80ad1489, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4538244712190913964, guid: 7cd12200bd3156040955aebf80ad1489, type: 3}
-      propertyPath: _weaponSoundController
-      value: 
-      objectReference: {fileID: 2748643659555909998}
-    - target: {fileID: 4735661994421724971, guid: 7cd12200bd3156040955aebf80ad1489, type: 3}
-      propertyPath: _weaponSoundController
-      value: 
-      objectReference: {fileID: 2748643659555909998}
     - target: {fileID: 4997407529903462761, guid: 7cd12200bd3156040955aebf80ad1489, type: 3}
-      propertyPath: _weaponSoundController
+      propertyPath: _particles
       value: 
-      objectReference: {fileID: 2748643659555909998}
+      objectReference: {fileID: 1663158426682278906}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7cd12200bd3156040955aebf80ad1489, type: 3}
 --- !u!4 &1767229513866288492 stripped
@@ -6577,3 +6577,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8706a03ba17ca64e8186782552cbcf1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!198 &1663158426682278906 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 8573685730542143993, guid: 2995e5e25acebc3479602f2226558c20, type: 3}
+  m_PrefabInstance: {fileID: 7056965217599916547}
+  m_PrefabAsset: {fileID: 0}

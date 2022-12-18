@@ -4,7 +4,6 @@ using UnityEngine.AI;
 
 namespace Game.Gameplay.Enemies
 {
-    [RequireComponent(typeof(NavMeshAgent))]
     public abstract class Enemy : MonoBehaviour
     {
         static int countEnemy;
@@ -13,6 +12,7 @@ namespace Game.Gameplay.Enemies
         public static void ResetEnemyCount()
         {
             countEnemy = 0;
+            UpdateEnemyCount?.Invoke();
         }
 
         public static void SubstractEnemy()
@@ -34,10 +34,5 @@ namespace Game.Gameplay.Enemies
         public static event Action OnNoEnemies;
 
         protected abstract void OnAwakeEnemy();
-
-        protected virtual void HitStopEffect()
-        {
-            StartCoroutine(Utils.CO_HitStop(0.05f, 0.001f));
-        }
     }
 }

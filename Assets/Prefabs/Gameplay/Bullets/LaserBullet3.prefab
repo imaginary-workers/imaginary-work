@@ -4889,6 +4889,7 @@ GameObject:
   - component: {fileID: 8486583444662469548}
   - component: {fileID: 3182381254722122643}
   - component: {fileID: 1000630896134155806}
+  - component: {fileID: 8564296463426850649}
   m_Layer: 8
   m_Name: LaserBullet3
   m_TagString: Untagged
@@ -4972,6 +4973,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 3
+--- !u!114 &8564296463426850649
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 86472681991517733}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce7d1e32fad2a9e4fa02fd9e363bfcd7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _damage: 0
+  _element: {fileID: 0}
 --- !u!1 &86472682434637662
 GameObject:
   m_ObjectHideFlags: 0

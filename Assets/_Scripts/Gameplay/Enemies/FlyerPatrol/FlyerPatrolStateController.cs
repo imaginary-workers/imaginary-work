@@ -36,11 +36,6 @@ namespace Game.Gameplay.Enemies.FlyerPatrol
             ChangeState(NormalState);
         }
 
-        protected override void HitStopEffect()
-        {
-            StartCoroutine(Utils.CO_HitStop(0.03f, 0.001f, ActiveDestroyFeedback));
-        }
-
         void ActiveDestroyFeedback()
         {
             Instantiate(_particle, transform.position, Quaternion.identity);
@@ -49,7 +44,7 @@ namespace Game.Gameplay.Enemies.FlyerPatrol
 
         protected override void SetDeadState()
         {
-            deadState = new DeadState(_agent, this, HitStopEffect);
+            deadState = new DeadState(_agent, ActiveDestroyFeedback);
         }
     }
 }

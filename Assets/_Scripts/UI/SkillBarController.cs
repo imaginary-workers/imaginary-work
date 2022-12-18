@@ -16,12 +16,6 @@ namespace Game.UI
             UpdateSkillBar(0f, 1f);
         }
 
-        //Solo de prueba
-        void Update()
-        {
-            UpdateSkillBar(value, 1);
-        }
-
         public void UpdateSkillBar(float value, float maxValue)
         {
             _bar.fillAmount = value / maxValue;
