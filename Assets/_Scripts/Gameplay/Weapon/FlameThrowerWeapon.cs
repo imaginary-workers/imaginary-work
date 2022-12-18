@@ -45,6 +45,7 @@ namespace Game.Gameplay.Weapons
             if (!canAttack || _weaponData.Energy != _weaponData.MaxEnergy) return;
             canAttack = false;
             _animationManager.AttackFireSpecial();
+            _weaponData.Energy = 0;
         }
 
         public override void EndSpecial()
