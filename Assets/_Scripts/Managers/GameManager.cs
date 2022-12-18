@@ -32,19 +32,6 @@ namespace Game.Managers
         [SerializeField] IntSO _maxHealth;
         [SerializeField] IntSO _health;
 
-        
-
-        [SerializeField] GameObject _deathMessege;
-
-        [Header("GameCanvas Element")]
-        [SerializeField]
-        GameObject _pointer;
-        
-        [SerializeField] InventoryUIController _inventoryUI;
-
-        
-        [SerializeField] GameObject _controlsMenu;
-
         [Header("BlackScreen Transition")]
         [SerializeField]
         Animator _blackScreenAnimator;
@@ -64,6 +51,7 @@ namespace Game.Managers
         public bool IsDeath { get; private set; }
 
         LiftStart _liftStart;
+        [SerializeField] GameplayUIManager _gameplayUIManager;
 
         public static GameManager Instance
         {
@@ -88,9 +76,6 @@ namespace Game.Managers
         {
             _instance = this;
             _deadBossEvent?.RegisterEvent(ChangeToDestroyBoss);
-
-            if (_deathMessege != null)
-                _deathMessege.SetActive(false);
             if (_state == State.Gameplay)
             {
                 _health.value = _maxHealth.value;
@@ -111,19 +96,6 @@ namespace Game.Managers
         void Start()
         {
             MusicManager.singleton.UpdateMusic(_sceneStorage.FindSceneByName(SceneManager.GetActiveScene().name));
-            if (_state == State.Gameplay)
-            {
-                
-                var weapons = Player.GetComponent<WeaponInventory>().Weapons;
-                var weaponsCount = weapons.Count;
-                for (var i = 0; i < weaponsCount; i++)
-                {
-                    if (weapons[i].IsLocked)
-                        _inventoryUI.SetUnlokedIcon(i, true);
-                    else
-                        _inventoryUI.SetUnlokedIcon(i, false);
-                }
-            }
         }
 
         private void ChangeToDestroyBoss()
@@ -178,10 +150,10 @@ namespace Game.Managers
         {
             IsDeath = true;
             Cursor.lockState = CursorLockMode.None;
-            _pointer.SetActive(false);
+            _gameplayUIManager.SetPointerActive(false);
             Time.timeScale = 0.5f;
             yield return new WaitForSecondsRealtime(_secondsToDisplayDeathScreenInSeconds);
-            _deathMessege.SetActive(true);
+            _gameplayUIManager.SetDeathMessegeActive(true);
             _audioSource.PlayOneShot(_gameOver);
             Time.timeScale = 0f;
         }
@@ -190,13 +162,6 @@ namespace Game.Managers
         {
             var sceneSO = _sceneStorage.FindSceneByName("Tutorial");
             StartCoroutine(CO_NextScene(sceneSO));
-        }
-
-        public void ControlsMenu(bool activate)
-        {
-            //var sceneSO = _sceneStorage.FindSceneByName("ControlsMenu");
-            //StartCoroutine(CO_NextScene(sceneSO));
-            _controlsMenu.SetActive(activate);
         }
 
         public void RestartLevel()

@@ -32,7 +32,6 @@ namespace Game.Managers
             }
             playerController.active = active;
             _player.GetComponent<WeaponController>().active = active;
-
         }
         public void CanvasController(bool active, bool timeScale = true)
         {

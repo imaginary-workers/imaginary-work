@@ -32,7 +32,7 @@ namespace Game.Gameplay.Weapons
             if (!isSpecial)
             {
                 Ammunition--;
-                GameManager.Instance.UpdateBulletCounter(Ammunition);
+                GameplayUIManager.Instance.UpdateBulletCounter(Ammunition);
             }
             else _weaponData.Energy = 0;
             if (_particles != null) _particles?.Play();

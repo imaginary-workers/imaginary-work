@@ -61,7 +61,7 @@ namespace Game.Gameplay.Player
             {
                 CurrentWeapon.PerformedSpecial();
                 var data = CurrentWeapon.Data;
-                GameManager.Instance.UpdateEnergyBar(data.Energy, data.MaxEnergy);
+                GameplayUIManager.Instance.UpdateEnergyBar(data.Energy, data.MaxEnergy);
             }
             if (context.canceled)
             {
@@ -104,18 +104,18 @@ namespace Game.Gameplay.Player
             UpdateSlotUI(slot);
             UpdateAmmoUI();
             var data = CurrentWeapon.Data;
-            GameManager.Instance.UpdateEnergyBar(data.Energy, data.MaxEnergy);
+            GameplayUIManager.Instance.UpdateEnergyBar(data.Energy, data.MaxEnergy);
         }
 
         void UpdateSlotUI(int slot)
         {
-            GameManager.Instance.SetActiveSlot(slot);
+            GameplayUIManager.Instance.SetActiveSlot(slot);
         }
 
         void UpdateAmmoUI()
         {
-            GameManager.Instance.UpdateBulletCounter(CurrentWeapon.Ammunition);
-            GameManager.Instance.UpdateReserveCounter(CurrentWeapon.ReserveAmmunition);
+            GameplayUIManager.Instance.UpdateBulletCounter(CurrentWeapon.Ammunition);
+            GameplayUIManager.Instance.UpdateReserveCounter(CurrentWeapon.ReserveAmmunition);
         }
 
         void EVENT_END_RELOAD_WEAPON()

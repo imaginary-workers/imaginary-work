@@ -34,7 +34,7 @@ namespace Game.Gameplay.Player
             var weaponIndex = Weapons.FindIndex(weapon => weapon.Data == data);
             if (weaponIndex == -1) return;
             Weapons[weaponIndex].UnLocked();
-            GameManager.Instance.UnlockedWeaponUI(weaponIndex);
+            GameplayUIManager.Instance.UnlockedWeaponUI(weaponIndex);
         }
     }
 }
