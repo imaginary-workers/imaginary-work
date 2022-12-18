@@ -37,13 +37,6 @@ namespace Game.Gameplay.Enemies.Kamikaze
 
         private void EXPLOSION_EVENT()
         {
-            _controller.Explode();
-            var colliders = Physics.OverlapSphere(_controller.transform.position, _explosionRadius, _playerLayer);
-            if (colliders.Length > 0)
-            {
-                colliders[0].GetComponent<IDamageable>()?.TakeDamage(_damage, null, _controller.gameObject);
-            }
-            PlayManager.Instance.SetPlayerControlActive(true);
             _controller.ChangeState(_controller.Dead);
         }
 
