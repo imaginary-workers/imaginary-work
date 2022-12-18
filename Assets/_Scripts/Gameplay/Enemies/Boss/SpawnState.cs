@@ -47,6 +47,7 @@ namespace Game.Gameplay.Enemies.Boss
 
         public override void Enter()
         {
+            _spawnReady = false;
             _time = 0;
             _countEnemySpawn = 0;
             _animatorController.Spawn();
