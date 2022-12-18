@@ -17,6 +17,7 @@ namespace Game.Gameplay.Enemies.Boss
         [SerializeField] float _waitToIdle;
         [Header("Combo Attack")]
         [SerializeField] float _waitComboToIdle;
+        [SerializeField] string comboevent;
         [Header("Weak")]
         [SerializeField] BossHealth _bossHealth;
         [SerializeField] float _waitToStaggerFinished;
@@ -36,6 +37,8 @@ namespace Game.Gameplay.Enemies.Boss
         [SerializeField] ObjectPooler _bulletPooler;
         [SerializeField] string shootEvent;
 
+
+
         public IdleState IdleState { get; set; }
         public AttackState AttackState { get; set; }
         public AttackComboState AttackComboState { get; set; }
@@ -46,15 +49,16 @@ namespace Game.Gameplay.Enemies.Boss
 
         protected override void OnAwakeEnemy()
         {
+            //_bossHealth.OnDeath += ChangeToDeathState;
             _rangePhaseAttacks.RangePhaseAttackFilter();
             _player = GameManager.Player;
             IdleState = new IdleState(this, _animatorController, _speed, _player.transform, _minAttackTime, _maxAttackTime, _bossHealth, _rangePhaseAttacks);
             AttackState = new AttackState(this, _animatorController, _attackCounts, _waitBetween, _waitToIdle);
-            AttackComboState = new AttackComboState(this, _animatorController, _waitComboToIdle);
+            AttackComboState = new AttackComboState(this, _animatorController, _waitComboToIdle, comboevent);
             AttackDistanceState = new AttackDistanceState(this, _animatorController, _firePoint, _bulletPooler, shootEvent);
             SpawnState = new SpawnState(this, _animatorController, _bossHealth, spawnIdleStartEvent, _enemySpawn, _spawnTransform, _timeMax, _spawnEnemies, _rangeOfVisionOfKamikazes);
             WeakState = new WeakState(this, _animatorController, _bossHealth, _waitToStaggerFinished);
-            DeadState = new DeadState();
+            DeadState = new DeadState(_bossHealth);
             ChangeState(IdleState);
             _bossHealth.OnEnterWeak += ChangeToWeakState;
         }
@@ -94,6 +98,13 @@ namespace Game.Gameplay.Enemies.Boss
         {
             _bossHealth.OnEnterWeak -= ChangeToWeakState;
             Destroy(gameObject, seconds);
+        }
+        void ChangeToDeathState(GameObject damaging)
+        {
+            if (DeadState == null) return;
+            var deadState = DeadState as AbstractDeadState;
+            deadState.Damaging = damaging;
+            ChangeState(DeadState);
         }
     }
 }

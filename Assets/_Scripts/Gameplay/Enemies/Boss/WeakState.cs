@@ -31,8 +31,13 @@ namespace Game.Gameplay.Enemies.Boss
 
         void ChangeToNextState()
         {
-            _animatorController.Idle();
-            _bossStateController.ChangeState(_bossStateController.SpawnState);          
+            if (_bossHealth.Health > 0)
+            {
+                _animatorController.Idle();
+                _bossStateController.ChangeState(_bossStateController.SpawnState);
+            }
+            else _bossStateController.ChangeState(_bossStateController.DeadState);
+
         }
 
         public override void Update()
@@ -46,6 +51,7 @@ namespace Game.Gameplay.Enemies.Boss
 
         public override void Exit()
         {
+            _bossHealth.OnTakeAnyDamage -= ChangeToNextState;
         }
     }
 }
