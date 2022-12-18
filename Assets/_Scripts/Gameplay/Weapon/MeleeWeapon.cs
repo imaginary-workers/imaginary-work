@@ -12,6 +12,8 @@ namespace Game.Gameplay.Weapons
         [SerializeField] SwayBehaviour _sway;
         [SerializeField] GameObject _explosion;
         [SerializeField] Transform _pointOfExplosion;
+        [SerializeField] AudioClip _chargeSpecial;
+        [SerializeField] AudioClip _special;
         PlayerAnimationManager _animationManager;
         Vector3 _offset;
 
@@ -68,6 +70,7 @@ namespace Game.Gameplay.Weapons
 
         public override void StartSpecial()
         {
+
         }
 
         public override void PerformedSpecial()
@@ -116,12 +119,14 @@ namespace Game.Gameplay.Weapons
         
         void EVENT_START_SPECIAL()
         {
+            _audioSource.PlayOneShot(_chargeSpecial);
             PlayManager.Instance.SetPlayerControlActive(false, true);
             _sway.transform.position = player.transform.position + _offset;
         }
 
         void EVENT_SPAWN_EXPLOSION()
         {
+            _audioSource.PlayOneShot(_special);
             var e = Instantiate(_explosion);
             e.transform.position = _pointOfExplosion.position;
             e.transform.forward = player.transform.forward;
