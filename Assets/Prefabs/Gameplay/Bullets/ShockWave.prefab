@@ -24743,6 +24743,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _damage: 25
   _element: {fileID: 0}
+  _bossLayer: 13
 --- !u!65 &6824869508276591793
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -24754,8 +24755,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.431, y: 1.259, z: 2.635}
-  m_Center: {x: -0.081, y: 0.639, z: -0.0193}
+  m_Size: {x: 8, y: 2, z: 8}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2743447159322619501
 GameObject:
   m_ObjectHideFlags: 0
