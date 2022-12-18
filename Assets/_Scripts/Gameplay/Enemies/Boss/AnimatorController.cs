@@ -70,5 +70,6 @@ namespace Game.Gameplay.Enemies.Boss
         {
             _animationEvents.Remove(eventName);
         }
+
     }
 }
