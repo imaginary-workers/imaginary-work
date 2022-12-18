@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using Game.Audio;
 using Game.Gameplay.Enemies;
@@ -49,6 +50,8 @@ namespace Game.Managers
         Animator _blackScreenAnimator;
 
         [Header("Scenes")][SerializeField] SceneStorageSO _sceneStorage;
+        [SerializeField] eventSO _deadBossEvent;
+        [SerializeField] SceneSO destroyBossScene;
 
         [Header("Audio")][SerializeField] AudioSource _audioSource;
 
@@ -84,6 +87,7 @@ namespace Game.Managers
         void Awake()
         {
             _instance = this;
+            _deadBossEvent?.RegisterEvent(ChangeToDestroyBoss);
 
             if (_deathMessege != null)
                 _deathMessege.SetActive(false);
@@ -113,11 +117,19 @@ namespace Game.Managers
                 var weapons = Player.GetComponent<WeaponInventory>().Weapons;
                 var weaponsCount = weapons.Count;
                 for (var i = 0; i < weaponsCount; i++)
+                {
                     if (weapons[i].IsLocked)
                         _inventoryUI.SetUnlokedIcon(i, true);
                     else
                         _inventoryUI.SetUnlokedIcon(i, false);
+                }
             }
+        }
+
+        private void ChangeToDestroyBoss()
+        {
+            Debug.Log("scenemuerte");
+            NextScene(destroyBossScene);
         }
 
         void OnDestroy()
@@ -127,6 +139,7 @@ namespace Game.Managers
                 
                 Player.GetComponent<PlayerDamageable>().OnDeath -= GameOver;
                 if (_liftStart != null) _liftStart.Lift.OnUpFinished -= ResumePlayerControl;
+                _deadBossEvent?.Unregister(ChangeToDestroyBoss);
             }
         }
 

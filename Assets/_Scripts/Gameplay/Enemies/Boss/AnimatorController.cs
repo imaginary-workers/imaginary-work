@@ -14,6 +14,7 @@ namespace Game.Gameplay.Enemies.Boss
         [SerializeField] string _weak;
         [SerializeField] string _spawn;
         [SerializeField] string _shoot;
+        [SerializeField] string _combo;
         Dictionary<string, Action> _animationEvents = new Dictionary<string, Action>();
 
         public void AttackRigth()
@@ -44,6 +45,7 @@ namespace Game.Gameplay.Enemies.Boss
             _animator.ResetTrigger(_shoot);
             _animator.ResetTrigger(_spawn);
             _animator.ResetTrigger(_weak);
+            _animator.ResetTrigger(_combo);
         }
 
         internal void Shoot()
@@ -69,6 +71,11 @@ namespace Game.Gameplay.Enemies.Boss
         public void RemoveAnimationEvent(string eventName)
         {
             _animationEvents.Remove(eventName);
+        }
+
+        internal void Combo()
+        {
+            _animator.SetTrigger(_combo);
         }
     }
 }
