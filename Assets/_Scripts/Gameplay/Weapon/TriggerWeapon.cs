@@ -10,6 +10,7 @@ namespace Game.Gameplay.Weapons
     {
         [SerializeField] ParticleSystem _particles;
         [SerializeField] ObjectPooler specialBulletPooler;
+        [SerializeField] AudioClip _sound;
         protected Action _TriggerAttackAnimation;
         WaitForSeconds _waitAttackRate;
         protected bool isSpecial = false;
@@ -53,7 +54,11 @@ namespace Game.Gameplay.Weapons
 
         public override void PerformedAttack()
         {
-            if (!canAttack || Ammunition <= 0) return;
+            if (!canAttack || Ammunition <= 0)
+            {
+                _audioSource.PlayOneShot(_sound);
+                return;
+            }
             canAttack = false;
             isSpecial = false;
             _TriggerAttackAnimation.Invoke();
