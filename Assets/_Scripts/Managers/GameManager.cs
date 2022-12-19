@@ -22,26 +22,24 @@ namespace Game.Managers
         const float _secondsToDisplayDeathScreenInSeconds = 3f;
         static GameManager _instance;
 
-        [Header("Player Info")]
-        [SerializeField]
+        [Header("Player Info")] [SerializeField]
         GameObject _player;
 
         [SerializeField] IntSO _maxHealth;
         [SerializeField] IntSO _health;
 
-        [Header("BlackScreen Transition")]
-        [SerializeField]
+        [Header("BlackScreen Transition")] [SerializeField]
         Animator _blackScreenAnimator;
 
-        [Header("Scenes")][SerializeField] SceneStorageSO _sceneStorage;
+        [Header("Scenes")] [SerializeField] SceneStorageSO _sceneStorage;
         [SerializeField] EventSO _deadBossEvent;
         [SerializeField] SceneSO destroyBossScene;
 
-        [Header("Audio")][SerializeField] AudioSource _audioSource;
+        [Header("Audio")] [SerializeField] AudioSource _audioSource;
 
         [SerializeField] AudioClip _gameOver;
 
-        [Header("Settings")][SerializeField] State _state;
+        [Header("Settings")] [SerializeField] State _state;
 
         bool _isChangingScene;
 
@@ -76,7 +74,6 @@ namespace Game.Managers
             if (_state == State.Gameplay)
             {
                 _health.value = _maxHealth.value;
-                
                 Player.GetComponent<PlayerDamageable>().OnDeath += GameOver;
             }
         }
@@ -96,7 +93,6 @@ namespace Game.Managers
         {
             if (_state == State.Gameplay)
             {
-                
                 Player.GetComponent<PlayerDamageable>().OnDeath -= GameOver;
                 if (_deadBossEvent != null)
                 {
@@ -113,8 +109,11 @@ namespace Game.Managers
                 _blackScreenAnimator?.SetTrigger("Play");
 
                 yield return new WaitForSecondsRealtime(1f);
-
-                Enemy.ResetEnemyCount();
+                if (_state == State.Gameplay)
+                {
+                    Enemy.ResetEnemyCount();
+                }
+                
                 _health.value = _maxHealth.value;
                 Cursor.lockState = CursorLockMode.None;
                 Time.timeScale = 1;
@@ -174,6 +173,7 @@ namespace Game.Managers
             Application.Quit();
 #endif
         }
+
         #endregion
     }
 }
