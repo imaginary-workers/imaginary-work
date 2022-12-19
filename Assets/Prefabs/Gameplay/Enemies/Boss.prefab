@@ -823,6 +823,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7016564242152849844}
+  - component: {fileID: 401554320619447544}
   m_Layer: 13
   m_Name: HeadController
   m_TagString: Untagged
@@ -846,6 +847,24 @@ Transform:
   m_Father: {fileID: 7016564241681717671}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!114 &401554320619447544
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7016564242152849835}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5bc2d2ea0d20a6c4f88f7e54f3a4fe86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _targetAlwaysPlayer: 1
+  _target: {fileID: 0}
+  _speedRotation: 10
+  _ignoreX: 0
+  _ignoreY: 0
+  _ignoreZ: 0
 --- !u!1 &7016564242284890819
 GameObject:
   m_ObjectHideFlags: 0
