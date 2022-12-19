@@ -13,7 +13,7 @@ namespace Game.Gameplay.Enemies.Boss
         [SerializeField, Range(0, 1000)] int _endPhase1;
         [SerializeField, Range(0, 1000)] int _endPhase2;
         [SerializeField, Range(0, 1000)] int amountToWeakBeforeEndPhase;
-        [SerializeField] eventSO _eventDead;
+        [SerializeField] EventSO _eventDead;
         EnemyDamageable[] _damageablesEnemyParts;
         int _currentPhase;
         public event Action OnTakeAnyDamage;
@@ -21,7 +21,7 @@ namespace Game.Gameplay.Enemies.Boss
         public bool IsImmune { get; set; } = false;
         public bool IsWeak { get; set; } = false;
         public int CurrentPhase { get => _currentPhase; private set => _currentPhase = value; }
-        public eventSO EventDead { get => _eventDead; }
+        public EventSO EventDead { get => _eventDead; }
         public int Health { get => _bossHealth.value;  }
 
         public event Action<int, GameObject> OnTakeDamage;
