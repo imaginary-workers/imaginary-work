@@ -172,7 +172,10 @@ MonoBehaviour:
   _speed: 20
   _timeToDisable: 1
   _trail: {fileID: 360420109220770325}
-  _bullet: {fileID: 360420109220770324}
+  _shakeOnShoot: 0
+  _magnitud: 1
+  _roughness: 3
+  _fadeOutTime: 2
 --- !u!114 &4378389826074894681
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -185,8 +188,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85ed7111929482549a69d5eb7d9b2636, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damage: 10
+  _damage: 100
   _element: {fileID: 11400000, guid: cba21a7574166b54482bca8fd5fe4f07, type: 2}
+  _bossLayer: 13
 --- !u!54 &556062634043549290
 Rigidbody:
   m_ObjectHideFlags: 0
