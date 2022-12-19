@@ -14,6 +14,7 @@ namespace Game.Gameplay.Weapons
         [SerializeField] Transform _pointOfExplosion;
         [SerializeField] AudioClip _chargeSpecial;
         [SerializeField] AudioClip _special;
+        [SerializeField] FPSCamera _fps;
         PlayerAnimationManager _animationManager;
         Vector3 _offset;
 
@@ -131,7 +132,6 @@ namespace Game.Gameplay.Weapons
             e.transform.position = _pointOfExplosion.position;
             e.transform.forward = player.transform.forward;
             e.GetComponent<Bullet>()?.Shoot(Vector3.zero);
-            //CameraShake
         }
 
         void EVENT_END_SPECIAL()
@@ -139,6 +139,7 @@ namespace Game.Gameplay.Weapons
             PlayManager.Instance.SetPlayerControlActive(true);
             _sway.enabled = true;
             canAttack = true;
+            _fps.ResetTargetPitch();
         }
 
         void StartMeleeAnimation()
