@@ -3,12 +3,12 @@ using Game.Gameplay.Weapons.SO;
 using Game.Managers;
 using UnityEngine;
 
-namespace Game
+namespace Game.Gameplay.Enemies
 {
     public class EnergyReward : MonoBehaviour
     {
         [SerializeField] EnemyDamageable _enemyDamageable;
-        [SerializeField] WeaponSO _weaponSO;
+        [SerializeField] protected WeaponSO _weaponSO;
 
         private void OnEnable()
         {
@@ -19,7 +19,7 @@ namespace Game
             _enemyDamageable.OnTakeStrongDamage -= AddEnergy;
         }
 
-        private void AddEnergy(int arg1, GameObject arg2)
+        protected virtual void AddEnergy(int arg1, GameObject arg2)
         {
             _weaponSO.Energy++;
             GameplayUIManager.Instance.UpdateEnergyBar(_weaponSO.Energy, _weaponSO.MaxEnergy);
