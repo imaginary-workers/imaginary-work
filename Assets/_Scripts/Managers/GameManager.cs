@@ -34,7 +34,7 @@ namespace Game.Managers
         Animator _blackScreenAnimator;
 
         [Header("Scenes")][SerializeField] SceneStorageSO _sceneStorage;
-        [SerializeField] eventSO _deadBossEvent;
+        [SerializeField] EventSO _deadBossEvent;
         [SerializeField] SceneSO destroyBossScene;
 
         [Header("Audio")][SerializeField] AudioSource _audioSource;

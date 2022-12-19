@@ -17,7 +17,12 @@ namespace Game.Gameplay.Enemies.Boss
          private readonly float _waitBetween;
          private readonly float _waitToIdle;
 
-         public AttackState(BossStateController bossStateController, AnimatorController animatorController, int attackCounts, float waitBetween, float waitToIdle)
+         public AttackState(BossStateController bossStateController,
+             AnimatorController animatorController,
+             int attackCounts,
+             float waitBetween,
+             float waitToIdle
+             )
          {
              _bossStateController = bossStateController;
              _animatorController = animatorController;
@@ -25,7 +30,8 @@ namespace Game.Gameplay.Enemies.Boss
              _waitBetween = waitBetween;
              _waitToIdle = waitToIdle;
          }
-        public override void Enter()
+
+         public override void Enter()
         {
             if (Random.Range(0, 2) == 0)
             {
@@ -41,7 +47,7 @@ namespace Game.Gameplay.Enemies.Boss
             
         }
 
-        public override void Update()
+         public override void Update()
         {
             _time += Time.deltaTime;
             if (_time >= _waitTime)

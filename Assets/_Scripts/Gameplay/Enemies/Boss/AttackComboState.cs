@@ -12,7 +12,11 @@ namespace Game.Gameplay.Enemies.Boss
         readonly float _waitToIdle;
         private string _comboevent;
 
-        public AttackComboState(BossStateController bossStateController, AnimatorController animatorController, float waitToIdle, string comboevent)
+        public AttackComboState(BossStateController bossStateController,
+            AnimatorController animatorController,
+            float waitToIdle,
+            string comboevent
+            )
         {
             _bossStateController = bossStateController;
             _animatorController = animatorController;
@@ -25,6 +29,7 @@ namespace Game.Gameplay.Enemies.Boss
         public override void Enter()
         {
             _animatorController.AddAnimationEvent(_comboevent, ChangeState);
+            
             _animatorController.Combo();
         }
 
@@ -36,7 +41,7 @@ namespace Game.Gameplay.Enemies.Boss
 
         public override void Exit()
         {
-            _animatorController.RemoveAnimationEvent(_comboevent);
+            _animatorController.RemoveAnimationEvent(_comboevent, ChangeState);
         }
         private void ChangeState()
         {
