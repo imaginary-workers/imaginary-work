@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.9048331, g: 0.93346745, b: 1.0389955, a: 1}
+  m_IndirectSpecularColor: {r: 0.908493, g: 0.93645483, b: 1.0409689, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3410,6 +3410,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameplaySetUp
       objectReference: {fileID: 0}
+    - target: {fileID: 7418898919924209158, guid: 8fd178cbd6604e24290ed12fb7f33ec4, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -49.19995
+      objectReference: {fileID: 0}
+    - target: {fileID: 7772667004256281705, guid: 8fd178cbd6604e24290ed12fb7f33ec4, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: c2bd14b79fd30ec4391b0ebed1ebb2f6, type: 3}
     - target: {fileID: 8475996975838400896, guid: 8fd178cbd6604e24290ed12fb7f33ec4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
