@@ -82,6 +82,7 @@ MonoBehaviour:
     m_Bits: 8
   _explosionClip: {fileID: 8300000, guid: c6c6b6ecdb0392e4386c1e5131c0e31e, type: 3}
   _explosionRadius: 2.5
+  _spawnDrops: {fileID: 0}
   _rangeFollow: 10
   <RangeOfVisionY>k__BackingField: 1
   <RangeExplosion>k__BackingField: 2
@@ -165,10 +166,10 @@ AudioSource:
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 55
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 500
+  MaxDistance: 7
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -203,7 +204,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
