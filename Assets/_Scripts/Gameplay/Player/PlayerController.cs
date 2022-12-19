@@ -25,10 +25,8 @@ namespace Game.Gameplay.Player
         [SerializeField] float _sprintView = 120;
         [SerializeField] private float _fovTimeEffect = 0;
         [SerializeField] ParticleSystem _speedLinesFx;
-        readonly float _currentTime = 1;
         bool _isMoving;
         Vector2 _moveVelocityInput;
-        float _time;
         float _timer;
         float _timeStep;
         private bool _activeFov = false;
@@ -53,7 +51,7 @@ namespace Game.Gameplay.Player
             if (active)
             {
                 _activeFov = true;
-                _currentfovTimeEffect = _fovTimeEffect;
+                _currentfovTimeEffect = (_sprintView - _camera.fieldOfView) / (_sprintView - _normalView) * _fovTimeEffect;
                 Speed = _sprintSpeed;
                 _timeStep = _timeSprint;
                 _animator.StartSprint();
@@ -62,7 +60,7 @@ namespace Game.Gameplay.Player
             else
             {
                 _activeFov = false;
-                _currentfovTimeEffect = _fovTimeEffect;
+                _currentfovTimeEffect = (_normalView - _camera.fieldOfView) / (_normalView - _sprintView) * _fovTimeEffect;
                 Speed = _normalSpeed;
                 _timeStep = _timeWalk;
                 _animator.StopSprint();
@@ -89,7 +87,6 @@ namespace Game.Gameplay.Player
 
         void Awake()
         {
-            _time = _currentTime;
             Speed = _normalSpeed;
             _timeStep = _timeWalk;
         }
@@ -116,27 +113,15 @@ namespace Game.Gameplay.Player
             {
                 if (_activeFov)
                 {
-                    _camera.fieldOfView = Mathf.Lerp(_normalView,_sprintView, _currentfovTimeEffect);
+                    _camera.fieldOfView = Mathf.Lerp(_sprintView, _normalView, _currentfovTimeEffect);
                 }
                 else
                 {
-                    _camera.fieldOfView = Mathf.Lerp(_sprintView,_normalView, _currentfovTimeEffect);
+                    _camera.fieldOfView = Mathf.Lerp(_normalView, _sprintView, _currentfovTimeEffect);
                 }
 
                 _currentfovTimeEffect -= Time.deltaTime;
             }
-            /*if ((_currentTime < 0 || _jumpComponent.IsOnTheFloor))
-            {
-            }
-            //NO BORRAR ES LA INMOBILIDAD EN EL SALTO, HAY QUE ARREGLAR UN BUG PARA HABILITARLA
-            if (!_jumpComponent.IsOnTheFloor)
-            {
-                _currentTime -= Time.deltaTime;
-            }
-            else
-            {
-                _currentTime = _time;
-            }*/
         }
 
         #endregion
