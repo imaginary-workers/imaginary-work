@@ -14,6 +14,7 @@ namespace Game.Gameplay.Enemies.Kamikaze
         [SerializeField] LayerMask _playerLayer;
         [SerializeField] AudioClip _explosionClip;
         [SerializeField, Range(1, 10)] float _explosionRadius;
+        [SerializeField] SpawnDrops _spawnDrops;
         [SerializeField] float _rangeFollow = 10;
         [field: SerializeField]
         public float RangeFollow
@@ -63,7 +64,11 @@ namespace Game.Gameplay.Enemies.Kamikaze
             {
                 collider.GetComponent<IDamageable>()?.TakeDamage(_explosionDamage, null, gameObject);
             }
-            
+
+            if (_spawnDrops != null)
+            {
+                _spawnDrops.Drop();
+            }
         }
 
 #if UNITY_EDITOR
