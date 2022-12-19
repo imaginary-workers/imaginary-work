@@ -89,7 +89,7 @@ namespace Game.Dialogs
                     }
 
                     dialogueDisplay.text += nextCharacter;
-                    yield return new WaitForSeconds(1f / textSpeed);
+                    yield return new WaitForSecondsRealtime(1f / textSpeed);
                 }
 
                 if (character == '>')

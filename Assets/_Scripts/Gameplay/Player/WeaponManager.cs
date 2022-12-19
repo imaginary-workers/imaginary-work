@@ -13,7 +13,7 @@ namespace Game.Gameplay.Player
         public int CurrentSlot { get; private set; }
         public Weapon CurrentWeapon { get; private set; }
 
-        void Awake()
+        void Start()
         {
             var weapon = _inventory.GetWeapon(CurrentSlot);
             if (weapon != null)
@@ -22,10 +22,7 @@ namespace Game.Gameplay.Player
                 CurrentWeapon.gameObject.SetActive(true);
                 SubscribeWeaponsAnimations();
             }
-        }
 
-        void Start()
-        {
             GameplayUIManager.Instance.UpdateBulletCounter(CurrentWeapon.Ammunition);
         }
 

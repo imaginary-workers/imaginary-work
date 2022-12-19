@@ -9,10 +9,10 @@ namespace Game.Gameplay.Enemies.Boss
     public class BossHealth : MonoBehaviour, IDamageable
     {
         [SerializeField] IntSO _bossHealth;
-        [SerializeField, Range(0, 1000)] int _maxHealth;
-        [SerializeField, Range(0, 1000)] int _endPhase1;
-        [SerializeField, Range(0, 1000)] int _endPhase2;
-        [SerializeField, Range(0, 1000)] int amountToWeakBeforeEndPhase;
+        [SerializeField, Range(0, 3000)] int _maxHealth;
+        [SerializeField, Range(0, 3000)] int _endPhase1;
+        [SerializeField, Range(0, 3000)] int _endPhase2;
+        [SerializeField, Range(0, 3000)] int amountToWeakBeforeEndPhase;
         [SerializeField] EventSO _eventDead;
         EnemyDamageable[] _damageablesEnemyParts;
         int _currentPhase;
