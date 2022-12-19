@@ -9,12 +9,18 @@ namespace Game.Gameplay.Enemies.Boss
         [SerializeField] int _damage;
         [SerializeField] GameObject _damagingSource;
 
-        void OnEnable()
+        public GameObject DamagingSource
+        {
+            get => _damagingSource != null ? _damagingSource : gameObject;
+            set => _damagingSource = value;
+        }
+
+        public void Start()
         {
             var colliders = Physics.OverlapSphere(transform.position, _radius, _layerDamaging);
             foreach (var collider in colliders)
             {
-                collider.GetComponent<IDamageable>()?.TakeDamage(_damage, null, _damagingSource);
+                collider.GetComponent<IDamageable>()?.TakeDamage(_damage, null, DamagingSource);
             }
         }
 
