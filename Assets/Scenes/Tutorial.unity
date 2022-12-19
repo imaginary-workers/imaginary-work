@@ -129,7 +129,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh29688
+  m_Name: pb_Mesh192308
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -409,7 +409,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh29764
+  m_Name: pb_Mesh192398
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -573,7 +573,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh29724
+  m_Name: pb_Mesh192346
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -6828,7 +6828,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh29710
+  m_Name: pb_Mesh192332
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -84803,7 +84803,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2422453272627843614}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalPosition: {x: 7.03, y: 0, z: 12.33}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 805623513852967488}
@@ -85145,6 +85145,7 @@ GameObject:
   - component: {fileID: 886987555392522723}
   - component: {fileID: 7106751411903132560}
   - component: {fileID: 8031413466587394724}
+  - component: {fileID: 8031413466587394725}
   m_Layer: 7
   m_Name: Enemy_Recolectable (1)
   m_TagString: Untagged
@@ -85159,13 +85160,29 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8031413466587394723}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4d024a1d7d37e714d800dff4907e5eda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _enemyDamageable: {fileID: 886987555392522723}
   _weaponSO: {fileID: 11400000, guid: 3ca41bb16976d2a419b1e71793672039, type: 2}
+--- !u!114 &8031413466587394725
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8031413466587394723}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 950c583fea734299a6c5c8e79487a3c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _enemyDamageable: {fileID: 886987555392522723}
+  _weaponSO: {fileID: 11400000, guid: 3ca41bb16976d2a419b1e71793672039, type: 2}
+  _tutorialSpecialEvent: {fileID: 11400000, guid: 7fe1ed7c480aec04e9103251c6c3306e, type: 2}
+  _tutorialSpecialDialog: {fileID: 11400000, guid: 315f2f0e2cd0c94429758c43a1406189, type: 2}
 --- !u!4 &8041807881539271542
 Transform:
   m_ObjectHideFlags: 0

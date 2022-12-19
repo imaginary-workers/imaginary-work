@@ -26,7 +26,7 @@ namespace Game.Dialogs
         {
             _onDialog = true;
             GameplayUIManager.Instance.CanPause = false;
-            PlayManager.Instance.CanvasController(true, false);
+            PlayManager.Instance.CanvasController(true);
             _canvas.SetActive(true);
             _dialogUI.StartDialog(dialog);
         }
@@ -35,7 +35,7 @@ namespace Game.Dialogs
         {
             _onDialog = false;
             GameplayUIManager.Instance.CanPause = true;
-            PlayManager.Instance.CanvasController(false, false);
+            PlayManager.Instance.CanvasController(false);
             _canvas.SetActive(false);
         }
         public void NextSentenceDialog(InputAction.CallbackContext context)
