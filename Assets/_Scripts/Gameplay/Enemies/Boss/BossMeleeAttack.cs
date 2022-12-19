@@ -8,7 +8,6 @@ namespace Game.Gameplay.Enemies.Boss
         [SerializeField] Transform _attackPoint;
         public void Attack()
         {
-            //Spawnear las particulas
             var effect = Instantiate(_slamEffect, _attackPoint.position, Quaternion.identity);
             Destroy(effect, 2f);
         }

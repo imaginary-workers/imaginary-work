@@ -10,12 +10,10 @@ namespace Game.SO
 
         public void Raise()
         {
-            Debug.Log("Raise");
             events?.Invoke();
         }
         public void RegisterEvent(Action callback)
         {
-            Debug.Log("registrado");
             events += callback;
 
         }
