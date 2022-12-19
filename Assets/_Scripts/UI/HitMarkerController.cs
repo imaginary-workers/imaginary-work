@@ -12,6 +12,8 @@ namespace Game.UI
         [SerializeField] Color _deathColor;
         [SerializeField] Image _myImage;
         [SerializeField] [Range(0.01f, 1f)] float _duration;
+        [SerializeField] AudioSource _audioSource;
+        [SerializeField] AudioClip _onDeadClip;
 
         void Awake()
         {
@@ -31,6 +33,7 @@ namespace Game.UI
         public void DisplayHitMarkDeath()
         {
             DisplayHitMark(_deathColor);
+            _audioSource.PlayOneShot(_onDeadClip);
         }
 
         void DisplayHitMark(Color color)
