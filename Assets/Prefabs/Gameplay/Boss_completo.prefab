@@ -236,7 +236,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _healthSlider: {fileID: 9037565667669756744}
   _bossHealth: {fileID: 1523256640631894627}
-  _animator: {fileID: 0}
 --- !u!1001 &1523256641908522975
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -330,6 +329,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 946c36826aa200c45b633315e1859434, type: 3}
+--- !u!1 &8393700184930143436 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7016564242523517715, guid: 946c36826aa200c45b633315e1859434, type: 3}
+  m_PrefabInstance: {fileID: 1523256641908522975}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8393700184930143427 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7016564242523517724, guid: 946c36826aa200c45b633315e1859434, type: 3}
@@ -340,7 +344,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1948798396, guid: 946c36826aa200c45b633315e1859434, type: 3}
   m_PrefabInstance: {fileID: 1523256641908522975}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 8393700184930143436}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8796382cfdb546046bae62430efe06b7, type: 3}
@@ -371,21 +375,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2365083474610462043, guid: 946c36826aa200c45b633315e1859434, type: 3}
   m_PrefabInstance: {fileID: 1523256641908522975}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1523256641748557483
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5750466556691903924}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a599cdd12959a64283df617c73afaf5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _slamEffect: {fileID: 6044493328601109275, guid: 57f8e17e78d53e24a8a648410fcb3356, type: 3}
-  _damaging: {fileID: 0}
-  _attackPoint: {fileID: 1523256642384487199}
 --- !u!114 &1523256641908522968
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -399,5 +388,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _slamEffect: {fileID: 6044493328601109275, guid: 57f8e17e78d53e24a8a648410fcb3356, type: 3}
-  _damaging: {fileID: 0}
   _attackPoint: {fileID: 1523256640710971363}
+  _boss: {fileID: 8393700184930143436}
+--- !u!114 &1523256641748557483
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5750466556691903924}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a599cdd12959a64283df617c73afaf5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _slamEffect: {fileID: 6044493328601109275, guid: 57f8e17e78d53e24a8a648410fcb3356, type: 3}
+  _attackPoint: {fileID: 1523256642384487199}
+  _boss: {fileID: 8393700184930143436}
