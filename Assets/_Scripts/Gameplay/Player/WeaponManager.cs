@@ -26,7 +26,7 @@ namespace Game.Gameplay.Player
 
         void Start()
         {
-            GameManager.Instance.UpdateBulletCounter(CurrentWeapon.Ammunition);
+            GameplayUIManager.Instance.UpdateBulletCounter(CurrentWeapon.Ammunition);
         }
 
         public event Action OnWeaponChange;
@@ -43,7 +43,7 @@ namespace Game.Gameplay.Player
             CurrentWeapon.gameObject.SetActive(false);
             CurrentWeapon = weapon;
             CurrentWeapon.gameObject.SetActive(true);
-            GameManager.Instance.UpdateBulletCounter(CurrentWeapon.Ammunition);
+            GameplayUIManager.Instance.UpdateBulletCounter(CurrentWeapon.Ammunition);
             return true;
         }
 

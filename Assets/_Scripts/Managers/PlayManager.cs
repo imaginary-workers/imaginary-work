@@ -32,14 +32,18 @@ namespace Game.Managers
             }
             playerController.active = active;
             _player.GetComponent<WeaponController>().active = active;
-
         }
         public void CanvasController(bool active, bool timeScale = true)
         {
             SetPlayerControlActive(!active, !timeScale);
-            Cursor.lockState = active ? CursorLockMode.Confined : CursorLockMode.Locked;
+            SetCursorActive(active);
             if (!timeScale) return;
             Time.timeScale = active ? 0 : 1;
+        }
+
+        public void SetCursorActive(bool active)
+        {
+            Cursor.lockState = active ? CursorLockMode.Confined : CursorLockMode.Locked;
         }
     }
 }

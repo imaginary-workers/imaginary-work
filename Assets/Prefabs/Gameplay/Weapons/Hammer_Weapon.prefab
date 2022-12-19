@@ -9798,11 +9798,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41d0424f99c6e7245863923685bcfc29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackRateInSeconds: 0
+  attackRateInSeconds: 5
   _audioSource: {fileID: 5014760481431298468}
   _weaponData: {fileID: 11400000, guid: 3ca41bb16976d2a419b1e71793672039, type: 2}
   <IsLocked>k__BackingField: 1
   _damaging: {fileID: 2030808747070254073}
+  player: {fileID: 0}
+  _sway: {fileID: 0}
+  _explosion: {fileID: 0}
+  _pointOfExplosion: {fileID: 0}
+  _chargeSpecial: {fileID: 8300000, guid: ef19f0935b2fe6a4eb7cd85ccd97e0be, type: 3}
+  _special: {fileID: 8300000, guid: b91f1d9033b600045892a5d8ebd7b66a, type: 3}
 --- !u!82 &5014760481431298468
 AudioSource:
   m_ObjectHideFlags: 0

@@ -22,7 +22,7 @@ namespace Game.Gameplay
             if (damageable == null) return;
             damageable.OnTakeDamage += Hit;
             damageable.OnTakeStrongDamage += StrongHit;
-            damageable.TakeTamage(_damage, _element, EnemySource);
+            damageable.TakeDamage(_damage, _element, EnemySource);
             damageable.OnTakeDamage -= Hit;
             damageable.OnTakeStrongDamage -= StrongHit;
             DestroySelf();

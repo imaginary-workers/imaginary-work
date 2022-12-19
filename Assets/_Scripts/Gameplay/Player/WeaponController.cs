@@ -10,11 +10,9 @@ namespace Game.Gameplay.Player
         [SerializeField] WeaponManager _manager;
         [SerializeField] PointerTarget _pointerTarget;
         [SerializeField] PlayerController _playerController;
-        [SerializeField] [Range(0, 2)] float _speedWeaponHeavy = 1;
         [SerializeField] PlayerAnimationManager _animation;
         public bool active = true;
 
-        [SerializeField] PlayerSoundController _pjSoundController;
         bool _switch;
 
         public bool CanAttack { get; set; } = true;
@@ -61,7 +59,7 @@ namespace Game.Gameplay.Player
             {
                 CurrentWeapon.PerformedSpecial();
                 var data = CurrentWeapon.Data;
-                GameManager.Instance.UpdateEnergyBar(data.Energy, data.MaxEnergy);
+                GameplayUIManager.Instance.UpdateEnergyBar(data.Energy, data.MaxEnergy);
             }
             if (context.canceled)
             {
@@ -74,13 +72,16 @@ namespace Game.Gameplay.Player
         {
             if (!active) return;
             if (!context.performed) return;
-            if (CurrentWeapon.CanReloadAmmunition())
+            if (CurrentWeapon.CanReloadAmmunition() && CanReload)
             {
+                CanReload = false;
                 CanAttack = false;
                 _animation.StartReloading();
             }
             //TODO feedback cuando no se recarga
         }
+
+        public bool CanReload { get; set; } = true;
 
         public bool ReloadReserveWeapons()
         {
@@ -98,24 +99,25 @@ namespace Game.Gameplay.Player
             CurrentWeapon.CancelAttack();
             if (!_manager.SwitchWeapon(slot)) return;
 
+            CanReload = true;
             _animation.BackToIdle();
             CanAttack = true;
             _playerController.CanSprint = true;
             UpdateSlotUI(slot);
             UpdateAmmoUI();
             var data = CurrentWeapon.Data;
-            GameManager.Instance.UpdateEnergyBar(data.Energy, data.MaxEnergy);
+            GameplayUIManager.Instance.UpdateEnergyBar(data.Energy, data.MaxEnergy);
         }
 
         void UpdateSlotUI(int slot)
         {
-            GameManager.Instance.SetActiveSlot(slot);
+            GameplayUIManager.Instance.SetActiveSlot(slot);
         }
 
         void UpdateAmmoUI()
         {
-            GameManager.Instance.UpdateBulletCounter(CurrentWeapon.Ammunition);
-            GameManager.Instance.UpdateReserveCounter(CurrentWeapon.ReserveAmmunition);
+            GameplayUIManager.Instance.UpdateBulletCounter(CurrentWeapon.Ammunition);
+            GameplayUIManager.Instance.UpdateReserveCounter(CurrentWeapon.ReserveAmmunition);
         }
 
         void EVENT_END_RELOAD_WEAPON()
@@ -123,6 +125,7 @@ namespace Game.Gameplay.Player
             CurrentWeapon.ReloadAmmunition();
             UpdateAmmoUI();
             CanAttack = true;
+            CanReload = true;
         }
     }
 }
