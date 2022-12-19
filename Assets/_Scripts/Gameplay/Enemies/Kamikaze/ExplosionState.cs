@@ -36,7 +36,6 @@ namespace Game.Gameplay.Enemies.Kamikaze
 
         public override void Enter()
         {
-            PlayManager.Instance.SetPlayerControlActive(false, true);
             _ani.AddAnimationEvent("explosion_event", EXPLOSION_EVENT);
             agent.isStopped = true;
             agent.speed = 0;

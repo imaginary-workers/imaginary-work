@@ -63,7 +63,6 @@ namespace Game.Gameplay.Enemies.Kamikaze
             {
                 collider.GetComponent<IDamageable>()?.TakeDamage(_explosionDamage, null, gameObject);
             }
-            PlayManager.Instance.SetPlayerControlActive(true);
         }
 
 #if UNITY_EDITOR
