@@ -8,14 +8,15 @@ namespace Game
     {
         [SerializeField] Slider _healthSlider;
         [SerializeField] BossHealth _bossHealth;
-        [SerializeField] Animator _animator;
 
         void Start()
         {
             _healthSlider.maxValue = _bossHealth.MaxHealth;
+            _healthSlider.value = _bossHealth.MaxHealth;
+            _bossHealth.OnTakeAnyDamage += UpdateSlider;
         }
 
-        void LateUpdate()
+        private void UpdateSlider()
         {
             _healthSlider.value = _bossHealth.Health;
         }

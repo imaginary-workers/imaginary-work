@@ -91,6 +91,7 @@ namespace Game.Gameplay.Enemies.Boss
             else
             {
                 _bossHealth.value -= damage;
+                OnTakeAnyDamage?.Invoke();
                 if (
                     CurrentPhase == 1 && _bossHealth.value > _endPhase1 &&
                     _bossHealth.value <= _endPhase1 + amountToWeakBeforeEndPhase

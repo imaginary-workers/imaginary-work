@@ -6,10 +6,15 @@ namespace Game.Gameplay.Enemies.Boss
     {
         [SerializeField] GameObject _slamEffect;
         [SerializeField] Transform _attackPoint;
+        [SerializeField] GameObject _boss;
+
         public void Attack()
         {
-            var effect = Instantiate(_slamEffect, _attackPoint.position, Quaternion.identity);
-            Destroy(effect, 2f);
+            var damage = Instantiate(_slamEffect, _attackPoint.position, Quaternion.identity);
+            var damagingStart = damage.GetComponent<DamagingStart>();
+            damagingStart.DamagingSource = _boss;
+            damagingStart.Start();
+            Destroy(damage, 2f);
         }
     }
 }
