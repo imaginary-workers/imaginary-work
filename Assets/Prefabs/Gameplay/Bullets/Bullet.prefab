@@ -61,9 +61,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2536b0ac08e34f84b61544fc441c3477, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 20
+  _speed: 50
   _timeToDisable: 3
   _trail: {fileID: 0}
+  _shakeOnShoot: 0
+  _magnitud: 1
+  _roughness: 3
+  _fadeOutTime: 2
 --- !u!54 &4386709434788477231
 Rigidbody:
   m_ObjectHideFlags: 0
