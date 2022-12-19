@@ -4,7 +4,7 @@ using UnityEngine;
 namespace Game.SO
 {
     [CreateAssetMenu(fileName = "eventSO", menuName = "Scriptable Object/values/event", order = 0)]
-    public class eventSO : ScriptableObject
+    public class EventSO : ScriptableObject
     {
         event Action events;
 

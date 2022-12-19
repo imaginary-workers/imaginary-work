@@ -133,7 +133,7 @@
      <Compile Include="Assets\_Scripts\UI\SingleDamageIndicator.cs" />
      <Compile Include="Assets\_Scripts\Managers\GameplayConfigManager.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Enemies\FollowMelee\MetalSoundController.cs" />
-     <Compile Include="Assets\_Scripts\SO\eventSO.cs" />
+     <Compile Include="Assets\_Scripts\SO\EventSO.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Enemies\Boss\SpawnState.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Enemies\FlyerPatrol\AttackState.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\DamagingFire.cs" />
@@ -202,6 +202,8 @@
      <Compile Include="Assets\_Scripts\Gameplay\CameraFollowTarget.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Enemies\PatrolFire\AttackState.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Weapon\WeaponAlternativeSpecial.cs" />
+     <Compile Include="Assets\BossMeleeAttack.cs" />
+     <Compile Include="Assets\_Scripts\Tutorial\EnergyRewardTutorial.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />

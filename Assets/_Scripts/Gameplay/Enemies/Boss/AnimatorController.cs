@@ -63,13 +63,19 @@ namespace Game.Gameplay.Enemies.Boss
         }
         public void AddAnimationEvent(string eventName, Action callback)
         {
-            if (_animationEvents.ContainsKey(eventName)) return;
-            _animationEvents.Add(eventName, callback);
+            if (_animationEvents.ContainsKey(eventName))
+            {
+                _animationEvents[eventName] += callback;
+            }
+            else
+            {
+                _animationEvents.Add(eventName, callback);
+            }
         }
 
-        public void RemoveAnimationEvent(string eventName)
+        public void RemoveAnimationEvent(string eventName, Action callback)
         {
-            _animationEvents.Remove(eventName);
+            _animationEvents[eventName] -= callback;
         }
 
         internal void Combo()

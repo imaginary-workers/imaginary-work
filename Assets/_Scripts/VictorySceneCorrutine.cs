@@ -19,6 +19,9 @@ namespace Game
         [SerializeField] TextMeshProUGUI _textTwo;
         [SerializeField] string _messageTwo;
 
+        [Header("Credits")]
+        [SerializeField] GameObject _creditsCanvas;
+
         [Header("Button")]
         [SerializeField] Button _button;
 
@@ -55,6 +58,9 @@ namespace Game
                 _textTwo.text = _messageTwo.Substring(0, i+1);
                 yield return waitTime;
             }
+
+            _creditsCanvas.SetActive(true);
+            yield return new WaitForSeconds(5f);
 
             do
             {
