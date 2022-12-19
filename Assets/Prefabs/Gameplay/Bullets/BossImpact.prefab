@@ -9769,6 +9769,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6044493328601109274}
+  - component: {fileID: 1680848574992966121}
   m_Layer: 0
   m_Name: BossImpact
   m_TagString: Untagged
@@ -9793,6 +9794,25 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1680848574992966121
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6044493328601109275}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 867bbf689593da84c88d834022c37fa0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _layerDamaging:
+    serializedVersion: 2
+    m_Bits: 8
+  _radius: 10
+  _damage: 25
+  _damagingSource: {fileID: 0}
+  _colorGizmo: {r: 0.7735849, g: 0, b: 0, a: 0}
 --- !u!1 &6044493329547674725
 GameObject:
   m_ObjectHideFlags: 0
