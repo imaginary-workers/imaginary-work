@@ -18,11 +18,12 @@ namespace Game.Gameplay.Enemies.Boss
         Transform _spawnTransform;
         float _timeMax;
         readonly int _rangeOfVisionOfKamikazes;
-
         bool _spawnReady;
         float _time;
         int _countEnemySpawn;
         int _spawnEnemies;
+        GameObject _fireSpawn;
+
 
         public SpawnState(BossStateController bossStateController,
             AnimatorController animatorController,
@@ -32,7 +33,8 @@ namespace Game.Gameplay.Enemies.Boss
             Transform spawnTransform,
             float timeMax,
             int spawnEnemies,
-            int rangeOfVisionOfKamikazes)
+            int rangeOfVisionOfKamikazes,
+            GameObject fireSpawn)
         {
             _bossStateController = bossStateController;
             _animatorController = animatorController;
@@ -43,6 +45,7 @@ namespace Game.Gameplay.Enemies.Boss
             _timeMax = timeMax;
             _spawnEnemies = spawnEnemies;
             _rangeOfVisionOfKamikazes = rangeOfVisionOfKamikazes;
+            _fireSpawn = fireSpawn;
         }
 
         public override void Enter()
@@ -72,7 +75,7 @@ namespace Game.Gameplay.Enemies.Boss
                 }
                 _countEnemySpawn++;
             }
-            if(_countEnemySpawn >= _spawnEnemies)
+            if (_countEnemySpawn >= _spawnEnemies)
             {
                 _bossStateController.ChangeState(_bossStateController.IdleState);
             }
@@ -80,10 +83,12 @@ namespace Game.Gameplay.Enemies.Boss
 
         public override void Exit()
         {
+            _fireSpawn.SetActive(false);
             _bossHealth.IsImmune = false;
         }
         private void SpawnStartHandler()
         {
+            _fireSpawn.SetActive(true);
             _spawnReady = true;
         }
     }

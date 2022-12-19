@@ -16,14 +16,22 @@ namespace Game.Gameplay.Enemies.Boss
         [SerializeField] AudioClip _attackSlam;
         [SerializeField] AudioClip _damageWood;
         [SerializeField] AudioClip _damageGlass;
+        [SerializeField] AudioClip _spawnSound;
         [SerializeField] string _slamEvent;
+        [SerializeField] string _spawnFireSound;
         private void Awake()
         {
             _animatorController.AddAnimationEvent(_slamEvent, AttackSlam);
+            _animatorController.AddAnimationEvent(_spawnFireSound, SpawnSound);
             _enemyDamageableWood.OnTakeDamage += DamageWood;
             _enemyDamageableWood.OnTakeStrongDamage += DamageWood;
             enemyDamageableHead.OnTakeDamage += DamageHead;
             enemyDamageableHead.OnTakeStrongDamage += DamageHead;
+        }
+
+        private void SpawnSound()
+        {
+            _audioSource.PlayOneShot(_spawnSound);
         }
 
         private void DamageHead(int arg1, GameObject arg2)
