@@ -12,10 +12,8 @@ namespace Game.Tutorial
         protected override void AddEnergy(int arg1, GameObject arg2)
         {
             base.AddEnergy(arg1, arg2);
-            if (_tutorialSpecialEvent != null)
-            {
-                _tutorialSpecialEvent.Raise(_tutorialSpecialDialog);
-            }
+            if (_weaponSO.Energy != _weaponSO.MaxEnergy) return;
+            _tutorialSpecialEvent.Raise(_tutorialSpecialDialog);
         }
     }
 }
