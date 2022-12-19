@@ -73,10 +73,13 @@
      <Compile Include="Assets\_Scripts\Gameplay\Platforms\BreakPlatformBrain.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Enemies\EnemyBurstShooter.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Enemies\Boss\BossStateController.cs" />
+     <Compile Include="Assets\BossHealthUI.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Enemies\AbstractDeadState.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Player\WeaponInventory.cs" />
+     <Compile Include="Assets\_Scripts\Tutorial\EnergyRewardTutorial.cs" />
      <Compile Include="Assets\_Scripts\Config\SO\GameplaySettingsSO.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Enemies\MeleeAttack.cs" />
+     <Compile Include="Assets\_Scripts\Gameplay\Weapon\WeaponAlternativeSpecial.cs" />
      <Compile Include="Assets\_Scripts\UI\OptionMenuUI.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Player\JumpComponent.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Enemies\Boss\RangePhaseAttacks.cs" />
@@ -126,6 +129,7 @@
      <Compile Include="Assets\_Scripts\Gameplay\Enemies\FlyerPatrol\DeadState.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Enemies\FollowMelee\DeadState.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Enemies\FlyerPatrol\FlyerSoundController.cs" />
+     <Compile Include="Assets\_Scripts\Gameplay\Enemies\Boss\BossMeleeAttack.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Enemies\Boss\AnimatorController.cs" />
      <Compile Include="Assets\_Scripts\Audio\MusicManager.cs" />
      <Compile Include="Assets\_Scripts\Dialogs\DialogEmitter.cs" />
@@ -143,6 +147,7 @@
      <Compile Include="Assets\_Scripts\EZ Camera Shake\Scripts\CameraShakeInstance.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Enemies\PatrolFire\DeadState.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Player\PlayerSoundController.cs" />
+     <Compile Include="Assets\_Scripts\Gameplay\Enemies\Boss\DamagingStart.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\WeaponUnlonkerComponent.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Lifts\LiftEnd.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Bullet.cs" />
@@ -201,9 +206,6 @@
      <Compile Include="Assets\_Scripts\Gameplay\Enemies\State.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\CameraFollowTarget.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Enemies\PatrolFire\AttackState.cs" />
-     <Compile Include="Assets\_Scripts\Gameplay\Weapon\WeaponAlternativeSpecial.cs" />
-     <Compile Include="Assets\BossMeleeAttack.cs" />
-     <Compile Include="Assets\_Scripts\Tutorial\EnergyRewardTutorial.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
@@ -220,6 +222,7 @@
      <None Include="Assets\TextMesh Pro\Shaders\TMPro_Surface.cginc" />
      <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Masking.shader" />
+     <None Include="Assets\Art\Licences\metal-metal-dark-matter-111451-license.txt" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF Overlay.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Mobile.shader" />
      <None Include="Assets\TextMesh Pro\Fonts\LiberationSans - OFL.txt" />

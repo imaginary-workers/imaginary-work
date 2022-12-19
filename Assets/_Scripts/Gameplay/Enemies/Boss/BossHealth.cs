@@ -23,6 +23,7 @@ namespace Game.Gameplay.Enemies.Boss
         public int CurrentPhase { get => _currentPhase; private set => _currentPhase = value; }
         public EventSO EventDead { get => _eventDead; }
         public int Health { get => _bossHealth.value;  }
+        public int MaxHealth { get => _maxHealth;  }
 
         public event Action<int, GameObject> OnTakeDamage;
         public event Action<int, GameObject> OnTakeStrongDamage;
@@ -85,11 +86,12 @@ namespace Game.Gameplay.Enemies.Boss
                 {
                     OnDeath?.Invoke(GameManager.Player);
                 }
-            OnTakeAnyDamage?.Invoke();
+                OnTakeAnyDamage?.Invoke();
             }
             else
             {
                 _bossHealth.value -= damage;
+                OnTakeAnyDamage?.Invoke();
                 if (
                     CurrentPhase == 1 && _bossHealth.value > _endPhase1 &&
                     _bossHealth.value <= _endPhase1 + amountToWeakBeforeEndPhase
