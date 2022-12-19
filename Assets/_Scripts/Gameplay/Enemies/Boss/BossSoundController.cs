@@ -45,7 +45,7 @@ namespace Game.Gameplay.Enemies.Boss
         }
         private void OnDestroy()
         {
-            _animatorController.RemoveAnimationEvent(_slamEvent);
+            _animatorController.RemoveAnimationEvent(_slamEvent, AttackSlam);
         }
         public void DamageWood(int arg1, GameObject arg2)
         {

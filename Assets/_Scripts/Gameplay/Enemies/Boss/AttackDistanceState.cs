@@ -38,7 +38,7 @@ namespace Game.Gameplay.Enemies.Boss
 
         public override void Exit()
         {
-            _animatorController.RemoveAnimationEvent(_shootEvent);
+            _animatorController.RemoveAnimationEvent(_shootEvent, Shooting);
         }
         private void Shooting()
         {

@@ -15,6 +15,10 @@ namespace Game.Gameplay.Enemies.Boss
         [SerializeField] int _attackCounts = 3;
         [SerializeField] float _waitBetween;
         [SerializeField] float _waitToIdle;
+        [SerializeField] string _slamLEvent;
+        [SerializeField] string _slamREvent;
+        [SerializeField] private BossMeleeAttack _rightHand;
+        [SerializeField] private BossMeleeAttack _leftHand;
         [Header("Combo Attack")]
         [SerializeField] float _waitComboToIdle;
         [SerializeField] string comboevent;
@@ -38,8 +42,6 @@ namespace Game.Gameplay.Enemies.Boss
         [SerializeField] ObjectPooler _bulletPooler;
         [SerializeField] string shootEvent;
 
-
-
         public IdleState IdleState { get; set; }
         public AttackState AttackState { get; set; }
         public AttackComboState AttackComboState { get; set; }
@@ -50,7 +52,6 @@ namespace Game.Gameplay.Enemies.Boss
 
         protected override void OnAwakeEnemy()
         {
-            //_bossHealth.OnDeath += ChangeToDeathState;
             _rangePhaseAttacks.RangePhaseAttackFilter();
             _player = GameManager.Player;
             IdleState = new IdleState(this, _animatorController, _speed, _player.transform, _minAttackTime, _maxAttackTime, _bossHealth, _rangePhaseAttacks);
@@ -62,6 +63,8 @@ namespace Game.Gameplay.Enemies.Boss
             DeadState = new DeadState(_bossHealth);
             ChangeState(IdleState);
             _bossHealth.OnEnterWeak += ChangeToWeakState;
+            _animatorController.AddAnimationEvent(_slamREvent, SlamREventHanler);
+            _animatorController.AddAnimationEvent(_slamLEvent, SlamLEventHanler);
         }
 
         void Update()
@@ -97,6 +100,8 @@ namespace Game.Gameplay.Enemies.Boss
 
         public virtual void DestroyGameObject(float seconds = 0)
         {
+            _animatorController.RemoveAnimationEvent(_slamLEvent, SlamLEventHanler);
+            _animatorController.RemoveAnimationEvent(_slamREvent, SlamREventHanler);
             _bossHealth.OnEnterWeak -= ChangeToWeakState;
             Destroy(gameObject, seconds);
         }
@@ -106,6 +111,16 @@ namespace Game.Gameplay.Enemies.Boss
             var deadState = DeadState as AbstractDeadState;
             deadState.Damaging = damaging;
             ChangeState(DeadState);
+        }
+
+        void SlamLEventHanler()
+        {
+            _leftHand.Attack();
+        }
+         
+        void SlamREventHanler()
+        {
+            _rightHand.Attack();
         }
     }
 }
