@@ -249,7 +249,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce7d1e32fad2a9e4fa02fd9e363bfcd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damage: 1
+  _damage: 34
   _element: {fileID: 11400000, guid: acc81f72dbdb81b40b95f8578c3fba01, type: 2}
 --- !u!114 &7273938612496142550
 MonoBehaviour:
@@ -266,6 +266,10 @@ MonoBehaviour:
   _speed: 16
   _timeToDisable: 2
   _trail: {fileID: 1569349650795147577}
+  _shakeOnShoot: 0
+  _magnitud: 1
+  _roughness: 3
+  _fadeOutTime: 2
 --- !u!54 &5201573200370476491
 Rigidbody:
   m_ObjectHideFlags: 0

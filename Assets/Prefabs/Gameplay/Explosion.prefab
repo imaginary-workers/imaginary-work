@@ -4987,7 +4987,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85ed7111929482549a69d5eb7d9b2636, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damage: 30
+  _damage: 350
   _element: {fileID: 0}
   _bossLayer: 99
 --- !u!114 &9096513766479978669
@@ -5005,3 +5005,7 @@ MonoBehaviour:
   _speed: 0
   _timeToDisable: 2
   _trail: {fileID: 0}
+  _shakeOnShoot: 0
+  _magnitud: 1
+  _roughness: 3
+  _fadeOutTime: 2
