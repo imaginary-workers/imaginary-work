@@ -1117,6 +1117,10 @@ MonoBehaviour:
   _attackCounts: 3
   _waitBetween: 2
   _waitToIdle: 4
+  _slamLEvent: 
+  _slamREvent: 
+  _rightHand: {fileID: 0}
+  _leftHand: {fileID: 0}
   _waitComboToIdle: 0
   comboevent: finish_combo_event
   _bossHealth: {fileID: 1948798396}
@@ -1264,7 +1268,9 @@ MonoBehaviour:
   _attackSlam: {fileID: 8300000, guid: 8005cf03b9193404394c75499c12aec3, type: 3}
   _damageWood: {fileID: 8300000, guid: b60b1ef8b7518b74c86a117a7f4d26c4, type: 3}
   _damageGlass: {fileID: 8300000, guid: f90283cf53bd01641a17677c6c286c6a, type: 3}
+  _spawnSound: {fileID: 0}
   _slamEvent: attack_slam_event
+  _spawnFireSound: 
 --- !u!1 &7016564242531055540
 GameObject:
   m_ObjectHideFlags: 0
@@ -1621,7 +1627,7 @@ Rigidbody:
   m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 3
 --- !u!64 &8227344402571180617
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1779,7 +1785,7 @@ Rigidbody:
   m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 3
 --- !u!64 &93175214
 MeshCollider:
   m_ObjectHideFlags: 0
