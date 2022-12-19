@@ -60,5 +60,10 @@ namespace Game.Gameplay.Player
         {
             _config = _gameplaySettingsSo.PlayerConfig;
         }
+
+        public void ResetTargetPitch()
+        {
+            _targetPitch = 0;
+        }
     }
 }
