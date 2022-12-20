@@ -18,7 +18,6 @@ namespace Game.Gameplay.Enemies.Kamikaze
         public override void Enter()
         {
             base.Enter();
-            AudioSource.PlayClipAtPoint(_explosionClip,_controller.transform.position);
             _controller.Explode();
             _controller.DestroyGameObject();
         }
