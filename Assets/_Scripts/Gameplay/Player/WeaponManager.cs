@@ -13,7 +13,7 @@ namespace Game.Gameplay.Player
         public int CurrentSlot { get; private set; }
         public Weapon CurrentWeapon { get; private set; }
 
-        void Awake()
+        void Start()
         {
             var weapon = _inventory.GetWeapon(CurrentSlot);
             if (weapon != null)
@@ -22,11 +22,8 @@ namespace Game.Gameplay.Player
                 CurrentWeapon.gameObject.SetActive(true);
                 SubscribeWeaponsAnimations();
             }
-        }
 
-        void Start()
-        {
-            GameManager.Instance.UpdateBulletCounter(CurrentWeapon.Ammunition);
+            GameplayUIManager.Instance.UpdateBulletCounter(CurrentWeapon.Ammunition);
         }
 
         public event Action OnWeaponChange;
@@ -43,7 +40,7 @@ namespace Game.Gameplay.Player
             CurrentWeapon.gameObject.SetActive(false);
             CurrentWeapon = weapon;
             CurrentWeapon.gameObject.SetActive(true);
-            GameManager.Instance.UpdateBulletCounter(CurrentWeapon.Ammunition);
+            GameplayUIManager.Instance.UpdateBulletCounter(CurrentWeapon.Ammunition);
             return true;
         }
 

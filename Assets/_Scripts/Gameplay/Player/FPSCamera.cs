@@ -26,11 +26,6 @@ namespace Game.Gameplay.Player
             _pjDamageable.OnTakeDamage += ShackeCamera;
         }
 
-        void Start()
-        {
-            Cursor.lockState = CursorLockMode.Locked;
-        }
-
         void Update()
         {
             UpdateCameraLook();
@@ -64,6 +59,11 @@ namespace Game.Gameplay.Player
         void UpdateConfig()
         {
             _config = _gameplaySettingsSo.PlayerConfig;
+        }
+
+        public void ResetTargetPitch()
+        {
+            _targetPitch = 0;
         }
     }
 }

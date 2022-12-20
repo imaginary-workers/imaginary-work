@@ -13,7 +13,11 @@ namespace Game.Gameplay.Player
 
         void Awake()
         {
-            foreach (var weapon in Weapons) weapon.gameObject.SetActive(false);
+            foreach (var weapon in Weapons)
+            {
+                weapon.Data.Energy = 0;
+                weapon.gameObject.SetActive(false);
+            }
         }
 
         public event Action OnGrab;
@@ -30,7 +34,7 @@ namespace Game.Gameplay.Player
             var weaponIndex = Weapons.FindIndex(weapon => weapon.Data == data);
             if (weaponIndex == -1) return;
             Weapons[weaponIndex].UnLocked();
-            GameManager.Instance.UnlockedWeaponUI(weaponIndex);
+            GameplayUIManager.Instance.UnlockedWeaponUI(weaponIndex);
         }
     }
 }

@@ -19,6 +19,7 @@ GameObject:
   - component: {fileID: 4885114125338213701}
   - component: {fileID: 5854232405504092712}
   - component: {fileID: 5934778444407784298}
+  - component: {fileID: 4006974019232474489}
   m_Layer: 0
   m_Name: Enemy_Flyer_Patrol
   m_TagString: Untagged
@@ -214,8 +215,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc660ccbbe8a4ad4ea828415e3d77778, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _life: 4
+  _life: 300
   _weakness: {fileID: 11400000, guid: acc81f72dbdb81b40b95f8578c3fba01, type: 2}
+  <Mortal>k__BackingField: 1
 --- !u!82 &5934778444407784298
 AudioSource:
   m_ObjectHideFlags: 0
@@ -312,6 +314,20 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &4006974019232474489
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1212517995951844142}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d024a1d7d37e714d800dff4907e5eda, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _enemyDamageable: {fileID: 5854232405504092712}
+  _weaponSO: {fileID: 11400000, guid: 5cb8a3494f6dcbe4f90dc1c9e89125f5, type: 2}
 --- !u!1 &5116940947703408251
 GameObject:
   m_ObjectHideFlags: 0

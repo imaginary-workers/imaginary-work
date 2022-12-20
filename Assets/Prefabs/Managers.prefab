@@ -43,6 +43,60 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d901d7ec5560ca4e848906006e4bfc3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &5539739022130738911
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4023498282035731492}
+  - component: {fileID: 8925355739030418539}
+  m_Layer: 0
+  m_Name: GameplayUIManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4023498282035731492
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5539739022130738911}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8156174785048938696}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8925355739030418539
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5539739022130738911}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10c745e663834b26993a7c350b23c4fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _gameManager: {fileID: 8156174783294118934}
+  _pauseMenu: {fileID: 0}
+  _barController: {fileID: 0}
+  _controlsMenu: {fileID: 0}
+  _deathMessege: {fileID: 0}
+  _bulletCounterText: {fileID: 0}
+  _reserveCounterText: {fileID: 0}
+  _countEnemyText: {fileID: 0}
+  _optionsMenu: {fileID: 0}
+  _pointer: {fileID: 0}
+  _inventoryUI: {fileID: 0}
 --- !u!1 &8156174783109850436
 GameObject:
   m_ObjectHideFlags: 0
@@ -164,19 +218,14 @@ MonoBehaviour:
   _player: {fileID: 0}
   _maxHealth: {fileID: 11400000, guid: 9129bf96da3b7fd4fb166a0a20b1577f, type: 2}
   _health: {fileID: 11400000, guid: c6ad2e414c74f3847861491152a1474f, type: 2}
-  _pauseMenu: {fileID: 0}
-  _deathMessege: {fileID: 0}
-  _pointer: {fileID: 0}
-  _bulletCounterText: {fileID: 0}
-  _reserveCounterText: {fileID: 0}
-  _countEnemyText: {fileID: 0}
-  _inventoryUI: {fileID: 0}
-  _optionsMenu: {fileID: 0}
   _blackScreenAnimator: {fileID: 0}
   _sceneStorage: {fileID: 11400000, guid: b011bacbe9f5c4241abc20885df274b3, type: 2}
+  _deadBossEvent: {fileID: 0}
+  destroyBossScene: {fileID: 0}
   _audioSource: {fileID: 0}
   _gameOver: {fileID: 0}
   _state: 0
+  _gameplayUIManager: {fileID: 8925355739030418539}
 --- !u!1 &8156174785048938699
 GameObject:
   m_ObjectHideFlags: 0
@@ -207,6 +256,7 @@ Transform:
   - {fileID: 8156174783109850435}
   - {fileID: 8156174783294118935}
   - {fileID: 1865116174504159968}
+  - {fileID: 4023498282035731492}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

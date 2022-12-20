@@ -1,14 +1,16 @@
 using Game.Dialogs.SO;
 using Game.Managers;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace Game.Dialogs
 {
     public class DialogManager : MonoBehaviour
     {
         [SerializeField] DialogEventSO _dialogEvent;
-        [SerializeField] private GameObject _canvas;
-        [SerializeField] private DialogUI _dialogUI;
+        [SerializeField] GameObject _canvas;
+        [SerializeField] DialogUI _dialogUI;
+        bool _onDialog = false;
 
         void OnEnable()
         {
@@ -22,17 +24,26 @@ namespace Game.Dialogs
 
         void DialogHandler(DialogSO dialog)
         {
-            GameManager.Instance.CanPause = false;
-            PlayManager.Instance.CanvasController(true, false);
+            _onDialog = true;
+            GameplayUIManager.Instance.CanPause = false;
+            PlayManager.Instance.CanvasController(true);
             _canvas.SetActive(true);
             _dialogUI.StartDialog(dialog);
         }
 
         public void DialogFinished()
         {
-            GameManager.Instance.CanPause = true;
-            PlayManager.Instance.CanvasController(false, false);
+            _onDialog = false;
+            GameplayUIManager.Instance.CanPause = true;
+            PlayManager.Instance.CanvasController(false);
             _canvas.SetActive(false);
+        }
+        public void NextSentenceDialog(InputAction.CallbackContext context)
+        {
+            if (context.performed &&_onDialog)
+            {
+                _dialogUI.SkipToNext();
+            }
         }
     }
 }
