@@ -4,11 +4,11 @@ namespace Game.Gameplay.Enemies.PatrolFire
 {
     public class TakeStrongDamageState : State
     {
-        PatrolFireStateController _stateController;
-        NavMeshAgent _agent;
-        AnimatorController _animatorController;
-        VisualField _visualField;
-        VisualField _visualFieldSound;
+        readonly NavMeshAgent _agent;
+        readonly AnimatorController _animatorController;
+        readonly PatrolFireStateController _stateController;
+        readonly VisualField _visualField;
+        readonly VisualField _visualFieldSound;
 
         public TakeStrongDamageState(
             PatrolFireStateController stateController,
@@ -16,7 +16,7 @@ namespace Game.Gameplay.Enemies.PatrolFire
             AnimatorController animatorController,
             VisualField visualField,
             VisualField visualFieldSound
-            )
+        )
         {
             _stateController = stateController;
             _agent = agent;

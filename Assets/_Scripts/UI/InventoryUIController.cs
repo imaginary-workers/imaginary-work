@@ -8,11 +8,11 @@ namespace Game.UI
         [SerializeField] Image[] _slotFrame;
         [SerializeField] Image[] _slotIcon;
 
-        [Header("Colors")]
-        [SerializeField] Color _activeColor;
+        [Header("Colors")] [SerializeField] Color _activeColor;
+
         [SerializeField] Color _inacvtiveColor;
 
-        int _currentIndex = 0;
+        int _currentIndex;
 
         void Start()
         {
@@ -21,8 +21,8 @@ namespace Game.UI
 
         public void DesactiveAllSlots()
         {
-            
         }
+
         public void SetSlotColorActive(int index)
         {
             if (index == _currentIndex || index < 0 || index >= _slotFrame.Length) return;

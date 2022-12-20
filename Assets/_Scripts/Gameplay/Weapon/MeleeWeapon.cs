@@ -1,5 +1,6 @@
 using System;
 using Game.Gameplay.Player;
+using Game.Managers;
 using UnityEngine;
 
 namespace Game.Gameplay.Weapons
@@ -7,7 +8,15 @@ namespace Game.Gameplay.Weapons
     public class MeleeWeapon : Weapon
     {
         [SerializeField] Damaging _damaging;
+        [SerializeField] GameObject player;
+        [SerializeField] SwayBehaviour _sway;
+        [SerializeField] GameObject _explosion;
+        [SerializeField] Transform _pointOfExplosion;
+        [SerializeField] AudioClip _chargeSpecial;
+        [SerializeField] AudioClip _special;
+        [SerializeField] FPSCamera _fps;
         PlayerAnimationManager _animationManager;
+        Vector3 _offset;
 
         void Awake()
         {
@@ -16,13 +25,21 @@ namespace Game.Gameplay.Weapons
             _damaging.OnStrongHit += TriggerOnStrongHitFeedback;
         }
 
-        private void OnDestroy()
+        void Start()
+        {
+            _offset = _sway.transform.position;
+        }
+
+        void OnDestroy()
         {
             _damaging.OnHit -= TriggerOnHitFeedback;
             _damaging.OnStrongHit -= TriggerOnStrongHitFeedback;
         }
 
-        public override void StartAttack() { }
+        public override void StartAttack()
+        {
+        }
+
         public override void PerformedAttack()
         {
             if (!canAttack) return;
@@ -30,7 +47,9 @@ namespace Game.Gameplay.Weapons
             StartMeleeAnimation();
         }
 
-        public override void EndAttack() { }
+        public override void EndAttack()
+        {
+        }
 
         public override void CancelAttack()
         {
@@ -45,11 +64,41 @@ namespace Game.Gameplay.Weapons
             animationManager.AddAnimationEvent("end_melee_heatbox", EVENT_END_HITBOX);
             animationManager.AddAnimationEvent("end_melee_ani", EVENT_FINISH_ANI);
             animationManager.AddAnimationEvent("no_hit_melee", EVENT_NO_HIT_FEEDBACK);
+            animationManager.AddAnimationEvent("start_special_event", EVENT_START_SPECIAL);
+            animationManager.AddAnimationEvent("end_special_event", EVENT_END_SPECIAL);
+            animationManager.AddAnimationEvent("spawn_explosion_event", EVENT_SPAWN_EXPLOSION);
+        }
+
+        public override void StartSpecial()
+        {
+
+        }
+
+        public override void PerformedSpecial()
+        {
+            if (!canAttack || _weaponData.Energy != _weaponData.MaxEnergy) return;
+            canAttack = false;
+            StartMeleeSpecialAnimation();
+            _weaponData.Energy = 0;
+        }
+
+        public override void EndSpecial()
+        {
         }
 
         void EVENT_NO_HIT_FEEDBACK()
         {
             _audioSource.PlayOneShot(_weaponData.NoHitSound);
+        }
+
+        void TriggerOnStrongHitFeedback()
+        {
+            _animationManager.StrongHitAnimation();
+        }
+
+        void TriggerOnHitFeedback()
+        {
+            _animationManager.HitAnimation();
         }
 
         #region Anim Callbacks
@@ -68,26 +117,46 @@ namespace Game.Gameplay.Weapons
         {
             _damaging?.gameObject.SetActive(true);
         }
+        
+        void EVENT_START_SPECIAL()
+        {
+            _audioSource.PlayOneShot(_chargeSpecial);
+            PlayManager.Instance.SetPlayerControlActive(false, true);
+            _sway.transform.position = player.transform.position + _offset;
+        }
+
+        void EVENT_SPAWN_EXPLOSION()
+        {
+            _audioSource.PlayOneShot(_special);
+            var e = Instantiate(_explosion);
+            e.transform.position = _pointOfExplosion.position;
+            e.transform.forward = player.transform.forward;
+            e.GetComponent<Bullet>()?.Shoot(Vector3.zero);
+        }
+
+        void EVENT_END_SPECIAL()
+        {
+            PlayManager.Instance.SetPlayerControlActive(true);
+            _sway.enabled = true;
+            canAttack = true;
+            _fps.ResetTargetPitch();
+        }
 
         void StartMeleeAnimation()
         {
             _animationManager.AttackMelee();
         }
 
-        private void StopMeleeAnimation()
+        void StartMeleeSpecialAnimation()
+        {
+            _animationManager.AttackMeleeSpecial();
+        }
+
+        void StopMeleeAnimation()
         {
             _animationManager.CancelAttact();
         }
+
         #endregion
-
-        void TriggerOnStrongHitFeedback()
-        {
-            _animationManager.StrongHitAnimation();//
-        }
-
-        void TriggerOnHitFeedback()
-        {
-            _animationManager.HitAnimation();
-        }
     }
 }

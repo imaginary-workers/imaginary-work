@@ -3,17 +3,12 @@ using UnityEngine;
 
 namespace Game.Gameplay.Enemies.CollectableEnemy
 {
-    public class MinionEnemy: FollowMeleeStateController
+    public class MinionEnemy : FollowMeleeStateController
     {
         [SerializeField] GameObject _particle;
         [SerializeField] AudioSource _audioSource;
         [SerializeField] AudioClip _audioClip;
         [SerializeField] GameObject _mesh;
-
-        protected override void HitStopEffect()
-        {
-            StartCoroutine(Utils.CO_HitStop(0.3f, 0.001f, ActiveDestroyFeedback));
-        }
 
         void ActiveDestroyFeedback()
         {

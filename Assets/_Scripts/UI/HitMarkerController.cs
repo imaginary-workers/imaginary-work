@@ -6,13 +6,14 @@ namespace Game.UI
 {
     public class HitMarkerController : MonoBehaviour
     {
+        public static HitMarkerController Instance;
         [SerializeField] Color _weakColor;
         [SerializeField] Color _strongColor;
         [SerializeField] Color _deathColor;
         [SerializeField] Image _myImage;
-        [SerializeField, Range(0.01f,1f)] float _duration;
-
-        public static HitMarkerController Instance;
+        [SerializeField] [Range(0.01f, 1f)] float _duration;
+        [SerializeField] AudioSource _audioSource;
+        [SerializeField] AudioClip _onDeadClip;
 
         void Awake()
         {
@@ -23,14 +24,18 @@ namespace Game.UI
         {
             DisplayHitMark(_strongColor);
         }
+
         public void DisplayHitMarkWeak()
         {
             DisplayHitMark(_weakColor);
         }
+
         public void DisplayHitMarkDeath()
         {
             DisplayHitMark(_deathColor);
+            _audioSource.PlayOneShot(_onDeadClip);
         }
+
         void DisplayHitMark(Color color)
         {
             StopAllCoroutines();
@@ -40,17 +45,17 @@ namespace Game.UI
 
         IEnumerator CO_HitMarkVanish()
         {
-            float waitTime = 0.01f / _duration;
+            var waitTime = 0.01f / _duration;
 
-            do {
-                Color c = _myImage.color;
+            do
+            {
+                var c = _myImage.color;
 
                 c.a -= waitTime;
 
                 _myImage.color = c;
 
                 yield return new WaitForSeconds(waitTime);
-
             } while (_myImage.color.a > 0);
         }
     }

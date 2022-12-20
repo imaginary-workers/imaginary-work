@@ -8,36 +8,35 @@ namespace Game.Gameplay.Player
     {
         [SerializeField] Animator _myAni;
         [SerializeField] WeaponManager _weaponManager;
-        Dictionary<string, Action> _events = new Dictionary<string, Action>();
+        readonly Dictionary<string, Action> _events = new Dictionary<string, Action>();
+
+        void Awake()
+        {
+            _weaponManager.OnWeaponChange += SwitchWeapon;
+        }
 
         public void AddAnimationEvent(string eventName, Action callback)
         {
             if (_events.ContainsKey(eventName))
-            {
                 _events[eventName] += callback;
-            }
             else
-            {
                 _events.Add(eventName, callback);
-            }
         }
-        private void Awake()
-        {
-            _weaponManager.OnWeaponChange += SwitchWeapon;
-        }
+
         public void RemoveAnimationEvent(string eventName)
         {
             _events.Remove(eventName);
         }
+
         /**
-         *  It get call from the animation events
+         * It get call from the animation events
          */
         public void PLAYER_EVENT(string eventName)
         {
             if (!_events.ContainsKey(eventName)) return;
             _events[eventName]?.Invoke();
         }
-        
+
         public void AttackMelee()
         {
             _myAni.SetTrigger("MeleeTrigger");
@@ -52,6 +51,7 @@ namespace Game.Gameplay.Player
         {
             _myAni.SetTrigger("PistolTrigger");
         }
+
         public void FireShooter()
         {
             _myAni.SetTrigger("FireTrigger");
@@ -66,10 +66,12 @@ namespace Game.Gameplay.Player
         {
             _myAni.SetBool("IsSprinting", false);
         }
+
         public void StartReloading()
         {
             _myAni.SetTrigger("ReloadTrigger");
         }
+
         public void SwitchWeapon()
         {
             _myAni.SetTrigger("WeaponChange");
@@ -96,10 +98,25 @@ namespace Game.Gameplay.Player
             _myAni.ResetTrigger("PistolTrigger");
             _myAni.ResetTrigger("FireTrigger");
         }
+
         public void CancelReload()
         {
             _myAni.ResetTrigger("ReloadTrigger");
         }
-       
+
+        public void AttackMeleeSpecial()
+        {
+            _myAni.SetTrigger("HammerSpecial");
+        }
+        
+        public void AttackPistolSpecial()
+        {
+            _myAni.SetTrigger("PistolSpecial");
+        }
+
+        public void AttackFireSpecial()
+        {
+            _myAni.SetTrigger("FireSpecial");
+        }
     }
 }

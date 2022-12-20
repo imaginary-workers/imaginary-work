@@ -1,4 +1,6 @@
-﻿namespace Game.Gameplay.Enemies
+﻿using UnityEngine;
+
+namespace Game.Gameplay.Enemies
 {
     public abstract class State
     {

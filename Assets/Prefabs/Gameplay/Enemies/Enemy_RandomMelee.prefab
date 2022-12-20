@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4976006481002420660}
   - component: {fileID: 8846074023536706980}
   - component: {fileID: 2351737370147773741}
+  - component: {fileID: 3129759943887197970}
   m_Layer: 7
   m_Name: Enemy_RandomMelee
   m_TagString: Untagged
@@ -84,9 +85,9 @@ NavMeshAgent:
   m_AgentTypeID: 0
   m_Radius: 0.5
   m_Speed: 3.5
-  m_Acceleration: 8
+  m_Acceleration: 100
   avoidancePriority: 50
-  m_AngularSpeed: 120
+  m_AngularSpeed: 500
   m_StoppingDistance: 1
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
@@ -139,7 +140,6 @@ MonoBehaviour:
   _animatorController: {fileID: 3845487164276731176}
   _ragdoll: {fileID: 1729910816896627537}
   _collider: {fileID: 2887304925957310152}
-  _hitPoint: {fileID: 0}
   _damaging: {fileID: 6362276152600465228}
 --- !u!114 &7268778590236066481
 MonoBehaviour:
@@ -157,12 +157,17 @@ MonoBehaviour:
   _waitBetweenPointInSeconds: 1
   _waitOnEnable: 1
   _agent: {fileID: 1819776211655567606}
-  _waypoints: []
+  _waypoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   _cycle: 0
+  _random: 1
   _pointRadiusGizmos: 0.55
   _sphereColor: {r: 1, g: 0, b: 0, a: 1}
   _lineColor: {r: 0, g: 1, b: 0, a: 1}
-  _random: 1
 --- !u!114 &3845487164276731176
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -227,7 +232,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _drop1: {fileID: 3247428901600231908, guid: 8f8834a19a7529948bd46c775dcc0296, type: 3}
   _drop2: {fileID: 8026061991337280964, guid: cf8bc611d69f2974ca930ab0af4672c2, type: 3}
-  _chancePercentage: 0.5
+  _chancePercentage: 0.505
 --- !u!114 &8846074023536706980
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -240,8 +245,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc660ccbbe8a4ad4ea828415e3d77778, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _life: 10
+  _life: 300
   _weakness: {fileID: 11400000, guid: cba21a7574166b54482bca8fd5fe4f07, type: 2}
+  <Mortal>k__BackingField: 1
 --- !u!82 &2351737370147773741
 AudioSource:
   m_ObjectHideFlags: 0
@@ -338,6 +344,20 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &3129759943887197970
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1871783242920672996}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d024a1d7d37e714d800dff4907e5eda, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _enemyDamageable: {fileID: 8846074023536706980}
+  _weaponSO: {fileID: 11400000, guid: b764a1e102716434eb76f054bfc5bf16, type: 2}
 --- !u!1 &3410269104207759678
 GameObject:
   m_ObjectHideFlags: 0
@@ -384,6 +404,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _animator: {fileID: 3117244702086275719}
+  _chest: {fileID: 2113817967208235024}
+  _knockbackForce: 150
 --- !u!1001 &5425753226825585282
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -522,6 +544,10 @@ PrefabInstance:
     - target: {fileID: 1352627416256555352, guid: a0b28aafe03c9c54bad899a0dc95d999, type: 3}
       propertyPath: m_ConnectedAnchor.x
       value: 0.000000007450581
+      objectReference: {fileID: 0}
+    - target: {fileID: 1352627416256555352, guid: a0b28aafe03c9c54bad899a0dc95d999, type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: 0.37520126
       objectReference: {fileID: 0}
     - target: {fileID: 1352627416256555352, guid: a0b28aafe03c9c54bad899a0dc95d999, type: 3}
       propertyPath: m_ConnectedAnchor.z
@@ -1299,6 +1325,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc074d1f718a57c4abcb4c7d6e25f9f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!54 &2113817967208235024 stripped
+Rigidbody:
+  m_CorrespondingSourceObject: {fileID: 6204253766164107922, guid: a0b28aafe03c9c54bad899a0dc95d999, type: 3}
+  m_PrefabInstance: {fileID: 5425753226825585282}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1645063085581254814 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6744234970106270236, guid: a0b28aafe03c9c54bad899a0dc95d999, type: 3}

@@ -1,7 +1,6 @@
-
+using System;
 using Game.Gameplay.Weapons;
 using Game.Managers;
-using System;
 using UnityEngine;
 
 namespace Game.Gameplay.Player
@@ -10,11 +9,11 @@ namespace Game.Gameplay.Player
     {
         [SerializeField] WeaponInventory _inventory;
         [SerializeField] PlayerAnimationManager _animationManager;
-        public event Action OnWeaponChange;
 
-        public int CurrentSlot { get; private set; } = 0;
+        public int CurrentSlot { get; private set; }
         public Weapon CurrentWeapon { get; private set; }
-        void Awake()
+
+        void Start()
         {
             var weapon = _inventory.GetWeapon(CurrentSlot);
             if (weapon != null)
@@ -23,12 +22,11 @@ namespace Game.Gameplay.Player
                 CurrentWeapon.gameObject.SetActive(true);
                 SubscribeWeaponsAnimations();
             }
+
+            GameplayUIManager.Instance.UpdateBulletCounter(CurrentWeapon.Ammunition);
         }
 
-        void Start()
-        {
-            GameManager.Instance.UpdateBulletCounter(CurrentWeapon.Ammunition);
-        }
+        public event Action OnWeaponChange;
 
         public bool SwitchWeapon(int slot)
         {
@@ -42,7 +40,7 @@ namespace Game.Gameplay.Player
             CurrentWeapon.gameObject.SetActive(false);
             CurrentWeapon = weapon;
             CurrentWeapon.gameObject.SetActive(true);
-            GameManager.Instance.UpdateBulletCounter(CurrentWeapon.Ammunition);
+            GameplayUIManager.Instance.UpdateBulletCounter(CurrentWeapon.Ammunition);
             return true;
         }
 
@@ -61,10 +59,7 @@ namespace Game.Gameplay.Player
 
         void SubscribeWeaponsAnimations()
         {
-            foreach (var weapon in _inventory.Weapons)
-            {
-                weapon.SubscribeToAnimationEvents(_animationManager);
-            }
+            foreach (var weapon in _inventory.Weapons) weapon.SubscribeToAnimationEvents(_animationManager);
         }
     }
 }

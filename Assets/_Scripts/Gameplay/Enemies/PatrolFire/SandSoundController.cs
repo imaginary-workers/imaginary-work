@@ -1,8 +1,6 @@
-using Game.Gameplay.Enemies;
 using UnityEngine;
 
-
-namespace Game
+namespace Game.Gameplay.Enemies.PatrolFire
 {
     public class SandSoundController : MonoBehaviour
     {
@@ -11,14 +9,17 @@ namespace Game
         [SerializeField] AudioClip _takeDamage;
         [SerializeField] EnemyDamageable _enemyDamageable;
 
-        private void Awake()
+        void Awake()
         {
             _enemyDamageable.OnTakeDamage += TakeDamage;
-        } 
+            _enemyDamageable.OnTakeStrongDamage += TakeDamage;
+        }
+
         public void Attack()
         {
             _audio.PlayOneShot(_attack);
         }
+
         public void TakeDamage(int damage, GameObject damaging)
         {
             _audio.PlayOneShot(_takeDamage);

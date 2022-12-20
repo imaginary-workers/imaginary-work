@@ -1,13 +1,15 @@
-﻿namespace Game.Config
+﻿using System;
+
+namespace Game.Config
 {
-    [System.Serializable]
+    [Serializable]
     public class PlayerConfig
     {
         public float topClamp = 90.0f;
         public float bottomClamp = -90.0f;
         public float rotationSpeed = 20f;
-        public bool invertedYAxis = false;
-        public bool invertedXAxis = false;
+        public bool invertedYAxis;
+        public bool invertedXAxis;
 
         public PlayerConfig(PlayerConfig playerConfig)
         {

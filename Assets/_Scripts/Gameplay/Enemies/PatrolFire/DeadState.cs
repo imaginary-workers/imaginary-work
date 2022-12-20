@@ -1,18 +1,17 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.AI;
 
 namespace Game.Gameplay.Enemies.PatrolFire
 {
     public class DeadState : AbstractDeadState
     {
-        PatrolFireStateController _stateController;
-        Ragdoll _ragdoll;
-        float _secondsToDestroy;
-        NavMeshAgent _agent;
-        SpawnDrops _spawn;
-        Collider _enemyCollider;
-        float _currentSecond = 0f;
+        readonly NavMeshAgent _agent;
+        float _currentSecond;
+        readonly Collider _enemyCollider;
+        readonly Ragdoll _ragdoll;
+        readonly float _secondsToDestroy;
+        readonly SpawnDrops _spawn;
+        readonly PatrolFireStateController _stateController;
 
         public DeadState(
             PatrolFireStateController stateController,
@@ -20,9 +19,8 @@ namespace Game.Gameplay.Enemies.PatrolFire
             float secondToDestroy,
             NavMeshAgent agent,
             SpawnDrops spawner,
-            Action hitStop,
             Collider enemyCollider
-            ) : base(hitStop)
+        )
         {
             _ragdoll = ragdoll;
             _secondsToDestroy = secondToDestroy;
@@ -34,24 +32,21 @@ namespace Game.Gameplay.Enemies.PatrolFire
 
         public override void Enter()
         {
+            base.Enter();
             _agent.speed = 0;
             _agent.isStopped = true;
             _enemyCollider.enabled = false;
-            base.Enter();
             _spawn.Drop();
             _ragdoll.SetEnabled(true);
+            _ragdoll.Knockback(Damaging.transform.forward);
         }
 
         public override void Update()
         {
             if (_currentSecond < _secondsToDestroy)
-            {
                 _currentSecond += Time.deltaTime;
-            }
             else
-            {
                 Exit();
-            }
         }
 
         public override void Exit()
