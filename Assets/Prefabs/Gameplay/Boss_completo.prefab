@@ -86,7 +86,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1523256642384487196}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -25, z: 73}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4937654318784458510}
@@ -195,6 +195,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7514348128072125606, guid: 09ebd703d0b99614d8ca87cdf320313b, type: 3}
+      propertyPath: m_SortingOrder
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 7514348128588283020, guid: 09ebd703d0b99614d8ca87cdf320313b, type: 3}
       propertyPath: m_Value
       value: 1
@@ -243,18 +247,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 795442450058978772}
     m_Modifications:
-    - target: {fileID: 1948798396, guid: 946c36826aa200c45b633315e1859434, type: 3}
-      propertyPath: _endPhase1
-      value: 2000
-      objectReference: {fileID: 0}
-    - target: {fileID: 1948798396, guid: 946c36826aa200c45b633315e1859434, type: 3}
-      propertyPath: _endPhase2
-      value: 1000
-      objectReference: {fileID: 0}
-    - target: {fileID: 1948798396, guid: 946c36826aa200c45b633315e1859434, type: 3}
-      propertyPath: _maxHealth
-      value: 3000
-      objectReference: {fileID: 0}
     - target: {fileID: 1948798396, guid: 946c36826aa200c45b633315e1859434, type: 3}
       propertyPath: amountToWeakBeforeEndPhase
       value: 300

@@ -15,6 +15,10 @@ namespace Game.UI
         [SerializeField] AudioSource _audioSource;
         [SerializeField] AudioClip _onDeadClip;
 
+        public void Stop()
+        {
+            StopAllCoroutines();
+        }
         void Awake()
         {
             Instance = this;

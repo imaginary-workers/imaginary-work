@@ -8,11 +8,16 @@ namespace Game.Gameplay.Enemies.Boss
         [SerializeField] float _radius;
         [SerializeField] int _damage;
         [SerializeField] GameObject _damagingSource;
+        [SerializeField] Damaging _damaging;
 
         public GameObject DamagingSource
         {
             get => _damagingSource != null ? _damagingSource : gameObject;
-            set => _damagingSource = value;
+            set
+            {
+                _damagingSource = value;
+                _damaging.EnemySource = value;
+            }
         }
 
         public void Start()
@@ -26,10 +31,14 @@ namespace Game.Gameplay.Enemies.Boss
 
 #if UNITY_EDITOR
         [SerializeField] Color _colorGizmo;
+        [SerializeField] bool _gizmosActive;
         private void OnDrawGizmos()
         {
-            Gizmos.color = _colorGizmo;
-            Gizmos.DrawSphere(transform.position, _radius);
+            if (!_gizmosActive)
+            {
+                Gizmos.color = _colorGizmo;
+                Gizmos.DrawSphere(transform.position, _radius);
+            }
         }
 #endif
     }

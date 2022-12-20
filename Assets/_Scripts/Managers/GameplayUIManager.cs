@@ -85,6 +85,7 @@ namespace Game.Managers
 
         public void SetPointerActive(bool active)
         {
+            HitMarkerController.Instance.Stop();
             _pointer.SetActive(active);
         }
 
