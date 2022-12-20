@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7139057511753628082}
   - component: {fileID: 8510298003451599768}
   - component: {fileID: 8059066325010345153}
-  m_Layer: 7
+  m_Layer: 13
   m_Name: RB
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -90,7 +90,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 0
-  _timeToDisable: 0.1
+  _timeToDisable: 0.05
   _trail: {fileID: 0}
   _shakeOnShoot: 1
   _magnitud: 1
@@ -107,7 +107,7 @@ GameObject:
   - component: {fileID: 6044493328155951874}
   - component: {fileID: 6044493328155951884}
   - component: {fileID: 6044493328155951885}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: dust
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4987,7 +4987,7 @@ GameObject:
   - component: {fileID: 6044493328597961679}
   - component: {fileID: 6044493328597961673}
   - component: {fileID: 6044493328597961678}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9866,7 +9866,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6044493328601109274}
   - component: {fileID: 1680848574992966121}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: BossImpact
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9906,10 +9906,11 @@ MonoBehaviour:
   _layerDamaging:
     serializedVersion: 2
     m_Bits: 8
-  _radius: 5
+  _radius: 1
   _damage: 25
   _damagingSource: {fileID: 0}
   _damaging: {fileID: 8510298003451599768}
+  _floorDamaging: {fileID: 8059066325010345153}
   _colorGizmo: {r: 0.7735849, g: 0, b: 0, a: 1}
   _gizmosActive: 0
 --- !u!1 &6044493329547674725
@@ -9923,7 +9924,7 @@ GameObject:
   - component: {fileID: 6044493329547674724}
   - component: {fileID: 6044493329547674726}
   - component: {fileID: 6044493329547674727}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: ShockWave
   m_TagString: Untagged
   m_Icon: {fileID: 0}

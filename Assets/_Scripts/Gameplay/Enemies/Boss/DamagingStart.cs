@@ -9,6 +9,7 @@ namespace Game.Gameplay.Enemies.Boss
         [SerializeField] int _damage;
         [SerializeField] GameObject _damagingSource;
         [SerializeField] Damaging _damaging;
+        [SerializeField] Bullet _floorDamaging;
 
         public GameObject DamagingSource
         {
@@ -22,6 +23,7 @@ namespace Game.Gameplay.Enemies.Boss
 
         public void Start()
         {
+            _floorDamaging.Shoot(Vector3.zero);
             var colliders = Physics.OverlapSphere(transform.position, _radius, _layerDamaging);
             foreach (var collider in colliders)
             {

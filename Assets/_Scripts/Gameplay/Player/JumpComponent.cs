@@ -50,9 +50,9 @@ namespace Game.Gameplay.Player
             {
                 if (!IsOnTheFloor)
                 {
-                    _alreadyJump = false;
                     _extraTime = 0;
                 }
+                _alreadyJump = false;
 
                 IsOnTheFloor = true;
             }
