@@ -30,6 +30,7 @@ namespace Game.Managers
         [SerializeField] Text _bulletCounterText;
         [SerializeField] Text _reserveCounterText;
         [SerializeField] Text _countEnemyText;
+        [SerializeField] Animator _countEnemyAnimator;
         [Header("Option Menu")]
         [SerializeField] GameObject _optionsMenu;
         [Header("GameCanvas Element")]
@@ -127,6 +128,9 @@ namespace Game.Managers
         public void UpdateEnemyCount()
         {
             _countEnemyText.text = Enemy.CountEnemy.ToString();
+            _countEnemyAnimator.SetTrigger("Update");
+            if (Enemy.CountEnemy <= 0)
+                _countEnemyAnimator.SetTrigger("Clear");
         }
 
         public void SetActiveSlot(int slot)

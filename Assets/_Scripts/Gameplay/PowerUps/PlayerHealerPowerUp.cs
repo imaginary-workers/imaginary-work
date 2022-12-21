@@ -11,7 +11,7 @@ namespace Game.Gameplay.PowerUps
 
         readonly int _healingPower = 15;
 
-        void OnTriggerEnter(Collider other)
+        void OnTriggerStay(Collider other)
         {
             if (!other.CompareTag("Player")) return;
             if (_playerHealth.value >= _playerMaxHealth.value)
