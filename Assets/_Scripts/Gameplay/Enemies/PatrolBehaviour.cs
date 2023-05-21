@@ -70,24 +70,7 @@ namespace Game.Gameplay.Enemies
             StartWaiting(_waitOnEnable);
             UpdateNextDestination();
         }
-#if UNITY_EDITOR
-        void OnDrawGizmos()
-        {
-            for (var i = 0; i < _waypoints.Count; i++)
-            {
-                var currentPosition = _waypoints[i].transform.position;
-                Gizmos.color = _sphereColor;
-                Gizmos.DrawSphere(currentPosition, _pointRadiusGizmos);
-                var nextIdex = i == _waypoints.Count - 1 ? 0 : i + 1;
 
-                if (nextIdex == 0 && !_cycle) return;
-
-                var nextPosition = _waypoints[nextIdex].transform.position;
-                Gizmos.color = _lineColor;
-                Gizmos.DrawLine(currentPosition, nextPosition);
-            }
-        }
-#endif
 
         void ResumePatrolling()
         {
