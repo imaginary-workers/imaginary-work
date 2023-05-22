@@ -15,6 +15,15 @@
                     "initialStateCheck": true
                 },
                 {
+                    "name": "Cheat Add Max Energy",
+                    "type": "Button",
+                    "id": "52c82b3f-dfc7-4ac7-a8fd-f15e746042a1",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "Look",
                     "type": "Value",
                     "id": "4addbe77-fd87-4072-8efd-cf6a7f2db525",
@@ -504,6 +513,17 @@
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
                     "action": "Skip",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "be56ea05-856e-4daa-9d74-da66dcf8a329",
+                    "path": "<Keyboard>/#(P)",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Cheat Add Max Energy",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
