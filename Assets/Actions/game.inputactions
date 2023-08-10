@@ -15,9 +15,27 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Cheat Add Max Energy",
+                    "name": "Cheat Add Max Energy Hammer",
                     "type": "Button",
                     "id": "52c82b3f-dfc7-4ac7-a8fd-f15e746042a1",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Cheat Add Max Energy Pistol",
+                    "type": "Button",
+                    "id": "ef237151-68d8-4ef7-b20d-a3f67bf83409",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Cheat Add Max Energy Flame",
+                    "type": "Button",
+                    "id": "ee06061b-3b2c-4eac-b966-b6fb56c5df9c",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -519,11 +537,33 @@
                 {
                     "name": "",
                     "id": "be56ea05-856e-4daa-9d74-da66dcf8a329",
+                    "path": "<Keyboard>/i",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Cheat Add Max Energy Hammer",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "522b8214-8891-491f-9a3a-51979cd75dfc",
+                    "path": "<Keyboard>/o",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Cheat Add Max Energy Pistol",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "dd4e8334-0e91-45d1-a7ae-a3ed8752f9c2",
                     "path": "<Keyboard>/#(P)",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
-                    "action": "Cheat Add Max Energy",
+                    "action": "Cheat Add Max Energy Flame",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

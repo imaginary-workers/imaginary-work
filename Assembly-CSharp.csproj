@@ -71,6 +71,7 @@
      <Compile Include="Assets\_Scripts\SwayBehaviour.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Enemies\Kamikaze\IdleState.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Platforms\BreakPlatformBrain.cs" />
+     <Compile Include="Assets\_Scripts\Door\Door.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Enemies\EnemyBurstShooter.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Enemies\Boss\BossStateController.cs" />
      <Compile Include="Assets\BossHealthUI.cs" />
@@ -100,6 +101,7 @@
      <Compile Include="Assets\_Scripts\Gameplay\Enemies\LookAtTarget.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Weapon\ShooterWeapon.cs" />
      <Compile Include="Assets\_Scripts\EZ Camera Shake\Scripts\CameraShaker.cs" />
+     <Compile Include="Assets\Luz.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Enemies\PatrolFire\NormalState.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Enemies\CollectableEnemy\DeadState.cs" />
      <Compile Include="Assets\_Scripts\Explosion.cs" />
@@ -124,6 +126,7 @@
      <Compile Include="Assets\_Scripts\Gameplay\Enemies\Kamikaze\DeadState.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\MoveComponent.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Player\WeaponsSoundController.cs" />
+     <Compile Include="Assets\_Scripts\CheatDDWeaponEnergy.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Player\FPSCamera.cs" />
      <Compile Include="Assets\_Scripts\UI\Tutorial.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Enemies\FlyerPatrol\DeadState.cs" />
@@ -206,9 +209,7 @@
      <Compile Include="Assets\_Scripts\Gameplay\Enemies\State.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\CameraFollowTarget.cs" />
      <Compile Include="Assets\_Scripts\Gameplay\Enemies\PatrolFire\AttackState.cs" />
-     <Compile Include="Assets\_Scripts\Door\Door.cs" />
-     <Compile Include="Assets\Luz.cs" />
-     <Compile Include="Assets\_Scripts\CheatDDWeaponEnergy.cs" />
+     <Compile Include="Assets\_Scripts\DDN\RechargeEnergy.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
