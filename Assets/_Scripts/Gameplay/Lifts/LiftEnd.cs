@@ -19,6 +19,7 @@ namespace Game.Gameplay.Lifts
             _checker.OnPlayerEnter += CloseDoors;
 
             _liftDoor.OnClosed += EndGame;
+            _liftDoor.OpenDoors();
         }
 
         void OnDestroy()

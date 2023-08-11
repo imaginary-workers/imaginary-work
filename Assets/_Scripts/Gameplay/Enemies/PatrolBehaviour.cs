@@ -57,6 +57,7 @@ namespace Game.Gameplay.Enemies
                 ResumePatrolling();
             }
 
+            Debug.Log(gameObject);
             if (_agent.remainingDistance <= 0)
             {
                 StartWaiting(_waitBetweenPointInSeconds);
