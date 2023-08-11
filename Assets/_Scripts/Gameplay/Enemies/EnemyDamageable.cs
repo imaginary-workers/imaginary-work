@@ -44,7 +44,6 @@ namespace Game.Gameplay.Enemies
                 _life = 0;
                 OnDeath?.Invoke(damaging);
                 HitMarkerController.Instance.DisplayHitMarkDeath();
-                Destroy(gameObject);
             }
         }
     }
