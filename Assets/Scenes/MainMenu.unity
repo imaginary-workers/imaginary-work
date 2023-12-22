@@ -1149,6 +1149,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Nivel-4_Button (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 1423247240803374604, guid: 8e7346ea43ad2864891011a94d71dc0e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1622294521905013733, guid: 8e7346ea43ad2864891011a94d71dc0e, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 2
@@ -1221,6 +1225,14 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: Game.Scene.SO.SceneSO, Assembly-CSharp
       objectReference: {fileID: 0}
+    - target: {fileID: 3441610689738952652, guid: 8e7346ea43ad2864891011a94d71dc0e, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.516969
+      objectReference: {fileID: 0}
+    - target: {fileID: 3441610689738952652, guid: 8e7346ea43ad2864891011a94d71dc0e, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -302.93
+      objectReference: {fileID: 0}
     - target: {fileID: 4245178091743474358, guid: 8e7346ea43ad2864891011a94d71dc0e, type: 3}
       propertyPath: m_Name
       value: Nivel-1_Button (1)
@@ -1289,6 +1301,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Nivel-3_Button (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 5340013922106624802, guid: 8e7346ea43ad2864891011a94d71dc0e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5502643152552308604, guid: 8e7346ea43ad2864891011a94d71dc0e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5509860321234969088, guid: 8e7346ea43ad2864891011a94d71dc0e, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.516969
+      objectReference: {fileID: 0}
+    - target: {fileID: 5509860321234969088, guid: 8e7346ea43ad2864891011a94d71dc0e, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -105.72
+      objectReference: {fileID: 0}
     - target: {fileID: 5509860321234969089, guid: 8e7346ea43ad2864891011a94d71dc0e, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 2
@@ -1348,6 +1376,14 @@ PrefabInstance:
     - target: {fileID: 6027679998287329151, guid: 8e7346ea43ad2864891011a94d71dc0e, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: Game.Scene.SO.SceneSO, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7121456852971181124, guid: 8e7346ea43ad2864891011a94d71dc0e, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.516969
+      objectReference: {fileID: 0}
+    - target: {fileID: 7121456852971181124, guid: 8e7346ea43ad2864891011a94d71dc0e, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -204.32
       objectReference: {fileID: 0}
     - target: {fileID: 7337956077096328402, guid: 8e7346ea43ad2864891011a94d71dc0e, type: 3}
       propertyPath: m_Pivot.x
@@ -1451,7 +1487,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8103834129098036183, guid: 8e7346ea43ad2864891011a94d71dc0e, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8e7346ea43ad2864891011a94d71dc0e, type: 3}
@@ -2725,7 +2761,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5939159773102209512, guid: cc07491ed5f88344190ef447bd643c90, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7221878884147987622, guid: cc07491ed5f88344190ef447bd643c90, type: 3}
       propertyPath: m_PlayOnAwake
