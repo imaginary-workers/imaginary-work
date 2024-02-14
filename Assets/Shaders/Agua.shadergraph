@@ -1,5 +1,5 @@
 {
-    "m_SGVersion": 3,
+    "m_SGVersion": 2,
     "m_Type": "UnityEditor.ShaderGraph.GraphData",
     "m_ObjectId": "56b8dd28433a478d885764f9038c9921",
     "m_Properties": [
@@ -29,15 +29,6 @@
         }
     ],
     "m_Keywords": [],
-    "m_Dropdowns": [],
-    "m_CategoryData": [
-        {
-            "m_Id": "29e1fc1d0487430cb2b745dacd2e8298"
-        },
-        {
-            "m_Id": "63b6b5b0eb5d42d2870ff9b6a5da207a"
-        }
-    ],
     "m_Nodes": [
         {
             "m_Id": "22077aad5cd147efb42f2b48aa5fdd3b"
@@ -692,11 +683,10 @@
         "serializedMesh": {
             "m_SerializedMesh": "{\"mesh\":{\"instanceID\":0}}",
             "m_Guid": ""
-        },
-        "preventRotation": false
+        }
     },
     "m_Path": "Shader Graphs",
-    "m_GraphPrecision": 1,
+    "m_ConcretePrecision": 0,
     "m_PreviewMode": 2,
     "m_OutputNode": {
         "m_Id": ""
@@ -716,13 +706,9 @@
         "m_GuidSerialized": "0df76684-6493-4d3a-9e18-d0fc2b291c40"
     },
     "m_Name": "Densidad",
-    "m_DefaultRefNameVersion": 1,
-    "m_RefNameGeneratedByDisplayName": "Densidad",
     "m_DefaultReferenceName": "_Densidad",
     "m_OverrideReferenceName": "",
     "m_GeneratePropertyBlock": true,
-    "m_UseCustomSlotLabel": false,
-    "m_CustomSlotLabel": "",
     "m_Precision": 0,
     "overrideHLSLDeclaration": false,
     "hlslDeclarationOverride": 0,
@@ -840,13 +826,9 @@
         "m_GuidSerialized": "feb218d3-beec-42fd-abdf-081cc2a083ac"
     },
     "m_Name": "Transparente",
-    "m_DefaultRefNameVersion": 1,
-    "m_RefNameGeneratedByDisplayName": "Transparente",
     "m_DefaultReferenceName": "_Transparente",
     "m_OverrideReferenceName": "",
     "m_GeneratePropertyBlock": true,
-    "m_UseCustomSlotLabel": false,
-    "m_CustomSlotLabel": "",
     "m_Precision": 0,
     "overrideHLSLDeclaration": false,
     "hlslDeclarationOverride": 0,
@@ -1250,8 +1232,7 @@
     "m_CustomColors": {
         "m_SerializableColors": []
     },
-    "m_Space": 4,
-    "m_PositionSource": 0
+    "m_Space": 4
 }
 
 {
@@ -1569,13 +1550,9 @@
         "m_GuidSerialized": "575d8989-a036-47a3-bfa1-ed68de47eae1"
     },
     "m_Name": "Profundidad",
-    "m_DefaultRefNameVersion": 1,
-    "m_RefNameGeneratedByDisplayName": "Profundidad",
     "m_DefaultReferenceName": "_Profundidad",
     "m_OverrideReferenceName": "",
     "m_GeneratePropertyBlock": true,
-    "m_UseCustomSlotLabel": false,
-    "m_CustomSlotLabel": "",
     "m_Precision": 0,
     "overrideHLSLDeclaration": false,
     "hlslDeclarationOverride": 0,
@@ -1620,8 +1597,7 @@
     "m_CustomColors": {
         "m_SerializableColors": []
     },
-    "m_Space": 0,
-    "m_PositionSource": 0
+    "m_Space": 0
 }
 
 {
@@ -1824,17 +1800,11 @@
     "m_ActiveSubTarget": {
         "m_Id": "b82c8519ec7149ba98d66a60b719d372"
     },
-    "m_AllowMaterialOverride": false,
     "m_SurfaceType": 1,
-    "m_ZTestMode": 4,
-    "m_ZWriteControl": 0,
     "m_AlphaMode": 0,
-    "m_RenderFace": 2,
+    "m_TwoSided": true,
     "m_AlphaClip": false,
-    "m_CastShadows": true,
-    "m_ReceiveShadows": true,
-    "m_CustomEditorGUI": "",
-    "m_SupportVFX": false
+    "m_CustomEditorGUI": ""
 }
 
 {
@@ -2348,13 +2318,9 @@
         "m_GuidSerialized": "c96fe2bf-8717-40da-bca0-8685ed1ca813"
     },
     "m_Name": "EspumaFloat",
-    "m_DefaultRefNameVersion": 1,
-    "m_RefNameGeneratedByDisplayName": "EspumaFloat",
     "m_DefaultReferenceName": "_EspumaFloat",
     "m_OverrideReferenceName": "",
     "m_GeneratePropertyBlock": true,
-    "m_UseCustomSlotLabel": false,
-    "m_CustomSlotLabel": "",
     "m_Precision": 0,
     "overrideHLSLDeclaration": false,
     "hlslDeclarationOverride": 0,
@@ -2768,13 +2734,9 @@
         "m_GuidSerialized": "0c3725d8-5a55-4320-b073-63dc61fb1b7a"
     },
     "m_Name": "EspumaColor",
-    "m_DefaultRefNameVersion": 1,
-    "m_RefNameGeneratedByDisplayName": "EspumaColor",
     "m_DefaultReferenceName": "_EspumaColor",
     "m_OverrideReferenceName": "",
     "m_GeneratePropertyBlock": true,
-    "m_UseCustomSlotLabel": false,
-    "m_CustomSlotLabel": "",
     "m_Precision": 0,
     "overrideHLSLDeclaration": false,
     "hlslDeclarationOverride": 0,
@@ -2785,8 +2747,7 @@
         "b": 2.7137255668640138,
         "a": 0.0
     },
-    "isMainColor": false,
-    "m_ColorMode": 1
+    "m_ColorMode": 0
 }
 
 {
@@ -3774,13 +3735,9 @@
         "m_GuidSerialized": "da79bff4-dd35-4ed5-bd1c-a3b85998651a"
     },
     "m_Name": "Olas",
-    "m_DefaultRefNameVersion": 1,
-    "m_RefNameGeneratedByDisplayName": "Olas",
     "m_DefaultReferenceName": "_Olas",
     "m_OverrideReferenceName": "",
     "m_GeneratePropertyBlock": true,
-    "m_UseCustomSlotLabel": false,
-    "m_CustomSlotLabel": "",
     "m_Precision": 0,
     "overrideHLSLDeclaration": false,
     "hlslDeclarationOverride": 0,
@@ -4093,13 +4050,9 @@
         "m_GuidSerialized": "34deccf8-803d-4f24-9a25-d55e8f0d8290"
     },
     "m_Name": "AguaColor",
-    "m_DefaultRefNameVersion": 1,
-    "m_RefNameGeneratedByDisplayName": "AguaColor",
     "m_DefaultReferenceName": "_AguaColor",
     "m_OverrideReferenceName": "",
     "m_GeneratePropertyBlock": true,
-    "m_UseCustomSlotLabel": false,
-    "m_CustomSlotLabel": "",
     "m_Precision": 0,
     "overrideHLSLDeclaration": false,
     "hlslDeclarationOverride": 0,
@@ -4110,7 +4063,6 @@
         "b": 0.9245283007621765,
         "a": 0.0
     },
-    "isMainColor": false,
     "m_ColorMode": 0
 }
 
@@ -4205,13 +4157,9 @@
         "m_GuidSerialized": "810fe7b6-6b2e-4f50-80f6-b864cebda07b"
     },
     "m_Name": "Speed",
-    "m_DefaultRefNameVersion": 1,
-    "m_RefNameGeneratedByDisplayName": "Speed",
     "m_DefaultReferenceName": "_Speed",
     "m_OverrideReferenceName": "",
     "m_GeneratePropertyBlock": true,
-    "m_UseCustomSlotLabel": false,
-    "m_CustomSlotLabel": "",
     "m_Precision": 0,
     "overrideHLSLDeclaration": false,
     "hlslDeclarationOverride": 0,
