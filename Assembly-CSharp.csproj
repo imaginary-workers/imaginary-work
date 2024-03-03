@@ -54,137 +54,146 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Assets\_Scripts\Utils.cs" />
-    <Compile Include="Assets\_Scripts\Tutorial\NoEnemiesListener.cs" />
     <Compile Include="Assets\_Scripts\Gameplay\Enemies\FlyerPatrol\NormalState.cs" />
-    <Compile Include="Assets\_Scripts\Dialogs\DialogManager.cs" />
     <Compile Include="Assets\_Scripts\Gameplay\Enemies\Enemy.cs" />
-    <Compile Include="Assets\_Scripts\Gameplay\Enemies\PatrolFire\TakeStrongDamageState.cs" />
-    <Compile Include="Assets\_Scripts\Gameplay\Player\PlayerController.cs" />
     <Compile Include="Assets\_Scripts\UI\HitMarkerController.cs" />
     <Compile Include="Assets\_Scripts\Gameplay\Enemies\PatrolFire\AnimatorController.cs" />
     <Compile Include="Assets\_Scripts\Gameplay\PowerUps\ReserveWeaponTrigger.cs" />
     <Compile Include="Assets\_Scripts\Gameplay\Enemies\Boss\AttackState.cs" />
-    <Compile Include="Assets\_Scripts\UI\PlayerDamageIndicator.cs" />
     <Compile Include="Assets\_Scripts\Tutorial\FirstEvent.cs" />
-    <Compile Include="Assets\_Scripts\Managers\PlayManager.cs" />
-    <Compile Include="Assets\_Scripts\Gameplay\Enemies\Boss\WeakState.cs" />
     <Compile Include="Assets\_Scripts\DestroyInSecondsComponent.cs" />
-    <Compile Include="Assets\_Scripts\SwayBehaviour.cs" />
-    <Compile Include="Assets\_Scripts\Gameplay\Enemies\Kamikaze\IdleState.cs" />
-    <Compile Include="Assets\_Scripts\Gameplay\Platforms\BreakPlatformBrain.cs" />
-    <Compile Include="Assets\_Scripts\Door\Door.cs" />
     <Compile Include="Assets\_Scripts\Gameplay\Enemies\EnemyBurstShooter.cs" />
-    <Compile Include="Assets\_Scripts\Gameplay\Enemies\Boss\BossStateController.cs" />
     <Compile Include="Assets\BossHealthUI.cs" />
     <Compile Include="Assets\_Scripts\Gameplay\Enemies\AbstractDeadState.cs" />
     <Compile Include="Assets\_Scripts\Gameplay\Player\WeaponInventory.cs" />
-    <Compile Include="Assets\_Scripts\Tutorial\EnergyRewardTutorial.cs" />
-    <Compile Include="Assets\_Scripts\Config\SO\GameplaySettingsSO.cs" />
-    <Compile Include="Assets\_Scripts\Gameplay\Enemies\MeleeAttack.cs" />
-    <Compile Include="Assets\_Scripts\Gameplay\Weapon\WeaponAlternativeSpecial.cs" />
     <Compile Include="Assets\_Scripts\UI\OptionMenuUI.cs" />
     <Compile Include="Assets\_Scripts\Gameplay\Player\JumpComponent.cs" />
     <Compile Include="Assets\_Scripts\Gameplay\Enemies\Boss\RangePhaseAttacks.cs" />
     <Compile Include="Assets\_Scripts\Gameplay\Enemies\Ragdoll.cs" />
     <Compile Include="Assets\_Scripts\Gameplay\Lifts\LiftDoorAnimations.cs" />
     <Compile Include="Assets\_Scripts\UI\InventoryUIController.cs" />
-    <Compile Include="Assets\_Scripts\Gameplay\Enemies\FollowMelee\TakeStrongDamageState.cs" />
-    <Compile Include="Assets\_Scripts\Managers\GameManager.cs" />
-    <Compile Include="Assets\_Scripts\Gameplay\Enemies\FollowMelee\FollowMeleeStateController.cs" />
-    <Compile Include="Assets\_Scripts\Gameplay\Enemies\FollowMelee\MeleeAttackState.cs" />
     <Compile Include="Assets\_Scripts\Gameplay\Interactable\ObjectDamageable.cs" />
-    <Compile Include="Assets\_Scripts\Gameplay\Enemies\Kamikaze\AnimatorController.cs" />
     <Compile Include="Assets\_Scripts\Gameplay\Player\WeaponController.cs" />
     <Compile Include="Assets\_Scripts\Tutorial\DestroyListenner.cs" />
-    <Compile Include="Assets\_Scripts\Gameplay\Enemies\Kamikaze\KamikazeStateController.cs" />
     <Compile Include="Assets\_Scripts\Gameplay\Lifts\LiftAnimations.cs" />
-    <Compile Include="Assets\_Scripts\UI\MixerUI.cs" />
-    <Compile Include="Assets\_Scripts\Gameplay\Enemies\LookAtTarget.cs" />
-    <Compile Include="Assets\_Scripts\Gameplay\Weapon\ShooterWeapon.cs" />
-    <Compile Include="Assets\_Scripts\EZ Camera Shake\Scripts\CameraShaker.cs" />
-    <Compile Include="Assets\Luz.cs" />
-    <Compile Include="Assets\_Scripts\Gameplay\Enemies\PatrolFire\NormalState.cs" />
     <Compile Include="Assets\_Scripts\Gameplay\Enemies\CollectableEnemy\DeadState.cs" />
     <Compile Include="Assets\_Scripts\Explosion.cs" />
-    <Compile Include="Assets\_Scripts\Gameplay\Weapon\NailsWeapon.cs" />
-    <Compile Include="Assets\_Scripts\Gameplay\Enemies\Boss\BossHealth.cs" />
-    <Compile Include="Assets\_Scripts\Gameplay\Enemies\Boss\BossSoundController.cs" />
-    <Compile Include="Assets\_Scripts\Gameplay\Player\PlayerAnimationManager.cs" />
     <Compile Include="Assets\_Scripts\Gameplay\Weapon\SO\WeaponSO.cs" />
     <Compile Include="Assets\_Scripts\Gameplay\Enemies\FollowMelee\AnimationEvent.cs" />
-    <Compile Include="Assets\_Scripts\Gameplay\ObjectPooler.cs" />
-    <Compile Include="Assets\_Scripts\Gameplay\Platforms\TiltablePlatform.cs" />
-    <Compile Include="Assets\_Scripts\Gameplay\Enemies\FollowMelee\RandomPatrolState.cs" />
-    <Compile Include="Assets\_Scripts\Gameplay\Lifts\LiftStart.cs" />
     <Compile Include="Assets\_Scripts\Gameplay\OnPlayerOver.cs" />
-    <Compile Include="Assets\_Scripts\Gameplay\Player\PointerTarget.cs" />
     <Compile Include="Assets\_Scripts\Gameplay\Enemies\FollowPlayer.cs" />
-    <Compile Include="Assets\_Scripts\Config\AudioConfig.cs" />
     <Compile Include="Assets\_Scripts\Gameplay\Weapon\Weapon.cs" />
     <Compile Include="Assets\_Scripts\Dialogs\SO\DialogSO.cs" />
-    <Compile Include="Assets\_Scripts\Gameplay\Weapon\TriggerWeapon.cs" />
-    <Compile Include="Assets\_Scripts\Gameplay\Enemies\Boss\IdleState.cs" />
     <Compile Include="Assets\_Scripts\Gameplay\Enemies\Kamikaze\DeadState.cs" />
     <Compile Include="Assets\_Scripts\Gameplay\MoveComponent.cs" />
     <Compile Include="Assets\_Scripts\Gameplay\Player\WeaponsSoundController.cs" />
-    <Compile Include="Assets\_Scripts\Gameplay\Player\FPSCamera.cs" />
-    <Compile Include="Assets\_Scripts\UI\Tutorial.cs" />
     <Compile Include="Assets\_Scripts\Gameplay\Enemies\FlyerPatrol\DeadState.cs" />
-    <Compile Include="Assets\_Scripts\Gameplay\Enemies\FollowMelee\DeadState.cs" />
-    <Compile Include="Assets\_Scripts\Gameplay\Enemies\FlyerPatrol\FlyerSoundController.cs" />
-    <Compile Include="Assets\_Scripts\Gameplay\Enemies\Boss\BossMeleeAttack.cs" />
     <Compile Include="Assets\_Scripts\Gameplay\Enemies\Boss\AnimatorController.cs" />
     <Compile Include="Assets\_Scripts\Audio\MusicManager.cs" />
-    <Compile Include="Assets\_Scripts\Dialogs\DialogEmitter.cs" />
     <Compile Include="Assets\_Scripts\Gameplay\Weapon\FlameThrowerWeapon.cs" />
-    <Compile Include="Assets\_Scripts\UI\SingleDamageIndicator.cs" />
-    <Compile Include="Assets\_Scripts\Managers\GameplayConfigManager.cs" />
-    <Compile Include="Assets\_Scripts\Gameplay\Enemies\FollowMelee\MetalSoundController.cs" />
     <Compile Include="Assets\_Scripts\SO\EventSO.cs" />
-    <Compile Include="Assets\_Scripts\Gameplay\Enemies\Boss\SpawnState.cs" />
     <Compile Include="Assets\_Scripts\Gameplay\Enemies\FlyerPatrol\AttackState.cs" />
     <Compile Include="Assets\_Scripts\Gameplay\DamagingFire.cs" />
-    <Compile Include="Assets\_Scripts\UI\SkillBarController.cs" />
     <Compile Include="Assets\_Scripts\Gameplay\Enemies\Boss\DeadState.cs" />
-    <Compile Include="Assets\_Scripts\Gameplay\Platforms\PlatformMovable.cs" />
-    <Compile Include="Assets\_Scripts\EZ Camera Shake\Scripts\CameraShakeInstance.cs" />
-    <Compile Include="Assets\_Scripts\Gameplay\Enemies\PatrolFire\DeadState.cs" />
     <Compile Include="Assets\_Scripts\Gameplay\Player\PlayerSoundController.cs" />
     <Compile Include="Assets\_Scripts\Gameplay\Enemies\Boss\DamagingStart.cs" />
-    <Compile Include="Assets\_Scripts\Gameplay\WeaponUnlonkerComponent.cs" />
     <Compile Include="Assets\_Scripts\Gameplay\Lifts\LiftEnd.cs" />
     <Compile Include="Assets\_Scripts\Gameplay\Bullet.cs" />
     <Compile Include="Assets\_Scripts\Gameplay\IDamageable.cs" />
-    <Compile Include="Assets\_Scripts\Gameplay\Enemies\Boss\AttackDistanceState.cs" />
     <Compile Include="Assets\_Scripts\Gameplay\Weapon\MeleeWeapon.cs" />
-    <Compile Include="Assets\_Scripts\Gameplay\PowerUps\PlayerHealerPowerUp.cs" />
     <Compile Include="Assets\_Scripts\Gameplay\Enemies\FlyerPatrol\FlyerPatrolStateController.cs" />
-    <Compile Include="Assets\_Scripts\Gameplay\Enemies\EnemyStateController.cs" />
-    <Compile Include="Assets\_Scripts\Gameplay\EnemyShooter.cs" />
+    <Compile Include="Assets\_Scripts\Gameplay\PowerUps\PlayerHealerPowerUp.cs" />
     <Compile Include="Assets\_Scripts\Scene\SO\SceneSO.cs" />
     <Compile Include="Assets\_Scripts\Gameplay\Enemies\Kamikaze\ExplosionState.cs" />
     <Compile Include="Assets\_Scripts\SO\IntSO.cs" />
     <Compile Include="Assets\_Scripts\Gameplay\AppearAgain.cs" />
-    <Compile Include="Assets\_Scripts\Config\PlayerConfig.cs" />
     <Compile Include="Assets\_Scripts\Gameplay\Enemies\PatrolFire\PatrolFireStateController.cs" />
-    <Compile Include="Assets\_Scripts\Tutorial\WeaponUnlonkerComponentDecorator.cs" />
     <Compile Include="Assets\_Scripts\Dialogs\SO\DialogEventSO.cs" />
-    <Compile Include="Assets\_Scripts\Gameplay\VisualField.cs" />
-    <Compile Include="Assets\_Scripts\EZ Camera Shake\Demo\Sample Scripts\ShakeOnTrigger.cs" />
-    <Compile Include="Assets\_Scripts\Gameplay\Enemies\FollowMelee\AnimatorController.cs" />
-    <Compile Include="Assets\_Scripts\UI\HealthUIController.cs" />
-    <Compile Include="Assets\_Scripts\Tutorial\TriggerEmiter.cs" />
     <Compile Include="Assets\_Scripts\Gameplay\ToNextLevel.cs" />
     <Compile Include="Assets\_Scripts\Gameplay\Player\WeaponManager.cs" />
     <Compile Include="Assets\_Scripts\Gameplay\Enemies\EnergyReward.cs" />
     <Compile Include="Assets\_Scripts\Gameplay\Enemies\EnemyDamageable.cs" />
     <Compile Include="Assets\_Scripts\EZ Camera Shake\Scripts\Utilities\CameraUtilities.cs" />
     <Compile Include="Assets\_Scripts\Scene\SO\SceneStorageSO.cs" />
-    <Compile Include="Assets\_Scripts\Managers\GameplayUIManager.cs" />
     <Compile Include="Assets\_Scripts\Gameplay\Player\PlayerDamageable.cs" />
     <Compile Include="Assets\_Scripts\Gameplay\PlayerChecker.cs" />
-    <Compile Include="Assets\_Scripts\ParticlesController.cs" />
     <Compile Include="Assets\_Scripts\EZ Camera Shake\Demo\ShakeDemo.cs" />
+    <Compile Include="Assets\_Scripts\Dialogs\SO\DialogInfo.cs" />
+    <Compile Include="Assets\_Scripts\Gameplay\Enemies\RaycastAttack.cs" />
+    <Compile Include="Assets\_Scripts\EZ Camera Shake\Demo\Sample Scripts\ShakeByDistance.cs" />
+    <Compile Include="Assets\_Scripts\EZ Camera Shake\Demo\Sample Scripts\ShakeOnKeyPress.cs" />
+    <Compile Include="Assets\_Scripts\Dialogs\DialogUI.cs" />
+    <Compile Include="Assets\_Scripts\Gameplay\Interactable\DestructableObject.cs" />
+    <Compile Include="Assets\_Scripts\Gameplay\Enemies\Kamikaze\FollowState.cs" />
+    <Compile Include="Assets\_Scripts\Audio\MixerManager.cs" />
+    <Compile Include="Assets\_Scripts\Gameplay\CameraFollowTarget.cs" />
+    <Compile Include="Assets\_Scripts\Tutorial\NoEnemiesListener.cs" />
+    <Compile Include="Assets\_Scripts\Dialogs\DialogManager.cs" />
+    <Compile Include="Assets\_Scripts\Gameplay\Enemies\PatrolFire\TakeStrongDamageState.cs" />
+    <Compile Include="Assets\_Scripts\Gameplay\Player\PlayerController.cs" />
+    <Compile Include="Assets\_Scripts\UI\PlayerDamageIndicator.cs" />
+    <Compile Include="Assets\_Scripts\Managers\PlayManager.cs" />
+    <Compile Include="Assets\_Scripts\Gameplay\Enemies\Boss\WeakState.cs" />
+    <Compile Include="Assets\_Scripts\SwayBehaviour.cs" />
+    <Compile Include="Assets\_Scripts\Gameplay\Enemies\Kamikaze\IdleState.cs" />
+    <Compile Include="Assets\_Scripts\Gameplay\Platforms\BreakPlatformBrain.cs" />
+    <Compile Include="Assets\_Scripts\Door\Door.cs" />
+    <Compile Include="Assets\_Scripts\Gameplay\Enemies\Boss\BossStateController.cs" />
+    <Compile Include="Assets\_Scripts\Tutorial\EnergyRewardTutorial.cs" />
+    <Compile Include="Assets\_Scripts\Config\SO\GameplaySettingsSO.cs" />
+    <Compile Include="Assets\_Scripts\Gameplay\Enemies\MeleeAttack.cs" />
+    <Compile Include="Assets\_Scripts\Gameplay\Weapon\WeaponAlternativeSpecial.cs" />
+    <Compile Include="Assets\_Scripts\Gameplay\Enemies\FollowMelee\TakeStrongDamageState.cs" />
+    <Compile Include="Assets\_Scripts\Managers\GameManager.cs" />
+    <Compile Include="Assets\_Scripts\Gameplay\Enemies\FollowMelee\FollowMeleeStateController.cs" />
+    <Compile Include="Assets\_Scripts\Gameplay\Enemies\FollowMelee\MeleeAttackState.cs" />
+    <Compile Include="Assets\_Scripts\Gameplay\Enemies\Kamikaze\AnimatorController.cs" />
+    <Compile Include="Assets\_Scripts\Gameplay\Enemies\Kamikaze\KamikazeStateController.cs" />
+    <Compile Include="Assets\_Scripts\UI\MixerUI.cs" />
+    <Compile Include="Assets\_Scripts\Gameplay\Enemies\LookAtTarget.cs" />
+    <Compile Include="Assets\_Scripts\Gameplay\Weapon\ShooterWeapon.cs" />
+    <Compile Include="Assets\_Scripts\EZ Camera Shake\Scripts\CameraShaker.cs" />
+    <Compile Include="Assets\Luz.cs" />
+    <Compile Include="Assets\_Scripts\Gameplay\Enemies\PatrolFire\NormalState.cs" />
+    <Compile Include="Assets\_Scripts\Gameplay\Weapon\NailsWeapon.cs" />
+    <Compile Include="Assets\_Scripts\Gameplay\Enemies\Boss\BossHealth.cs" />
+    <Compile Include="Assets\_Scripts\Gameplay\Enemies\Boss\BossSoundController.cs" />
+    <Compile Include="Assets\_Scripts\Gameplay\Player\PlayerAnimationManager.cs" />
+    <Compile Include="Assets\_Scripts\Gameplay\ObjectPooler.cs" />
+    <Compile Include="Assets\_Scripts\Gameplay\Platforms\TiltablePlatform.cs" />
+    <Compile Include="Assets\_Scripts\Gameplay\Enemies\FollowMelee\RandomPatrolState.cs" />
+    <Compile Include="Assets\_Scripts\Gameplay\Lifts\LiftStart.cs" />
+    <Compile Include="Assets\_Scripts\Gameplay\Player\PointerTarget.cs" />
+    <Compile Include="Assets\_Scripts\Config\AudioConfig.cs" />
+    <Compile Include="Assets\_Scripts\Gameplay\Weapon\TriggerWeapon.cs" />
+    <Compile Include="Assets\_Scripts\Gameplay\Enemies\Boss\IdleState.cs" />
+    <Compile Include="Assets\_Scripts\Gameplay\Player\FPSCamera.cs" />
+    <Compile Include="Assets\_Scripts\UI\Tutorial.cs" />
+    <Compile Include="Assets\_Scripts\Gameplay\Enemies\FollowMelee\DeadState.cs" />
+    <Compile Include="Assets\_Scripts\Gameplay\Enemies\FlyerPatrol\FlyerSoundController.cs" />
+    <Compile Include="Assets\_Scripts\Gameplay\Enemies\Boss\BossMeleeAttack.cs" />
+    <Compile Include="Assets\_Scripts\Dialogs\DialogEmitter.cs" />
+    <Compile Include="Assets\_Scripts\UI\SingleDamageIndicator.cs" />
+    <Compile Include="Assets\_Scripts\Managers\GameplayConfigManager.cs" />
+    <Compile Include="Assets\_Scripts\Gameplay\Enemies\FollowMelee\MetalSoundController.cs" />
+    <Compile Include="Assets\_Scripts\Gameplay\Enemies\Boss\SpawnState.cs" />
+    <Compile Include="Assets\_Scripts\UI\SkillBarController.cs" />
+    <Compile Include="Assets\_Scripts\Gameplay\Platforms\PlatformMovable.cs" />
+    <Compile Include="Assets\_Scripts\EZ Camera Shake\Scripts\CameraShakeInstance.cs" />
+    <Compile Include="Assets\_Scripts\Gameplay\Enemies\PatrolFire\DeadState.cs" />
+    <Compile Include="Assets\_Scripts\Gameplay\WeaponUnlonkerComponent.cs" />
+    <Compile Include="Assets\_Scripts\Gameplay\Enemies\Boss\AttackDistanceState.cs" />
+    <Compile Include="Assets\_Scripts\Gameplay\Enemies\EnemyStateController.cs" />
+    <Compile Include="Assets\_Scripts\Gameplay\EnemyShooter.cs" />
+    <Compile Include="Assets\_Scripts\Config\PlayerConfig.cs" />
+    <Compile Include="Assets\_Scripts\Tutorial\WeaponUnlonkerComponentDecorator.cs" />
+    <Compile Include="Assets\_Scripts\Gameplay\VisualField.cs" />
+    <Compile Include="Assets\_Scripts\EZ Camera Shake\Demo\Sample Scripts\ShakeOnTrigger.cs" />
+    <Compile Include="Assets\_Scripts\Gameplay\Enemies\FollowMelee\AnimatorController.cs" />
+    <Compile Include="Assets\_Scripts\UI\HealthUIController.cs" />
+    <Compile Include="Assets\_Scripts\Tutorial\TriggerEmiter.cs" />
+    <Compile Include="Assets\_Scripts\Managers\GameplayUIManager.cs" />
+    <Compile Include="Assets\_Scripts\ParticlesController.cs" />
     <Compile Include="Assets\_Scripts\Gameplay\Platforms\BreakPlatformAC.cs" />
     <Compile Include="Assets\_Scripts\Gameplay\Enemies\PatrolFire\SandSoundController.cs" />
     <Compile Include="Assets\_Scripts\Gameplay\Enemies\SpawnDrops.cs" />
@@ -192,22 +201,13 @@
     <Compile Include="Assets\_Scripts\UI\AudioConfigUIDecorator.cs" />
     <Compile Include="Assets\_Scripts\SceneChanger.cs" />
     <Compile Include="Assets\_Scripts\Gameplay\Enemies\PatrolBehaviour.cs" />
-    <Compile Include="Assets\_Scripts\Dialogs\SO\DialogInfo.cs" />
-    <Compile Include="Assets\_Scripts\Gameplay\Enemies\RaycastAttack.cs" />
     <Compile Include="Assets\_Scripts\Gameplay\Damaging.cs" />
-    <Compile Include="Assets\_Scripts\EZ Camera Shake\Demo\Sample Scripts\ShakeByDistance.cs" />
     <Compile Include="Assets\_Scripts\Gameplay\Enemies\Boss\AttackComboState.cs" />
-    <Compile Include="Assets\_Scripts\EZ Camera Shake\Demo\Sample Scripts\ShakeOnKeyPress.cs" />
     <Compile Include="Assets\_Scripts\VictorySceneCorrutine.cs" />
-    <Compile Include="Assets\_Scripts\Dialogs\DialogUI.cs" />
     <Compile Include="Assets\_Scripts\Gameplay\Enemies\CollectableEnemy\MinionEnemy.cs" />
     <Compile Include="Assets\_Scripts\EZ Camera Shake\Scripts\CameraShakePresets.cs" />
-    <Compile Include="Assets\_Scripts\Gameplay\Interactable\DestructableObject.cs" />
-    <Compile Include="Assets\_Scripts\Gameplay\Enemies\Kamikaze\FollowState.cs" />
-    <Compile Include="Assets\_Scripts\Audio\MixerManager.cs" />
     <Compile Include="Assets\_Scripts\Gameplay\Enemies\FollowMelee\FollowState.cs" />
     <Compile Include="Assets\_Scripts\Gameplay\Enemies\State.cs" />
-    <Compile Include="Assets\_Scripts\Gameplay\CameraFollowTarget.cs" />
     <Compile Include="Assets\_Scripts\Gameplay\Enemies\PatrolFire\AttackState.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -805,56 +805,69 @@
     <Reference Include="System.Xml.Serialization">
       <HintPath>C:\Program Files\Unity\Hub\Editor\2020.3.25f1\Editor\Data\NetStandard\compat\2.0.0\shims\netfx\System.Xml.Serialization.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.VSCode.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.VSCode.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.ProBuilder.AssetIdRemapUtility">
-      <HintPath>Library\ScriptAssemblies\Unity.ProBuilder.AssetIdRemapUtility.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.VisualStudio.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.VisualStudio.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.ProBuilder.AddOns.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.ProBuilder.AddOns.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Timeline.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.Timeline.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Timeline">
-      <HintPath>Library\ScriptAssemblies\Unity.Timeline.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.TextMeshPro">
-      <HintPath>Library\ScriptAssemblies\Unity.TextMeshPro.dll</HintPath>
-    </Reference>
     <Reference Include="Unity.2D.Sprite.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.2D.Sprite.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.ProBuilder">
-      <HintPath>Library\ScriptAssemblies\Unity.ProBuilder.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.ProBuilder.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.ProBuilder.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.UI">
       <HintPath>Library\ScriptAssemblies\UnityEditor.UI.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.InputSystem">
-      <HintPath>Library\ScriptAssemblies\Unity.InputSystem.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Rider.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.Rider.Editor.dll</HintPath>
-    </Reference>
     <Reference Include="UnityEngine.UI">
       <HintPath>Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.PlasticSCM.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.PlasticSCM.Editor.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="Unity.VSCode.Editor.csproj">
+      <Project>{8EA14C6E-677D-2013-3CB5-A2AFCBFF9EB6}</Project>
+      <Name>Unity.VSCode.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.TextMeshPro.Editor.csproj">
+      <Project>{98DB5937-7BF0-062B-A082-26D035BD078A}</Project>
+      <Name>Unity.TextMeshPro.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.VisualStudio.Editor.csproj">
+      <Project>{029D4668-983C-B143-E0F6-BBFF35A1BE63}</Project>
+      <Name>Unity.VisualStudio.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.ProBuilder.AddOns.Editor.csproj">
+      <Project>{B2167F14-005C-C9AD-C853-F02AD3A8782F}</Project>
+      <Name>Unity.ProBuilder.AddOns.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.Timeline.csproj">
+      <Project>{3355E6DE-8907-46EE-7E1A-F55F36A9F954}</Project>
+      <Name>Unity.Timeline</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.TextMeshPro.csproj">
+      <Project>{336B8E4F-A56B-903F-A0D3-E0B984F638E3}</Project>
+      <Name>Unity.TextMeshPro</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.ProBuilder.csproj">
+      <Project>{9EF18735-43AA-3CAA-FD66-C0396CA14AD9}</Project>
+      <Name>Unity.ProBuilder</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.ProBuilder.Editor.csproj">
+      <Project>{810B2C3B-15BB-2060-13E2-4DC7D196D461}</Project>
+      <Name>Unity.ProBuilder.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.InputSystem.csproj">
+      <Project>{87319F2F-63B8-97B1-C500-68B9853B4FC1}</Project>
+      <Name>Unity.InputSystem</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.Rider.Editor.csproj">
+      <Project>{0AFC08E0-39AD-E3AF-F433-36F7562103BE}</Project>
+      <Name>Unity.Rider.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.PlasticSCM.Editor.csproj">
+      <Project>{CEC1D335-02B5-9811-4485-CC6B9D3BE3AF}</Project>
+      <Name>Unity.PlasticSCM.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.ProBuilder.AssetIdRemapUtility.csproj">
+      <Project>{558ED2A5-888C-96F1-B73B-DD1192A5BEFE}</Project>
+      <Name>Unity.ProBuilder.AssetIdRemapUtility</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.Timeline.Editor.csproj">
+      <Project>{2B927872-4CCC-CDDF-3F92-4C2F9FFF1578}</Project>
+      <Name>Unity.Timeline.Editor</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />
