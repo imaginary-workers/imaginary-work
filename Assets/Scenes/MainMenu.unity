@@ -693,6 +693,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BlackScreen
       objectReference: {fileID: 0}
+    - target: {fileID: 5335530186416501878, guid: 19dae62afd793784bae28f9be02e0629, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 19dae62afd793784bae28f9be02e0629, type: 3}
 --- !u!224 &434338928 stripped
@@ -1628,9 +1632,20 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
+<<<<<<< Updated upstream
   m_Text: "\nGABRIEL DAVID RODRIGUEZ CASTILLO\r - Programador\nSEBASTIAN MANUEL BASUALDO\r
     - Programador\nMART\xCDN OMAR RUBIO\r - Artista\nGUIDO GABRIELE PERUILH\r - Artista\nMATIAS
     EMILIANO DIAZ\r - Dise\xF1ador\n\n\n"
+=======
+  m_Text: '
+
+    SEBASTIAN MANUEL BASUALDO
+
+
+
+
+'
+>>>>>>> Stashed changes
 --- !u!222 &1035943624
 CanvasRenderer:
   m_ObjectHideFlags: 0
