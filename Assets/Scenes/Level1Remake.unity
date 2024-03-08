@@ -16694,6 +16694,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5824207716733614624, guid: 31ed0e03d2761d14e8a83d1aac8a9180, type: 3}
   m_PrefabInstance: {fileID: 2301581894362754827}
   m_PrefabAsset: {fileID: 0}
+--- !u!198 &782317584 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 5824207716733614626, guid: 31ed0e03d2761d14e8a83d1aac8a9180, type: 3}
+  m_PrefabInstance: {fileID: 2301581894362754827}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &782317585 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5824207716733614637, guid: 31ed0e03d2761d14e8a83d1aac8a9180, type: 3}
@@ -25229,6 +25234,11 @@ Transform:
   m_Father: {fileID: 887069618}
   m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!198 &1279574203 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 8294583486431019149, guid: 31ed0e03d2761d14e8a83d1aac8a9180, type: 3}
+  m_PrefabInstance: {fileID: 2301581894362754827}
+  m_PrefabAsset: {fileID: 0}
 --- !u!43 &1289935026
 Mesh:
   m_ObjectHideFlags: 0
@@ -47637,10 +47647,10 @@ MonoBehaviour:
   _maxLayers: 3
   _timeToRespawn: 3
   _collider: {fileID: 1360242014442985736}
-  _onStandParticle: {fileID: 0}
-  _onStandSound: {fileID: 0}
-  _onBreakParticle: {fileID: 0}
-  _onBreakSound: {fileID: 0}
+  _onStandParticle: {fileID: 1279574203}
+  _onStandSound: {fileID: 9129419401374941073}
+  _onBreakParticle: {fileID: 782317584}
+  _onBreakSound: {fileID: 1588237580409015304}
 --- !u!1 &1360242014601723809
 GameObject:
   m_ObjectHideFlags: 0

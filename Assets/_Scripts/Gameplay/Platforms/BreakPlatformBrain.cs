@@ -50,7 +50,7 @@ namespace Game.Gameplay.Platforms
                 {
                     _collider.enabled = false;
                     _onPlayerOver.Reset();
-
+    
                     _onBreakParticle.Play();
                     _onBreakSound.Play();
                 }
